@@ -1,0 +1,108 @@
+@font-face {
+	font-family: 'goudy-bookletter-1911', serif;
+	font-weight: 400;
+	src: url('https://use.typekit.net/cub6off.css') format('woff2');
+}
+
+@font-face {
+	font-family: 'neue-haas-grotesk-text', sans-serif;
+	font-weight: 400;
+	src: url('https://use.typekit.net/cub6off.css') format('woff2');
+}
+
+@font-face {
+	font-family: 'neue-haas-grotesk-display', sans-serif;
+	font-weight: 400;
+	src: url('https://use.typekit.net/cub6off.css') format('woff2');
+}
+
+@font-face {
+	font-family: 'poppins', sans-serif;
+	font-weight: 400;
+	src: url('https://use.typekit.net/nhw1thr.css') format('woff2');
+}
+
+.light-mode {
+	@apply bg-primary text-black border-black;
+	--color-bg-primary: #ebe8e0;
+	--color-bg-auxiliary: #eaeaea;
+	--color-text-primary: #000000;
+	--color-text-auxiliary: #151515;
+	--color-text-tertiary: #505050;
+	--color-text-quaternary: #ebe8e0;
+	--color-border-primary: #000000;
+	--color-fill-primary: #000000;
+	--color-fill-auxiliary: #151515;
+	--color-stroke-primary: #000000;
+}
+
+.dark-mode {
+	@apply bg-black text-white border-white;
+	--color-bg-primary: #000000;
+	--color-bg-auxiliary: #151515;
+	--color-text-primary: #ffffff;
+	--color-text-auxiliary: #eaeaea;
+	--color-text-tertiary: #afafaf;
+	--color-text-quaternary: #000000;
+	--color-border-primary: #ffffff;
+	--color-fill-primary: #ffffff;
+	--color-fill-auxiliary: #eaeaea;
+	--color-stroke-primary: #ffffff;
+}
+
+:root {
+	--background-primary: #ffffff;
+	--background-auxiliary: #f1f3f5;
+
+	--text-base: #000000;
+	--text-primary: #000000;
+	--text-auxiliary: #151515;
+	--text-tertiary: #505050;
+	--text-quaternary: #ffffff;
+	@apply font-header;
+	@apply font-somaRoman;
+	@apply font-somaDisplay;
+	@apply font-poppins;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+html {
+	height: 100%;
+	box-sizing: border-box;
+	touch-action: manipulation;
+	font-feature-settings: 'case' 1, 'rlig' 1, 'calt' 0;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-webkit-tap-highlight-color: transparent;
+	-moz-osx-font-smoothing: grayscale;
+	scroll-behavior: smooth;
+}
+
+html,
+body {
+	font-family: var(--font-somaRoman);
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background-color: var(--background-primary);
+	color: var(--text-primary);
+}
+
+body {
+	position: relative;
+	min-height: 100%;
+	margin: 0;
+}
+
+body::-webkit-scrollbar {
+	display: none; /* Hide scrollbar for Chrome, Safari and Opera https://www.w3schools.com/howto/howto_css_hide_scrollbars.asp */
+}
+
+a {
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}

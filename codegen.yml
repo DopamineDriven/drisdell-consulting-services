@@ -1,0 +1,22 @@
+overwrite: true
+schema:
+ 'https://windy-city-headless.me/graphql':
+  headers:
+   Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvd2luZHktY2l0eS1oZWFkbGVzcy5tZSIsImlhdCI6MTYwNTY1OTkxNywibmJmIjoxNjA1NjU5OTE3LCJleHAiOjE2MzcxOTU5MTcsImRhdGEiOnsidXNlciI6eyJpZCI6IjIiLCJ1c2VyX3NlY3JldCI6ImdyYXBocWxfand0XzVmOGQwNjJiYTRmNzIifX19.ymd1nuqNXMMDQcf_iM7i_pMWRXjdOxTzE9dj1PlspAs
+documents: './lib/graphql/**/*.ts'
+generates:
+ ./graphql.d.ts:
+  # generated/graphql.d.ts
+  plugins:
+   - 'typescript'
+   - 'typescript-operations'
+   - 'typescript-react-apollo'
+   - 'typescript-apollo-client-helpers'
+  config:
+   skipTypename: true
+   withHooks: true
+   apolloReactCommonImportFrom: '@apollo/client'
+   apolloReactHooksImportFrom: '@apollo/client'
+ ./graphql.schema.json:
+  plugins:
+   - 'introspection'
