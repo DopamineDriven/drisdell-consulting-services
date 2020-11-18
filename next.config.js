@@ -4,10 +4,10 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 });
 const withImages = {
 	images: {
-		domains: ['windy-city-headless.me', 'secure.gravatar.com']
+		domains: ['drisdell.com', 'secure.gravatar.com']
 	}
 };
-const Webpack = {
+const webpackBundle = {
 	webpack: (config, options) => {
 		config.module.rules.push({
 			test: /\.(graphql|gql)$/,
@@ -29,4 +29,8 @@ const Webpack = {
 	}
 };
 
-module.exports = withPlugins([[withBundleAnalyzer({})], withImages, Webpack]);
+module.exports = withPlugins([
+	[withBundleAnalyzer({})],
+	withImages,
+	webpackBundle
+]);
