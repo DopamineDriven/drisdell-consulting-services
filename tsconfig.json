@@ -12,6 +12,7 @@
 		"esModuleInterop": true,
 		"allowSyntheticDefaultImports": true,
 		"noUnusedParameters": true,
+		"preserveConstEnums": true,
 		"module": "esnext",
 		"moduleResolution": "node",
 		"resolveJsonModule": true,
