@@ -1,4 +1,4 @@
-import SvgIconConstituentValues from '../../_types/svg';
+import SvgIconConstituentValues from '@_types/svg';
 import { FC } from 'react';
 
 const DrisdellIcon: FC<SvgIconConstituentValues> = (props): JSX.Element => {
