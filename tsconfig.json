@@ -23,12 +23,11 @@
 		"strictNullChecks": true,
 		"paths": {
 			"@components/*": ["components/*"],
-			"@dao/*": ["dao/*"],
 			"@lib/*": ["lib/*"],
 			"@pages/*": ["pages/*"],
 			"@styles/*": ["styles/*"],
 			"@test/*": ["test/*"],
-			"@_types/*": ["types/*"],
+			"@_types/*": ["_types/*"],
 			"@utils/*": ["utils/*"]
 		}
 	},
