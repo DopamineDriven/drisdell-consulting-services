@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import Image from 'next/image';
-import { LandingPage_pages_edges_node_featuredImage as FeaturedImage } from '@lib/Queries/LandingPage/__generated__/LandingPage';
+import { LandingPage_pages_edges_node_featuredImage as FeaturedImage } from '../../../../lib/Queries/LandingPage/__generated__/LandingPage';
 
 export interface LandingPageProps {
 	featuredImage: FeaturedImage;

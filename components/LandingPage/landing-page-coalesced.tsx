@@ -2,7 +2,7 @@ import { useQuery } from '@apollo/client';
 import {
 	LandingPage,
 	LandingPageVariables
-} from '@lib/Queries/LandingPage/__generated__/LandingPage';
+} from '../../lib/Queries/LandingPage/__generated__/LandingPage';
 import { WpParentPagesEnum } from '@_types/index';
 import LANDING_PAGE from '@lib/Queries';
 import LandingLayout from './Children';
