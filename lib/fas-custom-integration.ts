@@ -288,7 +288,7 @@ export const faCustomWebsite: CustomIconConstruct = {
 	]
 };
 
-library.add(
+export default library.add(
 	faAntDesignIcon,
 	faApolloIcon,
 	faArIcon,

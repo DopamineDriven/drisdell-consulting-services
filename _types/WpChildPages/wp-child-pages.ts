@@ -1,4 +1,4 @@
-enum WpChildPages {
+enum WpChildPagesEnum {
 	OUR_PROJECT_DELIVERY = 'our-project-delivery',
 	OUR_EXPERTISE = 'our-expertise',
 	OUR_WORLD = 'our-world',
@@ -10,4 +10,4 @@ enum WpChildPages {
 	OUR_CAREERS = 'our-careers'
 }
 
-export default WpChildPages;
+export default WpChildPagesEnum;

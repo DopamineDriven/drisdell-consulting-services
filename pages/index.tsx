@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import { Meta, Navbar } from '@components/index';
 import { NextPage } from 'next';
 import Head from 'next/head';
-import LANDING_PAGE from '@lib/Queries';
+import { LANDING_PAGE } from '@lib/graphql';
 import LandingPage, {
 	LandingPageQueryVars
 } from '@components/LandingPage/landing-page-coalesced';

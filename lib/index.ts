@@ -1,1 +1,1 @@
-export { default as Const } from './Constants';
+export { default as Const } from './constants';
