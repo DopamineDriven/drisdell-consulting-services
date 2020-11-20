@@ -36,17 +36,17 @@
 
 .divParent {
 	@apply transform -translate-y-5 select-none py-portfolioDivider z-10 pr-portfolio;
-	background: #000046; /* fallback for old browsers */
+	/*background: #000046;  fallback for old browsers */
 	background: --webkit-linear-gradient(
 		to top,
 		#1cb5e0,
 		#000046
 	); /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(
+	/* background: linear-gradient(
 		to bottom,
 		#1cb5e0,
-		#000046 88%
-	); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+		#000046 99% */
+	/*);  W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .divChild {
@@ -74,7 +74,7 @@
 }
 
 .nav {
-	@apply mx-3 block col-span-6 text-right w-full min-w-full;
+	@apply mx-3 block col-span-7 text-right w-full min-w-full;
 }
 
 .avatarButton {

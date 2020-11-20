@@ -108,3 +108,7 @@ dist
 # Next-specific files
 .env.local
 notes.md
+
+# GQL Codegen .d.ts and .json comprehensive schema
+graphql.d.ts 
+graphql.schema.json
