@@ -1,6 +1,6 @@
 // import cn from 'classnames'
 import { FC, useState, useMemo, useRef, useEffect } from 'react';
-import GetRandomColorPair from '@lib/colors/GetRandomColorPair';
+import { GetRandomColorPair } from '../../lib/colors/index';
 
 interface Props {
 	className?: string;

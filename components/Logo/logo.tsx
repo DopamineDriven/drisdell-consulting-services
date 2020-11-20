@@ -1,6 +1,6 @@
 import SvgIconConstituentValues from '@_types/SvgProps/svg';
 import { FC, useState, useMemo, useRef, useEffect } from 'react';
-import GetRandomColorPair from '@lib/colors/GetRandomColorPair/get-random-color-pair';
+import { GetRandomColorPair } from '../../lib/colors/index';
 
 const DrisdellIcon: FC<SvgIconConstituentValues> = props => {
 	const {
