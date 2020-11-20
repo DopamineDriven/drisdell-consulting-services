@@ -1,7 +1,7 @@
 import SvgIconConstituentValues from '@_types/svg';
 import { FC } from 'react';
 
-const DrisdellIcon: FC<SvgIconConstituentValues> = (props): JSX.Element => {
+const DrisdellIcon: FC<SvgIconConstituentValues> = props => {
 	const {
 		width = '8.0556vw',
 		height = '8.0556vw',
