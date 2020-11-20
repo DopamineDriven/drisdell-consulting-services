@@ -3,7 +3,7 @@ schema:
  'https://windy-city-headless.me/graphql':
   headers:
    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvZHJpc2RlbGwuY29tIiwiaWF0IjoxNjAyNzA2NTU0LCJuYmYiOjE2MDI3MDY1NTQsImV4cCI6MTYzNDI0MjU1NCwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiMyIsInVzZXJfc2VjcmV0IjoiZ3JhcGhxbF9qd3RfNWY4NjBiNmVjMTA5ZCJ9fX0.6YSe8a78F6KA06YNvY7wiQibYdG-RBuTRTiIs2JGx4Q
-documents: './lib/graphql/**/*.ts'
+documents: './lib/**/*.ts'
 generates:
  ./graphql.d.ts:
   # generated/graphql.d.ts
