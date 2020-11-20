@@ -1,4 +1,4 @@
-const enum Const {
+enum Const {
 	CMS_NAME = 'Headless WordPress via BlueHost',
 	CMS_URL = 'https://bluehost.com/',
 	EXAMPLE_PATH = 'drisdell-consulting-services',
