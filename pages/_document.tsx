@@ -21,8 +21,6 @@ export default class MyDocument extends Document {
 				<Head>
 					<meta charSet='utf-8' />
 					<style type='text/css' dangerouslySetInnerHTML={{ __html: mediaStyles }} />
-					<link rel='stylesheet' href='/fonts/index.css' />
-					<link rel='stylesheet' href='https://use.typekit.net/cub6off.css' />
 					<script
 						async
 						src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GA_TRACKING_ID}`}
@@ -44,8 +42,6 @@ export default class MyDocument extends Document {
 				<Head>
 					<meta charSet='utf-8' />
 					<style type='text/css' dangerouslySetInnerHTML={{ __html: mediaStyles }} />
-					<link rel='stylesheet' href='/fonts/index.css' />
-					<link rel='stylesheet' href='https://use.typekit.net/cub6off.css' />
 				</Head>
 			);
 		};

@@ -5,7 +5,7 @@ import CompanyLogo from '@components/Logo';
 import { Media } from '@lib/window-width';
 import { useRouter } from 'next/router';
 // import { Menu } from '@headlessui/react'
-import Avatar from '../Avatar';
+// import Avatar from '../Avatar';
 
 interface NavRef {
 	href: string;
@@ -85,9 +85,9 @@ const Navbar: NavBarFC = ({ className }) => {
 						<nav className={css.nav}>
 							<ul className={css.ul}>{navList}</ul>
 						</nav>
-						<button className={css.avatarButton}>
+						{/* <button className={css.avatarButton}>
 							<Avatar className={css.avatarButton} />
-						</button>
+						</button> */}
 					</div>
 				</div>
 			</div>
