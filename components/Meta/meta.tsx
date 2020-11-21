@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { Const } from '../../lib';
+import Const from '@lib/constants';
 import { Fragment } from 'react';
 import { FC } from 'react';
 interface MetaProps {
