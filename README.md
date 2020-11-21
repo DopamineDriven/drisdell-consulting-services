@@ -2,6 +2,8 @@
 
 Nextjs, Headless WordPress, TypeScript, Apollo Client, GraphQL Codegen, WPGraphQL, Tailwindcss, and Vercel
 
+## develop branch init
+
 ## Dependencies Init
 
 ```git
