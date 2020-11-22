@@ -4,7 +4,7 @@ Nextjs, Headless WordPress, TypeScript, Apollo Client, GraphQL Codegen, WPGraphQ
 
 ## develop branch init
 
-## Dependencies Init
+## Dependencies Init For Base Packages
 
 ```git
 yarn add @apollo/client @artsy/fresnel @fortawesome/fontawesome-svg-core @fortawesome/free-brands-svg-icons @fortawesome/free-regular-svg-icons @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome @react-aria/overlays apollo classnames date-fns deepmerge graphql keen-slider lodash.random lodash.throttle next react react-
