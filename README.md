@@ -4,6 +4,10 @@ Nextjs, Headless WordPress, TypeScript, Apollo Client, GraphQL Codegen, WPGraphQ
 
 ## develop branch init
 
+- Landing Page ✔
+- About Page content on home page
+- sub-page routing
+
 ## Dependencies Init For Base Packages
 
 ```git
