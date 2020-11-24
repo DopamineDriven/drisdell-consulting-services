@@ -7,6 +7,7 @@ import {
 } from '@apollo/client';
 import { concatPagination } from '@apollo/client/utilities';
 import merge from 'deepmerge';
+// revisit
 
 let apolloClient: ApolloClient<NormalizedCacheObject> | undefined;
 
