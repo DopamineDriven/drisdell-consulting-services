@@ -2,6 +2,31 @@
 
 Nextjs, Headless WordPress, TypeScript, Apollo Client, GraphQL Codegen, WPGraphQL, Tailwindcss, and Vercel
 
+### Headers Returned Demystified via Postman
+
+| Key                           | Value                                                                          |
+| ----------------------------- | ------------------------------------------------------------------------------ |
+| Content-Type                  | application/json; charset=UTF-8                                                |
+| Transfer-Encoding             | chunked                                                                        |
+| Connection                    | keep-alive                                                                     |
+| Date                          | Thu, 26 Nov 2020 06:03:03 GMT                                                  |
+| Server                        | Apache                                                                         |
+| X-Powered-By                  | PHP/7.3.18                                                                     |
+| Access-Control-Allow-Origin   | \*                                                                             |
+| Access-Control-Allow-Headers  | Authorization, Content-Type, X-JWT-Auth, X-JWT-Refresh                         |
+| Access-Control-Max-Age        | 600                                                                            |
+| X-Robots-Tag                  | noindex                                                                        |
+| X-Content-Type-Options        | nosniff                                                                        |
+| X-hacker                      | If you're reading this, you should visit github.com/wp-graphql and contribute! |
+| Access-Control-Expose-Headers | X-JWT-Refresh                                                                  |
+| X-Frame-Options               | SAMEORIGIN                                                                     |
+| Vary                          | Cookie                                                                         |
+| Cache-Control                 | s-maxage=10                                                                    |
+| X-Cache                       | Miss from cloudfront                                                           |
+| Via                           | 1.1 aae94205fef749bc8580cf140c626670.cloudfront.net (CloudFront)               |
+| X-Amz-Cf-Pop                  | SFO5-C1                                                                        |
+| X-Amz-Cf-Id                   | OcLSLSFemPJL5Tl6JFmSuhsWS4gq5Evg9Dg-wurJRrw2NiV4VR7CsA==                       |
+
 ## develop branch init
 
 - Landing Page ✔
