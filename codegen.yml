@@ -1,10 +1,8 @@
-require: 
-  - ./.env
 overwrite: true
 schema:
- ${WORDPRESS_API_URL}:
+ ${WORDPRESS_API_URL_YML}:
     headers:
-      Authorization: Bearer ${WORDPRESS_AUTH_REFRESH_TOKEN}
+      Authorization: Bearer ${WORDPRESS_AUTH_REFRESH_TOKEN_YML}
 documents: './lib/graphql/**/*.ts'
 generates:
  ./graphql.d.ts:
