@@ -99,5 +99,11 @@
 	"peerDependencies": {
 		"@babel/core": "7.0.0",
 		"prop-types": "15.6.0"
-	}
+	},
+	"browserslist": [
+		">0.3%",
+		"not ie 11",
+		"not dead",
+		"not op_mini all"
+	]
 }
