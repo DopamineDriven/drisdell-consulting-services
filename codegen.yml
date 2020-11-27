@@ -1,8 +1,10 @@
+require: 
+  - ./.env
 overwrite: true
 schema:
- 'https://windy-city-headless.me/graphql':
+ ${WORDPRESS_API_URL}:
     headers:
-      Authorization: dotenv cross-var Bearer %WORDPRESS_AUTH_REFRESH_TOKEN%
+      Authorization: Bearer ${WORDPRESS_AUTH_REFRESH_TOKEN}
 documents: './lib/graphql/**/*.ts'
 generates:
  ./graphql.d.ts:
