@@ -6,6 +6,7 @@ import {
 import { WpParentPagesEnum } from '@_types/index';
 import { LANDING_PAGE } from '@lib/graphql';
 import LandingLayout from './Children';
+import ApolloErrorMessage from '@components/ErrorMessage';
 
 export const LandingPageQueryVars: LandingPageVariables = {
 	name: WpParentPagesEnum.HOME
@@ -19,11 +20,20 @@ const LandingPageCoalesced = () => {
 
 	const { pages }: LandingPage = data ?? '';
 	return error ? (
-		<aside>Error Loading Posts...{error}</aside>
+		<>
+			<ApolloErrorMessage
+				message={`${error.message}`}
+				graphQLErrors={error.graphQLErrors}
+				networkError={error.networkError}
+				extraInfo={error.extraInfo}
+				stack={error.stack}
+				name={error.name}
+			/>
+		</>
 	) : loading && !error ? (
 		<div>Loading...</div>
 	) : (
-		<section className='content-center justify-center block mx-auto -translate-y-portfolioPadding transform'>
+		<section className='content-center justify-center block mx-auto  transform'>
 			<div className='grid content-center justify-center grid-cols-2 mx-auto lg:grid-cols-2 gap-x-portfolio gap-y-portfolio'>
 				{pages != null && pages.edges != null && pages.edges.length > 0 ? (
 					pages.edges.map((page, index: number) => {
@@ -32,7 +42,7 @@ const LandingPageCoalesced = () => {
 							page.node.featuredImage != null ? (
 							/* && page.node.featuredImage != null */
 							<div
-								className='block mx-auto col-span-2 font-poppins lg:pb-paddingBlogOdd pb-aboutOffsetPR'
+								className='block mx-auto col-span-2 font-poppins lg:pb-paddingBlogOdd pb-aboutOffsetPR  max-w-cardGrid'
 								key={index++}
 							>
 								<LandingLayout

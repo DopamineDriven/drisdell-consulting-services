@@ -1,0 +1,71 @@
+.link {
+	@apply inline-flex justify-items-center align-middle font-somaRoman text-xl leading-6 font-medium duration-500 transition ease-in-out cursor-pointer;
+	@media (max-width: 640px) {
+		@apply text-lg;
+	}
+	&:hover {
+		@apply transition-colors duration-500 ease-in-out;
+	}
+	&:focus {
+		@apply outline-none;
+	}
+}
+
+.linkActive {
+	@apply inline-flex align-middle transform justify-items-center font-somaRoman text-xl text-secondary-0 leading-6 font-medium duration-500 cursor-pointer ease-in-out;
+	&:hover {
+		@apply transition-colors duration-500 ease-in-out;
+	}
+	&:focus {
+		@apply outline-none;
+	}
+	transform: scale(1.01);
+}
+
+.navLi {
+	@apply inline-flex flex-grow mx-8 select-none;
+}
+
+.navUl {
+	@apply text-right float-right space-x-12;
+}
+
+.className0 {
+	@apply text-accents-0 py-3;
+
+	&:hover {
+		@apply text-secondary-0;
+	}
+	&:focus {
+		@apply outline-none;
+	}
+	&.linkActive {
+		@apply text-secondary-0;
+	}
+}
+
+.className1 {
+	@apply text-accents-0 py-3;
+	&:hover {
+		@apply text-secondary-0 !important;
+	}
+	&:focus {
+		@apply outline-none text-secondary-0 transition-colors duration-500 ease-in-out;
+	}
+	&.linkActive {
+		@apply text-secondary-0;
+	}
+}
+
+.className2 {
+	@apply text-accents-6 bg-secondary-0 rounded-full px-8 py-2  select-none transition-colors;
+	&:hover {
+		@apply text-accents-5 bg-secondary-0 transition-colors duration-500 opacity-90;
+	}
+	&:focus {
+		@apply outline-none bg-secondary-0 text-accents-7 transition-colors duration-500 ease-in-out;
+	}
+	&.linkActive {
+		@apply no-underline transform;
+	}
+}

@@ -4,8 +4,8 @@ import { getRandomPairOfColors } from '@lib/colors';
 
 const DrisdellIcon: FC<SvgIconConstituentValues> = props => {
 	const {
-		width = '8.0556vw',
-		height = '8.0556vw',
+		width = '5.0556vw',
+		height = '5.0556vw',
 		classNameSvg = ` `,
 		classNameP1 = ' ',
 		rotateCenter = 0
@@ -21,7 +21,7 @@ const DrisdellIcon: FC<SvgIconConstituentValues> = props => {
 	}, [bg]);
 
 	return (
-		<div ref={ref} className='rounded-full'>
+		<div className='rounded-full shadow-outline-2 bg-eaWhite'>
 			<>
 				<svg
 					width={width}
@@ -29,7 +29,7 @@ const DrisdellIcon: FC<SvgIconConstituentValues> = props => {
 					viewBox='0 0 548 514'
 					fill='none'
 					xmlns='http://www.w3.org/2000/svg'
-					className={classNameSvg}
+					className={classNameSvg + 'shadow-magic'}
 					transform={`rotate(${rotateCenter}, 548, 514)`}
 				>
 					<g className=' opacity-100' fill='white'>

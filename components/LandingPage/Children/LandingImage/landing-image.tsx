@@ -11,7 +11,7 @@ const LandingImage: FC<LandingPageProps> = props => {
 	return featuredImage != null &&
 		featuredImage.node != null &&
 		featuredImage.node.sourceUrl != null ? (
-		<div>
+		<div className='min-w-full w-screen -mx-portfolioPadding'>
 			<Image
 				src={`${featuredImage.node.sourceUrl}`}
 				alt={'Picturesque Portland Lighthouse Landing Page'}

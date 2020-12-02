@@ -51,7 +51,7 @@ const LandingContent: PostBodyPropsFC = props => {
 
 	return (
 		<>
-			<div className='text-shadow-none shadow-none select-none mx-auto content-center text-left md:text-left md:text-customP items-center justify-center align-middle max-w-xsCardGridCima min-h-paddingAboutTitleRight h-paddingAboutTitleRight '>
+			<div className='text-shadow-none shadow-none select-none mx-auto content-center text-left md:text-left md:text-customP items-center justify-center align-middle max-w-xsCardGridCima min-h-paddingAboutTitleRight h-paddingAboutTitleRight  '>
 				<ContentConditional />
 			</div>
 		</>

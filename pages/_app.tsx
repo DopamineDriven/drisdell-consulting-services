@@ -12,7 +12,7 @@ import { useApollo } from '../lib/apollo';
 config.autoAddCss = false;
 
 function App({ Component, pageProps }: AppProps) {
-	const apolloClient = useApollo(pageProps.initialApolloState);
+	const apolloClient = useApollo(pageProps);
 	const router = useRouter();
 
 	useEffect(() => {
