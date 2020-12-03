@@ -1,5 +1,5 @@
 .footerLogoA {
-	@apply flex flex-initial items-center font-bold;
+	@apply flex flex-initial items-center font-bold bg-local;
 	@screen md {
 		@apply mr-24;
 	}

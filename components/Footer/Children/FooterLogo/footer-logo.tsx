@@ -15,7 +15,11 @@ const FooterLogo: FC<FooterLogoProps> = props => {
 		<Link href='/'>
 			<a className={cn(classNameRoot, css.footerLogoA)}>
 				<span className={css.footerLogoSpan}>
-					<Logo width='10rem' height='10rem' classNameSvg='z-50' />
+					<Logo
+						width='10rem'
+						height='10rem'
+						classNameSvg='z-50 bg-white rounded-full'
+					/>
 				</span>
 			</a>
 		</Link>
