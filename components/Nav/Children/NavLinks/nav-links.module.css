@@ -1,6 +1,18 @@
 .link {
-	@apply inline-flex justify-items-center align-middle font-somaRoman text-xl leading-6 font-medium duration-500 transition ease-in-out cursor-pointer;
-	@media (max-width: 640px) {
+	@apply inline-flex justify-items-center text-accents-1 align-middle font-somaRoman leading-6 duration-500 transition ease-in-out cursor-pointer;
+	@screen 2xl {
+		@apply text-4xl;
+	}
+	@screen xl {
+		@apply text-3xl;
+	}
+	@screen lg {
+		@apply text-2xl;
+	}
+	@screen md {
+		@apply text-xl;
+	}
+	@screen sm {
 		@apply text-lg;
 	}
 	&:hover {
@@ -12,22 +24,36 @@
 }
 
 .linkActive {
-	@apply inline-flex align-middle transform justify-items-center font-somaRoman text-xl text-secondary-0 leading-6 font-medium duration-500 cursor-pointer ease-in-out;
+	@apply inline-flex align-middle transform justify-items-center font-somaRoman text-xl text-secondary-0 leading-6 font-bold duration-500 cursor-pointer ease-in-out;
+	@screen 2xl {
+		@apply text-4xl;
+	}
+	@screen xl {
+		@apply text-4xl;
+	}
+	@screen lg {
+		@apply text-2xl;
+	}
+	@screen md {
+		@apply text-xl;
+	}
+	@screen sm {
+		@apply text-lg;
+	}
 	&:hover {
 		@apply transition-colors duration-500 ease-in-out;
 	}
 	&:focus {
 		@apply outline-none;
 	}
-	transform: scale(1.01);
 }
 
 .navLi {
-	@apply inline-flex flex-grow mx-8 select-none;
+	@apply inline-flex flex-grow flex-row select-none text-center mx-2;
 }
 
 .navUl {
-	@apply text-right float-right space-x-12;
+	@apply text-right space-x-8;
 }
 
 .className0 {
@@ -58,7 +84,7 @@
 }
 
 .className2 {
-	@apply text-accents-6 bg-secondary-0 rounded-full px-8 py-2  select-none transition-colors;
+	@apply text-white bg-secondary-0 rounded-full px-8 py-2  select-none transition-colors;
 	&:hover {
 		@apply text-accents-5 bg-secondary-0 transition-colors duration-500 opacity-90;
 	}

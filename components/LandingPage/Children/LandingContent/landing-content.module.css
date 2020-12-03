@@ -127,6 +127,7 @@
 .content ol,
 .content blockquote {
 	@apply my-6;
+	@apply max-w-150;
 }
 
 .content a {

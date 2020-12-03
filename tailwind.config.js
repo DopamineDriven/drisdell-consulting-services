@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 module.exports = {
 	important: true,
 	future: {
@@ -50,7 +52,8 @@ module.exports = {
 				header: ['goudy-bookletter-1911', 'serif'],
 				poppins: ['poppins', 'sans-serif'],
 				somaRoman: ['neue-haas-grotesk-text', 'sans-serif'],
-				somaDisplay: ['neue-haas-grotesk-display', 'sans-serif']
+				somaDisplay: ['neue-haas-grotesk-display', 'sans-serif'],
+				sans: ['Inter var', ...defaultTheme.fontFamily.sans]
 			},
 			backgroundColor: {
 				primary: 'var(--color-bg-primary)',

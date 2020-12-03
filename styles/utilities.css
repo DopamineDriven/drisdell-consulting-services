@@ -1,9 +1,3 @@
-html {
-	@apply font-header;
-	@apply font-somaRoman;
-	@apply font-somaDisplay;
-}
-
 .wp-block-image img {
 	@apply max-w-full mt-2;
 }

@@ -1,6 +1,6 @@
 import SvgIconConstituentValues from '@_types/SvgProps/svg';
 import { FC, useState, useMemo, useRef, useEffect } from 'react';
-import { getRandomPairOfColors } from '@lib/colors';
+import { ColorsSvg } from '@lib/index';
 
 const DrisdellIcon: FC<SvgIconConstituentValues> = props => {
 	const {
@@ -11,7 +11,7 @@ const DrisdellIcon: FC<SvgIconConstituentValues> = props => {
 		rotateCenter = 0
 	} = props;
 
-	const [bg] = useState(useMemo(() => getRandomPairOfColors, []));
+	const [bg] = useState(useMemo(() => ColorsSvg, []));
 	let ref = useRef() as React.MutableRefObject<HTMLInputElement>;
 
 	useEffect(() => {

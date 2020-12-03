@@ -31,9 +31,9 @@ const LandingContent: PostBodyPropsFC = props => {
 
 	const ContentConditional = () => {
 		return content ? (
-			<div className=''>
+			<div className='grid grid-cols-2'>
 				<ReactMarkdown
-					className={css.content + `${' min-h-reviewCardHeight'}`}
+					className={css.content + `${''}`}
 					escapeHtml={false}
 					source={content}
 					renderers={{ code: CodeBlock }}
@@ -51,7 +51,7 @@ const LandingContent: PostBodyPropsFC = props => {
 
 	return (
 		<>
-			<div className='text-shadow-none shadow-none select-none mx-auto content-center text-left md:text-left md:text-customP items-center justify-center align-middle max-w-xsCardGridCima min-h-paddingAboutTitleRight h-paddingAboutTitleRight  '>
+			<div className='select-none mx-auto content-center text-justify justify-between md:text-customP items-center  '>
 				<ContentConditional />
 			</div>
 		</>

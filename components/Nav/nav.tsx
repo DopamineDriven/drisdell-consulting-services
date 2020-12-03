@@ -1,5 +1,5 @@
 import { NavImage, NavLinks } from './Children';
-import { getRandomPairOfColors } from '@lib/colors';
+import { ColorsSvg } from '@lib/index';
 import { FC, Fragment, useState, useMemo, useRef, useEffect } from 'react';
 import css from './nav.module.css';
 
@@ -10,7 +10,7 @@ interface NavProps {
 const Nav: FC<NavProps> = props => {
 	const { classNameParentDiv = '' } = props;
 
-	const [bg] = useState(useMemo(() => getRandomPairOfColors, []));
+	const [bg] = useState(useMemo(() => ColorsSvg, []));
 	let ref = useRef() as React.MutableRefObject<HTMLInputElement>;
 
 	useEffect(() => {

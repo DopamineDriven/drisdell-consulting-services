@@ -1,5 +1,5 @@
 .divParent {
-	@apply transform translate-y-5 select-none py-sevenEighths bg-eaWhite -my-5 z-10 pr-twoAndOneFourth min-w-full w-full;
+	@apply select-none py-sevenEighths bg-primary-0 z-10 min-w-full w-full;
 }
 
 .divChild {
@@ -11,5 +11,5 @@
 }
 
 .nav {
-	@apply mx-3 block col-span-7 text-right w-full min-w-full pr-twoAndOneFourth;
+	@apply block col-span-7 text-right w-full min-w-full pr-twoAndOneFourth;
 }
