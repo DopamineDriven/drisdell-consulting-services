@@ -1,0 +1,33 @@
+.footerLinksLi {
+	@apply py-3;
+	@screen md {
+		@apply py-0 pb-4;
+	}
+}
+
+.footerLinksUl {
+	@apply flex flex-initial flex-col;
+	@screen md {
+		@apply flex-1;
+	}
+}
+
+.links {
+	@apply transition ease-in-out duration-500;
+	&:hover {
+		@apply outline-none;
+	}
+	&:focus {
+		@apply select-none font-semibold;
+	}
+}
+
+.linkActive {
+	@apply font-semibold transition ease-in-out duration-500;
+	&:hover {
+		@apply outline-none;
+	}
+	&:focus {
+		@apply select-none font-semibold;
+	}
+}

@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { Meta, Nav } from '@components/index';
+import { Meta, Nav, Footer } from '@components/index';
 import { NextPage } from 'next';
 import Head from 'next/head';
 import { LANDING_PAGE } from '@lib/graphql';
@@ -35,6 +35,9 @@ const Index: NextPage & InferGetStaticPropsType<typeof getStaticProps> = () => {
 			</div>
 			<div className='container items-center content-center justify-center block max-w-full mx-auto pb-portfolio'>
 				<LandingPage />
+			</div>
+			<div>
+				<Footer />
 			</div>
 		</Fragment>
 	);

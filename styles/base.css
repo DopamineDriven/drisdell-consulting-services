@@ -69,7 +69,6 @@
 	--background-primary: #f1fcf7;
 	--background-auxiliary: #f1f3f5;
 	--background-tertiary: #fff9e9;
-
 	--text-base: #000000;
 	--text-primary: #000000;
 	--text-auxiliary: #151515;
@@ -78,11 +77,6 @@
 	--hover-0: rgba(0, 0, 0, 0.075);
 	--hover-1: rgba(0, 0, 0, 0.15);
 	--hover-2: rgba(0, 0, 0, 0.25);
-	@apply font-header;
-	@apply font-somaRoman;
-	@apply font-somaDisplay;
-	@apply font-poppins;
-	@apply font-sans;
 }
 
 *,

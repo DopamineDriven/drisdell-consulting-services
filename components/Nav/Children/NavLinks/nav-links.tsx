@@ -41,8 +41,8 @@ const NavLinks: FC<NavLinksProps> = props => {
 	const { classNameParentUl = '' } = props;
 	const { pathname } = useRouter();
 
-	const navList = links.map((link, index) => (
-		<li key={index++} className={css.navLi}>
+	const navList = links.map(link => (
+		<li key={link.label} className={css.navLi}>
 			<Link href={link.href} as={`${link.href}`} passHref>
 				<a
 					className={
@@ -58,7 +58,7 @@ const NavLinks: FC<NavLinksProps> = props => {
 			</Link>
 		</li>
 	));
-	return <ul className={css.navUl + ` ${classNameParentUl}`}>{navList}</ul>;
+	return <ul className={cn(classNameParentUl, css.navUl)}>{navList}</ul>;
 };
 
 export default NavLinks;
