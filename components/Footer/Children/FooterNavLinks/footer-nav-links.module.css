@@ -23,7 +23,7 @@
 }
 
 .linkActive {
-	@apply font-semibold transition ease-in-out duration-500;
+	@apply font-semibold transition ease-in-out duration-500 border-b-2 border-accents-3;
 	&:hover {
 		@apply outline-none;
 	}
