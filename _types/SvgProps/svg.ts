@@ -20,6 +20,7 @@ interface SvgIconConstituentValues {
 	classNameP1?: string;
 	classNameP2?: string;
 	classNameP3?: string;
+	classNameGtag?: string;
 	classNameParent?: string;
 	rotateCenter?: number;
 	style0?: CSSProperties;

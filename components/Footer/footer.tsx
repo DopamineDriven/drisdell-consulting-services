@@ -19,7 +19,7 @@ const Footer: FC<FooterProps> = props => {
 			<Container>
 				<div
 					id='footerHeading'
-					className='grid grid-cols-1 lg:grid-cols-12 gap-8 border-b border-accents-2 py-12 text-primary bg-primary transition-colors duration-150'
+					className='grid grid-cols-1 lg:grid-cols-12 gap-8 border-b border-accents-4 py-12 text-primary bg-primary transition-colors duration-150'
 				>
 					<div className='col-span-1 lg:col-span-3'>
 						<FooterLogo />
