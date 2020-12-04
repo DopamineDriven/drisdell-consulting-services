@@ -31,7 +31,7 @@ const LandingContent: PostBodyPropsFC = props => {
 
 	const ContentConditional = () => {
 		return content ? (
-			<div className='grid grid-cols-2'>
+			<div className='grid md:grid-cols-2 grid-cols-1'>
 				<ReactMarkdown
 					className={css.content + `${''}`}
 					escapeHtml={false}
@@ -51,7 +51,7 @@ const LandingContent: PostBodyPropsFC = props => {
 
 	return (
 		<>
-			<div className='select-none mx-auto content-center text-justify justify-between md:text-customP items-center  '>
+			<div className='select-none mx-auto content-center text-justify justify-between items-center  '>
 				<ContentConditional />
 			</div>
 		</>
