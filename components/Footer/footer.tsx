@@ -13,7 +13,10 @@ const Footer: FC<FooterProps> = props => {
 
 	return (
 		<footer
-			className={` ${cn(classNameRoot, 'bg-secondary-0 text-accents-7')}`}
+			className={` ${cn(
+				classNameRoot,
+				'bg-secondary-0 text-accents-7 select-none'
+			)}`}
 			aria-labelledby='footerHeading'
 		>
 			<Container>
@@ -21,13 +24,13 @@ const Footer: FC<FooterProps> = props => {
 					id='footerHeading'
 					className='grid grid-cols-1 lg:grid-cols-12 gap-8 border-b border-accents-4 py-12 text-primary bg-primary transition-colors duration-150'
 				>
-					<div className='col-span-1 lg:col-span-3'>
+					<div className='col-span-1 lg:col-span-2'>
 						<FooterLogo />
 					</div>
 					<div className='col-span-1 lg:col-span-3'>
 						<FooterNavLinks />
 					</div>
-					<div className='col-span-1 lg:col-span-6 flex items-start lg:justify-end text-primary'>
+					<div className='col-span-1 lg:col-span-7 flex items-start lg:justify-end text-primary'>
 						<FooterSocial />
 					</div>
 				</div>
