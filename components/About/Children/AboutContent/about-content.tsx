@@ -4,7 +4,7 @@ import {
 	Prism as SyntaxHighlighter,
 	SyntaxHighlighterProps
 } from 'react-syntax-highlighter';
-import css from './landing-content.module.css';
+import css from './about-content.module.css';
 
 interface PostBodyProps {
 	content: string | null;
@@ -31,7 +31,7 @@ const AboutContent: PostBodyPropsFC = props => {
 
 	const ContentConditional = () => {
 		return content ? (
-			<div className='grid md:grid-cols-2 grid-cols-1'>
+			<div className='grid md:grid-cols-1 grid-cols-1'>
 				<ReactMarkdown
 					className={css.content + `${''}`}
 					escapeHtml={false}

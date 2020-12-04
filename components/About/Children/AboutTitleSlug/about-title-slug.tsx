@@ -2,14 +2,14 @@ import Link from 'next/link';
 import ReactMarkdown from 'react-markdown/with-html';
 import { FC } from 'react';
 
-export interface LandingTitleSlugProps {
+export interface AboutTitleSlugProps {
 	title: string | null;
-	slug: string | null;
+	slug?: string | null;
 }
 
-export interface LandingTitleSlugFC extends FC<LandingTitleSlugProps> {}
+export interface AboutTitleSlugFC extends FC<AboutTitleSlugProps> {}
 
-const LandingTitleSlug: LandingTitleSlugFC = props => {
+const AboutTitleSlug: AboutTitleSlugFC = props => {
 	const { title, slug } = props;
 
 	const TitleConditional = (
@@ -43,4 +43,4 @@ const LandingTitleSlug: LandingTitleSlugFC = props => {
 	);
 };
 
-export default LandingTitleSlug;
+export default AboutTitleSlug;

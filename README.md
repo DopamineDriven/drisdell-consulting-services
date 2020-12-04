@@ -42,3 +42,7 @@ aria react-dom react-ga react-intersection-observer react-markdown react-syntax-
 eact-syntax-highlighter @types/react-test-renderer autoprefixer@9.8.6 babel-jest graphql-tag husky jest next-compose-plugins patch-package postinstall-postinstall postcss-flexbugs-fixes postcss-preset-env prettier pretty-quick react-test-renderer stylelint stylelint-config-recommended tailwindcss-gradients typescript yaml-loader && ya
 rn add -P @babel/core@7.0.0 prop-types@15.6.0
 ```
+
+```bash
+yarn apollo service:push --graph=drisdell-consulting-services-8yqutgj --key=service:drisdell-consulting-services-8yqutgj:k___u5PIBtbW987iWMMNVw --variant=current --endpoint=https://drisdell.com/graphql
+```

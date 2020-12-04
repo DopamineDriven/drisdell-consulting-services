@@ -1,12 +1,12 @@
 import { FC } from 'react';
 import Image from 'next/image';
-import { LandingPage_pages_edges_node_featuredImage as FeaturedImage } from '../../../../lib/graphql/LandingPage/__generated__/LandingPage';
+import { AboutPage_pages_edges_node_featuredImage as FeaturedImage } from '@lib/graphql/AboutPage/__generated__/AboutPage';
 
 export interface LandingPageProps {
 	featuredImage: FeaturedImage;
 }
 
-const LandingImage: FC<LandingPageProps> = props => {
+const AboutCover: FC<LandingPageProps> = props => {
 	const { featuredImage } = props;
 	return featuredImage != null &&
 		featuredImage.node != null &&
@@ -19,7 +19,7 @@ const LandingImage: FC<LandingPageProps> = props => {
 				className={'block mx-auto align-middle content-center'}
 				layout='responsive'
 				width={250}
-				height={125}
+				height={75}
 				objectFit='cover'
 				loading='eager'
 				quality={100}
@@ -42,4 +42,4 @@ const LandingImage: FC<LandingPageProps> = props => {
 	);
 };
 
-export default LandingImage;
+export default AboutCover;

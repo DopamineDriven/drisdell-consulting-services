@@ -1,11 +1,8 @@
 import { Fragment } from 'react';
-import { Meta, Nav, Footer } from '@components/index';
+import { Meta, Nav, Footer, LandingPageCoalesced } from '@components/index';
 import { NextPage } from 'next';
-import Head from 'next/head';
 import { LANDING_PAGE } from '@lib/graphql';
-import LandingPage, {
-	LandingPageQueryVars
-} from '@components/LandingPage/landing-page-coalesced';
+import { LandingPageQueryVars } from '@components/LandingPage/landing-page-coalesced';
 import { initializeApollo, addApolloState } from '../lib/apollo';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 
@@ -26,15 +23,12 @@ export const getStaticProps: GetStaticProps = async () => {
 const Index: NextPage & InferGetStaticPropsType<typeof getStaticProps> = () => {
 	return (
 		<Fragment>
-			<Meta />
-			<Head>
-				<title>Drisdell Consulting Services</title>
-			</Head>
+			<Meta title='Drisdell Consulting Services Landing' />
 			<div className='flex min-w-full w-full'>
 				<Nav classNameParentDiv='' />
 			</div>
 			<div className='container items-center content-center justify-center block max-w-full mx-auto pb-portfolio'>
-				<LandingPage />
+				<LandingPageCoalesced />
 			</div>
 			<div>
 				<Footer />

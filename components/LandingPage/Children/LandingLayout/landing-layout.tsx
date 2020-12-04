@@ -1,5 +1,5 @@
 import { FC, Fragment } from 'react';
-import { LandingPage_pages_edges_node_featuredImage as FeaturedImage } from '@lib/graphql/Landing/__generated__/LandingPage';
+import { LandingPage_pages_edges_node_featuredImage as FeaturedImage } from '@lib/graphql/LandingPage/__generated__/LandingPage';
 import LandingContent from '../LandingContent';
 import LandingTitleSlug from '../LandingTitleSlug';
 import LandingImage from '../LandingImage';

@@ -1,3 +1,4 @@
+export { default as AboutPageCoalesced } from './About';
 export { default as Avatar } from './Avatar';
 export { default as Footer } from './Footer';
 export { default as LandingPageCoalesced } from './LandingPage';
