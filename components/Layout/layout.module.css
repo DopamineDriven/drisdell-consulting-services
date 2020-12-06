@@ -1,17 +1,7 @@
 .bg {
-	@media (max-width: 640px) {
-		@apply -my-5;
-	}
-	background: --webkit-linear-gradient(
-		to top,
-		#336699,
-		#000046
-	); /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(
-		to bottom,
-		#336699,
-		#ffffff 40%
-	); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-	/* background: linear-gradient(180deg, #336699 100%, rgba(51, 102, 153, 0) 100%);
-	border-radius: 0px; */
+	@apply min-h-screen h-screen w-screen min-w-full;
+}
+
+.main {
+	@apply z-0;
 }

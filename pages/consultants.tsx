@@ -1,15 +1,12 @@
 import { Fragment } from 'react';
-import { Meta, Nav, Footer } from '@components/index';
+import { Layout } from '@components/index';
 
 const Consultants = () => {
 	return (
 		<Fragment>
-			<Meta title='contact us' />
-			<div className='flex min-w-full w-full'>
-				<Nav classNameParentDiv=' border-secondary-0 border-b-2' />
-			</div>
-			<div className='fit'></div>
-			<Footer />
+			<Layout title={'contact page'}>
+				<div>Consultants Page</div>
+			</Layout>
 		</Fragment>
 	);
 };

@@ -119,7 +119,15 @@
 } */
 
 .content {
-	@apply text-lg leading-relaxed font-poppins;
+	@apply text-lg leading-relaxed font-poppins w-full min-w-full;
+}
+
+.content a {
+	@apply h-64 grid-rows-3 grid-flow-col;
+}
+
+.content span {
+	@apply text-xs row-start-auto;
 }
 
 .content p,
@@ -127,11 +135,6 @@
 .content ol,
 .content blockquote {
 	@apply my-6;
-	@apply max-w-150;
-}
-
-.content a {
-	@apply underline;
 }
 
 .content ul,

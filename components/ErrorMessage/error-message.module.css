@@ -1,0 +1,9 @@
+.root {
+	@apply mx-auto cursor-default leading-loose font-poppins;
+	&:hover {
+		@apply outline-none;
+	}
+	&:focus {
+		@apply select-none;
+	}
+}

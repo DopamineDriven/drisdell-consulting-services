@@ -18,7 +18,7 @@ const NavImage: NavPropsExtended = props => {
 		<>
 			<Link href='/' as={'/'} passHref>
 				<a className={css.logo + `${classNameParentA}`}>
-					<Logo />
+					<Logo width='7rem' height='7rem' />
 				</a>
 			</Link>
 		</>

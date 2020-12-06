@@ -1,6 +1,7 @@
 import { NavImage, NavLinks } from './Children';
 import { ColorsSvg } from '@lib/index';
-import { FC, Fragment, useState, useMemo, useRef, useEffect } from 'react';
+import { FC, useState, useMemo, useRef, useEffect } from 'react';
+import cn from 'classnames';
 import css from './nav.module.css';
 
 interface NavProps {
@@ -22,18 +23,20 @@ const Nav: FC<NavProps> = props => {
 	}, [bg]);
 
 	return (
-		<Fragment>
-			<div className={css.divParent + `${classNameParentDiv}`}>
-				<div className={css.divChild}>
-					<div className={css.divGrandChild}>
-						<NavImage />
-						<nav className={css.nav}>
-							<NavLinks />
-						</nav>
+		<>
+			<header className={cn(css.header, classNameParentDiv)}>
+				<div className={cn(css.divParent)}>
+					<div className={css.divChild}>
+						<div className={css.divGrandChild}>
+							<NavImage />
+							<nav className={css.nav}>
+								<NavLinks />
+							</nav>
+						</div>
 					</div>
 				</div>
-			</div>
-		</Fragment>
+			</header>
+		</>
 	);
 };
 

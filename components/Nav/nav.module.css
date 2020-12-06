@@ -1,5 +1,9 @@
+.header {
+	@apply flex min-w-full w-full;
+}
+
 .divParent {
-	@apply select-none py-sevenEighths bg-primary-0 z-10 min-w-full w-full;
+	@apply select-none py-sevenEighths bg-primary-0 z-10 min-w-full w-full border-secondary-0 border-b-2;
 }
 
 .divChild {

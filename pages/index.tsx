@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { Meta, Nav, Footer, LandingPageCoalesced } from '@components/index';
+import { Layout, LandingPageCoalesced } from '@components/index';
 import { NextPage } from 'next';
 import { LANDING_PAGE } from '@lib/graphql';
 import { LandingPageQueryVars } from '@components/LandingPage/landing-page-coalesced';
@@ -23,16 +23,9 @@ export const getStaticProps: GetStaticProps = async () => {
 const Index: NextPage & InferGetStaticPropsType<typeof getStaticProps> = () => {
 	return (
 		<Fragment>
-			<Meta title='Drisdell Consulting Services Landing' />
-			<div className='flex min-w-full w-full'>
-				<Nav classNameParentDiv='' />
-			</div>
-			<div className='container items-center content-center justify-center block max-w-full mx-auto pb-portfolio'>
+			<Layout title='Drisdell Consulting Services landing page'>
 				<LandingPageCoalesced />
-			</div>
-			<div>
-				<Footer />
-			</div>
+			</Layout>
 		</Fragment>
 	);
 };

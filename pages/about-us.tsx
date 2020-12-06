@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { Meta, Nav, Footer, AboutPageCoalesced } from '@components/index';
+import { Layout, AboutPageCoalesced } from '@components/index';
 import { NextPage } from 'next';
 import { initializeApollo, addApolloState } from '../lib/apollo';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
@@ -23,15 +23,11 @@ export const getStaticProps: GetStaticProps = async () => {
 const About: NextPage & InferGetStaticPropsType<typeof getStaticProps> = () => {
 	return (
 		<Fragment>
-			<Meta title='about us' />
-			<div className='flex min-w-full w-full'>
-				<Nav classNameParentDiv='' />
-			</div>
-			<div className='items-center content-center justify-center block min-w-full mx-auto'>
-				<AboutPageCoalesced />
-			</div>
-			<div className=''></div>
-			<Footer />
+			<Layout title='about us'>
+				<div className='items-center content-center justify-center block min-w-full w-screen mx-auto'>
+					<AboutPageCoalesced />
+				</div>
+			</Layout>
 		</Fragment>
 	);
 };
