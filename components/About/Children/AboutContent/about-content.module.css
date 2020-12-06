@@ -127,7 +127,10 @@
 }
 
 .content span {
-	@apply text-xs row-start-auto;
+	@apply text-xs row-start-auto mx-2;
+	@screen md {
+		@apply mx-4 text-sm;
+	}
 }
 
 .content p,

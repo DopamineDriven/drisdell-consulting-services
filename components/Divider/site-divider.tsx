@@ -1,20 +1,14 @@
 import { FC } from 'react';
+import cn from 'classnames';
+import css from './site-divider.module.css';
 
 interface SiteDividerProps {
 	classNameBorder?: string;
 }
 
-interface SiteDivide extends FC<SiteDividerProps> {}
-
-const SiteDivider: SiteDivide = props => {
+const SiteDivider: FC<SiteDividerProps> = props => {
 	const { classNameBorder = ` border-primary` } = props;
-	return (
-		<hr
-			className={
-				'mx-auto mt-portfolioDivider pb-portfolioDivider' + classNameBorder
-			}
-		/>
-	);
+	return <hr className={cn(css.hr, classNameBorder)} />;
 };
 
 export default SiteDivider;
