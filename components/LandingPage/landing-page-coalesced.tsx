@@ -13,12 +13,13 @@ export const LandingPageQueryVars: LandingPageVariables = {
 };
 
 const LandingPageCoalesced = () => {
-	const { loading, error, data } = useQuery(LANDING_PAGE, {
-		variables: LandingPageQueryVars,
-		notifyOnNetworkStatusChange: true
-	});
-
-	const { pages }: LandingPage = data ?? '';
+	const { loading, error, data } = useQuery<LandingPage, LandingPageVariables>(
+		LANDING_PAGE,
+		{
+			variables: LandingPageQueryVars,
+			notifyOnNetworkStatusChange: true
+		}
+	);
 	return error ? (
 		<>
 			<ApolloErrorMessage
@@ -36,8 +37,11 @@ const LandingPageCoalesced = () => {
 		<section className='container items-center content-center justify-center block max-w-full mx-auto pb-10'>
 			<div className='content-center justify-center block mx-auto  transform'>
 				<div className='grid content-center justify-center grid-cols-2 mx-auto lg:grid-cols-2 gap-x-10 gap-y-10'>
-					{pages != null && pages.edges != null && pages.edges.length > 0 ? (
-						pages.edges.map((page, index: number) => {
+					{data != null &&
+					data.pages != null &&
+					data.pages.edges != null &&
+					data.pages.edges.length > 0 ? (
+						data.pages.edges.map((page, index: number) => {
 							return page != null &&
 								page.node != null &&
 								page.node.featuredImage != null ? (

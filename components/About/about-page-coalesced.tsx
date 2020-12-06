@@ -19,12 +19,14 @@ export const AboutPageQueryVars: AboutPageVariables = {
 };
 
 const AboutPageCoalesced = () => {
-	const { loading, error, data } = useQuery(ABOUT_PAGE, {
-		variables: AboutPageQueryVars,
-		notifyOnNetworkStatusChange: true
-	});
+	const { loading, error, data } = useQuery<AboutPage, AboutPageVariables>(
+		ABOUT_PAGE,
+		{
+			variables: AboutPageQueryVars,
+			notifyOnNetworkStatusChange: true
+		}
+	);
 
-	const { pages }: AboutPage = data ?? '';
 	return error ? (
 		<>
 			<ApolloErrorMessage
@@ -42,8 +44,11 @@ const AboutPageCoalesced = () => {
 		<section className='items-center content-center justify-center block min-w-full w-screen mx-auto'>
 			<div className='content-center justify-center block mx-auto  transform'>
 				<div className='content-center justify-center mx-auto gap-x-12 gap-y-12 w-full'>
-					{pages != null && pages.edges != null && pages.edges.length > 0 ? (
-						pages.edges.map(page => {
+					{data != null &&
+					data.pages != null &&
+					data.pages.edges != null &&
+					data.pages.edges.length > 0 ? (
+						data.pages.edges.map(page => {
 							return page != null &&
 								page.node != null &&
 								page.node.featuredImage != null &&
