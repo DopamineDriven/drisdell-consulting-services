@@ -1,6 +1,6 @@
-import { gql } from '@apollo/client';
+import { gql, TypedDocumentNode } from '@apollo/client';
 
-const ABOUT_PAGE = gql`
+const ABOUT_PAGE: TypedDocumentNode = gql`
 	query AboutPage(
 		$name: String!
 		$order: OrderEnum!
