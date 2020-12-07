@@ -41,7 +41,6 @@ const Footer: FC<FooterProps> = props => {
 						</span>
 					</div>
 					<div className='flex items-center'>
-						<span className='text-primary'>Crafted by &nbsp;</span>
 						<a
 							href='https://linkedin.com/asross/'
 							target='__blank'
