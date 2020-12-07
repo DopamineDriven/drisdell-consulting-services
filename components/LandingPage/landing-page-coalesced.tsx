@@ -61,7 +61,7 @@ const LandingPageCoalesced = () => {
 							);
 						})
 					) : (
-						<aside>an error occurred...{error}</aside>
+						<aside>an error occurred...{typeof error}</aside>
 					)}
 				</div>
 			</div>

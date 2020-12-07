@@ -1,4 +1,4 @@
-import { FC, Fragment } from 'react';
+import { FC } from 'react';
 import cn from 'classnames';
 import {
 	faFacebook,
@@ -51,18 +51,16 @@ interface FooterSocialProps {
 const FooterSocial: FC<FooterSocialProps> = props => {
 	const { classNameRoot = '' } = props;
 	const socialMapped = socialIcons.map(link => (
-		<Fragment>
-			<>
-				<a
-					key={link.label}
-					target='__blank'
-					className={cn(css.socialLink, link.className)}
-					href={link.href}
-				>
-					<FontAwesomeIcon icon={link.icon} size='2x' className={css.socialLink} />
-				</a>
-			</>
-		</Fragment>
+		<div key={link.label}>
+			<a
+				key={link.label}
+				target='__blank'
+				className={cn(css.socialLink, link.className)}
+				href={link.href}
+			>
+				<FontAwesomeIcon icon={link.icon} size='2x' className={css.socialLink} />
+			</a>
+		</div>
 	));
 	return <div className={cn(css.socialRoot, classNameRoot)}>{socialMapped}</div>;
 };

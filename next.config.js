@@ -2,7 +2,7 @@ const withPlugins = require('next-compose-plugins');
 const withBundleAnalyzer = require('@next/bundle-analyzer');
 const withImages = {
 	images: {
-		domains: ['drisdell.com', 'secure.gravatar.com']
+		domains: ['drisdell-headless.com', 'secure.gravatar.com']
 	}
 };
 const webpackBundle = {
