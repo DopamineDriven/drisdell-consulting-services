@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import Image from 'next/image';
-import { LandingPage_pages_edges_node_featuredImage as FeaturedImage } from '../../../../lib/graphql/LandingPage/__generated__/LandingPage';
+import { LandingPage_pages_edges_node_featuredImage as FeaturedImage } from '@lib/graphql/LandingPage/__generated__/LandingPage';
 
 export interface LandingPageProps {
 	featuredImage: FeaturedImage;
@@ -18,8 +18,8 @@ const LandingImage: FC<LandingPageProps> = props => {
 				aria-label='Picturesque Portland Lighthouse Landing Page'
 				className={'block mx-auto align-middle content-center'}
 				layout='responsive'
-				width={250}
-				height={125}
+				width={2500}
+				height={1250}
 				objectFit='cover'
 				loading='eager'
 				quality={100}
