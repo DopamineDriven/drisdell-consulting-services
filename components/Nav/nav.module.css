@@ -1,0 +1,19 @@
+.header {
+	@apply flex min-w-full w-full;
+}
+
+.divParent {
+	@apply select-none py-sevenEighths bg-primary-0 z-10 min-w-full w-full border-secondary-0 border-b-2;
+}
+
+.divChild {
+	@apply flex justify-between align-middle flex-row py-2 px-4 relative transform transition-colors;
+}
+
+.divGrandChild {
+	@apply grid grid-cols-8 w-full items-center;
+}
+
+.nav {
+	@apply block col-span-7 text-right w-full min-w-full pr-twoAndOneFourth;
+}

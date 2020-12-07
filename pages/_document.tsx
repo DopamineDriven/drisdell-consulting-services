@@ -20,6 +20,7 @@ export default class MyDocument extends Document {
 			return process.env.NODE_ENV === 'production' ? (
 				<Head>
 					<meta charSet='utf-8' />
+					<link rel='stylesheet' href='https://rsms.me/inter/inter.css' />
 					<style type='text/css' dangerouslySetInnerHTML={{ __html: mediaStyles }} />
 					<script
 						async
@@ -41,6 +42,7 @@ export default class MyDocument extends Document {
 			) : (
 				<Head>
 					<meta charSet='utf-8' />
+					<link rel='stylesheet' href='https://rsms.me/inter/inter.css' />
 					<style type='text/css' dangerouslySetInnerHTML={{ __html: mediaStyles }} />
 				</Head>
 			);

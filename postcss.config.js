@@ -11,7 +11,8 @@ module.exports = {
 				},
 				stage: 3,
 				features: {
-					'custom-properties': false
+					'custom-properties': false,
+					'nesting-rules': true
 				}
 			}
 		]

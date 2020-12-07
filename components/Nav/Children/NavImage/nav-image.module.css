@@ -1,0 +1,15 @@
+.logo {
+	@apply block mx-auto cursor-pointer transform duration-2000 transition-all ease-in-out pt-2 pb-2 w-auto align-middle items-center text-center justify-center;
+
+	&:hover {
+		@apply rounded-full opacity-75 transition-transform rotate-360 duration-2000 delay-300 ease-in-out;
+	}
+
+	&:focus {
+		@apply outline-none;
+	}
+}
+
+.image {
+	@apply block mx-auto align-middle content-center cursor-default;
+}

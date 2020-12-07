@@ -1,10 +1,8 @@
 const withPlugins = require('next-compose-plugins');
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-	enabled: process.env.ANALYZE === 'true'
-});
+const withBundleAnalyzer = require('@next/bundle-analyzer');
 const withImages = {
 	images: {
-		domains: ['drisdell.com', 'secure.gravatar.com']
+		domains: ['drisdell-headless.com', 'secure.gravatar.com']
 	}
 };
 const webpackBundle = {
@@ -29,8 +27,28 @@ const webpackBundle = {
 	}
 };
 
+const nextConfig = {
+	analyzeServer: ['server', 'both'].includes(process.env.BUNDLE_ANALYZE),
+	analyzeBrowser: ['browser', 'both'].includes(process.env.BUNDLE_ANALYZE),
+	bundleAnalyzerConfig: {
+		server: {
+			analyzerMode: 'static',
+			reportFilename: '../bundles/server.html'
+		},
+		browser: {
+			analyzerMode: 'static',
+			reportFilename: '../bundles/client.html'
+		}
+	}
+};
+
 module.exports = withPlugins([
-	[withBundleAnalyzer({})],
+	[
+		withBundleAnalyzer({
+			enabled: process.env.ANALYZE === 'true'
+		})
+	],
+	nextConfig,
 	withImages,
 	webpackBundle
 ]);

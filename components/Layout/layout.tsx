@@ -1,22 +1,61 @@
-import { FC, Fragment } from 'react';
+import React, { FC } from 'react';
 import css from './layout.module.css';
+import { Meta, Nav, Footer } from '@components/index';
+import cn from 'classnames';
+import Head from 'next/head';
+import dynamic from 'next/dynamic';
+import { Button, LoadingDots } from '@components/UI';
+import { useAcceptCookies } from '@lib/use-accept-cookies';
 
 interface LayoutProps {
-	children?: any | any[];
+	children: React.ReactNode;
+	classNameRoot?: string;
+	title?: string;
 }
 
+const Loading = () => (
+	<div className='w-80 h-80 flex items-center text-center justify-center p-3'>
+		<LoadingDots />
+	</div>
+);
+const dynamicProps = {
+	loading: () => <Loading />
+};
+const FeatureBar = dynamic(
+	() => import('@components/FeatureBar'),
+	dynamicProps
+);
+
 const Layout: FC<LayoutProps> = props => {
-	const { children } = props;
+	const { acceptedCookies, onAcceptCookies } = useAcceptCookies();
+	const { children, classNameRoot, title = 'default title' } = props;
 	return (
-		<Fragment>
-			<div
-				className={`${css.bg} min-h-screen transform -translate-y-paddingPostTitleBottom z-0`}
-			>
-				<div className={'min-h-screen'}>
-					<main className=' mx-paddingGutterReview'>{children}</main>
+		<>
+			<Head>
+				<title title={title} />
+			</Head>
+			<Meta />
+			<Nav />
+			<div className={cn(css.bg, classNameRoot)}>
+				<main className={cn(css.main, 'fit')}>{children}</main>
+				<Footer />
+				<div className=' font-poppins'>
+					<FeatureBar
+						title='This site uses cookies to improve your experience. By clicking, you agree to our Privacy Policy.'
+						hide={acceptedCookies}
+						className='bg-gray-700 text-eaWhite bg-opacity-70'
+						action={
+							<Button
+								className='mx-5 border-white border-1 hover:text-gray-700 hover:bg-white hover:bg-opacity-70 hover:border-gray-700 duration-500 ease-in-out transform transition-colors'
+								onClick={onAcceptCookies}
+							>
+								Accept Cookies
+							</Button>
+						}
+					/>
 				</div>
 			</div>
-		</Fragment>
+		</>
 	);
 };
 

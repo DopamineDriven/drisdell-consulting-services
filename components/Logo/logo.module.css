@@ -1,0 +1,24 @@
+.svg {
+	@apply shadow-magical duration-500;
+
+	&:hover {
+		@apply outline-none;
+		transform: scale(1.01);
+	}
+
+	&:focus {
+		@apply select-none;
+	}
+}
+
+.g {
+	@apply transform duration-500;
+
+	&:hover {
+		@apply outline-none;
+	}
+
+	&:focus {
+		@apply select-none;
+	}
+}

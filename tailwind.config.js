@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 module.exports = {
 	important: true,
 	future: {
@@ -50,12 +52,16 @@ module.exports = {
 				header: ['goudy-bookletter-1911', 'serif'],
 				poppins: ['poppins', 'sans-serif'],
 				somaRoman: ['neue-haas-grotesk-text', 'sans-serif'],
-				somaDisplay: ['neue-haas-grotesk-display', 'sans-serif']
+				somaDisplay: ['neue-haas-grotesk-display', 'sans-serif'],
+				sans: ['Inter var', ...defaultTheme.fontFamily.sans]
 			},
 			backgroundColor: {
 				primary: 'var(--color-bg-primary)',
 				auxiliary: 'var(--color-bg-auxiliary)',
-				tertiary: 'var(--color-bg-tertiary)'
+				tertiary: 'var(--color-bg-tertiary)',
+				quaternary: 'var(--color-bg-quaternary)',
+				quinary: 'var(--color-bg-quinary)',
+				senary: 'var(--color-bg-senary)'
 			},
 			textColor: {
 				accent: 'var(--color-text-accent)',
@@ -74,17 +80,40 @@ module.exports = {
 				auxiliary: 'var(--color-fill-auxiliary)',
 				tertiary: 'var(--color-fill-tertiary)',
 				quaternary: 'var(--color-fill-quaternary)',
-				quinary: 'var(--color-fill-quaternary)',
-				senary: 'var(--color-fill-quaternary)'
+				quinary: 'var(--color-fill-quinary)',
+				senary: 'var(--color-fill-senary)'
 			},
 			strokeColor: {
 				primary: 'var(--stroke-primary)',
-				auxiliary: 'var(--stroke-auxiliary)'
+				auxiliary: 'var(--stroke-auxiliary)',
+				tertiary: 'var(--stroke-tertiary)',
+				quaternary: 'var(--stroke-quaternary)',
+				quinary: 'var(--stroke-quinary)',
+				senary: 'var(--stroke-senary)'
 			},
 			colors: {
-				'accent-1': '#FAFAFA',
-				'accent-2': '#EAEAEA',
-				'accent-7': '#333',
+				'primary-0': 'var(--primary-0)',
+				'primary-1': 'var(--primary-1)',
+				'primary-2': 'var(--primary-2)',
+				'secondary-0': 'var(--secondary-0)',
+				'secondary-1': 'var(--secondary-1)',
+				'secondary-2': 'var(--secondary-2)',
+				'hover-0': 'var(--hover-0)',
+				'hover-1': 'var(--hover-1)',
+				'hover-2': 'var(--hover-2)',
+				'focus-0': 'var(--focus-0)',
+				'focus-1': 'var(--focus-1)',
+				'focus-2': 'var(--focus-2)',
+				'accents-0': 'var(--accents-0)',
+				'accents-1': 'var(--accents-1)',
+				'accents-2': 'var(--accents-2)',
+				'accents-3': 'var(--accents-3)',
+				'accents-4': 'var(--accents-4)',
+				'accents-5': 'var(--accents-5)',
+				'accents-6': 'var(--accents-6)',
+				'accents-7': 'var(--accents-7)',
+				'accents-8': 'var(--accents-8)',
+				'accents-9': 'var(--accents-9)',
 				black: '#000000',
 				white: '#FFFFFF',
 				success: '#0070F3',
@@ -104,17 +133,23 @@ module.exports = {
 				eaWhite: '#EAEAEA',
 				afWhite: '#AFAFAF',
 				fiveOBlack: '#505050',
-				jujiOrange: '#FF9933',
-				jujiHeaderAndIconGreen: '#006633',
-				jujiFontGreen: '#009933',
-				jujiDividerGreen: '#66CC99',
-				jujiEmailFormBg: '#CCCCCC',
-				jujiTextGray: '#999999',
 				offWhite: '#F0F1F2',
 				portfolio: '#EBE8E0',
 				portfolioComplementary: '#E5E0EB',
 				portfolioDark: '#14171F',
-				everythingIsBlue: '#007acc'
+				everythingIsBlue: '#007acc',
+				newlineRed: '#FA5252',
+				newlinePink: '#BE4BDB',
+				newlinePurple: '#4C6EF5',
+				newlineGreen: '#40C057',
+				newlineYellow: '#FAB005',
+				newlineOrange: '#E535AB',
+				jujiMintCream: '#F1FCF7',
+				jujiSeaGreen: '#168644',
+				jujiCastletonGreen: '#00523C',
+				jujiOldLace: '#FFF9E9',
+				jujiMaxYellowRed: '#F6BD60',
+				jujiMarigold: '#E6A63E'
 			},
 			keyframes: {
 				wiggle: {
@@ -276,6 +311,8 @@ module.exports = {
 				imageUnsplash: '41.667vw'
 			},
 			spacing: {
+				sevenEighths: '0.875vw',
+				twoAndOneFourth: '2.25vw',
 				negative: '-0.1em',
 				half: '0.125rem',
 				threeQuarters: '0.175rem',
@@ -376,7 +413,7 @@ module.exports = {
 				customBlogSupraTitle: '8.9276vw'
 			},
 			boxShadow: {
-				'outline-2': '0 0 0 2px var(--accents-2)',
+				'outline-2': '0 0 0 2px var(--accents-0)',
 				magical:
 					'rgba(0, 0, 0, 0.02) 0px 30px 30px, rgba(0, 0, 0, 0.03) 0px 0px 8px, rgba(0, 0, 0, 0.05) 0px 1px 0px'
 			}
@@ -485,7 +522,11 @@ module.exports = {
 				'even',
 				'odd'
 			]
-		},
-		plugins: [require('tailwindcss-gradients')]
-	}
+		}
+	},
+	plugins: [
+		require('tailwindcss-gradients'),
+		require('@tailwindcss/typography'),
+		require('@tailwindcss/forms')
+	]
 };

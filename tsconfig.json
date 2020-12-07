@@ -26,7 +26,6 @@
 			"@lib/*": ["lib/*"],
 			"@pages/*": ["pages/*"],
 			"@styles/*": ["styles/*"],
-			"@test/*": ["test/*"],
 			"@_types/*": ["_types/*"],
 			"@utils/*": ["utils/*"]
 		}

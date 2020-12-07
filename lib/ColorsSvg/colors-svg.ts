@@ -1,6 +1,6 @@
 import random from 'lodash.random';
 
-export function getRandomPairOfColors() {
+export default function ColorsSvg() {
 	const colors = [
 		'#37B679',
 		'#DA3C3C',
@@ -10,6 +10,7 @@ export function getRandomPairOfColors() {
 		'#E535AB',
 		'#3333CC',
 		'#B3DDF2'
+		//234670
 	];
 	const getRandomIdx = () => random(0, colors.length - 1);
 	let idx = getRandomIdx();
