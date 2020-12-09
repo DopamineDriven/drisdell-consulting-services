@@ -119,7 +119,10 @@
 } */
 
 .content {
-	@apply text-lg leading-relaxed font-poppins;
+	@apply text-sm leading-relaxed font-poppins;
+	@screen sm {
+		@apply text-lg;
+	}
 }
 
 .content p,

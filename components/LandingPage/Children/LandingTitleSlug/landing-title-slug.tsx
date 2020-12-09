@@ -16,7 +16,9 @@ const LandingTitleSlug: LandingTitleSlugFC = props => {
 
 	const TitleConditional = (
 		<a
-			className='block text-left text-accent-1 hover:text-accents-0 transition-all duration-500 transform animate-hero'
+			className={cn(
+				'block text-left text-accent-1 transition-all transform animate-hero '
+			)}
 			aria-label={`portfolio item title - ${title}`}
 			id={`home-${title}`}
 		>
@@ -25,22 +27,22 @@ const LandingTitleSlug: LandingTitleSlugFC = props => {
 					escapeHtml={false}
 					source={title}
 					className={cn(
-						css.p,
-						'transition-all transform text-left text-2xl sm:text-3xl lg:text-6xl '
+						css.title,
+						'transition-all transform relative text-left text-2xl sm:text-3xl md:text-6xl lg:text-6xl  xl:text-7xl 2xl:text-8xl'
 					)}
 				/>
 			) : (
 				<ReactMarkdown
 					escapeHtml={false}
 					source={'title null'}
-					className='text-center transition-all transform sm:text-left hover:text-accents-2 text-2xl sm:text-3xl lg:text-5xl animate-hero '
+					className='text-center transition-all transform sm:text-left text-2xl sm:text-3xl lg:text-5xl animate-hero '
 				/>
 			)}
 		</a>
 	);
 
 	return (
-		<div className=' leading-loose my-3 w-auto font-bold font-poppins text-white transform'>
+		<div className=' leading-loose w-auto font-poppins text-white transform transition-transform -translate-y-36 sm:-translate-y-48 md:-translate-y-64 lg:-translate-y-82 xl:-translate-y-100 2xl:-translate-y-150'>
 			<Link as={`/${slug}`} href={`/${slug}`} passHref scroll={true}>
 				{TitleConditional}
 			</Link>

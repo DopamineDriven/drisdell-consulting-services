@@ -51,7 +51,7 @@ const LandingContent: PostBodyPropsFC = props => {
 
 	return (
 		<>
-			<div className='select-none mx-auto content-center text-justify justify-between items-center  '>
+			<div className='select-none mx-auto content-center sm:text-justify justify-between items-center  '>
 				<ContentConditional />
 			</div>
 		</>

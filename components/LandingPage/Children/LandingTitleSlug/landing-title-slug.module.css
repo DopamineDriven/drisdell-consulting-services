@@ -1,3 +1,9 @@
 .title p {
-	@apply text-accents-1;
+	@apply tracking-tighter;
+}
+
+.div {
+	position: absolute;
+	left: 100px;
+	top: 50px;
 }

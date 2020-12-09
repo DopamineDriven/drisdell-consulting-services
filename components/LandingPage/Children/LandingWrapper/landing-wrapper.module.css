@@ -1,0 +1,14 @@
+.root {
+	@apply container items-center content-center justify-center block max-w-full mx-auto pb-10;
+}
+
+.outerDiver {
+	@apply content-center justify-center block mx-auto;
+}
+
+.innerDiv {
+	@apply grid content-center justify-center grid-cols-2 mx-auto gap-x-10 gap-y-10;
+	@screen lg {
+		@apply grid-cols-2;
+	}
+}
