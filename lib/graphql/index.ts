@@ -1,5 +1,6 @@
 export { default as ABOUT_CHILDREN } from './AboutChildren';
 export { default as ABOUT_PAGE } from './AboutPage';
+export { default as CONSULTANTS_PAGE } from './ConsultantsPage';
 export { default as FRAGMENT_AUTHOR_FIELDS } from './FragmentAuthors';
 export { default as FRAGMENT_COMMENT_FIELDS } from './FragmentComments';
 export { default as FRAGMENT_MENU_FIELDS } from './FragmentMenu';
