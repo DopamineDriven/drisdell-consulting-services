@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import Image from 'next/image';
-import { AboutPage_pages_edges_node_featuredImage as FeaturedImage } from '@lib/graphql/AboutPage/__generated__/AboutPage';
+import { ConsultantsPage_pages_edges_node_featuredImage as FeaturedImage } from '@lib/graphql/ConsultantsPage/__generated__/ConsultantsPage';
 import css from './about-cover.module.css';
 import cn from 'classnames';
 export interface LandingPageProps {
@@ -8,7 +8,7 @@ export interface LandingPageProps {
 	root?: string;
 }
 
-const AboutCover: FC<LandingPageProps> = props => {
+const ConsultantCover: FC<LandingPageProps> = props => {
 	const { featuredImage, root } = props;
 	return featuredImage != null &&
 		featuredImage.node != null &&
@@ -45,4 +45,4 @@ const AboutCover: FC<LandingPageProps> = props => {
 	);
 };
 
-export default AboutCover;
+export default ConsultantCover;
