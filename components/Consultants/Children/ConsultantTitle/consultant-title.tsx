@@ -4,13 +4,13 @@ import { FC } from 'react';
 import cn from 'classnames';
 import css from './consultant-title.module.css';
 
-export interface AboutTitleSlugProps {
+export interface ConsultantTitleProps {
 	title: string | null;
 	slug?: string | null;
 	root?: string;
 }
 
-const AboutTitleSlug: FC<AboutTitleSlugProps> = props => {
+const ConsultantTitle: FC<ConsultantTitleProps> = props => {
 	const { title, slug, root } = props;
 
 	const TitleConditional = (
@@ -40,4 +40,4 @@ const AboutTitleSlug: FC<AboutTitleSlugProps> = props => {
 	);
 };
 
-export default AboutTitleSlug;
+export default ConsultantTitle;

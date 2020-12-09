@@ -1,0 +1,7 @@
+.root {
+	@apply min-w-full font-poppins;
+}
+
+.innerDiv {
+	@apply transform transition-transform -translate-y-12;
+}
