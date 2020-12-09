@@ -15,7 +15,7 @@ const ReviewLayout: FC<LandingLayoutProps> = props => {
 	const { slug, title, featuredImage, content } = props;
 	return (
 		<Fragment>
-			<div className='min-w-full font-poppins text-black'>
+			<div className='min-w-full font-poppins'>
 				<LandingImage featuredImage={featuredImage} />
 				<LandingTitleSlug title={title} slug={slug} />
 				<LandingContent content={content} />

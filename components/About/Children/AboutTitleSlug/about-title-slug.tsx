@@ -14,7 +14,7 @@ const AboutTitleSlug: AboutTitleSlugFC = props => {
 
 	const TitleConditional = (
 		<a
-			className='block text-left text-accents-1 hover:text-accents-0 transition-all duration-500 transform animate-hero'
+			className='block text-left text-accent-1 z-50 hover:text-accents-0 transition-all duration-500 transform animate-hero'
 			aria-label={`portfolio item title - ${title}`}
 			id={`home-${title}`}
 		>
@@ -22,7 +22,7 @@ const AboutTitleSlug: AboutTitleSlugFC = props => {
 				<ReactMarkdown
 					escapeHtml={false}
 					source={title}
-					className='text-center transition-all transform sm:text-left hover:text-tertiary text-2xl sm:text-3xl lg:text-5xl animate-hero '
+					className=' text-accent-1 transition-all transform text-left text-2xl sm:text-3xl lg:text-5xl animate-hero '
 				/>
 			) : (
 				<ReactMarkdown

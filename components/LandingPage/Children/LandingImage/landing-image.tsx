@@ -14,8 +14,8 @@ const LandingImage: FC<LandingPageProps> = props => {
 		<div className='min-w-full w-screen -mx-portfolioPadding'>
 			<Image
 				src={`${featuredImage.node.sourceUrl}`}
-				alt={'Picturesque Portland Lighthouse Landing Page'}
-				aria-label='Picturesque Portland Lighthouse Landing Page'
+				alt={'About Us'}
+				aria-label='About Us'
 				className={'block mx-auto align-middle content-center'}
 				layout='responsive'
 				width={2500}
@@ -35,7 +35,7 @@ const LandingImage: FC<LandingPageProps> = props => {
 				layout='fixed'
 				width={250}
 				height={250}
-				loading='lazy'
+				loading='eager'
 				quality={100}
 			/>
 		</div>

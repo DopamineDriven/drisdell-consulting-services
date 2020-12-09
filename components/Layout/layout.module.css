@@ -5,3 +5,14 @@
 .main {
 	@apply z-0;
 }
+
+.featureBar {
+	@apply bg-gray-700 text-eaWhite bg-opacity-70;
+}
+
+.button {
+	@apply mx-5 border-white duration-500 ease-in-out transform rounded-lg transition-colors;
+	&:hover {
+		@apply text-gray-700 bg-white bg-opacity-70 border-gray-700 duration-500 ease-in-out transform transition-colors;
+	}
+}

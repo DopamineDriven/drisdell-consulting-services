@@ -46,7 +46,7 @@ const Layout: FC<LayoutProps> = props => {
 						className='bg-gray-700 text-eaWhite bg-opacity-70'
 						action={
 							<Button
-								className='mx-5 border-white border-1 hover:text-gray-700 hover:bg-white hover:bg-opacity-70 hover:border-gray-700 duration-500 ease-in-out transform transition-colors'
+								className='mx-5 rounded-xl border-white border-1 hover:text-gray-700 hover:bg-white hover:bg-opacity-70 hover:border-gray-700 duration-500 ease-in-out transform transition-colors'
 								onClick={onAcceptCookies}
 							>
 								Accept Cookies
