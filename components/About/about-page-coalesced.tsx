@@ -1,6 +1,6 @@
 import { useQuery } from '@apollo/client';
 import { WpParentPagesEnum } from '@_types/index';
-import AboutLayout from './Children';
+import AboutWrapper, { AboutLayout } from './Children';
 import ApolloErrorMessage from '@components/ErrorMessage';
 import {
 	AboutPage,
@@ -42,56 +42,58 @@ const AboutPageCoalesced = () => {
 		<div>Loading...</div>
 	) : (
 		<>
-			<section className='items-center content-center justify-center block min-w-full w-screen mx-auto'>
+			{/* <section className='items-center content-center justify-center block min-w-full w-screen mx-auto'>
 				<div className='content-center justify-center block mx-auto  transform'>
-					<div className='content-center justify-center mx-auto gap-x-12 gap-y-12 w-full'>
-						{data != null &&
-						data.pages != null &&
-						data.pages.edges != null &&
-						data.pages.edges.length > 0 ? (
-							data.pages.edges.map(page => {
-								return page != null &&
-									page.node != null &&
-									page.node.featuredImage != null &&
-									page.node.children != null ? (
-									<div
-										className='block mx-auto font-poppins w-full max-w-cardGrid'
-										key={page.node.__typename}
-									>
-										<AboutLayout
-											title={page.node.title}
-											children={page.node.children}
-											content={page.node.content}
-											featuredImage={page.node.featuredImage}
-										/>
-										{page.node.children.nodes != null &&
-										page.node.children.nodes.length > 0 ? (
-											page.node.children.nodes.map(page =>
-												page != null && page.slug != null ? (
-													<div
-														className='flex-row w-full min-w-full text-xs text-accents-2'
-														key={page.slug}
-													>
-														<p className=' max-w-xs'>{page.slug}</p>
-													</div>
-												) : (
-													<div>no child page slugs</div>
-												)
-											)
+					<div className='content-center justify-center mx-auto gap-x-12 gap-y-12 w-full'> */}
+			<AboutWrapper>
+				{data != null &&
+				data.pages != null &&
+				data.pages.edges != null &&
+				data.pages.edges.length > 0 ? (
+					data.pages.edges.map(page => {
+						return page != null &&
+							page.node != null &&
+							page.node.featuredImage != null &&
+							page.node.children != null ? (
+							<div
+								className='block mx-auto font-poppins w-full max-w-cardGrid'
+								key={page.node.__typename}
+							>
+								<AboutLayout
+									title={page.node.title}
+									children={page.node.children}
+									content={page.node.content}
+									featuredImage={page.node.featuredImage}
+								/>
+								{page.node.children.nodes != null &&
+								page.node.children.nodes.length > 0 ? (
+									page.node.children.nodes.map(page =>
+										page != null && page.slug != null ? (
+											<div
+												className='flex-row w-full min-w-full text-xs text-accents-2'
+												key={page.slug}
+											>
+												<p className=' max-w-xs'>{page.slug}</p>
+											</div>
 										) : (
-											<div>error on child pages mapping</div>
-										)}
-									</div>
+											<div>no child page slugs</div>
+										)
+									)
 								) : (
-									<div>error on about page mapping</div>
-								);
-							})
+									<div>error on child pages mapping</div>
+								)}
+							</div>
 						) : (
-							<div>an error occurred...{error}</div>
-						)}
-					</div>
+							<div>error on about page mapping</div>
+						);
+					})
+				) : (
+					<div>an error occurred...{error}</div>
+				)}
+			</AboutWrapper>
+			{/* </div>
 				</div>
-			</section>
+			</section> */}
 		</>
 	);
 };

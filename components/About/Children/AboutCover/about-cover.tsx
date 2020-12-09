@@ -14,8 +14,9 @@ const AboutCover: FC<LandingPageProps> = props => {
 		<div className='min-w-full w-screen -mx-portfolioPadding'>
 			<Image
 				src={`${featuredImage.node.sourceUrl}`}
-				alt={'Picturesque Portland Lighthouse Landing Page'}
-				aria-label='Picturesque Portland Lighthouse Landing Page'
+				title='Picturesque Lighthouse Landing Page'
+				alt={'Lighthouse Landing Page'}
+				aria-label='Picturesque Lighthouse Landing Page'
 				className={'block mx-auto align-middle content-center'}
 				layout='responsive'
 				width={250}
