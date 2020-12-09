@@ -25,22 +25,22 @@ const LandingTitleSlug: LandingTitleSlugFC = props => {
 					escapeHtml={false}
 					source={title}
 					className={cn(
-						css,
-						'text-center transition-all transform sm:text-left hover:text-tertiary text-2xl sm:text-3xl lg:text-5xl animate-hero '
+						css.p,
+						'transition-all transform text-left text-2xl sm:text-3xl lg:text-6xl '
 					)}
 				/>
 			) : (
 				<ReactMarkdown
 					escapeHtml={false}
 					source={'title null'}
-					className='text-center text-accents-1 transition-all transform sm:text-left hover:text-accents-2 text-2xl sm:text-3xl lg:text-5xl animate-hero '
+					className='text-center transition-all transform sm:text-left hover:text-accents-2 text-2xl sm:text-3xl lg:text-5xl animate-hero '
 				/>
 			)}
 		</a>
 	);
 
 	return (
-		<div className=' leading-loose my-3 w-auto font-bold font-poppins text-accent-1'>
+		<div className=' leading-loose my-3 w-auto font-bold font-poppins text-white transform'>
 			<Link as={`/${slug}`} href={`/${slug}`} passHref scroll={true}>
 				{TitleConditional}
 			</Link>

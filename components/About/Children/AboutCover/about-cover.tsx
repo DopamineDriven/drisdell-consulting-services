@@ -11,16 +11,16 @@ const AboutCover: FC<LandingPageProps> = props => {
 	return featuredImage != null &&
 		featuredImage.node != null &&
 		featuredImage.node.sourceUrl != null ? (
-		<div className='min-w-full w-screen -mx-portfolioPadding'>
+		<div className='min-w-full w-screen -mx-portfolioPadding bg-fixed'>
 			<Image
 				src={`${featuredImage.node.sourceUrl}`}
-				title='Picturesque Lighthouse Landing Page'
-				alt={'Lighthouse Landing Page'}
-				aria-label='Picturesque Lighthouse Landing Page'
-				className={'block mx-auto align-middle content-center'}
+				title='About Us'
+				alt={'About Us'}
+				aria-label='About Us'
+				className={'block mx-auto align-middle content-center opacity-80'}
 				layout='responsive'
-				width={250}
-				height={75}
+				width={2000}
+				height={500}
 				objectFit='cover'
 				loading='eager'
 				quality={100}

@@ -16,7 +16,7 @@ const AboutLayout: FC<AboutLayoutProps> = props => {
 
 	return (
 		<Fragment>
-			<div className='min-w-full font-poppins text-accents-0'>
+			<div className='min-w-full font-poppins'>
 				<AboutCover featuredImage={featuredImage} />
 				<div className='transform transition-transform -translate-y-12'>
 					<AboutTitleSlug title={title} slug={slug} />

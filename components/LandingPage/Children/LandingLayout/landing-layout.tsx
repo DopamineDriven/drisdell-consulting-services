@@ -17,8 +17,10 @@ const ReviewLayout: FC<LandingLayoutProps> = props => {
 		<Fragment>
 			<div className='min-w-full font-poppins'>
 				<LandingImage featuredImage={featuredImage} />
-				<LandingTitleSlug title={title} slug={slug} />
-				<LandingContent content={content} />
+				<div className='transform transition-transform -translate-y-16'>
+					<LandingTitleSlug title={title} slug={slug} />
+					<LandingContent content={content} />
+				</div>
 			</div>
 		</Fragment>
 	);
