@@ -1,5 +1,5 @@
 .content {
-	@apply leading-relaxed font-poppins w-full min-w-full select-none;
+	@apply leading-relaxed font-poppins w-full min-w-full select-none font-medium tracking-tight;
 }
 
 .content a {

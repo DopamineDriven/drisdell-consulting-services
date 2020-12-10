@@ -70,7 +70,7 @@ const ConsultantsPageCoalesced = () => {
 												className='flex-row w-full min-w-full text-sm text-accents-2'
 												key={page.slug}
 											>
-												<p className=' max-w-sm'>{page.slug}</p>
+												{page.slug}
 											</div>
 										) : (
 											<div>no child page slugs returned...{error}</div>
