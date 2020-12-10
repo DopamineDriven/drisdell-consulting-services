@@ -22,7 +22,7 @@
 }
 
 .success {
-	@apply transition-all transform text-left text-2xl animate-hero text-white;
+	@apply transition-all transform text-left text-2xl animate-hero text-white -translate-y-10 font-header;
 	@screen sm {
 		@apply text-3xl;
 	}

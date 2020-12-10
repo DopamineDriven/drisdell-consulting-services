@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import Image from 'next/image';
 import { ConsultantsPage_pages_edges_node_featuredImage as FeaturedImage } from '@lib/graphql/ConsultantsPage/__generated__/ConsultantsPage';
-import css from './about-cover.module.css';
+import css from './consultant-cover.module.css';
 import cn from 'classnames';
 export interface LandingPageProps {
 	featuredImage: FeaturedImage;
@@ -16,9 +16,9 @@ const ConsultantCover: FC<LandingPageProps> = props => {
 		<div className={cn(css.root, root)}>
 			<Image
 				src={`${featuredImage.node.sourceUrl}`}
-				title='About Us'
-				alt={'About Us'}
-				aria-label='About Us'
+				title='Consultants'
+				alt={'Consultants'}
+				aria-label='Consultants'
 				className={css.success}
 				layout='responsive'
 				width={2000}

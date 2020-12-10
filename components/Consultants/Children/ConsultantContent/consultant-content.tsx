@@ -4,7 +4,7 @@ import {
 	Prism as SyntaxHighlighter,
 	SyntaxHighlighterProps
 } from 'react-syntax-highlighter';
-import css from './about-content.module.css';
+import css from './consultant-content.module.css';
 import cn from 'classnames';
 
 interface ConsultantContentProps {

@@ -1,11 +1,10 @@
 import { Fragment } from 'react';
 import { Layout, LandingPageCoalesced } from '@components/index';
-import { NextPage } from 'next';
 import { LANDING_PAGE } from '@lib/graphql';
 import { LandingPageQueryVars } from '@components/LandingPage/landing-page-coalesced';
 import { initializeApollo, addApolloState } from '@lib/apollo';
 import { PageTitle } from '@lib/index';
-import { GetStaticProps, InferGetStaticPropsType } from 'next';
+import { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
 
 export const getStaticProps: GetStaticProps = async () => {
 	const apolloClient = initializeApollo();
