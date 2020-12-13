@@ -6,6 +6,16 @@ const FRAGMENT_MENU_FIELDS: TypedDocumentNode = gql`
 		label
 		url
 		path
+		childItems {
+			edges {
+				node {
+					id
+					label
+					url
+					path
+				}
+			}
+		}
 	}
 `;
 

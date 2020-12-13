@@ -118,6 +118,25 @@
 	}
 } */
 
+.syntax {
+	@apply mx-auto;
+}
+
+.divSuccess {
+	@apply grid grid-cols-1;
+	@screen md {
+		@apply grid-cols-1;
+	}
+}
+
+.error {
+	@apply text-base leading-relaxed font-poppins text-blue-600;
+}
+
+.rootDiv {
+	@apply select-none mx-auto content-center text-justify justify-between items-center;
+}
+
 .content {
 	@apply text-lg leading-relaxed font-poppins w-full min-w-full;
 }

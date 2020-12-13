@@ -18,6 +18,15 @@ export enum OrderEnum {
 /**
  * The Type of Identifier used to fetch a single resource. Default is ID.
  */
+export enum PageIdType {
+	DATABASE_ID = 'DATABASE_ID',
+	ID = 'ID',
+	URI = 'URI'
+}
+
+/**
+ * The Type of Identifier used to fetch a single resource. Default is ID.
+ */
 export enum PostIdType {
 	DATABASE_ID = 'DATABASE_ID',
 	ID = 'ID',

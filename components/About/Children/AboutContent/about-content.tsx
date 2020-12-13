@@ -5,54 +5,53 @@ import {
 	SyntaxHighlighterProps
 } from 'react-syntax-highlighter';
 import css from './about-content.module.css';
+import cn from 'classnames';
 
-interface PostBodyProps {
-	content: string | null;
-	classNameContent?: string;
-}
-
-const CodeBlock = ({ language, value }: SyntaxHighlighterProps) => {
+const CodeBlock: FC<SyntaxHighlighterProps> = props => {
+	const { language = 'typescript', children } = props;
 	return (
 		<SyntaxHighlighter
 			language={language}
 			useInlineStyles={true}
-			className=' text-shadow-none'
+			className={css.syntax}
 		>
-			{value}
+			{children}
 			{/* {children.replace(/^\s+|\s+$/g, '')} */}
 		</SyntaxHighlighter>
 	);
 };
 
-interface PostBodyPropsFC extends FC<PostBodyProps> {}
+interface PostBodyProps {
+	content: string | null;
+	classNameContent?: string;
+	classNameRoot?: string;
+}
 
-const AboutContent: PostBodyPropsFC = props => {
-	const { content, classNameContent } = props;
+const AboutContent: FC<PostBodyProps> = props => {
+	const { content, classNameContent, classNameRoot } = props;
 
-	const ContentConditional = () => {
-		return content ? (
-			<div className='grid md:grid-cols-1 grid-cols-1'>
-				<ReactMarkdown
-					className={css.content + `${''}`}
-					escapeHtml={false}
-					source={content}
-					renderers={{ code: CodeBlock }}
-				/>
-			</div>
-		) : (
+	const ContentConditional = content ? (
+		<div className={css.divSuccess}>
 			<ReactMarkdown
-				className={`${classNameContent}`}
+				className={cn(css.content, classNameContent, ' ')}
 				escapeHtml={false}
-				source={`content failed to load`}
+				source={content}
 				renderers={{ code: CodeBlock }}
 			/>
-		);
-	};
+		</div>
+	) : (
+		<ReactMarkdown
+			className={css.error}
+			escapeHtml={false}
+			source={`about content failed to render or is null`}
+			renderers={{ code: CodeBlock }}
+		/>
+	);
 
 	return (
 		<>
-			<div className='select-none mx-auto content-center text-justify justify-between items-center  '>
-				<ContentConditional />
+			<div className={cn(css.divRoot, classNameRoot, ' ')}>
+				{ContentConditional}
 			</div>
 		</>
 	);
