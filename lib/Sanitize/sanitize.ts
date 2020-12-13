@@ -2,14 +2,18 @@ import DOMpurify from 'dompurify';
 
 // sanitize raw markup text when rendered by way of dangerouslysetInnerHTML
 
-export const sanitizeContent = (content: string | null) => {
-	return process.browser ? DOMpurify.sanitize(content ?? '') : content;
+export type RawToRender = 'content' | 'title' | 'excerpt';
+
+const Sanitize = (props: RawToRender | null) => {
+	return process.browser ? DOMpurify.sanitize(props ?? '') : props;
 };
 
-export const sanitizeTitle = (title: string | null) => {
-	return process.browser ? DOMpurify.sanitize(title ?? '') : title;
-};
+export default Sanitize;
 
-export const sanitizeExcerpt = (excerpt: string | null) => {
-	return process.browser ? DOMpurify.sanitize(excerpt ?? '') : excerpt;
+/*
+// HOW_TO_USE
+
+export const sanitizeContent = (props: RawToRender | null) => {
+	return process.browser ? DOMpurify.sanitize(props=['title'] ?? '') : props=['title'];
 };
+*/
