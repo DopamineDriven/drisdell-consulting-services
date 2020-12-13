@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import css from './layout.module.css';
-import { Meta, Nav, Footer } from '@components/index';
+import { Meta, Navbar, Footer } from '@components/index';
 import cn from 'classnames';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
@@ -35,7 +35,7 @@ const Layout: FC<LayoutProps> = props => {
 				<title title={title} />
 			</Head>
 			<Meta />
-			<Nav />
+			<Navbar />
 			<div className={cn(css.bg, classNameRoot)}>
 				<main className={cn(css.main, 'fit')}>{children}</main>
 				<Footer />

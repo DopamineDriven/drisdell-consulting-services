@@ -1,8 +1,8 @@
-import SvgIconConstituentValues from '@_types/SvgProps/svg';
+import SvgAbstracted from '@_types/SvgProps/svg';
 import { FC } from 'react';
 import cn from 'classnames';
 
-const WcdIcon: FC<SvgIconConstituentValues> = props => {
+const WcdIcon: FC<SvgAbstracted> = props => {
 	const {
 		width = '87.5706px',
 		height = '100px',

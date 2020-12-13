@@ -1,0 +1,10 @@
+.root {
+	@apply bg-accents-6 select-none;
+}
+
+.jujisvg {
+	@apply block;
+	@screen lg {
+		@apply hidden;
+	}
+}

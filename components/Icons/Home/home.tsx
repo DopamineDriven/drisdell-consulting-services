@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import { SvgIconConstituentValues } from '@_types/index';
+import { SvgAbstracted } from '@_types/index';
 
-const HomeIcon: FC<SvgIconConstituentValues> = props => {
+const HomeIcon: FC<SvgAbstracted> = props => {
 	const {
 		width = '2.25vw',
 		height = '2.25vw',

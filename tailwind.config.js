@@ -165,30 +165,6 @@ module.exports = {
 				hero: 'hero 1s ease-in-out infinite',
 				slowPing: 'pulse 10s cubic-bezier(0, 0, 0.2, 1) infinite'
 			},
-			height: {
-				whole: '100vh',
-				nineTenths: '90vh',
-				sevenEighths: '87.5vh',
-				fourFifths: '80vh',
-				threeFourths: '75vh',
-				sevenTenths: '70vh',
-				twoThirds: '66.67vh',
-				threeFifths: '60vh',
-				half: '50vh',
-				nineTwentieths: '45vh',
-				twoFifths: '40vh',
-				sevenTwentieths: '35vh',
-				oneThird: '33.33vh',
-				threeTenths: '30vh',
-				oneFourth: '25vh',
-				oneFifth: '20vh',
-				oneSixth: '16.67vh',
-				oneTenth: '10vh',
-				oneTwentieth: '5vh',
-				imagePortfolio: '31.25vh',
-				paddingAboutTitleRight: '18vh',
-				reviewCardHeight: '45vh'
-			},
 			minHeight: {
 				paddingAboutTitleRight: '18vh',
 				reviewCardHeight: '45vh'

@@ -1,9 +1,9 @@
-import SvgIconConstituentValues from '@_types/SvgProps/svg';
+import SvgAbstracted from '@_types/SvgProps/svg';
 import { FC, useState, useMemo, useRef, useEffect } from 'react';
 import { ColorsNav } from '@lib/index';
 import cn from 'classnames';
 
-const DrisdellIcon: FC<SvgIconConstituentValues> = props => {
+const DrisdellIcon: FC<SvgAbstracted> = props => {
 	const {
 		width = '5.0556vw',
 		height = '4.74193vw',

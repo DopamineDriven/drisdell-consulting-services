@@ -1,5 +1,5 @@
 import { CSSProperties, ChangeEvent } from 'react';
-interface SvgIconConstituentValues {
+interface SvgAbstracted {
 	fillColor0?: string;
 	fillColor1?: string;
 	fillColor2?: string;
@@ -22,10 +22,11 @@ interface SvgIconConstituentValues {
 	classNameP3?: string;
 	classNameGtag?: string;
 	classNameParent?: string;
+	classNameSVG?: string;
 	rotateCenter?: number;
 	style0?: CSSProperties;
 	style1?: CSSProperties;
 	onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-export default SvgIconConstituentValues;
+export default SvgAbstracted;
