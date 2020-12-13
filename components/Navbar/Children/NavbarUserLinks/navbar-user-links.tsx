@@ -34,12 +34,13 @@ const links: NavbarUserRef[] = [
 ];
 
 interface NavbarUserLinksProps {
-	root?: string;
+	rootUserLink?: string;
 	role?: string;
+	rootDiv?: string;
 }
 
 const NavbarUserLinks: FC<NavbarUserLinksProps> = props => {
-	const { root, role } = props;
+	const { rootUserLink, rootDiv, role } = props;
 	const { pathname } = useRouter();
 
 	const navbarUserList = links.map((link, index) => (
@@ -48,8 +49,8 @@ const NavbarUserLinks: FC<NavbarUserLinksProps> = props => {
 				<a
 					className={
 						pathname === link.href
-							? cn(css.linkActive, link.className, root)
-							: cn(css.link, link.className, root)
+							? cn(css.linkActive, link.className, rootUserLink)
+							: cn(css.link, link.className, rootUserLink)
 					}
 					key={index ** 2}
 					aria-label={`link to ${link.label}`}
@@ -60,7 +61,16 @@ const NavbarUserLinks: FC<NavbarUserLinksProps> = props => {
 			</Link>
 		</>
 	));
-	return <>{navbarUserList}</>;
+	return (
+		<div
+			role='menu'
+			aria-orientation='vertical'
+			aria-labelledby='user-menu'
+			className={cn(rootDiv, ' ')}
+		>
+			{navbarUserList}
+		</div>
+	);
 };
 
 export default NavbarUserLinks;

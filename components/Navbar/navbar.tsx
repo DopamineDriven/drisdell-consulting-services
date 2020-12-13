@@ -80,31 +80,34 @@ const Navbar: FC<NavbarProps> = props => {
 											onClick={() => setIsOpen(!isOpen)}
 										>
 											<span className='sr-only'>Open User Menu</span>
-											<Avatar className='h-8 w-8 align-middle' />
+											<Avatar className='h-12 w-12 ring-2 ring-accents-6 align-middle' />
 										</button>
 									</div>
 									<Transition
 										show={isOpen}
 										enter='transition ease-out duration-200'
-										enterFrom='transform opacity-0 scale-95'
+										enterFrom='transform opacity-0 scale-95 right-0'
 										enterTo='transform opacity-100 scale-100'
 										leave='transition ease-in duration-200'
 										leaveFrom='transform opacity-100 scale-100'
 										leaveTo='transform opacity-0 scale-95'
-										role='menu'
-										aria-orientation='vertical'
-										aria-labelledby='user-menu'
 									>
-										<div
-											role='menu'
-											aria-orientation='vertical'
-											aria-labelledby='user-menu'
-											className={cn(
-												'origin-top-right absolute right-0 mt-2 h-40 w-44 rounded-md shadow-lg py-1 ring-1 ring-offset-jujiCastletonGreen  outline-none grid grid-cols-1 bg-jujiMintCream z-50'
-											)}
+										<Transition.Child
+											enter='transition ease-out duration-200'
+											enterFrom='transform opacity-0 scale-95'
+											enterTo='transform opacity-100 scale-100'
+											leave='transition ease-in duration-200'
+											leaveFrom='transform opacity-100 scale-100'
+											leaveTo='transform opacity-0 scale-95'
 										>
-											<NavbarUserLinks role='menuitem' root={cn('px-3 py-2')} />
-										</div>
+											<NavbarUserLinks
+												role='menuitem'
+												rootUserLink={cn('px-3 py-2 hover:text-secondary-2')}
+												rootDiv={cn(
+													'origin-top-right absolute right-0 mt-2 h-40 w-44 rounded-md shadow-lg py-1 ring-2 ring-offset-secondary-2  outline-none grid grid-cols-1 bg-accents-6 z-50'
+												)}
+											/>
+										</Transition.Child>
 									</Transition>
 								</div>
 							</div>
@@ -124,25 +127,26 @@ const Navbar: FC<NavbarProps> = props => {
 							)}
 						/>
 					</div>
-					<div className='pt-4 pb-3 border-t border-accents-6 bg-secondary-0'>
+					<div className='pt-4 pb-3 border-t border-accents-5 bg-secondary-0'>
 						<div className='flex items-center px-5 sm:px-6'>
 							<div className='flex-shrink-0'>
-								<Avatar className='h-10 w-10' />
+								<Avatar className='h-10 w-10 ring-2 ring-accents-5' />
 							</div>
 							<div className='ml-3'>
 								<div className='text-base font-medium text-accents-6'>User</div>
 								<div className='text-sm font-medium text-accents-6 align-middle'>
-									example-user@gmail.com
+									user@example.com
 								</div>
 							</div>
 							<button className='bg-accents-6 p-1 ml-auto flex-shrink-0 ring-2 ring-secondary-0 rounded-full hover:text-accents-6 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-secondary-0 focus:ring-accent-6'>
 								<span className='sr-only'>View Notifications</span>
-								<BellIcon classNameSVG='h-6 w-6' />
+								<BellIcon classNameSVG='h-6 w-6 stroke-secondary-0' />
 							</button>
 						</div>
-						<div className='mt-3 px-2 sm:px-3'>
-							<NavbarUserLinks root={cn('text-white')} />
-						</div>
+						<NavbarUserLinks
+							rootUserLink={cn('text-white')}
+							rootDiv='mt-3 px-2 sm:px-3'
+						/>
 					</div>
 				</div>
 			</nav>

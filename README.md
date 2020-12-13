@@ -1,5 +1,13 @@
 # drisdell-consulting-services
 
+## Headlessui/react
+
+- https://github.com/tailwindlabs/headlessui/tree/develop/packages/%40headlessui-react#menu-button-dropdown
+
+## Color Wheel and Palettes
+
+- https://www.color-hex.com/color-wheel/
+
 Nextjs, Headless WordPress, TypeScript, Apollo Client, GraphQL Codegen, WPGraphQL, Tailwindcss, and Vercel
 
 ### Headers Returned Demystified via Postman

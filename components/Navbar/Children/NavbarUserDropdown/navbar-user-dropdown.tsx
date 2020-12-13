@@ -69,7 +69,7 @@ const NavbarUserDropdown: FC<NavbarUserDropdownProps> = props => {
 								'origin-top-right absolute right-0 mt-2 h-40 w-44 rounded-md shadow-lg py-1 ring-1 ring-offset-jujiCastletonGreen  outline-none grid grid-cols-1 bg-jujiMintCream z-50'
 							)}
 						>
-							<NavbarUserLinks role='menuitem' root={cn('px-3 py-2')} />
+							<NavbarUserLinks role='menuitem' rootUserLink={cn('px-3 py-2')} />
 						</div>
 					</Transition>
 				</div>
