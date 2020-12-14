@@ -6,13 +6,11 @@ import { useRouter } from 'next/router';
 import NavbarLinks from '../NavbarLinks';
 import Link from 'next/link';
 
-export interface NavbarLinksHeadlessProps {
+interface NavbarLinksHeadlessProps extends HeaderFooter {
 	root?: string;
 }
 
-const NavbarLinksHeadless: FC<
-	NavbarLinksHeadlessProps & HeaderFooter
-> = props => {
+const NavbarLinksHeadless: FC<NavbarLinksHeadlessProps> = props => {
 	const { headerMenu, root } = props;
 	const { pathname } = useRouter();
 
@@ -32,9 +30,7 @@ const NavbarLinksHeadless: FC<
 										? cn(css.linkActive, root)
 										: cn(css.link, root)
 								}
-							>
-								{menu.node.label}
-							</a>
+							></a>
 						</Link>
 					</>
 				) : (
@@ -44,7 +40,15 @@ const NavbarLinksHeadless: FC<
 		) : (
 			<NavbarLinks />
 		);
-	return <>{navbarListHeadless}</>;
+	return (
+		<>
+			<div>{navbarListHeadless}</div>
+		</>
+	);
 };
 
 export default NavbarLinksHeadless;
+
+/*
+
+*/

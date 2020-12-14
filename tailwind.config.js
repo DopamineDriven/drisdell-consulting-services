@@ -343,18 +343,6 @@ module.exports = {
 				308: '77rem',
 				309: '77.25rem'
 			},
-			lineHeight: {
-				superpressed: 0.3,
-				pressed: 0.6,
-				tight: 1.2,
-				chillin: 1.8,
-				portfolio: '5vw',
-				headerAbout: '3.38298vw',
-				headerP: '4.38298vw',
-				customSLH: '5.33333vw',
-				customSLM: '6.33333vw',
-				leadingAboutMobile: '3.58298vw'
-			},
 			fontSize: {
 				onehalf: '0.5rem',
 				smxmd: '0.9375rem',
@@ -395,109 +383,144 @@ module.exports = {
 			}
 		},
 		variants: {
-			padding: ['responsive', 'last', 'first', 'hover', 'focus', 'even', 'odd'],
-			fontSize: ['responsive', 'last', 'first', 'hover', 'focus', 'even', 'odd'],
-			gap: ['responsive', 'last', 'first', 'hover', 'focus', 'even', 'odd'],
-			stroke: [
-				'responsive',
-				'hover',
-				'focus',
-				'last',
-				'first',
-				'even',
-				'odd',
-				'group-hover'
-			],
-			fill: [
-				'responsive',
-				'hover',
-				'focus',
-				'last',
-				'first',
-				'even',
-				'odd',
-				'group-hover'
-			],
-			gridTemplateColumns: [
-				'responsive',
-				'last',
-				'first',
-				'hover',
-				'focus',
-				'even',
-				'odd'
-			],
-			animation: [
-				'responsive',
-				'hover',
-				'focus',
-				'last',
-				'first',
-				'motion-safe',
-				'motion-reduce',
-				'even',
-				'odd'
-			],
-			transitionProperty: [
-				'responsive',
-				'hover',
-				'focus',
-				'last',
-				'first',
-				'motion-safe',
-				'motion-reduce',
-				'even',
-				'odd'
-			],
-			transitionDuration: [
-				'responsive',
-				'last',
-				'first',
-				'hover',
-				'focus',
-				'even',
-				'odd'
-			],
-			transitionTimingFunction: [
-				'responsive',
-				'last',
-				'first',
-				'hover',
-				'focus',
-				'even',
-				'odd'
-			],
-			transitionDelay: [
-				'responsive',
-				'last',
-				'first',
-				'hover',
-				'focus',
-				'even',
-				'odd'
-			],
-			scale: [
-				'responsive',
-				'hover',
-				'focus',
-				'active',
-				'group-hover',
-				'first',
-				'last',
-				'even',
-				'odd'
-			],
-			rotate: [
-				'responsive',
-				'hover',
-				'focus',
-				'active',
-				'group-hover',
-				'first',
-				'last',
-				'even',
-				'odd'
-			]
+			extend: {
+				ringWidth: [
+					'responsive',
+					'hover',
+					'active',
+					'first',
+					'last',
+					'focus',
+					'even',
+					'odd',
+					'group-hover'
+				],
+				ringColor: [
+					'responsive',
+					'hover',
+					'active',
+					'first',
+					'last',
+					'focus',
+					'even',
+					'odd',
+					'group-hover'
+				],
+				ringOpacity: [
+					'responsive',
+					'hover',
+					'active',
+					'first',
+					'last',
+					'focus',
+					'even',
+					'odd',
+					'group-hover'
+				],
+				padding: ['responsive', 'last', 'first', 'hover', 'focus', 'even', 'odd'],
+				fontSize: ['responsive', 'last', 'first', 'hover', 'focus', 'even', 'odd'],
+				gap: ['responsive', 'last', 'first', 'hover', 'focus', 'even', 'odd'],
+				stroke: [
+					'responsive',
+					'hover',
+					'focus',
+					'last',
+					'first',
+					'even',
+					'odd',
+					'group-hover'
+				],
+				fill: [
+					'responsive',
+					'hover',
+					'focus',
+					'last',
+					'first',
+					'even',
+					'odd',
+					'group-hover'
+				],
+				gridTemplateColumns: [
+					'responsive',
+					'last',
+					'first',
+					'hover',
+					'focus',
+					'even',
+					'odd'
+				],
+				animation: [
+					'responsive',
+					'hover',
+					'focus',
+					'last',
+					'first',
+					'motion-safe',
+					'motion-reduce',
+					'even',
+					'odd'
+				],
+				transitionProperty: [
+					'responsive',
+					'hover',
+					'focus',
+					'last',
+					'first',
+					'motion-safe',
+					'motion-reduce',
+					'even',
+					'odd'
+				],
+				transitionDuration: [
+					'responsive',
+					'last',
+					'first',
+					'hover',
+					'focus',
+					'even',
+					'odd'
+				],
+				transitionTimingFunction: [
+					'responsive',
+					'last',
+					'first',
+					'hover',
+					'focus',
+					'even',
+					'odd'
+				],
+				transitionDelay: [
+					'responsive',
+					'last',
+					'first',
+					'hover',
+					'focus',
+					'even',
+					'odd'
+				],
+				scale: [
+					'responsive',
+					'hover',
+					'focus',
+					'active',
+					'group-hover',
+					'first',
+					'last',
+					'even',
+					'odd'
+				],
+				rotate: [
+					'responsive',
+					'hover',
+					'focus',
+					'active',
+					'group-hover',
+					'first',
+					'last',
+					'even',
+					'odd'
+				]
+			}
 		}
 	},
 	plugins: [
