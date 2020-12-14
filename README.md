@@ -1,5 +1,30 @@
 # drisdell-consulting-services
 
+### Checkout and create a new branch
+
+```git
+git checkout -b <new branch name>
+```
+
+### Checkout to an existing branch (commit -m changes with or without pushing first)
+
+```git
+git checkout <branch name>
+```
+
+### remove files from the index to gitignore
+
+```git
+# Remove the files from the index (not the actual files in the working copy)
+$ git rm -r --cached .
+```
+
+### forcefully delete node_modules (or any other file)
+
+```git
+git rm -rf node_modules
+```
+
 ## Headlessui/react
 
 - https://github.com/tailwindlabs/headlessui/tree/develop/packages/%40headlessui-react#menu-button-dropdown

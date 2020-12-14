@@ -15,6 +15,7 @@ const GET_PAGES: TypedDocumentNode = gql`
 			nodes {
 				id
 				slug
+				uri
 			}
 		}
 	}
