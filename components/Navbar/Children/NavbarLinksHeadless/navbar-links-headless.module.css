@@ -1,0 +1,38 @@
+.linkActive {
+	@apply underline px-3 py-2 rounded-md text-base text-secondary-0;
+}
+
+.link {
+	@apply px-3 py-2 rounded-md text-base text-secondary-0;
+}
+
+.className0 {
+	@apply text-accents-6;
+	&:hover {
+		@apply text-accents-5;
+	}
+	&:focus {
+		@apply outline-none;
+	}
+}
+
+.className1 {
+	@apply text-secondary-1;
+
+	&:focus {
+		@apply outline-none text-focus-0;
+	}
+}
+
+.className2 {
+	@apply text-accents-6 bg-secondary-2 rounded-full select-none transition-colors;
+	&:hover {
+		@apply bg-secondary-1 duration-300;
+	}
+	&:focus {
+		@apply no-underline outline-none ring-2 ring-inset ring-jujiOldLace text-accents-7 duration-300;
+	}
+	&.linkActive {
+		@apply no-underline transition-all bg-focus-0;
+	}
+}

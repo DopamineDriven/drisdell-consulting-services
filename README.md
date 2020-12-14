@@ -1,5 +1,9 @@
 # drisdell-consulting-services
 
+## [disqus-react](https://github.com/disqus/disqus-react)
+
+- Comment Embed, comment count, etc.
+
 ### Checkout and create a new branch
 
 ```git
