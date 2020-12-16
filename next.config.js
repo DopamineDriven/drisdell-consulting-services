@@ -27,28 +27,10 @@ const webpackBundle = {
 	}
 };
 
-const nextConfig = {
-	analyzeServer: ['server', 'both'].includes(process.env.BUNDLE_ANALYZE),
-	analyzeBrowser: ['browser', 'both'].includes(process.env.BUNDLE_ANALYZE),
-	bundleAnalyzerConfig: {
-		server: {
-			analyzerMode: 'static',
-			reportFilename: '../bundles/server.html'
-		},
-		browser: {
-			analyzerMode: 'static',
-			reportFilename: '../bundles/client.html'
-		}
-	}
-};
-
 module.exports = withPlugins([
-	[
-		withBundleAnalyzer({
-			enabled: process.env.ANALYZE === 'true'
-		})
-	],
-	nextConfig,
+	withBundleAnalyzer({
+		enabled: !!process.env.ANALYZE
+	}),
 	withImages,
 	webpackBundle
 ]);

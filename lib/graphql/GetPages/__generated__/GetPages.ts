@@ -19,13 +19,13 @@ export interface GetPages_pages_nodes {
 	 */
 	id: string;
 	/**
-	 * The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table.
-	 */
-	slug: string | null;
-	/**
 	 * URI path for the resource
 	 */
 	uri: string;
+	/**
+	 * The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table.
+	 */
+	slug: string | null;
 }
 
 export interface GetPages_pages {

@@ -1,6 +1,6 @@
-import { gql, TypedDocumentNode } from '@apollo/client';
+import { gql } from '@apollo/client';
 
-const FRAGMENT_MENU_FIELDS: TypedDocumentNode = gql`
+const FRAGMENT_MENU_FIELDS = gql`
 	fragment MenuFragment on MenuItem {
 		id
 		label

@@ -13,7 +13,7 @@ interface NavbarLinksHeadlessProps extends HeaderFooter {
 const NavbarLinksHeadless: FC<NavbarLinksHeadlessProps> = props => {
 	const { headerMenu, root } = props;
 	const { pathname } = useRouter();
-
+	// /slug/ --- slug
 	const navbarListHeadless =
 		headerMenu && headerMenu.edges !== null && headerMenu.edges.length > 0 ? (
 			headerMenu.edges.map(menu => {
@@ -30,7 +30,9 @@ const NavbarLinksHeadless: FC<NavbarLinksHeadlessProps> = props => {
 										? cn(css.linkActive, root)
 										: cn(css.link, root)
 								}
-							></a>
+							>
+								{menu.node.label}
+							</a>
 						</Link>
 					</>
 				) : (

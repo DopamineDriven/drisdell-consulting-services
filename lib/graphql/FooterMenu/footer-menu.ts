@@ -1,13 +1,12 @@
-import { gql, TypedDocumentNode } from '@apollo/client';
+import { gql } from '@apollo/client';
 import { FRAGMENT_MENU_FIELDS } from '@lib/graphql';
 
-const FOOTER_MENU: TypedDocumentNode = gql`
-	${FRAGMENT_MENU_FIELDS}
+const FOOTER_MENU = gql`
 	query FooterMenu {
 		footerMenu: menuItems(where: { location: FOOTER, parentId: "0" }) {
 			edges {
 				node {
-					...MenuFragment
+					...${FRAGMENT_MENU_FIELDS}
 				}
 			}
 		}
