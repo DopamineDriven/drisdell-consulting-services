@@ -1,4 +1,3 @@
-import { Fragment } from 'react';
 import { Layout, LandingPageCoalesced } from '@components/index';
 import { LANDING_PAGE } from '@lib/graphql';
 import { LandingPageQueryVars } from '@components/LandingPage/landing-page-coalesced';
@@ -21,11 +20,11 @@ export const getStaticProps: GetStaticProps = async () => {
 const Index: NextPage & InferGetStaticPropsType<typeof getStaticProps> = () => {
 	const { INDEX } = PageTitle;
 	return (
-		<Fragment>
+		<>
 			<Layout title={INDEX}>
 				<LandingPageCoalesced />
 			</Layout>
-		</Fragment>
+		</>
 	);
 };
 

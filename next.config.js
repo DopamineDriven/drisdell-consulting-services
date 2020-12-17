@@ -31,6 +31,16 @@ module.exports = withPlugins([
 	withBundleAnalyzer({
 		enabled: !!process.env.ANALYZE
 	}),
+	// {
+	// 	async rewrites() {
+	// 		return [
+	// 			{
+	// 				source: '/[...pages]',
+	// 				destination: '/'
+	// 			}
+	// 		];
+	// 	}
+	// },
 	withImages,
 	webpackBundle
 ]);

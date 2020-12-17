@@ -1,4 +1,4 @@
-// Fallback to CMS Data
+// Fallback to Headless WordPress Data
 
 export const defatultPageProps = {
 	header: {
