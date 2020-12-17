@@ -4,7 +4,7 @@ import { FRAGMENT_MENU_FIELDS } from '@lib/graphql';
 const HEADER_MENU: TypedDocumentNode = gql`
 	${FRAGMENT_MENU_FIELDS}
 	query HeaderMenu {
-		headerMenu: menuItems(where: { location: PRIMARY, parentId: "0" }) {
+		menuItems(where: { location: PRIMARY, parentId: "0" }) {
 			edges {
 				node {
 					...MenuFragment

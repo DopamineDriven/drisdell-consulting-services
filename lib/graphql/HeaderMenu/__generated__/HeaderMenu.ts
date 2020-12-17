@@ -7,7 +7,7 @@
 // GraphQL query operation: HeaderMenu
 // ====================================================
 
-export interface HeaderMenu_headerMenu_edges_node_childItems_edges_node_childItems_edges_node {
+export interface HeaderMenu_menuItems_edges_node_childItems_edges_node_childItems_edges_node {
 	__typename: 'MenuItem';
 	/**
 	 * The globally unique identifier of the nav menu item object.
@@ -27,25 +27,25 @@ export interface HeaderMenu_headerMenu_edges_node_childItems_edges_node_childIte
 	path: string;
 }
 
-export interface HeaderMenu_headerMenu_edges_node_childItems_edges_node_childItems_edges {
+export interface HeaderMenu_menuItems_edges_node_childItems_edges_node_childItems_edges {
 	__typename: 'MenuItemToMenuItemConnectionEdge';
 	/**
 	 * The item at the end of the edge
 	 */
-	node: HeaderMenu_headerMenu_edges_node_childItems_edges_node_childItems_edges_node | null;
+	node: HeaderMenu_menuItems_edges_node_childItems_edges_node_childItems_edges_node | null;
 }
 
-export interface HeaderMenu_headerMenu_edges_node_childItems_edges_node_childItems {
+export interface HeaderMenu_menuItems_edges_node_childItems_edges_node_childItems {
 	__typename: 'MenuItemToMenuItemConnection';
 	/**
 	 * Edges for the MenuItemToMenuItemConnection connection
 	 */
 	edges:
-		| (HeaderMenu_headerMenu_edges_node_childItems_edges_node_childItems_edges | null)[]
+		| (HeaderMenu_menuItems_edges_node_childItems_edges_node_childItems_edges | null)[]
 		| null;
 }
 
-export interface HeaderMenu_headerMenu_edges_node_childItems_edges_node {
+export interface HeaderMenu_menuItems_edges_node_childItems_edges_node {
 	__typename: 'MenuItem';
 	/**
 	 * The globally unique identifier of the nav menu item object.
@@ -66,26 +66,26 @@ export interface HeaderMenu_headerMenu_edges_node_childItems_edges_node {
 	/**
 	 * Connection between the MenuItem type and the MenuItem type
 	 */
-	childItems: HeaderMenu_headerMenu_edges_node_childItems_edges_node_childItems | null;
+	childItems: HeaderMenu_menuItems_edges_node_childItems_edges_node_childItems | null;
 }
 
-export interface HeaderMenu_headerMenu_edges_node_childItems_edges {
+export interface HeaderMenu_menuItems_edges_node_childItems_edges {
 	__typename: 'MenuItemToMenuItemConnectionEdge';
 	/**
 	 * The item at the end of the edge
 	 */
-	node: HeaderMenu_headerMenu_edges_node_childItems_edges_node | null;
+	node: HeaderMenu_menuItems_edges_node_childItems_edges_node | null;
 }
 
-export interface HeaderMenu_headerMenu_edges_node_childItems {
+export interface HeaderMenu_menuItems_edges_node_childItems {
 	__typename: 'MenuItemToMenuItemConnection';
 	/**
 	 * Edges for the MenuItemToMenuItemConnection connection
 	 */
-	edges: (HeaderMenu_headerMenu_edges_node_childItems_edges | null)[] | null;
+	edges: (HeaderMenu_menuItems_edges_node_childItems_edges | null)[] | null;
 }
 
-export interface HeaderMenu_headerMenu_edges_node {
+export interface HeaderMenu_menuItems_edges_node {
 	__typename: 'MenuItem';
 	/**
 	 * The globally unique identifier of the nav menu item object.
@@ -106,28 +106,28 @@ export interface HeaderMenu_headerMenu_edges_node {
 	/**
 	 * Connection between the MenuItem type and the MenuItem type
 	 */
-	childItems: HeaderMenu_headerMenu_edges_node_childItems | null;
+	childItems: HeaderMenu_menuItems_edges_node_childItems | null;
 }
 
-export interface HeaderMenu_headerMenu_edges {
+export interface HeaderMenu_menuItems_edges {
 	__typename: 'RootQueryToMenuItemConnectionEdge';
 	/**
 	 * The item at the end of the edge
 	 */
-	node: HeaderMenu_headerMenu_edges_node | null;
+	node: HeaderMenu_menuItems_edges_node | null;
 }
 
-export interface HeaderMenu_headerMenu {
+export interface HeaderMenu_menuItems {
 	__typename: 'RootQueryToMenuItemConnection';
 	/**
 	 * Edges for the RootQueryToMenuItemConnection connection
 	 */
-	edges: (HeaderMenu_headerMenu_edges | null)[] | null;
+	edges: (HeaderMenu_menuItems_edges | null)[] | null;
 }
 
 export interface HeaderMenu {
 	/**
 	 * Connection between the RootQuery type and the MenuItem type
 	 */
-	headerMenu: HeaderMenu_headerMenu | null;
+	menuItems: HeaderMenu_menuItems | null;
 }
