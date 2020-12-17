@@ -97,21 +97,20 @@ export const getStaticPaths: GetStaticPaths = async () => {
 	// 	return '';
 	// }
 	const pathsData: any[] = [];
-	const paths =
-		data &&
-		data.pages !== null &&
-		data.pages.nodes !== null &&
-		data.pages.nodes.length > 0
-			? (data.pages.nodes ?? []).map(page => {
-					if (
-						page !== null &&
-						page.slug !== null &&
-						customPagesSlugs.includes(page.slug)
-					) {
-						return { params: { slug: [page.slug] } };
-					}
-			  })
-			: console.log(`${data?.pages?.nodes?.length} or null`);
+	data &&
+	data.pages !== null &&
+	data.pages.nodes !== null &&
+	data.pages.nodes.length > 0
+		? (data.pages.nodes ?? []).map(page => {
+				if (
+					page !== null &&
+					page.slug !== null &&
+					customPagesSlugs.includes(page.slug)
+				) {
+					return pathsData.push({ params: { slug: [page.slug] } });
+				}
+		  })
+		: console.log(`${data?.pages?.nodes?.length} or null`);
 	/*
 		 		{
           "id": "cG9zdDoyMg==",
@@ -124,7 +123,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 	// Fallback shouldn't be enabled here or this route will
 	// catch every page, even 404s, which is no bueno
 	return addApolloState(apolloClient, {
-		paths: paths,
+		paths: pathsData,
 		fallback: false
 	});
 };
