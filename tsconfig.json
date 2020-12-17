@@ -30,6 +30,6 @@
 			"@utils/*": ["utils/*"]
 		}
 	},
-	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.js"],
+	"include": ["next-env.d.ts", "graphql.d.ts", "**/*.ts", "**/*.tsx", "**/*.js"],
 	"exclude": ["node_modules", ".next"]
 }

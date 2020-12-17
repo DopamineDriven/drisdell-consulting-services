@@ -1,5 +1,17 @@
 # drisdell-consulting-services
 
+## S3 Bucket
+
+- https://aws.amazon.com/blogs/compute/deploying-a-highly-available-wordpress-site-on-amazon-lightsail-part-2-using-amazon-s3-with-wordpress-to-securely-deliver-media-files/
+
+## Use Amazon CloudFront
+
+- https://aws.amazon.com/blogs/compute/deploying-a-highly-available-wordpress-site-on-amazon-lightsail-part-3-increasing-security-and-performance-using-amazon-cloudfront/
+
+## CDN Without using a custom domain
+
+- https://aws.amazon.com/blogs/compute/improving-website-performance-with-lightsail-content-delivery-network/
+
 ## [disqus-react](https://github.com/disqus/disqus-react)
 
 - Comment Embed, comment count, etc.

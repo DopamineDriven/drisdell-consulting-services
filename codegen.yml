@@ -6,7 +6,6 @@ schema:
 documents: './lib/graphql/**/*.ts'
 generates:
  ./graphql.d.ts:
-  # generated/graphql.d.ts
   plugins:
    - 'typescript'
    - 'typescript-operations'
