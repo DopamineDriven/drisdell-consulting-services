@@ -1,7 +1,8 @@
 import { Layout } from '@components/index';
 import { PageTitle } from '@lib/index';
+import { NextPage } from 'next';
 
-const Login = () => {
+const Login: NextPage = () => {
 	const { LOGIN } = PageTitle;
 	return (
 		<>
