@@ -6,9 +6,7 @@ module.exports = {
 		removeDeprecatedGapUtilities: true,
 		purgeLayersByDefault: true
 	},
-	purge: {
-		content: ['./components/**/*.{js,ts,jsx,tsx}', './pages/**/*.{js,ts,jsx,tsx}']
-	},
+	purge: ['./components/**/*.{js,ts,jsx,tsx}', './pages/**/*.{js,ts,jsx,tsx}'],
 	theme: {
 		stroke: {
 			current: 'currentColor',
@@ -35,8 +33,13 @@ module.exports = {
 		},
 		extend: {
 			screens: {
-				light: { raw: '(prefers-color-scheme: light)' },
-				dark: { raw: '(prefers-color-scheme: dark)' }
+				xs: '375px',
+				sm: '640px',
+				md: '768px',
+				lg: '1024px',
+				xl: '1280px',
+				'2xl': '1440px',
+				'3xl': '1920px'
 			},
 			transitionDuration: {
 				0: '0ms',
@@ -168,28 +171,6 @@ module.exports = {
 			minHeight: {
 				paddingAboutTitleRight: '18vh',
 				reviewCardHeight: '45vh'
-			},
-			maxHeight: {
-				whole: '100vh',
-				nineTenths: '90vh',
-				sevenEighths: '87.5vh',
-				fourFifths: '80vh',
-				threeFourths: '75vh',
-				sevenTenths: '70vh',
-				twoThirds: '66.67vh',
-				threeFifths: '60vh',
-				half: '50vh',
-				nineTwentieths: '45vh',
-				twoFifths: '40vh',
-				sevenTwentieths: '35vh',
-				oneThird: '33.33vh',
-				threeTenths: '30vh',
-				oneFourth: '25vh',
-				oneFifth: '20vh',
-				oneSixth: '16.67vh',
-				oneTenth: '10vh',
-				oneTwentieth: '5vh',
-				imagePortfolio: '61.25vh'
 			},
 			width: {
 				whole: '100vw',
@@ -343,39 +324,6 @@ module.exports = {
 				308: '77rem',
 				309: '77.25rem'
 			},
-			fontSize: {
-				onehalf: '0.5rem',
-				smxmd: '0.9375rem',
-				'1xl': '1.0rem',
-				threehalves: '1.25rem',
-				'3xl': '2.0rem',
-				'5xl': '2.5rem',
-				'6xl': '2.75rem',
-				'7xl': '4.5rem',
-				'8xl': '6.25rem',
-				'10xl': '10rem',
-				custom: '25.41667vw',
-				customPMobile: '4.44681vw',
-				customP: '3.2234vw',
-				customS: '2.06667vw',
-				customFooter: '1.16667vw',
-				customFooterMobile: '2.63333vw',
-				customSM: '3.36667vw',
-				customSMobile: '4.36667vw',
-				customTitle: '2.22341vw',
-				customExcerpt: '1.66755vw',
-				customTitleMobile: '4.44682vw',
-				customExcerptMobile: '3.0351vw',
-				customAboutTitle: '15.9276vw',
-				customAboutText: '3.3426vw',
-				customAbout: '23.41667vw',
-				customPostAbout: '7.5666vw',
-				customPostBlog: '7.7666vw',
-				customSubPostTitle: '11.9276vw',
-				customSubPostTitleModified: '8.9276vw',
-				customAboutSubMobile: '2.63333vw',
-				customBlogSupraTitle: '8.9276vw'
-			},
 			boxShadow: {
 				'outline-2': '0 0 0 2px var(--accents-0)',
 				magical:
@@ -526,6 +474,8 @@ module.exports = {
 	plugins: [
 		require('tailwindcss-gradients'),
 		require('@tailwindcss/typography'),
-		require('@tailwindcss/forms')
+		require('@tailwindcss/ui'),
+		require('@tailwindcss/forms'),
+		require('@tailwindcss/aspect-ratio')
 	]
 };

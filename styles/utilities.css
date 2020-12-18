@@ -59,37 +59,3 @@
 .wp-block-media-text {
 	@apply grid grid-cols-2 gap-4;
 }
-
-.p-lead:nth-child(odd) {
-	@apply pl-portfolioS;
-}
-
-.p-blogs:nth-child(odd) {
-	@apply pr-paddingAboutTitleRight;
-}
-
-.p-leads:nth-child(odd) {
-	@apply pl-aboutOffsetPR;
-}
-
-.p-last:nth-child(odd):nth-child(-n + 12) {
-	@apply pl-aboutOffsetPR;
-}
-
-.p-indent {
-	@apply pl-aboutIndentation;
-}
-
-.p-indents {
-	@apply pl-aboutIndentation;
-}
-
-@media (max-width: 639px) {
-	.p-last:nth-child(n + 1):nth-child(-n + 12) {
-		@apply pl-aboutOffsetPRMobile;
-	}
-}
-
-.fa-portfolioDivider {
-	@apply text-customTitle;
-}
