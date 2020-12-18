@@ -43,6 +43,7 @@ export default class MyDocument extends Document {
 			) : (
 				<Head>
 					<meta charSet='utf-8' />
+
 					<link rel='stylesheet' href='https://use.typekit.net/cub6off.css' />
 					<link rel='stylesheet' href='https://rsms.me/inter/inter.css' />
 					<style type='text/css' dangerouslySetInnerHTML={{ __html: mediaStyles }} />
