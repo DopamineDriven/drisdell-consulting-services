@@ -6,5 +6,5 @@
 }
 
 .footerLogoSpan {
-	@apply rounded-full border border-gray-700 mr-2;
+	@apply rounded-full mr-2;
 }

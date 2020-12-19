@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Const from '@lib/constants';
-import { Fragment } from 'react';
+
 import { FC } from 'react';
 interface MetaProps {
 	title?: string;
@@ -13,7 +13,7 @@ const MetaData: FC<MetaProps> = props => {
 		canonical = 'https://drisdell-consulting-services.vercel.app'
 	} = props;
 	return (
-		<Fragment>
+		<>
 			<Head>
 				<link
 					rel='apple-touch-icon'
@@ -69,7 +69,7 @@ const MetaData: FC<MetaProps> = props => {
 				<meta property='og:image:width' content='2048' />
 				<meta property='og:image:height' content='1170' />
 			</Head>
-		</Fragment>
+		</>
 	);
 };
 

@@ -3,7 +3,7 @@ import { Transition } from '@headlessui/react/dist';
 import cn from 'classnames';
 import css from './navbar-user-dropdown.module.css';
 import NavbarUserLinks from '../NavbarUserLinks/navbar-user-links';
-import { Avatar } from '@components/index';
+import Avatar from '@components/Avatar';
 import { BellIcon, PlusIcon } from '@components/Icons';
 import { useRouter } from 'next/router';
 import { Button } from '@components/UI';
@@ -27,7 +27,7 @@ const NavbarUserDropdown: FC<NavbarUserDropdownProps> = props => {
 					type='button'
 					onClick={() => router.push('/signup')}
 				>
-					<PlusIcon classNameSVG={cn('ml-1 mr-2 h-5 w-5')} />
+					<PlusIcon classNameSVG={cn('ml-1 mr-2 h-6 w-6')} />
 					<span>Sign Up</span>
 				</button>
 			</div>
@@ -41,7 +41,7 @@ const NavbarUserDropdown: FC<NavbarUserDropdownProps> = props => {
 					<div>
 						<Button
 							className={cn(
-								' bg-jujiMintCream rounded-full text-accents-6 text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-jujiCastletonGreen focus:ring-white z-50 '
+								' bg-accents-7 rounded-full text-accents-6 text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-jujiCastletonGreen focus:ring-white z-50 '
 							)}
 							onClick={() => onClick}
 						>

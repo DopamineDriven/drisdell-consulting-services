@@ -6,7 +6,6 @@ import Document, {
 	DocumentContext,
 	DocumentInitialProps
 } from 'next/document';
-import { mediaStyles } from '../lib/window-width';
 
 export default class MyDocument extends Document {
 	static async getInitialProps(ctx: DocumentContext) {
@@ -22,7 +21,6 @@ export default class MyDocument extends Document {
 					<meta charSet='utf-8' />
 					<link rel='stylesheet' href='https://use.typekit.net/cub6off.css' />
 					<link rel='stylesheet' href='https://rsms.me/inter/inter.css' />
-					<style type='text/css' dangerouslySetInnerHTML={{ __html: mediaStyles }} />
 					<script
 						async
 						src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_TRACKING_ID}`}
@@ -43,10 +41,8 @@ export default class MyDocument extends Document {
 			) : (
 				<Head>
 					<meta charSet='utf-8' />
-
 					<link rel='stylesheet' href='https://use.typekit.net/cub6off.css' />
 					<link rel='stylesheet' href='https://rsms.me/inter/inter.css' />
-					<style type='text/css' dangerouslySetInnerHTML={{ __html: mediaStyles }} />
 				</Head>
 			);
 		};

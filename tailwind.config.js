@@ -9,6 +9,9 @@ module.exports = {
 	purge: ['./components/**/*.{js,ts,jsx,tsx}', './pages/**/*.{js,ts,jsx,tsx}'],
 	theme: {
 		stroke: {
+			maxWidth: {
+				'9xl': '2220px'
+			},
 			current: 'currentColor',
 			jujiOrange: '#FF9933',
 			eaWhite: '#EAEAEA',
@@ -98,6 +101,13 @@ module.exports = {
 				'primary-0': 'var(--primary-0)',
 				'primary-1': 'var(--primary-1)',
 				'primary-2': 'var(--primary-2)',
+				'primary-3': 'var(--primary-3)',
+				'primary-4': 'var(--primary-4)',
+				'primary-5': 'var(--primary-5)',
+				'primary-6': 'var(--primary-6)',
+				'primary-7': 'var(--primary-7)',
+				'primary-8': 'var(--primary-8)',
+				'primary-9': 'var(--primary-9)',
 				'secondary-0': 'var(--secondary-0)',
 				'secondary-1': 'var(--secondary-1)',
 				'secondary-2': 'var(--secondary-2)',
@@ -117,6 +127,30 @@ module.exports = {
 				'accents-7': 'var(--accents-7)',
 				'accents-8': 'var(--accents-8)',
 				'accents-9': 'var(--accents-9)',
+				lightBlue: {
+					0: '#E3F8FF',
+					100: '#B3ECFF',
+					200: '#81DEFD',
+					300: '#5ED0FA',
+					400: '#40C3F7',
+					500: '#2BB0ED',
+					600: '#1992D4',
+					700: '#127FBF',
+					800: '#0B69A3',
+					900: '#035388'
+				},
+				Cyan: {
+					0: '#E0FCFF',
+					100: '#BEF8FD',
+					200: '#87EAF2',
+					300: '#54D1DB',
+					400: '#38BEC9',
+					500: '#2CB1BC',
+					600: '#14919B',
+					700: '#0E7C86',
+					800: '#0A6C74',
+					900: '#044E54'
+				},
 				black: '#000000',
 				white: '#FFFFFF',
 				success: '#0070F3',

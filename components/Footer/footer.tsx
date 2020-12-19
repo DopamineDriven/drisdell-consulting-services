@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import cn from 'classnames';
-import { Container } from '@components/UI';
+import Container from '@components/UI/Container';
 import { FooterLogo, FooterNavLinks, FooterSocial } from './Children';
 import { WcdIcon } from '@components/Icons';
 
@@ -15,7 +15,7 @@ const Footer: FC<FooterProps> = props => {
 		<footer
 			className={` ${cn(
 				classNameRoot,
-				'bg-secondary-0 text-accents-7 select-none'
+				'bg-primary-0 text-accents-7 select-none'
 			)}`}
 			aria-labelledby='footerHeading'
 		>

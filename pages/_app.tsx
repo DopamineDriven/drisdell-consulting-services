@@ -4,7 +4,6 @@ import '@fortawesome/fontawesome-svg-core/styles.css';
 import { AppProps, NextWebVitalsMetric } from 'next/app';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { MediaContextProvider } from '../lib/window-width';
 import { gaInit, logPageView } from '../utils/google-analytics';
 import { ApolloProvider } from '@apollo/client';
 import { useApollo } from '../lib/apollo';
@@ -26,11 +25,9 @@ function App({ Component, pageProps }: AppProps) {
 		};
 	}, [router.events]);
 	return (
-		<MediaContextProvider>
-			<ApolloProvider client={apolloClient}>
-				<Component {...pageProps} />
-			</ApolloProvider>
-		</MediaContextProvider>
+		<ApolloProvider client={apolloClient}>
+			<Component {...pageProps} />
+		</ApolloProvider>
 	);
 }
 

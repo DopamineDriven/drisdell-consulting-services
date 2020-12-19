@@ -1,5 +1,4 @@
 const withPlugins = require('next-compose-plugins');
-const withBundleAnalyzer = require('@next/bundle-analyzer');
 const withImages = {
 	images: {
 		domains: ['drisdell-headless.com', 'secure.gravatar.com']
@@ -27,10 +26,4 @@ const webpackBundle = {
 	}
 };
 
-module.exports = withPlugins([
-	withBundleAnalyzer({
-		enabled: !!process.env.ANALYZE
-	}),
-	withImages,
-	webpackBundle
-]);
+module.exports = withPlugins([withImages, webpackBundle]);

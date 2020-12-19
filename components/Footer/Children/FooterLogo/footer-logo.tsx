@@ -1,24 +1,17 @@
-import { Logo } from '@components/index';
+import { Logo as DrisdellIcon } from '@components/index';
 import Link from 'next/link';
-import { FC } from 'react';
 import cn from 'classnames';
 import css from './footer-logo.module.css';
 
-interface FooterLogoProps {
-	classNameRoot?: string;
-}
-
-const FooterLogo: FC<FooterLogoProps> = props => {
-	const { classNameRoot = '' } = props;
-
+const FooterLogo = () => {
 	return (
 		<Link href='/'>
-			<a className={cn(classNameRoot, css.footerLogoA)}>
+			<a className={cn(css.footerLogoA)}>
 				<span className={css.footerLogoSpan}>
-					<Logo
+					<DrisdellIcon
 						width='10rem'
 						height='10rem'
-						classNameSvg='z-50 bg-white rounded-full'
+						classNameSVG='bg-primary-0 rounded-full'
 					/>
 				</span>
 			</a>

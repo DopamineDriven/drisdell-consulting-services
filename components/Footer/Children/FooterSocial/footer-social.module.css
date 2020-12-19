@@ -5,7 +5,7 @@
 .socialLink {
 	.link {
 		& > svg {
-			@apply transform duration-75 ease-linear;
+			@apply transform duration-150 ease-linear;
 		}
 
 		&:hover > svg {

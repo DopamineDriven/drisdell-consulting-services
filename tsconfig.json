@@ -1,7 +1,7 @@
 {
 	"compilerOptions": {
 		"target": "esnext",
-		"lib": ["dom", "ES2017"],
+		"lib": ["dom", "ESNext"],
 		"allowJs": true,
 		"skipLibCheck": true,
 		"strict": true,

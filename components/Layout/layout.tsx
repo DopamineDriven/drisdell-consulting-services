@@ -29,12 +29,13 @@ const FeatureBar = dynamic(
 const Layout: FC<LayoutProps> = props => {
 	const { acceptedCookies, onAcceptCookies } = useAcceptCookies();
 	const { children, classNameRoot, title = 'default title' } = props;
+	const isProd = process.env.NODE_ENV === 'production' ? <Meta /> : <></>;
 	return (
 		<>
 			<Head>
 				<title title={title} />
 			</Head>
-			<Meta />
+			{isProd}
 			<Navbar />
 			<div className={cn(css.bg, classNameRoot)}>
 				<main className={cn(css.main, 'fit')}>{children}</main>
@@ -43,10 +44,10 @@ const Layout: FC<LayoutProps> = props => {
 					<FeatureBar
 						title='This site uses cookies to improve your experience. By clicking, you agree to our Privacy Policy.'
 						hide={acceptedCookies}
-						className='bg-gray-700 text-eaWhite bg-opacity-70'
+						className='bg-primary-3 text-accents-6 bg-opacity-70'
 						action={
 							<Button
-								className='mx-5 rounded-xl border-white border-1 hover:text-gray-700 hover:bg-white hover:bg-opacity-70 hover:border-gray-700 duration-500 ease-in-out transform transition-colors'
+								className='mx-5 rounded-xl border-accents-6 border-1 hover:text-primary-3 hover:bg-accents-6 hover:bg-opacity-70 hover:border-primary-3 duration-500 ease-in-out transform transition-colors'
 								onClick={onAcceptCookies}
 							>
 								Accept Cookies
