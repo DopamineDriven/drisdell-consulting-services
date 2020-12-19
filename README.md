@@ -84,8 +84,16 @@ Nextjs, Headless WordPress, TypeScript, Apollo Client, GraphQL Codegen, WPGraphQ
 - About Page content on home page
 - sub-page routing
 
-## Dependencies Init For Base Packages
+## svchost error troubleshooting (windows)
 
-```git
-yarn add @apollo/client @artsy/fresnel @fortawesome/fontawesome-svg-core @fortawesome/free-brands-svg-icons @fortawesome/free-regular-svg-icons @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome @react-aria/overlays apollo classnames date-fns deepmerge graphql keen-slider lodash.random lodash.throttle next react react-aria react-dom react-ga react-intersection-observer react-markdown react-syntax-highlighter react-ticker subscriptions-transport-ws tailwindcss postcss-import@12.0.0 postcss-nesting @headlessui/react && yarn add -D @graphql-codegen/cli @graphql-codegen/introspection @graphql-codegen/plugin-helpers @graphql-codegen/typed-document-node @graphql-codegen/typescript @graphql-codegen/typescript-apollo-client-helpers @graphql-codegen/typescript-operations @graphql-codegen/typescript-react-apollo @next/bundle-analyzer @types/classnames @types/gtag.js @types/jest @types/js-cookie @types/lodash.random @types/lodash.throttle @types/node @types/react @types/react-dom @types/react-syntax-highlighter @types/react-test-renderer autoprefixer babel-jest graphql-tag husky jest next-compose-plugins patch-package postinstall-postinstall postcss-flexbugs-fixes postcss-preset-env prettier pretty-quick react-test-renderer stylelint stylelint-config-recommended tailwindcss-gradients typescript yaml-loader && yarn add -P @babel/core@7.0.0 prop-types@15.6.0
-```
+- https://ugetfix.com/ask/how-to-fix-svchost-exe-application-error/
+
+## Debug node with vscode
+
+- https://itnext.io/the-absolute-easiest-way-to-debug-node-js-with-vscode-2e02ef5b1bad
+
+### JavaScript Heap out of Memory (Nodejs)
+
+- https://support.snyk.io/hc/en-us/articles/360002046418-JavaScript-heap-out-of-memory
+- https://stackoverflow.com/questions/38558989/node-js-heap-out-of-memory
+- https://platformengineer.com/limit-javascript-heap-usage-and-fix-heap-out-of-memory-error-using-max_old_space_size-header/
