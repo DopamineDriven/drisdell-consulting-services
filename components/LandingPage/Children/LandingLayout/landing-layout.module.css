@@ -3,5 +3,5 @@
 }
 
 .innerDiv {
-	@apply transform transition-transform -translate-y-12;
+	@apply transform transition-transform -translate-y-12 px-14;
 }

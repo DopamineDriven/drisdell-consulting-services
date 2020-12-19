@@ -11,16 +11,16 @@ const LandingImage: FC<LandingPageProps> = props => {
 	return featuredImage != null &&
 		featuredImage.node != null &&
 		featuredImage.node.sourceUrl != null ? (
-		<div className='min-w-full w-screen -mx-portfolioPadding'>
+		<div className='min-w-full w-screen'>
 			<Image
 				src={`${featuredImage.node.sourceUrl}`}
 				title='Picturesque Lighthouse Landing Page'
 				alt='Picturesque Lighthouse Landing Page'
 				aria-label='Picturesque Lighthouse Landing Page'
-				className={'block mx-auto align-middle content-center'}
+				className={'block mx-auto align-middle content-center bg-primary-0 '}
 				layout='responsive'
 				width={2500}
-				height={1250}
+				height={870}
 				objectFit='cover'
 				loading='eager'
 				quality={100}

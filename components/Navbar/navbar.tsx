@@ -27,7 +27,7 @@ const Navbar: FC<NavbarProps> = props => {
 						<div className='flex'>
 							<div className='-ml-2 mr-2 flex items-center md:hidden'>
 								<button
-									className='inline-flex items-center justify-center p-2 rounded-md text-secondary-1 hover:text-opacity-80 hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white'
+									className='inline-flex items-center justify-center p-2 rounded-md text-primary-8 hover:text-opacity-80 hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white'
 									aria-expanded={false}
 									onClick={() => setMenuOpen(!menuOpen)}
 								>
@@ -59,16 +59,16 @@ const Navbar: FC<NavbarProps> = props => {
 						<div className='flex items-center'>
 							<div className='flex-shrink-0'>
 								<button
-									className={`relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm font-medium rounded-md text-primary-8 hover:bg-opacity-70 hover:primary-8 focus:outline-none focus:ring-offset-2 focus:ring-2 focus:ring-secondary-1 select-none`}
+									className={`relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm font-medium rounded-md text-primary-8 hover:bg-opacity-70 hover:primary-8 focus:outline-none focus:ring-offset-2 focus:ring-2 focus:ring-primary-1 select-none`}
 									type='button'
 									onClick={() => router.push('/contact')}
 								>
 									<PlusIcon classNameSVG={cn('ml-1 mr-2 h-5 w-5 text-lg')} />
-									<span>Contact</span>
+									<span className='text-xl'>Contact</span>
 								</button>
 							</div>
 							<div className='hidden md:ml-4 md:flex-shrink-0 md:flex md:items-center'>
-								<button className='bg-primary-8 p-1 rounded-full text-offset-secondary-0 ring-2 ring-secondary-0 hover:text-accents-6 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-secondary-0 focus:ring-accent-6'>
+								<button className='bg-primary-0 p-1 my-auto rounded-full text-offset-secondary-0 ring-2 ring-primary-6 hover:text-primary-6 focus:outline-none focus:ring-2 focus:ring-priamry-8 focus:ring-accent-6'>
 									<span className='sr-only'>View Notifications</span>
 									<BellIcon classNameSVG='h-8 w-8' />
 								</button>
@@ -106,7 +106,7 @@ const Navbar: FC<NavbarProps> = props => {
 												role='menuitem'
 												rootUserLink={cn('px-3 py-2 hover:bg-primary-8')}
 												rootDiv={cn(
-													'origin-top-right absolute right-0 mt-2 h-40 w-44 rounded-md shadow-lg ring-2 ring-offset-secondary-2  outline-none grid grid-cols-1 bg-accents-6 z-50'
+													'origin-top-right absolute right-0 mt-2 h-40 w-44 rounded-md shadow-lg ring-2 ring-offset-primary-0  outline-none grid grid-cols-1 bg-accents-6 z-50'
 												)}
 											/>
 										</Transition.Child>

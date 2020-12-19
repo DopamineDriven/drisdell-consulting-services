@@ -44,7 +44,7 @@ const LandingPageCoalesced = () => {
 						page.node != null &&
 						page.node.featuredImage != null ? (
 						<div
-							className='block mx-auto col-span-2 font-poppins lg:pb-paddingBlogOdd pb-aboutOffsetPR  max-w-cardGrid'
+							className='block mx-auto col-span-2 font-poppins lg:pb-paddingBlogOdd pb-aboutOffsetPR'
 							key={index++}
 						>
 							<LandingLayout

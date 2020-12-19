@@ -1,9 +1,9 @@
 .linkActive {
-	@apply underline px-3 py-2 rounded-md text-lg text-primary-9;
+	@apply underline px-3 py-2 rounded-md text-xl text-primary-9;
 }
 
 .link {
-	@apply px-3 py-2 rounded-md text-lg text-primary-6;
+	@apply px-3 py-2 rounded-md text-xl text-primary-6;
 	&:hover {
 		@apply text-primary-8;
 	}
