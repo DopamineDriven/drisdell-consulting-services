@@ -81,6 +81,13 @@ module.exports = {
 				primary: 'var(--color-border-primary)',
 				auxiliary: 'var(--color-border-auxiliary)'
 			},
+
+			outlline: {
+				'outline-0': 'var(--outline-0)',
+				'outline-1': 'var(--outline-1)',
+				'outline-2': 'var(--outline-2)',
+				'outline-3': 'var(--outline-3)'
+			},
 			fill: {
 				primary: 'var(--color-fill-primary)',
 				auxiliary: 'var(--color-fill-auxiliary)',

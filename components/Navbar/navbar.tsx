@@ -67,7 +67,7 @@ const Navbar: FC<NavbarProps> = props => {
 									<span className='text-xl'>Contact</span>
 								</button>
 							</div>
-							<div className='hidden md:ml-4 md:flex-shrink-0 md:flex md:items-center'>
+							<div className='hidden md:mx-4 md:flex-shrink-0 md:flex md:items-center'>
 								<button className='bg-primary-0 p-1 my-auto rounded-full text-offset-secondary-0 ring-2 ring-primary-6 hover:text-primary-6 focus:outline-none focus:ring-2 focus:ring-priamry-8 focus:ring-accent-6'>
 									<span className='sr-only'>View Notifications</span>
 									<BellIcon classNameSVG='h-8 w-8' />

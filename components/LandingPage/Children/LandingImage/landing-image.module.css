@@ -1,0 +1,4 @@
+.image {
+	@apply block mx-auto align-middle content-center bg-primary-0;
+	filter: grayscale(62.5%);
+}

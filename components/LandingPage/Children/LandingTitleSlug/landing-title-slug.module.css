@@ -1,9 +1,12 @@
 .title p {
-	@apply text-white;
+	@apply text-primary-7;
 }
 
 .error {
-	@apply text-center transition-all transform text-2xl animate-hero;
+	@apply text-center transition-all transform text-xl animate-hero;
+	@screen xs {
+		@apply text-2xl;
+	}
 	@screen sm {
 		@apply text-3xl text-left;
 	}
@@ -18,6 +21,9 @@
 	}
 	@screen 2xl {
 		@apply text-7xl;
+	}
+	@screen 3xl {
+		@apply text-8xl;
 	}
 }
 

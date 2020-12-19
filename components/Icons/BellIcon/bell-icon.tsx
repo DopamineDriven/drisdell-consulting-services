@@ -12,7 +12,7 @@ const BellIcon: FC<SvgAbstracted> = props => {
 			viewBox='0 0 24 24'
 			fill='none'
 			xmlns='http://www.w3.org/2000/svg'
-			className={cn(classNameSVG, ' ')}
+			className={cn(classNameSVG, 'hover:opacity-100 opacity-90 ')}
 			aria-hidden={true}
 			stroke='#1a1d1e'
 		>

@@ -1,6 +1,8 @@
 import { FC } from 'react';
 import Image from 'next/image';
 import { LandingPage_pages_edges_node_featuredImage as FeaturedImage } from '@lib/graphql/LandingPage/__generated__/LandingPage';
+import cn from 'classnames';
+import css from './landing-image.module.css';
 
 export interface LandingPageProps {
 	featuredImage: FeaturedImage;
@@ -17,7 +19,10 @@ const LandingImage: FC<LandingPageProps> = props => {
 				title='Picturesque Lighthouse Landing Page'
 				alt='Picturesque Lighthouse Landing Page'
 				aria-label='Picturesque Lighthouse Landing Page'
-				className={'block mx-auto align-middle content-center bg-primary-0 '}
+				className={cn(
+					css.image,
+					'block mx-auto align-middle content-center bg-primary-0 '
+				)}
 				layout='responsive'
 				width={2500}
 				height={870}
