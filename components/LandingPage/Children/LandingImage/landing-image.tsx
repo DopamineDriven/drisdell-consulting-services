@@ -25,7 +25,7 @@ const LandingImage: FC<LandingPageProps> = props => {
 				)}
 				layout='responsive'
 				width={2500}
-				height={870}
+				height={1250}
 				objectFit='cover'
 				loading='eager'
 				quality={100}
