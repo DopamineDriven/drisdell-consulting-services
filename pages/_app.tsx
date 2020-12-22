@@ -7,6 +7,7 @@ import { useRouter } from 'next/router';
 import { gaInit, logPageView } from '../utils/google-analytics';
 import { ApolloProvider } from '@apollo/client';
 import { useApollo } from '../lib/apollo';
+import { ManagedUIContext } from '@components/context';
 
 config.autoAddCss = false;
 
@@ -25,9 +26,11 @@ function App({ Component, pageProps }: AppProps) {
 		};
 	}, [router.events]);
 	return (
-		<ApolloProvider client={apolloClient}>
-			<Component {...pageProps} />
-		</ApolloProvider>
+		<ManagedUIContext>
+			<ApolloProvider client={apolloClient}>
+				<Component {...pageProps} />
+			</ApolloProvider>
+		</ManagedUIContext>
 	);
 }
 

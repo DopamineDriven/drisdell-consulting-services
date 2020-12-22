@@ -9,9 +9,6 @@ module.exports = {
 	purge: ['./components/**/*.{js,ts,jsx,tsx}', './pages/**/*.{js,ts,jsx,tsx}'],
 	theme: {
 		stroke: {
-			maxWidth: {
-				'9xl': '2220px'
-			},
 			current: 'currentColor',
 			jujiOrange: '#FF9933',
 			eaWhite: '#EAEAEA',
@@ -35,6 +32,9 @@ module.exports = {
 			855: '845deg'
 		},
 		extend: {
+			maxWidth: {
+				'9xl': '2220px'
+			},
 			screens: {
 				xs: '375px',
 				sm: '640px',

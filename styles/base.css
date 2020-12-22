@@ -1,3 +1,9 @@
+.hide-scrollbar {
+	overflow: auto;
+	-ms-overflow-style: none; /* IE 11 */
+	scrollbar-width: none; /* Firefox 64 */
+}
+
 :root {
 	--primary-0: #102a43;
 	--primary-1: #243b53;
@@ -36,6 +42,7 @@
 	--hover-0: rgba(0, 0, 0, 0.075);
 	--hover-1: rgba(0, 0, 0, 0.15);
 	--hover-2: rgba(0, 0, 0, 0.25);
+	@apply hide-scrollbar;
 }
 
 *,
