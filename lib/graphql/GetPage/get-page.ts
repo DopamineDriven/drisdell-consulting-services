@@ -1,5 +1,5 @@
 import { gql, TypedDocumentNode } from '@apollo/client';
-import { FRAGMENT_MENU_FIELDS, FRAGMENT_PAGE_FIELDS } from '@lib/graphql';
+import { FRAGMENT_MENU_FIELDS, FRAGMENT_PAGE_FIELDS } from '@lib/fragments';
 
 const GET_PAGE: TypedDocumentNode = gql`
 	${FRAGMENT_MENU_FIELDS},

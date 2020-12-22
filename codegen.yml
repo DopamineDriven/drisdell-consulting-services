@@ -3,7 +3,7 @@ schema:
  ${WORDPRESS_API_URL_YML}:
     headers:
       Authorization: Bearer ${WORDPRESS_AUTH_REFRESH_TOKEN_YML}
-documents: './lib/graphql/**/*.ts'
+documents: './lib/**/*.ts'
 generates:
  ./graphql.d.ts:
   plugins:

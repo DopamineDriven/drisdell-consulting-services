@@ -1,5 +1,5 @@
 import { gql, TypedDocumentNode } from '@apollo/client';
-import { FRAGMENT_PREVIEW_POST } from '@lib/graphql';
+import { FRAGMENT_PREVIEW_POST } from '@lib/fragments';
 
 const GET_PREVIEW_POST: TypedDocumentNode = gql`
 	${FRAGMENT_PREVIEW_POST}
