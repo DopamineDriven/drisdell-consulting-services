@@ -3,25 +3,41 @@ import { FRAGMENT_MENU_FIELDS } from '@lib/fragments';
 
 const HEADER_FOOTER: TypedDocumentNode = gql`
 	${FRAGMENT_MENU_FIELDS}
-	query HeaderFooter {
-		headerMenu: menuItems(where: { location: PRIMARY, parentId: "0" }) {
-			edges {
-				node {
-					...MenuFragment
-					childItems {
-						edges {
-							node {
-								...MenuFragment
+	query HeaderFooter(
+		$idHead: ID!
+		$idTypeHead: MenuNodeIdTypeEnum!
+		$idFoot: ID!
+		$idTypeFoot: MenuNodeIdTypeEnum!
+	) {
+		headerDynamic: menu(id: $idHead, idType: $idTypeHead) {
+			menuItems(where: { parentId: 0 }) {
+				edges {
+					node {
+						...MenuFragment
+						childItems {
+							edges {
+								node {
+									...MenuFragment
+								}
 							}
 						}
 					}
 				}
 			}
 		}
-		footerMenu: menuItems(where: { location: FOOTER, parentId: "0" }) {
-			edges {
-				node {
-					...MenuFragment
+		footerDynamic: menu(id: $idFoot, idType: $idTypeFoot) {
+			menuItems(where: { parentId: 0 }) {
+				edges {
+					node {
+						...MenuFragment
+						childItems {
+							edges {
+								node {
+									...MenuFragment
+								}
+							}
+						}
+					}
 				}
 			}
 		}
