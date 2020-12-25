@@ -1,15 +1,16 @@
 import { FC } from 'react';
 import cn from 'classnames';
 import Container from '@components/UI/Container';
-import { FooterLogo, FooterNavLinks, FooterSocial } from './Children';
+import { FooterLogo, FooterSocial } from './Children';
 import { WcdIcon } from '@components/Icons';
 
 interface FooterProps {
 	classNameRoot?: string;
+	footerLinks?: React.ReactNode;
 }
 
 const Footer: FC<FooterProps> = props => {
-	const { classNameRoot = '' } = props;
+	const { classNameRoot, footerLinks } = props;
 
 	return (
 		<footer
@@ -27,9 +28,7 @@ const Footer: FC<FooterProps> = props => {
 					<div className='col-span-1 lg:col-span-2'>
 						<FooterLogo />
 					</div>
-					<div className='col-span-1 lg:col-span-3'>
-						<FooterNavLinks />
-					</div>
+					<div className='col-span-1 lg:col-span-3'>{footerLinks}</div>
 					<div className='col-span-1 lg:col-span-7 flex items-start lg:justify-end text-primary'>
 						<FooterSocial />
 					</div>

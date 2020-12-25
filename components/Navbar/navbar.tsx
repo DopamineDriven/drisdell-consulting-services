@@ -3,7 +3,7 @@ import cn from 'classnames';
 import { useRouter } from 'next/router';
 import Logo from '../Logo';
 import { MenuIcon, XIcon, PlusIcon, BellIcon } from '@components/Icons';
-import { NavbarLinks, NavbarUserLinks } from './Children';
+import { NavbarUserLinks } from './Children';
 import css from './navbar.module.css';
 import Avatar from '@components/Avatar';
 import { Transition } from '@headlessui/react/dist';
@@ -12,11 +12,13 @@ import { Transition } from '@headlessui/react/dist';
 
 interface NavbarProps {
 	root?: string;
+	navLinksDesktop: React.ReactNode;
+	navLinksMobile?: React.ReactNode;
 }
 
 const Navbar: FC<NavbarProps> = props => {
 	const router = useRouter();
-	const { root } = props;
+	const { root, navLinksDesktop, navLinksMobile } = props;
 	const [menuOpen, setMenuOpen] = useState(true);
 	const [isOpen, setIsOpen] = useState(false);
 	return (
@@ -53,7 +55,7 @@ const Navbar: FC<NavbarProps> = props => {
 								<Logo classNameParent={css.jujisvg} width='10rem' height='10rem' />
 							</div>
 							<div className='hidden md:ml-6 md:flex md:items-center md:space-x-4'>
-								<NavbarLinks />
+								{navLinksDesktop}
 							</div>
 						</div>
 						<div className='flex items-center'>
@@ -123,11 +125,7 @@ const Navbar: FC<NavbarProps> = props => {
 					})}
 				>
 					<div className='px-2 pt-2 pb-3 space-y-1 sm:px-3 align-middle'>
-						<NavbarLinks
-							root={cn(
-								'block px-3 py-2 rounded-md text-base font-medium text-accents-6'
-							)}
-						/>
+						{navLinksMobile}
 					</div>
 					<div className='pt-4 pb-3 border-t border-accents-5 primary-8'>
 						<div className='flex items-center px-5 sm:px-6'>
