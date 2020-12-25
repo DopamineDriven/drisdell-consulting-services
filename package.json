@@ -8,7 +8,7 @@
 	"private": true,
 	"scripts": {
 		"dev": "next dev && NODE_OPTIONS=--inspect",
-		"build": "next build NODE_OPTIONS=max-old-space-size=8192",
+		"build": "next build",
 		"build:size": "NODE_OPTIONS=max-old-space-size=8192",
 		"build:resolve": "run-p build && build:size",
 		"start": "next start -p 4343",
