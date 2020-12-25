@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import cn from 'classnames';
-import css from './footer-nav-links-headless.module.css';
+import css from './footer-headless-links.module.css';
 import { HeaderFooter_footerDynamic_menuItems_edges_node as FooterRef } from '@lib/graphql/HeaderFooter/__generated__/HeaderFooter';
 
 export interface FooterLinkPropsHeadless extends FooterRef {
