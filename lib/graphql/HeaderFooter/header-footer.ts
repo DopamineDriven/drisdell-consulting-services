@@ -45,3 +45,6 @@ const HEADER_FOOTER: TypedDocumentNode = gql`
 `;
 
 export default HEADER_FOOTER;
+
+// Footer
+// HEADER

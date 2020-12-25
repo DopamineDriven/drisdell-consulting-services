@@ -8,6 +8,15 @@
 //==============================================================
 
 /**
+ * The Type of Identifier used to fetch a single node. Default is "ID". To be used along with the "id" field.
+ */
+export enum MenuNodeIdTypeEnum {
+	DATABASE_ID = 'DATABASE_ID',
+	ID = 'ID',
+	NAME = 'NAME'
+}
+
+/**
  * The cardinality of the connection order
  */
 export enum OrderEnum {
