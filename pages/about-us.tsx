@@ -4,14 +4,27 @@ import { NextPage } from 'next';
 import { initializeApollo, addApolloState } from '@lib/apollo';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { PageTitle } from '@lib/index';
-import { ABOUT_PAGE } from '@lib/graphql';
+import { ABOUT_PAGE, HEADER_FOOTER } from '@lib/graphql';
 import { AboutPageQueryVars } from '@components/About/about-page-coalesced';
+import {
+	AboutPage,
+	AboutPageVariables
+} from '@lib/graphql/AboutPage/__generated__/AboutPage';
+import {
+	HeaderFooter,
+	HeaderFooterVariables
+} from '@lib/graphql/HeaderFooter/__generated__/HeaderFooter';
+import { HeaderFooterMenuQueryVers } from '@components/Layout/layout';
 
 export const getStaticProps: GetStaticProps = async () => {
 	const apolloClient = initializeApollo();
-	await apolloClient.query({
+	await apolloClient.query<AboutPage, AboutPageVariables>({
 		query: ABOUT_PAGE,
 		variables: AboutPageQueryVars
+	});
+	await apolloClient.query<HeaderFooter, HeaderFooterVariables>({
+		query: HEADER_FOOTER,
+		variables: HeaderFooterMenuQueryVers
 	});
 	return addApolloState(apolloClient, {
 		props: {},
