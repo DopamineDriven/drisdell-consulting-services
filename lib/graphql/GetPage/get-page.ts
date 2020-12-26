@@ -4,22 +4,47 @@ import { FRAGMENT_MENU_FIELDS, FRAGMENT_PAGE_FIELDS } from '@lib/fragments';
 const GET_PAGE: TypedDocumentNode = gql`
 	${FRAGMENT_MENU_FIELDS},
 	${FRAGMENT_PAGE_FIELDS}
-	query GetPage($id: ID!, $idType: PageIdType!) {
-		headerMenus: menuItems(where: { location: PRIMARY }) {
-			edges {
-				node {
-					...MenuFragment
+	query GetPage(
+		$idPage: ID!, 
+		$idTypePage: PageIdType!
+		$idHead: ID!
+		$idTypeHead: MenuNodeIdTypeEnum!
+		$idFoot: ID!
+		$idTypeFoot: MenuNodeIdTypeEnum!
+	) {
+headerMenus: menu(id: $idHead, idType: $idTypeHead) {
+			menuItems(where: { parentId: 0 }) {
+				edges {
+					node {
+						...MenuFragment
+						childItems {
+							edges {
+								node {
+									...MenuFragment
+								}
+							}
+						}
+					}
 				}
 			}
 		}
-		footerMenus: menuItems(where: { location: FOOTER }) {
-			edges {
-				node {
-					...MenuFragment
+		footerMenus: menu(id: $idFoot, idType: $idTypeFoot) {
+			menuItems(where: { parentId: 0 }) {
+				edges {
+					node {
+						...MenuFragment
+						childItems {
+							edges {
+								node {
+									...MenuFragment
+								}
+							}
+						}
+					}
 				}
 			}
 		}
-		page: page(id: $id, idType: $idType) {
+		page: page(id: $idPage, idType: $idTypePage) {
 			...PageFragment
 		}
 	}
