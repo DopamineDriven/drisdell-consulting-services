@@ -36,7 +36,7 @@ const Footer: FC<FooterProps> = props => {
 				<div className='py-12 flex flex-col md:flex-row justify-between items-center space-y-4'>
 					<div>
 						<span>
-							&copy; 2020 Drisdell Consulting Services, Inc. All rights reserved.
+							&copy; 2021 Drisdell Consulting Services, Inc. All rights reserved.
 						</span>
 					</div>
 					<div className='flex items-center'>
