@@ -1,13 +1,14 @@
-import Layout from '@components/Layout';
+import Layout, { HeaderFooterMenuQueryVers } from '@components/Layout/layout';
 import { initializeApollo, addApolloState } from '@lib/apollo';
-import { GET_PAGE, GET_PAGES } from '@lib/graphql';
+import { GET_PAGE, GET_PAGES, HEADER_FOOTER } from '@lib/graphql';
 // import ReactMarkdown from 'react-markdown/with-html';
 // import { CodeBlock } from '@components/About/about-card-content';
 import {
 	GetStaticPaths,
-	GetStaticProps,
 	NextPage,
-	GetStaticPropsContext
+	GetStaticPropsContext,
+	InferGetStaticPropsType,
+	GetStaticPropsResult
 } from 'next';
 import {
 	GetPage,
@@ -18,19 +19,31 @@ import {
 	OrderEnum,
 	PageIdType
 } from '@_types/graphql-global-types';
-
 import {
 	GetPages,
 	GetPagesVariables
 } from '../lib/graphql/GetPages/__generated__/GetPages';
 import { PostObjectsConnectionOrderbyEnum } from '../_types/graphql-global-types';
-import { customPagesSlugs } from '../lib/custom-page-slugs';
+import { customPagesSlugs } from '@lib/custom-page-slugs';
 import { useQuery } from '@apollo/client';
 import { useRouter } from 'next/router';
-import { InferGetStaticPropsType } from 'next';
+import { Params } from 'next/dist/next-server/server/router';
+import {
+	HeaderFooter,
+	HeaderFooterVariables
+} from '../lib/graphql/HeaderFooter/__generated__/HeaderFooter';
 
-const P: NextPage & InferGetStaticPropsType<typeof getStaticProps> = () => {
+const getPagesQueryVars: GetPagesVariables = {
+	first: 30,
+	order: OrderEnum.ASC,
+	parentIn: [null],
+	field: PostObjectsConnectionOrderbyEnum.PARENT
+};
+
+const Dynamic: NextPage &
+	InferGetStaticPropsType<typeof getStaticProps> = () => {
 	const { query } = useRouter();
+	const targetSlug = query.slug as string[];
 	const { NAME } = MenuNodeIdTypeEnum;
 	const { URI } = PageIdType;
 	const GetPageQueryVars: GetPageVariables = {
@@ -39,8 +52,7 @@ const P: NextPage & InferGetStaticPropsType<typeof getStaticProps> = () => {
 		idTypeFoot: NAME,
 		idFoot: 'Footer',
 		idTypePage: URI,
-		// @ts-ignore query?.slug[0]
-		idPage: query?.slug[0] ?? query.slug
+		idPage: targetSlug[0]
 	};
 	const { data } = useQuery<GetPage, GetPageVariables>(GET_PAGE, {
 		variables: GetPageQueryVars,
@@ -49,24 +61,29 @@ const P: NextPage & InferGetStaticPropsType<typeof getStaticProps> = () => {
 	const titles =
 		data && data.page !== null && data.page.title !== null
 			? data.page.title
-			: 'oof';
+			: 'Title Null';
 	const contents =
 		data && data.page !== null && data.page.content !== null
 			? data.page.content
-			: 'oooooof';
+			: 'Content Null';
 	return (
 		<Layout title={`${titles}`}>
 			<div>
-				<h1 dangerouslySetInnerHTML={{ __html: titles }} />
+				<h1
+					className='text-primary-0 py-8 px-20 text-4xl mx-auto text-left'
+					dangerouslySetInnerHTML={{ __html: titles }}
+				/>
 				<section dangerouslySetInnerHTML={{ __html: contents }} />
 			</div>
 		</Layout>
 	);
 };
 
-export const getStaticProps: GetStaticProps = async ({
-	params
-}: GetStaticPropsContext) => {
+export async function getStaticProps(
+	ctx: GetStaticPropsContext
+): Promise<GetStaticPropsResult<Params>> {
+	// type assertion
+	const params = ctx.params as Params;
 	const { NAME } = MenuNodeIdTypeEnum;
 	const { URI } = PageIdType;
 	const GetPageQueryVars: GetPageVariables = {
@@ -75,36 +92,62 @@ export const getStaticProps: GetStaticProps = async ({
 		idTypeFoot: NAME,
 		idFoot: 'Footer',
 		idTypePage: URI,
-		idPage: `${params?.slug}`
+		idPage: `${params.slug}`
 	};
 	const apolloClient = initializeApollo();
+	await apolloClient.query<HeaderFooter, HeaderFooterVariables>({
+		query: HEADER_FOOTER,
+		variables: HeaderFooterMenuQueryVers
+	});
+	await apolloClient.query<GetPages, GetPagesVariables>({
+		query: GET_PAGES,
+		variables: getPagesQueryVars
+	});
 	const { data } = await apolloClient.query<GetPage, GetPageVariables>({
 		query: GET_PAGE,
 		variables: GetPageQueryVars
 	});
+	const pageDynamic = data && data.page !== null ? data.page : {};
+	const pathDynamic =
+		data && data.page !== null && data.page.uri !== null ? data.page.uri : '';
+	const slugDynamic =
+		data && data.page !== null && data.page.slug !== null ? data.page.slug : '';
+
+	console.log('contentDynamic: ', pageDynamic);
+	console.log('pathDynamic: ', pathDynamic);
+	console.log('slugDynamic: ', slugDynamic);
 
 	return addApolloState(apolloClient, {
 		props: {
-			page: data.page?.content ?? {},
-			path: data.page?.uri ?? ''
+			page: pageDynamic ?? {},
+			path: pathDynamic ?? params.slug
 		},
 		revalidate: 10
 	});
-};
+}
 
-export const getStaticPaths: GetStaticPaths = async () => {
-	const getPagesQueryVars: GetPagesVariables = {
-		first: 30,
-		order: OrderEnum.ASC,
-		field: PostObjectsConnectionOrderbyEnum.PARENT
+type PathsProps = {
+	params: {
+		slug: string[];
 	};
+}[];
+
+interface PathsPropsResult extends GetStaticPaths {
+	pathsData: PathsProps;
+}
+
+export const getStaticPaths = async (
+	props: PathsPropsResult
+): Promise<{
+	paths: PathsProps;
+	fallback: boolean;
+}> => {
+	const { pathsData = [] } = props;
 	const apolloClient = initializeApollo();
 	const { data } = await apolloClient.query<GetPages, GetPagesVariables>({
 		query: GET_PAGES,
 		variables: getPagesQueryVars
 	});
-
-	const pathsData: any = [];
 
 	if (
 		data &&
@@ -118,8 +161,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 				page.slug !== null &&
 				!customPagesSlugs.includes(page.slug)
 			) {
-				console.log('page.slug:', page.slug);
-				pathsData.push({ params: { slug: [page.slug] } });
+				const returnedData = { params: { slug: [page.slug] } };
+				pathsData.push(returnedData);
 			}
 		});
 
@@ -129,4 +172,4 @@ export const getStaticPaths: GetStaticPaths = async () => {
 	};
 };
 
-export default P;
+export default Dynamic;

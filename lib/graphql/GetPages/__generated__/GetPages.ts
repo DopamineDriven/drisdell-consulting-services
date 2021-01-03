@@ -47,4 +47,5 @@ export interface GetPagesVariables {
 	first: number;
 	field: PostObjectsConnectionOrderbyEnum;
 	order: OrderEnum;
+	parentIn?: (string | null)[] | null;
 }

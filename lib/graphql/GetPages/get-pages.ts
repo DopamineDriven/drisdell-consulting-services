@@ -7,10 +7,11 @@ const GET_PAGES: TypedDocumentNode = gql`
 		$first: Int!
 		$field: PostObjectsConnectionOrderbyEnum!
 		$order: OrderEnum!
+		$parentIn: [ID]
 	) {
 		pages: pages(
 			first: $first
-			where: { orderby: { field: $field, order: $order } }
+			where: { parentIn: $parentIn, orderby: { field: $field, order: $order } }
 		) {
 			nodes {
 				id
