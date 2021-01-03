@@ -22,7 +22,7 @@ import {
 import {
 	GetPages,
 	GetPagesVariables
-} from '../lib/graphql/GetPages/__generated__/GetPages';
+} from '@lib/graphql/GetPages/__generated__/GetPages';
 import { PostObjectsConnectionOrderbyEnum } from '../_types/graphql-global-types';
 import { customPagesSlugs } from '@lib/custom-page-slugs';
 import { useQuery } from '@apollo/client';
@@ -31,7 +31,7 @@ import { Params } from 'next/dist/next-server/server/router';
 import {
 	HeaderFooter,
 	HeaderFooterVariables
-} from '../lib/graphql/HeaderFooter/__generated__/HeaderFooter';
+} from '@lib/graphql/HeaderFooter/__generated__/HeaderFooter';
 
 const getPagesQueryVars: GetPagesVariables = {
 	first: 30,

@@ -1,5 +1,3 @@
-export { default as HomeIcon } from './Home';
-export { default as WcdIcon } from './Wcd';
 export { default as BellIcon } from './BellIcon';
 export { default as CautionIcon } from './Caution';
 export { default as ConnectIcon } from './Connect';
@@ -18,5 +16,6 @@ export { default as ProcessionIcon } from './ProcessIcon';
 export { default as RightArrow } from './RightArrow';
 export { default as SearchIcon } from './Search';
 export { default as SmileyFaceIcon } from './SmileyFace';
-export { default as UserProfileIcon } from './UserProfile';
+export { default as Twitter } from './Twitter';
+export { default as WcdIcon } from './Wcd';
 export { default as XIcon } from './XIcon';
