@@ -17,13 +17,13 @@ import {
 import {
 	MenuNodeIdTypeEnum,
 	OrderEnum,
-	PageIdType
+	PageIdType,
+	PostObjectsConnectionOrderbyEnum
 } from '@_types/graphql-global-types';
 import {
 	GetPages,
 	GetPagesVariables
 } from '@lib/graphql/GetPages/__generated__/GetPages';
-import { PostObjectsConnectionOrderbyEnum } from '../_types/graphql-global-types';
 import { customPagesSlugs } from '@lib/custom-page-slugs';
 import { useQuery } from '@apollo/client';
 import { useRouter } from 'next/router';

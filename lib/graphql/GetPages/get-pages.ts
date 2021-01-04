@@ -17,6 +17,8 @@ const GET_PAGES: TypedDocumentNode = gql`
 				id
 				uri
 				slug
+				title
+				content
 			}
 		}
 	}

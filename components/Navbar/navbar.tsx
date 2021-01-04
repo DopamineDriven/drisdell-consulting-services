@@ -7,8 +7,6 @@ import { NavbarUserLinks } from './Children';
 import css from './navbar.module.css';
 import Avatar from '@components/Avatar';
 import { Transition } from '@headlessui/react/dist';
-// import { HeaderMenu } from '@lib/graphql/HeaderMenu/__generated__/HeaderMenu';
-// import NavbarLinksHeadless from './Children/NavbarLinksHeadless/navbar-links-headless';
 
 interface NavbarProps {
 	root?: string;

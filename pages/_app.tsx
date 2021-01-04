@@ -2,9 +2,9 @@ import '@styles/index.css';
 import { AppProps, NextWebVitalsMetric } from 'next/app';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { gaInit, logPageView } from '../utils/google-analytics';
+import { gaInit, logPageView } from '@utils/google-analytics';
 import { ApolloProvider } from '@apollo/client';
-import { useApollo } from '../lib/apollo';
+import { useApollo } from '@lib/apollo';
 import { ManagedUIContext } from '@components/context';
 
 function App({ Component, pageProps }: AppProps) {
@@ -35,15 +35,3 @@ export function reportWebVitals(metric: NextWebVitalsMetric) {
 }
 
 export default App;
-
-/*
-  // Expand on extending metric reports in a later module
-  const { id, label, startTime, value, name } = metric;
-  console.log('Metrics', [
-    id,
-    startTime,
-    name,
-    label,
-    value
-  ]);
-*/

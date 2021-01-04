@@ -1,6 +1,7 @@
 export { default as BellIcon } from './BellIcon';
 export { default as CautionIcon } from './Caution';
 export { default as ConnectIcon } from './Connect';
+export { default as Cross } from './Cross';
 export { default as DashboardIcon } from './Dashboard';
 export { default as FacebookIcon } from './Facebook';
 export { default as InstagramIcon } from './Instagram';

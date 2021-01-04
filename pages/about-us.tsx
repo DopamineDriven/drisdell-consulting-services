@@ -3,7 +3,6 @@ import { Layout, AboutPageCoalesced } from '@components/index';
 import { NextPage } from 'next';
 import { initializeApollo, addApolloState } from '@lib/apollo';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
-import { PageTitle } from '@lib/index';
 import { ABOUT_PAGE, HEADER_FOOTER } from '@lib/graphql';
 import { AboutPageQueryVars } from '@components/About/about-page-coalesced';
 import {
@@ -33,10 +32,9 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 const About: NextPage & InferGetStaticPropsType<typeof getStaticProps> = () => {
-	const { ABOUT_US } = PageTitle;
 	return (
 		<Fragment>
-			<Layout title={ABOUT_US}>
+			<Layout title={'ABOUT DRISDELL CONSULTING SERVICES'}>
 				<AboutPageCoalesced />
 			</Layout>
 		</Fragment>

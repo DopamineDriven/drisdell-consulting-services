@@ -13,7 +13,6 @@ import {
 	HeaderFooterVariables
 } from '@lib/graphql/HeaderFooter/__generated__/HeaderFooter';
 import { useQuery } from '@apollo/client';
-import ApolloErrorMessage from '../ErrorMessage';
 import { MenuNodeIdTypeEnum } from '@_types/graphql-global-types';
 import NavbarLinks from '../Navbar/Children/NavbarLinks/navbar-links';
 import FooterNavLinksHeadless from '../Footer/Children/FooterHeadlessLinks/footer-headless-links';
@@ -36,9 +35,16 @@ const Loading = () => (
 		<LoadingDots />
 	</div>
 );
+
 const dynamicProps = {
 	loading: () => <Loading />
 };
+
+const ApolloErrorMessage = dynamic(
+	() => import('@components/ErrorMessage'),
+	dynamicProps
+);
+
 const FeatureBar = dynamic(
 	() => import('@components/FeatureBar'),
 	dynamicProps

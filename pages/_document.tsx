@@ -15,8 +15,8 @@ export default class MyDocument extends Document {
 		return { ...initialProps };
 	}
 	render() {
-		const EnvConditional = () => {
-			return process.env.NODE_ENV === 'production' ? (
+		return (
+			<Html lang='en-US'>
 				<Head>
 					<meta charSet='utf-8' />
 					<link rel='stylesheet' href='https://use.typekit.net/cub6off.css' />
@@ -38,17 +38,6 @@ export default class MyDocument extends Document {
 						}}
 					/>
 				</Head>
-			) : (
-				<Head>
-					<meta charSet='utf-8' />
-					<link rel='stylesheet' href='https://use.typekit.net/cub6off.css' />
-					<link rel='stylesheet' href='https://rsms.me/inter/inter.css' />
-				</Head>
-			);
-		};
-		return (
-			<Html lang='en-US'>
-				<EnvConditional />
 				<Main />
 				<NextScript />
 			</Html>

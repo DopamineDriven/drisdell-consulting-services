@@ -1,6 +1,5 @@
 import { Fragment } from 'react';
 import { Layout } from '@components/index';
-import { PageTitle } from '@lib/index';
 import { NextPage, GetStaticProps, InferGetStaticPropsType } from 'next';
 import { HEADER_FOOTER } from '@lib/graphql';
 import {
@@ -25,10 +24,9 @@ export const getStaticProps: GetStaticProps = async () => {
 
 const Contact: NextPage &
 	InferGetStaticPropsType<typeof getStaticProps> = () => {
-	const { CONTACT } = PageTitle;
 	return (
 		<Fragment>
-			<Layout title={CONTACT}>
+			<Layout title={'Contact Drisdell Consulting Services'}>
 				<div>Contact Page</div>
 			</Layout>
 		</Fragment>

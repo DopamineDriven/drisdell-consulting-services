@@ -2,7 +2,6 @@ import { Layout, LandingPageCoalesced } from '@components/index';
 import { LANDING_PAGE, HEADER_FOOTER } from '@lib/graphql';
 import { LandingPageQueryVars } from '@components/LandingPage/landing-page-coalesced';
 import { initializeApollo, addApolloState } from '@lib/apollo';
-import { PageTitle } from '@lib/index';
 import { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
 import { HeaderFooterMenuQueryVers } from '@components/Layout/layout';
 import {
@@ -31,10 +30,9 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 const Index: NextPage & InferGetStaticPropsType<typeof getStaticProps> = () => {
-	const { INDEX } = PageTitle;
 	return (
 		<>
-			<Layout title={INDEX}>
+			<Layout title={'Drisdell Consulting Services Landing Page'}>
 				<LandingPageCoalesced />
 			</Layout>
 		</>
