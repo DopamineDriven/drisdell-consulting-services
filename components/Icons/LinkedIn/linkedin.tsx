@@ -1,26 +1,24 @@
-import { FC } from 'react';
-import SvgAbstracted from '@_types/SvgProps';
+import cn from 'classnames';
 
-const LinkedinIcon: FC<SvgAbstracted> = props => {
-	const { width = '67.449', height = '64.454', classNameSVG } = props;
-
+const LinkedIn = ({ ...props }) => {
 	return (
-		<svg
-			xmlns='http://www.w3.org/2000/svg'
-			width={width}
-			height={height}
-			viewBox='0 0 67.449 64.454'
-			className={classNameSVG}
-		>
-			<path
-				id='Icon_zocial-linkedin'
-				data-name='Icon zocial-linkedin'
-				d='M-.18,7.7A7.011,7.011,0,0,1,2.1,2.332,8.36,8.36,0,0,1,8.023.216,8.11,8.11,0,0,1,13.818,2.3,7.343,7.343,0,0,1,16.1,7.9a6.856,6.856,0,0,1-2.214,5.208,8.375,8.375,0,0,1-5.99,2.148H7.828a7.967,7.967,0,0,1-5.794-2.148A7.216,7.216,0,0,1-.18,7.7ZM.666,64.67V21.18H15.12V64.67H.666Zm22.461,0H37.581V40.386A9.373,9.373,0,0,1,38.1,36.87a9.442,9.442,0,0,1,2.767-3.744,7.074,7.074,0,0,1,4.655-1.53q7.292,0,7.292,9.831V64.67H67.269V39.735q0-9.636-4.557-14.616a15.546,15.546,0,0,0-12.044-4.981,14.775,14.775,0,0,0-13.086,7.227v.13h-.065l.065-.13V21.18H23.128q.13,2.083.13,12.956t-.13,30.534Z'
-				transform='translate(0.18 -0.216)'
-				fill='#1a1d1e'
-			/>
-		</svg>
+		<>
+			<span className='sr-only'>LinkedIn</span>
+			<svg
+				className={cn('w-5 h-5')}
+				fill='currentColor'
+				viewBox='0 0 20 20'
+				aria-hidden='true'
+				{...props}
+			>
+				<path
+					fillRule='evenodd'
+					d='M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z'
+					clipRule='evenodd'
+				/>
+			</svg>
+		</>
 	);
 };
 
-export default LinkedinIcon;
+export default LinkedIn;

@@ -1,46 +1,44 @@
 import { FC } from 'react';
 import cn from 'classnames';
 import {
-	faFacebook,
-	faLinkedin,
-	faTwitter,
-	faInstagram
-} from '@fortawesome/free-brands-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
+	FacebookIcon,
+	LinkedinIcon,
+	TwitterIcon,
+	InstagramIcon
+} from '@components/Icons';
 import css from './footer-social.module.css';
 
 interface FooterSocialIcons {
 	href: string;
 	label: string;
 	className: string;
-	icon: IconProp;
+	icon: JSX.Element;
 }
 
 const socialIcons: FooterSocialIcons[] = [
 	{
-		href: '',
+		href: '#',
 		label: 'LinkedIn',
 		className: ``,
-		icon: faLinkedin
+		icon: <LinkedinIcon />
 	},
 	{
-		href: '',
+		href: '#',
 		label: 'Facebook',
 		className: ``,
-		icon: faFacebook
+		icon: <FacebookIcon />
 	},
 	{
-		href: '',
+		href: '#',
 		label: 'Twitter',
 		className: ``,
-		icon: faTwitter
+		icon: <TwitterIcon />
 	},
 	{
-		href: '',
+		href: '#',
 		label: 'Instagram',
 		className: ``,
-		icon: faInstagram
+		icon: <InstagramIcon />
 	}
 ];
 
@@ -49,7 +47,7 @@ interface FooterSocialProps {
 }
 
 const FooterSocial: FC<FooterSocialProps> = props => {
-	const { classNameRoot = '' } = props;
+	const { classNameRoot } = props;
 	const socialMapped = socialIcons.map(link => (
 		<div key={link.label}>
 			<a
@@ -58,7 +56,7 @@ const FooterSocial: FC<FooterSocialProps> = props => {
 				className={cn(css.socialLink, link.className)}
 				href={link.href}
 			>
-				<FontAwesomeIcon icon={link.icon} size='2x' className={css.socialLink} />
+				{link.icon}
 			</a>
 		</div>
 	));

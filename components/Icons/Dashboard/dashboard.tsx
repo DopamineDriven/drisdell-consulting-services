@@ -1,24 +1,20 @@
-import { FC } from 'react';
-import SvgAbstracted from '@_types/SvgProps';
-
-const DashboardIcon: FC<SvgAbstracted> = props => {
-	const { width = '62.684', height = '62.685', classNameSVG } = props;
-
+const DashboardIcon = ({ ...props }) => {
 	return (
 		<svg
 			xmlns='http://www.w3.org/2000/svg'
-			width={width}
-			height={height}
+			width='62.684'
+			height='62.685'
 			viewBox='0 0 62.684 62.685'
-			className={classNameSVG}
+			className={''}
+			{...props}
 		>
 			<g
 				id='Icon_material-dashboard'
-				data-name='Icon material-dashboard'
+				name='Icon material-dashboard'
 				transform='translate(-4.5 -4.5)'
 				fill='none'
-				stroke-linecap='round'
-				stroke-linejoin='round'
+				strokeLinecap='round'
+				strokeLinejoin='round'
 			>
 				<path
 					d='M4.5,39.325H32.36V4.5H4.5Zm0,27.86H32.36V46.29H4.5Zm34.825,0h27.86V32.36H39.325Zm0-62.685V25.395h27.86V4.5Z'

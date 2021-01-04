@@ -16,6 +16,6 @@ export { default as ProcessionIcon } from './ProcessIcon';
 export { default as RightArrow } from './RightArrow';
 export { default as SearchIcon } from './Search';
 export { default as SmileyFaceIcon } from './SmileyFace';
-export { default as Twitter } from './Twitter';
+export { default as TwitterIcon } from './Twitter';
 export { default as WcdIcon } from './Wcd';
 export { default as XIcon } from './XIcon';

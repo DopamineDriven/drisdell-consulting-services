@@ -1,19 +1,16 @@
-import { FC } from 'react';
-import SvgAbstracted from '@_types/SvgProps';
 import cn from 'classnames';
 
-const PlusIcon: FC<SvgAbstracted> = props => {
-	const { width = '20', height = '20', classNameSVG } = props;
-
+const PlusIcon = ({ ...props }) => {
 	return (
 		<svg
-			width={width}
-			height={height}
+			width='20'
+			height='20'
 			viewBox='0 0 20 20'
 			fill=''
 			aria-hidden={true}
 			xmlns='http://www.w3.org/2000/svg'
-			className={cn(classNameSVG, '')}
+			className={cn('')}
+			{...props}
 		>
 			<path
 				fillRule='evenodd'
@@ -27,5 +24,3 @@ const PlusIcon: FC<SvgAbstracted> = props => {
 };
 
 export default PlusIcon;
-
-// change path fill rule

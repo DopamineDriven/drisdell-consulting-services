@@ -1,6 +1,4 @@
 import '@styles/index.css';
-import { config } from '@fortawesome/fontawesome-svg-core';
-import '@fortawesome/fontawesome-svg-core/styles.css';
 import { AppProps, NextWebVitalsMetric } from 'next/app';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
@@ -8,8 +6,6 @@ import { gaInit, logPageView } from '../utils/google-analytics';
 import { ApolloProvider } from '@apollo/client';
 import { useApollo } from '../lib/apollo';
 import { ManagedUIContext } from '@components/context';
-
-config.autoAddCss = false;
 
 function App({ Component, pageProps }: AppProps) {
 	const apolloClient = useApollo(pageProps);
