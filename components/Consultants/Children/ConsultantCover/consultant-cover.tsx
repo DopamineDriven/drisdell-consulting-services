@@ -3,12 +3,12 @@ import Image from 'next/image';
 import { ConsultantsPage_pages_edges_node_featuredImage as FeaturedImage } from '@lib/graphql/ConsultantsPage/__generated__/ConsultantsPage';
 import css from './consultant-cover.module.css';
 import cn from 'classnames';
-export interface LandingPageProps {
+export interface ConsultantsPageProps {
 	featuredImage: FeaturedImage;
 	root?: string;
 }
 
-const ConsultantCover: FC<LandingPageProps> = props => {
+const ConsultantCover: FC<ConsultantsPageProps> = props => {
 	const { featuredImage, root } = props;
 	return featuredImage != null &&
 		featuredImage.node != null &&

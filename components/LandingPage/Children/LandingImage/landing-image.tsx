@@ -24,8 +24,8 @@ const LandingImage: FC<LandingPageProps> = props => {
 					'block mx-auto align-middle content-center bg-primary-0 '
 				)}
 				layout='responsive'
-				width={2500}
-				height={1250}
+				width={2000}
+				height={650}
 				objectFit='cover'
 				loading='eager'
 				quality={100}

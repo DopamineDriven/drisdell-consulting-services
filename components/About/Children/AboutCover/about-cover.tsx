@@ -3,12 +3,12 @@ import Image from 'next/image';
 import { AboutPage_pages_edges_node_featuredImage as FeaturedImage } from '@lib/graphql/AboutPage/__generated__/AboutPage';
 import css from './about-cover.module.css';
 import cn from 'classnames';
-export interface LandingPageProps {
+export interface AboutPageProps {
 	featuredImage: FeaturedImage;
 	root?: string;
 }
 
-const AboutCover: FC<LandingPageProps> = props => {
+const AboutCover: FC<AboutPageProps> = props => {
 	const { featuredImage, root } = props;
 	return featuredImage != null &&
 		featuredImage.node != null &&
