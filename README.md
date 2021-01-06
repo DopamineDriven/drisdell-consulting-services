@@ -1,7 +1,5 @@
 # drisdell-consulting-services
 
-## Push for prods
-
 ## S3 Bucket
 
 - https://aws.amazon.com/blogs/compute/deploying-a-highly-available-wordpress-site-on-amazon-lightsail-part-2-using-amazon-s3-with-wordpress-to-securely-deliver-media-files/
