@@ -6,7 +6,9 @@ module.exports = {
 		removeDeprecatedGapUtilities: true,
 		purgeLayersByDefault: true
 	},
-	purge: ['./components/**/*.{js,ts,jsx,tsx}', './pages/**/*.{js,ts,jsx,tsx}'],
+	purge: {
+		content: ['./components/**/*.{js,ts,jsx,tsx}', './pages/**/*.{js,ts,jsx,tsx}']
+	},
 	theme: {
 		stroke: {
 			current: 'currentColor',
@@ -512,10 +514,18 @@ module.exports = {
 			}
 		}
 	},
+	variants: {
+		textColor: ['hover', 'group-hover'],
+		backgroundColor: ['group-hover', 'hover'],
+		display: ['responsive', 'hover', 'group-hover'],
+		visibility: ['responsive', 'hover', 'group-hover'],
+		transitionDuration: ['responsive', 'hover', 'group-hover']
+	},
 	plugins: [
 		require('tailwindcss-gradients'),
 		require('@tailwindcss/typography'),
 		require('@tailwindcss/ui'),
+		require('@tailwindui/react'),
 		require('@tailwindcss/forms'),
 		require('@tailwindcss/aspect-ratio')
 	]

@@ -1,5 +1,5 @@
 export const customPagesSlugs = [
-	'drisdell-consulting-services',
+	'drisdell-consulting-services', // index
 	'contact-us',
 	'consultants',
 	'about-us'

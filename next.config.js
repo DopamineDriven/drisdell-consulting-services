@@ -30,7 +30,11 @@ const webpackBundle = {
 };
 
 module.exports = withPlugins([
-	[withBundleAnalyzer({})],
+	[
+		withBundleAnalyzer({
+			enabled: process.env.ANALYZE === true
+		})
+	],
 	webpackBundle,
 	withImages
 ]);

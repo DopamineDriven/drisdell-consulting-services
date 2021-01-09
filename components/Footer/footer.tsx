@@ -1,8 +1,9 @@
 import { FC } from 'react';
 import cn from 'classnames';
-import Container from '@components/UI/Container';
-import { FooterLogo, FooterSocial } from './Children';
-import { WcdIcon } from '@components/Icons';
+import Container from '../UI/Container';
+import FooterLogo from './FooterLogo';
+import FooterSocial from './FooterSocial';
+import { WcdIcon } from '../Icons';
 
 interface FooterProps {
 	classNameRoot?: string;

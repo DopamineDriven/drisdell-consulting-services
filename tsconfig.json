@@ -1,7 +1,7 @@
 {
 	"compilerOptions": {
 		"target": "esnext",
-		"lib": ["dom", "ESNext"],
+		"lib": ["dom", "ES2017"],
 		"allowJs": true,
 		"skipLibCheck": true,
 		"strict": true,
@@ -22,14 +22,21 @@
 		"baseUrl": ".",
 		"strictNullChecks": true,
 		"paths": {
+			"@_types/*": ["_types/*"],
 			"@components/*": ["components/*"],
+			"@config/*": ["config/*"],
 			"@lib/*": ["lib/*"],
 			"@pages/*": ["pages/*"],
-			"@styles/*": ["styles/*"],
-			"@_types/*": ["_types/*"],
-			"@utils/*": ["utils/*"]
+			"@styles/*": ["styles/*"]
 		}
 	},
-	"include": ["next-env.d.ts", "graphql.d.ts", "**/*.ts", "**/*.tsx", "**/*.js"],
+	"include": [
+		"next-env.d.ts",
+		"global.d.ts",
+		"graphql.d.ts",
+		"**/*.ts",
+		"**/*.tsx",
+		"**/*.js"
+	],
 	"exclude": ["node_modules", ".next"]
 }

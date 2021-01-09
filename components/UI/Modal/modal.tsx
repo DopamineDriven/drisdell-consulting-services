@@ -1,10 +1,14 @@
-import { FC, useRef } from 'react';
+import { FC, useRef, useEffect } from 'react';
 import css from './modal.module.css';
 // import { FocusScope } from '@react-aria/focus';
-import { Transition } from '@headlessui/react';
+// import { Transition } from '@headlessui/react';
+import Portal from '@reach/portal';
 import { Cross } from '@components/Icons';
-// import { useOverlay, OverlayContainer } from '@react-aria/overlays';
-// import { useUI } from '@components/context';
+import {
+	disableBodyScroll,
+	enableBodyScroll,
+	clearAllBodyScrollLocks
+} from 'body-scroll-lock';
 interface Props {
 	className?: string;
 	children?: any;
@@ -13,47 +17,40 @@ interface Props {
 }
 
 const Modal: FC<Props> = ({ children, open, onClose }) => {
-	let ref = useRef() as React.MutableRefObject<HTMLInputElement>;
-	// let { overlayProps } = useOverlay(
-	// 	{
-	// 		isOpen: open,
-	// 		isDismissable: false,
-	// 		onClose: onClose,
-	// 		...props
-	// 	},
-	// 	ref
-	// );
+	const ref = useRef() as React.MutableRefObject<HTMLInputElement>;
+
+	useEffect(() => {
+		if (ref.current) {
+			if (open) {
+				disableBodyScroll(ref.current);
+			} else {
+				enableBodyScroll(ref.current);
+			}
+		}
+		return () => {
+			clearAllBodyScrollLocks();
+		};
+	}, [open]);
 
 	return (
-		<Transition show={open ? open : false}>
-			{/* <OverlayContainer> */}
-			{/* <FocusScope contain restoreFocus autoFocus> */}
-			<div className={css.root}>
-				{/* <Transition.Child
-						enter='transition-opacity ease-linear duration-300'
-						enterFrom='opacity-0'
-						enterTo='opacity-100'
-						leave='transition-opacity ease-linear duration-300'
-						leaveFrom='opacity-100'
-						leaveTo='opacity-0'
-					> */}
-				<div className={css.modal} ref={ref}>
-					<div className='h-7 flex items-center justify-end w-full'>
-						<button
-							onClick={() => onClose()}
-							aria-label='Close panel'
-							className='hover:text-gray-500 transition ease-in-out duration-150 focus:outline-none'
-						>
-							<Cross className='h-6 w-6' />
-						</button>
+		<Portal>
+			{open ? (
+				<div className={css.root} ref={ref}>
+					<div className={css.modal}>
+						<div className='h-7 flex items-center justify-end w-full'>
+							<button
+								onClick={() => onClose()}
+								aria-label='Close panel'
+								className='hover:text-gray-500 transition ease-in-out duration-150 focus:outline-none'
+							>
+								<Cross className='h-6 w-6' />
+							</button>
+						</div>
+						{children}
 					</div>
-					{children}
 				</div>
-				{/* </Transition.Child> */}
-			</div>
-			{/* </FocusScope> */}
-			{/* </OverlayContainer> */}
-		</Transition>
+			) : null}
+		</Portal>
 	);
 };
 

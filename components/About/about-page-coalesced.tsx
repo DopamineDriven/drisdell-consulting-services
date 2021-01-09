@@ -1,7 +1,6 @@
 import { useQuery } from '@apollo/client';
-import { WpParentPagesEnum } from '@_types/index';
 import AboutWrapper, { AboutLayout } from './Children';
-import ApolloErrorMessage from '@components/ErrorMessage';
+import ApolloErrorMessage from '@components/UI/ErrorMessage';
 import {
 	AboutPage,
 	AboutPageVariables
@@ -14,7 +13,7 @@ import {
 // import isEmpty from 'lodash.isempty';
 
 export const AboutPageQueryVars: AboutPageVariables = {
-	name: WpParentPagesEnum.ABOUT_US,
+	name: 'about-us',
 	order: OrderEnum.ASC,
 	field: PostObjectsConnectionOrderbyEnum.SLUG
 };

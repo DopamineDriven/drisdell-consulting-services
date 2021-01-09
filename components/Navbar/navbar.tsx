@@ -3,7 +3,7 @@ import cn from 'classnames';
 import { useRouter } from 'next/router';
 import Logo from '../Logo';
 import { MenuIcon, XIcon, PlusIcon, BellIcon } from '@components/Icons';
-import { NavbarUserLinks } from './Children';
+import NavbarUserLinks from './NavbarUserLinks';
 import css from './navbar.module.css';
 import Avatar from '@components/Avatar';
 import { Transition } from '@headlessui/react/dist';

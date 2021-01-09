@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 import css from './layout.module.css';
-import { Meta, Navbar, Footer } from '@components/index';
+import Navbar from '../Navbar';
+import Footer from '../Footer';
 import cn from 'classnames';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
-import { Button, LoadingDots } from '@components/UI';
+import { Button, LoadingDots } from '../UI';
 import { useAcceptCookies } from '@lib/use-accept-cookies';
-import NavLinksHeadless from '@components/Navbar/Children';
 import HEADER_FOOTER from '@lib/graphql/HeaderFooter';
 import {
 	HeaderFooter,
@@ -14,9 +14,11 @@ import {
 } from '@lib/graphql/HeaderFooter/__generated__/HeaderFooter';
 import { useQuery } from '@apollo/client';
 import { MenuNodeIdTypeEnum } from '@_types/graphql-global-types';
-import NavbarLinks from '../Navbar/Children/NavbarLinks/navbar-links';
-import FooterNavLinksHeadless from '../Footer/Children/FooterHeadlessLinks/footer-headless-links';
-import FooterNavLinks from '../Footer/Children/FooterNavLinks/footer-nav-links';
+import Meta from './Meta';
+import NavLinksHeadless from './NavLinksHeadless';
+import NavbarLinks from './NavbarLinks';
+import FooterNavLinksHeadless from './FooterHeadlessLinks';
+import FooterNavLinks from './FooterNavLinks';
 
 interface LayoutProps {
 	classNameRoot?: string;
@@ -41,14 +43,11 @@ const dynamicProps = {
 };
 
 const ApolloErrorMessage = dynamic(
-	() => import('@components/ErrorMessage'),
+	() => import('../UI/ErrorMessage'),
 	dynamicProps
 );
 
-const FeatureBar = dynamic(
-	() => import('@components/FeatureBar'),
-	dynamicProps
-);
+const FeatureBar = dynamic(() => import('../FeatureBar'), dynamicProps);
 
 const Layout: FC<LayoutProps> = props => {
 	const { acceptedCookies, onAcceptCookies } = useAcceptCookies();

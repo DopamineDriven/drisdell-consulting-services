@@ -9,7 +9,7 @@ module.exports = {
 				'./**/*.ts',
 				'./**/*.tsx',
 				'./**/*.js',
-				'./lib/graphql/**/*.ts',
+				'./lib/**/*.ts',
 				'./lib/apollo.ts',
 				'./pages/**/*.tsx'
 			]

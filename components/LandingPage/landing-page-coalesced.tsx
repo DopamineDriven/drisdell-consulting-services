@@ -3,13 +3,12 @@ import {
 	LandingPage,
 	LandingPageVariables
 } from '@lib/graphql/LandingPage/__generated__/LandingPage';
-import { WpParentPagesEnum } from '@_types/index';
 import { LANDING_PAGE } from '@lib/graphql';
 import LandingLayout, { LandingWrapper } from './Children';
-import ApolloErrorMessage from '@components/ErrorMessage';
+import ApolloErrorMessage from '@components/UI/ErrorMessage';
 
 export const LandingPageQueryVars: LandingPageVariables = {
-	name: WpParentPagesEnum.HOME
+	name: 'drisdell-consulting-services'
 };
 
 const LandingPageCoalesced = () => {

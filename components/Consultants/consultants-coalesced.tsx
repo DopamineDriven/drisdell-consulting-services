@@ -3,17 +3,16 @@ import {
 	ConsultantsPageVariables
 } from '@lib/graphql/ConsultantsPage/__generated__/ConsultantsPage';
 import ConsultantWrapper, { ConsultantLayout } from './Children';
-import { WpParentPagesEnum } from '@_types/index';
 import {
 	OrderEnum,
 	PostObjectsConnectionOrderbyEnum
 } from '@_types/graphql-global-types';
-import ApolloErrorMessage from '@components/ErrorMessage';
+import ApolloErrorMessage from '@components/UI/ErrorMessage';
 import { useQuery } from '@apollo/client';
 import { CONSULTANTS_PAGE } from '@lib/graphql';
 
 export const ConsultantsPageQueryVars: ConsultantsPageVariables = {
-	name: WpParentPagesEnum.CONSULTANTS,
+	name: 'consultants',
 	order: OrderEnum.ASC,
 	field: PostObjectsConnectionOrderbyEnum.SLUG
 };

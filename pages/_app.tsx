@@ -2,7 +2,7 @@ import '@styles/index.css';
 import { AppProps, NextWebVitalsMetric } from 'next/app';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { gaInit, logPageView } from '@utils/google-analytics';
+import { gaInit, logPageView } from '@lib/google-analytics';
 import { ApolloProvider } from '@apollo/client';
 import { useApollo } from '@lib/apollo';
 import { ManagedUIContext } from '@components/context';
