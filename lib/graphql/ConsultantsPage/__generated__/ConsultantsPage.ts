@@ -28,8 +28,8 @@ export interface ConsultantsPage_pages_edges_node_featuredImage {
 	node: ConsultantsPage_pages_edges_node_featuredImage_node | null;
 }
 
-export interface ConsultantsPage_pages_edges_node_children_nodes_BlockEditorPreview {
-	__typename: 'BlockEditorPreview' | 'MediaItem' | 'Post' | 'ReusableBlock';
+export interface ConsultantsPage_pages_edges_node_children_nodes_MediaItem {
+	__typename: 'MediaItem' | 'Post';
 	/**
 	 * The uri slug for the post. This is equivalent to the WP_Post->post_name field and the post_name column in the database for the "post_objects" table.
 	 */
@@ -53,7 +53,7 @@ export interface ConsultantsPage_pages_edges_node_children_nodes_Page {
 }
 
 export type ConsultantsPage_pages_edges_node_children_nodes =
-	| ConsultantsPage_pages_edges_node_children_nodes_BlockEditorPreview
+	| ConsultantsPage_pages_edges_node_children_nodes_MediaItem
 	| ConsultantsPage_pages_edges_node_children_nodes_Page;
 
 export interface ConsultantsPage_pages_edges_node_children {
