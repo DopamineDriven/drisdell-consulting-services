@@ -1,5 +1,13 @@
 # drisdell-consulting-services
 
+## Next + ApolloClient v3
+
+- https://github.com/vercel/next.js/discussions/10946
+
+## GraphQL Codegen
+
+- https://medium.com/swlh/how-to-configure-react-apollo-client-and-graphql-codegen-to-do-work-for-you-ecb305d983aa
+
 ## S3 Bucket
 
 - https://aws.amazon.com/blogs/compute/deploying-a-highly-available-wordpress-site-on-amazon-lightsail-part-2-using-amazon-s3-with-wordpress-to-securely-deliver-media-files/
