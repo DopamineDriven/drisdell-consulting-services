@@ -1,10 +1,10 @@
-import { Fragment } from 'react';
-import { Layout, ConsultantsCoalesced } from '@components/index';
 import { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
 import { initializeApollo, addApolloState } from '@lib/apollo';
 import { CONSULTANTS_PAGE, HEADER_FOOTER } from '@lib/graphql';
-import { ConsultantsPageQueryVars } from '@components/Consultants/consultants-coalesced';
-import { HeaderFooterMenuQueryVers } from '@components/Layout/layout';
+import ConsultantsCoalesced, {
+	ConsultantsPageQueryVars
+} from '@components/Consultants/consultants-coalesced';
+import Layout, { HeaderFooterMenuQueryVers } from '@components/Layout/layout';
 import {
 	ConsultantsPage,
 	ConsultantsPageVariables
@@ -33,11 +33,11 @@ export const getStaticProps: GetStaticProps = async () => {
 const Consultants: NextPage &
 	InferGetStaticPropsType<typeof getStaticProps> = () => {
 	return (
-		<Fragment>
+		<>
 			<Layout title={'Drisdell Consulting Services Consultants'}>
 				<ConsultantsCoalesced />
 			</Layout>
-		</Fragment>
+		</>
 	);
 };
 

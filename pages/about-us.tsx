@@ -1,10 +1,9 @@
-import { Fragment } from 'react';
-import { Layout, AboutPageCoalesced } from '@components/index';
-import { NextPage } from 'next';
 import { initializeApollo, addApolloState } from '@lib/apollo';
-import { GetStaticProps, InferGetStaticPropsType } from 'next';
+import { NextPage, GetStaticProps, InferGetStaticPropsType } from 'next';
 import { ABOUT_PAGE, HEADER_FOOTER } from '@lib/graphql';
-import { AboutPageQueryVars } from '@components/About/about-page-coalesced';
+import AboutPageCoalesced, {
+	AboutPageQueryVars
+} from '@components/About/about-page-coalesced';
 import {
 	AboutPage,
 	AboutPageVariables
@@ -13,7 +12,7 @@ import {
 	HeaderFooter,
 	HeaderFooterVariables
 } from '@lib/graphql/HeaderFooter/__generated__/HeaderFooter';
-import { HeaderFooterMenuQueryVers } from '@components/Layout/layout';
+import Layout, { HeaderFooterMenuQueryVers } from '@components/Layout/layout';
 
 export const getStaticProps: GetStaticProps = async () => {
 	const apolloClient = initializeApollo();
@@ -33,11 +32,11 @@ export const getStaticProps: GetStaticProps = async () => {
 
 const About: NextPage & InferGetStaticPropsType<typeof getStaticProps> = () => {
 	return (
-		<Fragment>
+		<>
 			<Layout title={'ABOUT DRISDELL CONSULTING SERVICES'}>
 				<AboutPageCoalesced />
 			</Layout>
-		</Fragment>
+		</>
 	);
 };
 

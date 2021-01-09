@@ -1,5 +1,3 @@
-import { Fragment } from 'react';
-import { Layout } from '@components/index';
 import { NextPage, GetStaticProps, InferGetStaticPropsType } from 'next';
 import { HEADER_FOOTER } from '@lib/graphql';
 import {
@@ -7,7 +5,7 @@ import {
 	HeaderFooterVariables
 } from '@lib/graphql/HeaderFooter/__generated__/HeaderFooter';
 import { initializeApollo, addApolloState } from '@lib/apollo';
-import { HeaderFooterMenuQueryVers } from '@components/Layout/layout';
+import Layout, { HeaderFooterMenuQueryVers } from '@components/Layout/layout';
 
 export const getStaticProps: GetStaticProps = async () => {
 	const apolloClient = initializeApollo();
@@ -25,11 +23,11 @@ export const getStaticProps: GetStaticProps = async () => {
 const Contact: NextPage &
 	InferGetStaticPropsType<typeof getStaticProps> = () => {
 	return (
-		<Fragment>
+		<>
 			<Layout title={'Contact Drisdell Consulting Services'}>
 				<div>Contact Page</div>
 			</Layout>
-		</Fragment>
+		</>
 	);
 };
 

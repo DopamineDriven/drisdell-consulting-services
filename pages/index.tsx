@@ -1,9 +1,10 @@
-import { Layout, LandingPageCoalesced } from '@components/index';
 import { LANDING_PAGE, HEADER_FOOTER } from '@lib/graphql';
-import { LandingPageQueryVars } from '@components/LandingPage/landing-page-coalesced';
+import LandingPageCoalesced, {
+	LandingPageQueryVars
+} from '@components/LandingPage/landing-page-coalesced';
 import { initializeApollo, addApolloState } from '@lib/apollo';
 import { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
-import { HeaderFooterMenuQueryVers } from '@components/Layout/layout';
+import Layout, { HeaderFooterMenuQueryVers } from '@components/Layout/layout';
 import {
 	HeaderFooter,
 	HeaderFooterVariables
