@@ -35,7 +35,7 @@ const LandingTitleSlug: LandingTitleSlugFC = props => {
 
 	return (
 		<div className={cn(css.root, root)}>
-			<Link as={`/${slug}`} href={`/${slug}`} passHref scroll={true}>
+			<Link as={`/${slug}`} href={`/${slug}`} scroll={true}>
 				{TitleConditional}
 			</Link>
 		</div>

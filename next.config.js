@@ -29,6 +29,18 @@ const webpackBundle = {
 	}
 };
 
+const redirects = {
+	async redirects() {
+		return [
+			{
+				source: '/drisdell-consulting-services',
+				destination: '/',
+				permanent: true
+			}
+		];
+	}
+};
+
 module.exports = withPlugins([
 	[
 		withBundleAnalyzer({
@@ -36,5 +48,6 @@ module.exports = withPlugins([
 		})
 	],
 	webpackBundle,
-	withImages
+	withImages,
+	redirects
 ]);
