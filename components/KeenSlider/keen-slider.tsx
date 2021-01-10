@@ -88,7 +88,7 @@ const KeenSlider: FC = ({ children }) => {
 							<button
 								aria-label='Position indicator'
 								key={idx}
-								className={cn(css.positionIndicator, `keen-slider__slide`, {
+								className={cn(css.positionIndicator + `keen-slider__slide`, {
 									[css.positionIndicatorActive]: currentSlide === idx
 								})}
 								onClick={() => {

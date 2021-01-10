@@ -1,5 +1,5 @@
 .bg {
-	@apply min-h-screen h-screen w-screen min-w-full;
+	@apply bg-primary-9 h-full;
 }
 
 .main {

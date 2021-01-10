@@ -138,7 +138,7 @@ const Layout: FC<LayoutProps> = props => {
 						) : (
 							<NavbarLinks
 								root={cn(
-									'block px-3 py-2 rounded-md text-base font-medium text-primary-0'
+									'block px-3 py-2 rounded-md text-base font-medium text-primary-9'
 								)}
 							/>
 						)

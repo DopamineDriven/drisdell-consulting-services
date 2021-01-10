@@ -308,7 +308,8 @@ module.exports = {
 				aboutImage600: '41.7827vw',
 				portfolioDividerWidth: '93.333vw',
 				reviewCardWidth: '24.93vw',
-				imageUnsplash: '41.667vw'
+				imageUnsplash: '41.667vw',
+				'8xl': '96rem'
 			},
 			spacing: {
 				sevenEighths: '0.875vw',
