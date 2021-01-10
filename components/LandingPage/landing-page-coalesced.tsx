@@ -43,7 +43,7 @@ const LandingPageCoalesced = () => {
 						page.node != null &&
 						page.node.featuredImage != null ? (
 						<div
-							className='block mx-auto col-span-2 font-poppins lg:pb-paddingBlogOdd pb-aboutOffsetPR'
+							className='block mx-auto col-span-2 font-poppins pb-14'
 							key={index++}
 						>
 							<LandingLayout
