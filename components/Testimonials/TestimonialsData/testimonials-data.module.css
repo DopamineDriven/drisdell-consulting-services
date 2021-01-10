@@ -1,0 +1,15 @@
+.content p {
+	@apply text-primary-0 font-semibold align-middle my-auto;
+}
+
+.content cite {
+	@apply hidden;
+}
+
+.title p {
+	@apply text-primary-0 font-bold align-middle text-2xl;
+}
+
+.prose blockquote {
+	@apply border-blue-900;
+}

@@ -1,0 +1,21 @@
+.uiContainer {
+	@apply mx-auto max-w-none max-h-full w-full align-middle;
+}
+
+.sliderContainer {
+	@apply z-10 inset-0 flex items-center justify-center overflow-x-hidden align-middle max-h-screen bg-red-500;
+}
+
+.childContainer {
+	@apply align-middle flex-col my-auto rounded-sm mx-auto h-auto;
+	& > div {
+		@apply h-full align-middle;
+		& > div {
+			@apply h-full align-middle;
+		}
+	}
+}
+
+.loading {
+	@apply w-80 h-80 flex items-center text-center justify-center p-3;
+}

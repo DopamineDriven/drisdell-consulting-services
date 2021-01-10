@@ -1,10 +1,13 @@
-import { LANDING_PAGE, HEADER_FOOTER } from '@lib/graphql';
+import { LANDING_PAGE, HEADER_FOOTER, ALL_TESTIMONIALS } from '@lib/graphql';
 import LandingPageCoalesced, {
 	LandingPageQueryVars
 } from '@components/LandingPage/landing-page-coalesced';
 import { initializeApollo, addApolloState } from '@lib/apollo';
 import { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
 import Layout, { HeaderFooterMenuQueryVers } from '@components/Layout/layout';
+import TestimonialsCoalesced, {
+	TestimonialsQueryVars
+} from '@components/Testimonials/testimonials-coalesced';
 import {
 	HeaderFooter,
 	HeaderFooterVariables
@@ -13,6 +16,10 @@ import {
 	LandingPage,
 	LandingPageVariables
 } from '@lib/graphql/LandingPage/__generated__/LandingPage';
+import {
+	AllTestimonials,
+	AllTestimonialsVariables
+} from '@lib/graphql/AllTestimonials/__generated__/AllTestimonials';
 
 export const getStaticProps: GetStaticProps = async () => {
 	const apolloClient = initializeApollo();
@@ -23,6 +30,10 @@ export const getStaticProps: GetStaticProps = async () => {
 	await apolloClient.query<HeaderFooter, HeaderFooterVariables>({
 		query: HEADER_FOOTER,
 		variables: HeaderFooterMenuQueryVers
+	});
+	await apolloClient.query<AllTestimonials, AllTestimonialsVariables>({
+		query: ALL_TESTIMONIALS,
+		variables: TestimonialsQueryVars
 	});
 	return addApolloState(apolloClient, {
 		props: {},
@@ -35,6 +46,7 @@ const Index: NextPage & InferGetStaticPropsType<typeof getStaticProps> = () => {
 		<>
 			<Layout title={'Drisdell Consulting Services Landing Page'}>
 				<LandingPageCoalesced />
+				<TestimonialsCoalesced />
 			</Layout>
 		</>
 	);

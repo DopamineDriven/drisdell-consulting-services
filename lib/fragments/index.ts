@@ -6,3 +6,4 @@ export { default as FRAGMENT_PAGE_FIELDS } from './FragmentPage';
 export { default as FRAGMENT_POSTS_FIELDS } from './FragmentPosts';
 export { default as FRAGMENT_PREVIEW_PAGE } from './FragmentPreviewPage';
 export { default as FRAGMENT_PREVIEW_POST } from './FragmentPreviewPost';
+export { default as FRAGMENT_TESTIMONIAL_FIELDS } from './FragmentTestimonials';

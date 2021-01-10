@@ -1,4 +1,5 @@
 export { default as ABOUT_PAGE } from './AboutPage';
+export { default as ALL_TESTIMONIALS } from './AllTestimonials';
 export { default as CONSULTANTS_PAGE } from './ConsultantsPage';
 export { default as GET_CHILDREN_BY_PARENT_ID } from './GetChildrenByParentId';
 export { default as GET_PAGE } from './GetPage';

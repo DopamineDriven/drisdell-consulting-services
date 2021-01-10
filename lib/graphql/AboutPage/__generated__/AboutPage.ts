@@ -29,7 +29,7 @@ export interface AboutPage_pages_edges_node_featuredImage {
 }
 
 export interface AboutPage_pages_edges_node_children_nodes_MediaItem {
-	__typename: 'MediaItem' | 'Post';
+	__typename: 'MediaItem' | 'Post' | 'Testimonial';
 	/**
 	 * The uri slug for the post. This is equivalent to the WP_Post->post_name field and the post_name column in the database for the "post_objects" table.
 	 */
