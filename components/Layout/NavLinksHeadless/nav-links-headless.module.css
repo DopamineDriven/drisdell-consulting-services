@@ -1,10 +1,16 @@
 .linkActive {
-	@apply underline px-3 py-2 rounded-md text-xl text-primary-2;
+	@apply underline px-3 py-2 rounded-md text-xl text-primary-8;
 }
 
 .link {
-	@apply px-3 py-2 rounded-md text-xl text-primary-3;
+	@apply px-3 py-2 rounded-md text-xl text-primary-8;
 	&:hover {
-		@apply text-primary-2;
+		@apply text-primary-9;
+	}
+	@screen md {
+		@apply text-xl;
+	}
+	@screen xl {
+		@apply text-2xl tracking-tight;
 	}
 }

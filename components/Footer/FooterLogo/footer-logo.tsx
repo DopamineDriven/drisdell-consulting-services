@@ -8,7 +8,7 @@ const FooterLogo = () => {
 		<Link href='/'>
 			<a className={cn(css.footerLogoA)}>
 				<span className={css.footerLogoSpan}>
-					<Logo width='10' height='10' classNameSVG='bg-primary-0 rounded-full' />
+					<Logo className='bg-primary-0 rounded-full h-40 w-40' />
 				</span>
 			</a>
 		</Link>

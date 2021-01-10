@@ -1,5 +1,5 @@
 .linkActive {
-	@apply underline px-3 py-2 rounded-md text-base font-semibold text-primary-0;
+	@apply underline px-3 py-2 rounded-md text-base font-semibold text-primary-0 tracking-tight;
 }
 
 .link {

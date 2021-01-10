@@ -25,7 +25,7 @@ const Navbar: FC<NavbarProps> = props => {
 				<div className='max-w-full mx-auto px-4 sm:px-6 lg:px-8 font-poppins text-primary-9'>
 					<div className='flex justify-between h-48'>
 						<div className='flex'>
-							<div className='-ml-2 mr-2 flex items-center md:hidden'>
+							<div className='-ml-2 mr-2 flex items-center lg:hidden'>
 								<button
 									className='inline-flex items-center justify-center p-2 rounded-md text-primary-8 hover:text-opacity-80 hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white'
 									aria-expanded={false}
@@ -34,14 +34,14 @@ const Navbar: FC<NavbarProps> = props => {
 									<span className='sr-only'>Open Main Menu</span>
 									{menuOpen ? (
 										<MenuIcon
-											classNameSVG={cn('h-6 w-6', {
+											className={cn('h-8 w-8 focus:outline-none', {
 												hidden: !menuOpen,
 												block: menuOpen
 											})}
 										/>
 									) : (
 										<XIcon
-											classNameSVG={cn('h-6 w-6', {
+											className={cn('h-8 w-8 focus:outline-none', {
 												hidden: menuOpen,
 												block: !menuOpen
 											})}
@@ -50,28 +50,28 @@ const Navbar: FC<NavbarProps> = props => {
 								</button>
 							</div>
 							<div className='flex-shrink-0 flex items-center'>
-								<Logo classNameParent={css.jujisvg} width='10rem' height='10rem' />
+								<Logo className={css.svg} />
 							</div>
-							<div className='hidden md:ml-6 md:flex md:items-center md:space-x-4'>
+							<div className='hidden lg:ml-6 lg:flex lg:items-center lg:space-x-4'>
 								{navLinksDesktop}
 							</div>
 						</div>
 						<div className='flex items-center'>
 							<div className='flex-shrink-0'>
 								<button
-									className={`relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm font-medium rounded-md text-primary-8 hover:bg-opacity-70 hover:primary-8 focus:outline-none focus:ring-offset-2 focus:ring-2 focus:ring-primary-1 select-none`}
+									className={`relative inline-flex items-center px-4 py-2 border border-primary-9 shadow-sm font-medium rounded-md text-primary-8 hover:bg-opacity-70 hover:primary-8 focus:outline-none focus:ring-offset-2 focus:ring-2 focus:ring-primary-1 select-none`}
 									type='button'
-									onClick={() => router.push('/contact')}
+									onClick={() => router.push('/contact-us')}
 								>
 									<PlusIcon classNameSVG={cn('ml-1 mr-2 h-5 w-5 text-lg')} />
 									<span className='text-xl'>Contact</span>
 								</button>
 							</div>
-							<div className='hidden md:mx-4 md:flex-shrink-0 md:flex md:items-center'>
-								<button className='bg-primary-0 p-1 my-auto rounded-full text-offset-secondary-0 ring-2 ring-primary-6 hover:text-primary-6 focus:outline-none focus:ring-2 focus:ring-priamry-8 focus:ring-accent-6'>
+							<div className='hidden lg:mx-4 lg:flex-shrink-0 lg:flex lg:items-center'>
+								{/* <button className='bg-primary-0 p-1 my-auto rounded-full text-offset-secondary-0 ring-2 ring-primary-6 hover:text-primary-6 focus:outline-none focus:ring-2 focus:ring-priamry-8 focus:ring-accent-6'>
 									<span className='sr-only'>View Notifications</span>
 									<BellIcon classNameSVG='h-8 w-8' />
-								</button>
+								</button> */}
 
 								<div className='ml-3 '>
 									<div>
@@ -117,7 +117,7 @@ const Navbar: FC<NavbarProps> = props => {
 					</div>
 				</div>
 				<div
-					className={cn('md:hidden primary-8', {
+					className={cn('lg:hidden primary-8', {
 						block: !menuOpen,
 						hidden: menuOpen
 					})}

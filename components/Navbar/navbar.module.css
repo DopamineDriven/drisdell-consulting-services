@@ -2,8 +2,8 @@
 	@apply bg-primary-0 select-none;
 }
 
-.jujisvg {
-	@apply block;
+.svg {
+	@apply block h-40 w-40;
 	@screen lg {
 		@apply hidden;
 	}

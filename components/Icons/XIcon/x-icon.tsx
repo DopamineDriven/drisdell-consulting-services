@@ -14,7 +14,7 @@ const XIcon = ({ ...props }) => {
 		>
 			<path
 				d='M6 6L18 18M6 18L18 6L6 18Z'
-				stroke='#234670'
+				stroke='currentColor'
 				strokeWidth='2'
 				strokeLinecap='round'
 				strokeLinejoin='round'
