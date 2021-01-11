@@ -9,12 +9,15 @@ import AboutData from './AboutData';
 import AboutWrapper from './AboutWrapper';
 import dynamic from 'next/dynamic';
 import Container from '@components/UI/Container';
+import AboutPageLayout from './AboutPageLayout';
+import AboutPageWrapper from './AboutPageWrapper/about-wrapper';
 import {
 	OrderEnum,
 	PostObjectsConnectionOrderbyEnum
 } from '@_types/graphql-global-types';
 
 export const AboutCardsCoalescedQueryVars: AboutCardsDataVariables = {
+	name: 'about-us',
 	first: 15,
 	order: OrderEnum.ASC,
 	field: PostObjectsConnectionOrderbyEnum.TITLE
@@ -60,34 +63,60 @@ const AboutCardsCoalesced = () => {
 	) : loading && !error ? (
 		<Loading />
 	) : (
-		<Container className='' clean>
-			<AboutWrapper>
-				{data &&
-				data.abouts !== null &&
-				data.abouts.edges !== null &&
-				data.abouts.edges.length > 0 ? (
-					data.abouts.edges.map(edge => {
-						return edge !== null &&
-							edge.node !== null &&
-							edge.node.content !== null ? (
-							<AboutData
-								featuredImage={edge.node.featuredImage}
-								title={edge.node.title}
-								slug={edge.node.slug}
-								id={edge.node.id}
-								key={edge.node.id}
-								__typename={edge.node.__typename}
-								content={edge.node.content}
-							/>
-						) : (
-							<div>{error}</div>
-						);
-					})
-				) : (
-					<div>{`${error} about data returned undefined`}</div>
-				)}
-			</AboutWrapper>
-		</Container>
+		<AboutPageWrapper>
+			{data &&
+			data.pages !== null &&
+			data.pages.edges !== null &&
+			data.pages.edges.length > 0 ? (
+				data.pages.edges.map(page => {
+					return page !== null &&
+						page.node !== null &&
+						page.node.content !== null ? (
+						<AboutPageLayout
+							featuredImage={page.node.featuredImage}
+							title={page.node.title}
+							slug={page.node.slug}
+							content={page.node.content}
+							__typename={page.node.__typename}
+							id={page.node.id}
+							key={page.node.id}
+						/>
+					) : (
+						<div>{error} in parent about-us page mapping</div>
+					);
+				})
+			) : (
+				<div>{error} about-us page data is null or a server error occurred</div>
+			)}
+			<Container className='' clean>
+				<AboutWrapper>
+					{data &&
+					data.abouts !== null &&
+					data.abouts.edges !== null &&
+					data.abouts.edges.length > 0 ? (
+						data.abouts.edges.map(edge => {
+							return edge !== null &&
+								edge.node !== null &&
+								edge.node.content !== null ? (
+								<AboutData
+									featuredImage={edge.node.featuredImage}
+									title={edge.node.title}
+									slug={edge.node.slug}
+									id={edge.node.id}
+									key={edge.node.id}
+									__typename={edge.node.__typename}
+									content={edge.node.content}
+								/>
+							) : (
+								<div>{error}</div>
+							);
+						})
+					) : (
+						<div>{`${error} about data returned undefined`}</div>
+					)}
+				</AboutWrapper>
+			</Container>
+		</AboutPageWrapper>
 	);
 };
 
