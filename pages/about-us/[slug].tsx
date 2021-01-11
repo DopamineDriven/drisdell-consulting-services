@@ -32,7 +32,7 @@ import { Params } from 'next/dist/next-server/server/router';
 
 type DynamicPaths = {
 	params: {
-		slug: string[];
+		slug: string;
 	};
 }[];
 
@@ -208,7 +208,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 	)
 		data.aboutslugs.edges.map(post => {
 			if (post !== null && post.node !== null && post.node.slug !== null) {
-				const returnedAboutPaths = { params: { slug: [post.node.slug] } };
+				const returnedAboutPaths = { params: { slug: post.node.slug } };
 				pathsData.push(returnedAboutPaths);
 			}
 		});
