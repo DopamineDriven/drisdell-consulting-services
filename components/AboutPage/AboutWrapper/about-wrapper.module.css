@@ -1,2 +1,3 @@
 .grid-div {
+	@apply select-none;
 }

@@ -1,3 +1,4 @@
+export { default as FRAGMENT_ABOUT_PAGE_FIELDS } from './FragmentAboutPage';
 export { default as FRAGMENT_ABOUT_FIELDS } from './FragmentAbouts';
 export { default as FRAGMENT_CHILDREN_PAGES } from './FragmentChildrenPages';
 export { default as FRAGMENT_COMMENT_FIELDS } from './FragmentComments';

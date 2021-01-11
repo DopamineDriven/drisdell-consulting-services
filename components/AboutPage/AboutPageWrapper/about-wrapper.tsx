@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
 import cn from 'classnames';
-import css from './about-wrapper.module.css';
+import css from './about-page-wrapper.module.css';
 
 interface AboutWrapperProps {
 	root?: string;
 	children?: React.ReactNode;
 }
 
-const AboutWrapper: FC<AboutWrapperProps> = props => {
+const AboutPageWrapper: FC<AboutWrapperProps> = props => {
 	const { root, children } = props;
 	return (
 		<section className={cn(css.root, root)}>
@@ -18,4 +18,4 @@ const AboutWrapper: FC<AboutWrapperProps> = props => {
 	);
 };
 
-export default AboutWrapper;
+export default AboutPageWrapper;

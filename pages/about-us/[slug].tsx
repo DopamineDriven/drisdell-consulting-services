@@ -27,14 +27,9 @@ import {
 import Layout, { HeaderFooterMenuQueryVers } from '@components/Layout/layout';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
-import { useQuery } from '@apollo/client';
+// import { useQuery } from '@apollo/client';
 import { Params } from 'next/dist/next-server/server/router';
-
-type DynamicPaths = {
-	params: {
-		slug: string;
-	};
-}[];
+import AboutPosts from '@components/AboutPosts';
 
 const LoadingDots = dynamic(() => import('@components/UI/LoadingDots'));
 
@@ -43,12 +38,6 @@ const Loading = () => (
 		<LoadingDots />
 	</div>
 );
-
-const dynamicProps = {
-	loading: () => <Loading />
-};
-
-const DynamicImage = dynamic(() => import('next/image'), dynamicProps);
 
 const AboutSlugsQueryVars: AboutSlugsVariables = {
 	order: OrderEnum.ASC,
@@ -61,68 +50,35 @@ const { SLUG } = AboutIdType;
 const DynamicAbout: NextPage &
 	InferGetStaticPropsType<typeof getStaticProps> = () => {
 	const { query } = useRouter();
-	const targetSlug = query.slug as string[];
+	const targetSlug = query.slug as string;
+	const slugToMetaTitle = targetSlug.replace('-', ' ');
+	console.log('slug to title', slugToMetaTitle);
 
-	const AboutBySlugQueryVars: AboutBySlugVariables = {
-		idType: SLUG,
-		id: targetSlug[0]
-	};
+	// const AboutBySlugQueryVars: AboutBySlugVariables = {
+	// 	idType: SLUG,
+	// 	id: targetSlug
+	// };
 
-	const { data } = useQuery<AboutBySlug, AboutBySlugVariables>(ABOUT_BY_SLUG, {
-		variables: AboutBySlugQueryVars,
-		notifyOnNetworkStatusChange: true
-	});
+	// const { data } = useQuery<AboutBySlug, AboutBySlugVariables>(ABOUT_BY_SLUG, {
+	// 	variables: AboutBySlugQueryVars,
+	// 	notifyOnNetworkStatusChange: true
+	// });
 
-	const title =
-		data && data.aboutPost !== null && data.aboutPost.title !== null
-			? data.aboutPost.title
-			: 'Title null';
+	// const title =
+	// 	data && data.aboutPost !== null && data.aboutPost.title !== null
+	// 		? data.aboutPost.title
+	// 		: 'Title null';
 
-	const content =
-		data && data.aboutPost !== null && data.aboutPost.content !== null
-			? data.aboutPost.content
-			: 'Content null';
-
-	const featuredImage =
-		data &&
-		data.aboutPost !== null &&
-		data.aboutPost.featuredImage !== null &&
-		data.aboutPost.featuredImage.node !== null &&
-		data.aboutPost.featuredImage.node.sourceUrl !== null
-			? data.aboutPost.featuredImage.node.sourceUrl
-			: '/error-bot.png';
+	// console.log(title);
 
 	const router = useRouter();
 	return (
-		<Layout title={title}>
+		<Layout title={slugToMetaTitle}>
 			{router.isFallback ? (
 				<Loading />
 			) : (
 				<>
-					<article className='font-poppins mx-auto select-none'>
-						<DynamicImage
-							src={featuredImage}
-							title={title}
-							loading='eager'
-							quality={80}
-							width={1000}
-							height={500}
-							objectFit='cover'
-							layout='responsive'
-							className='object-covershadow-lg w-screen min-w-full pb-10'
-							priority
-						/>
-						<div className='max-w-2xl sm:max-w-3xl md:max-w-5xl lg:max-w-7xl'>
-							<h1
-								className='text-primary-0 py-8 text-2xl sm:text-3xl md:text-4xl mx-auto text-center'
-								dangerouslySetInnerHTML={{ __html: title }}
-							/>
-							<div
-								className='py-16 prose-xl text-primary-0 text-left sm:text-justify content-center mx-auto block'
-								dangerouslySetInnerHTML={{ __html: content }}
-							/>
-						</div>
-					</article>
+					<AboutPosts />
 				</>
 			)}
 		</Layout>
@@ -170,14 +126,29 @@ export async function getStaticProps(
 	});
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
+type DynamicPaths = {
+	params: {
+		slug: string;
+	};
+}[];
+
+interface PathPropsResult extends GetStaticPaths {
+	pathsData: DynamicPaths;
+}
+
+export const getStaticPaths = async (
+	ctx: PathPropsResult
+): Promise<{
+	paths: DynamicPaths;
+	fallback: boolean | 'blocking';
+}> => {
 	const apolloClient = initializeApollo();
 	const { data } = await apolloClient.query<AboutSlugs, AboutSlugsVariables>({
 		query: ABOUT_SLUGS,
 		variables: AboutSlugsQueryVars
 	});
 
-	const pathsData: DynamicPaths = [];
+	const { pathsData = [] } = ctx;
 
 	if (
 		data &&

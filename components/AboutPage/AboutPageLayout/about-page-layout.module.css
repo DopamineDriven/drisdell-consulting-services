@@ -1,8 +1,16 @@
-.title p {
-	@apply text-white;
+.root {
+	@apply min-w-full w-screen -mx-portfolioPadding bg-fixed;
 }
 
-.error {
+.success {
+	@apply block mx-auto align-middle content-center opacity-90;
+}
+
+.title p {
+	@apply text-primary-9;
+}
+
+.errorTitle {
 	@apply text-center transition-all transform text-2xl animate-hero;
 	@screen sm {
 		@apply text-3xl text-left;
@@ -21,8 +29,8 @@
 	}
 }
 
-.success {
-	@apply transition-all transform text-left text-2xl animate-hero text-white -translate-y-10;
+.successTitle {
+	@apply transition-all transform text-center mx-auto text-2xl animate-hero text-primary-9 -translate-y-24;
 	@screen sm {
 		@apply text-3xl;
 	}
@@ -33,17 +41,17 @@
 		@apply text-5xl;
 	}
 	@screen xl {
-		@apply text-6xl;
+		@apply text-7xl;
 	}
 	@screen 2xl {
-		@apply text-7xl;
+		@apply text-8xl;
 	}
 }
 
 .a {
-	@apply block text-left z-50 transition-all duration-500 transform animate-hero;
+	@apply block text-center z-50 transition-all transform;
 }
 
-.root {
+.rootTitle {
 	@apply leading-loose my-3 w-auto;
 }

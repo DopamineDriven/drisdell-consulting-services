@@ -1,5 +1,5 @@
 export { default as AboutCardsCoalesced } from './AboutPage';
-export { default as AboutPageCoalesced } from './About';
+export { default as AboutPosts } from './AboutPosts';
 export { default as ConsultantsCoalesced } from './Consultants';
 export { default as LandingPageCoalesced } from './LandingPage';
 export { default as Layout } from './Layout';
