@@ -46,7 +46,7 @@ const AboutPageLayout: FC<AboutLayoutProps> = props => {
 				</div>
 				<h2
 					className={cn(
-						'text-4xl tracking-tight font-extrabold text-primary-9 sm:text-5xl md:text-6xl lg:text-7xl transition-transform -translate-y-24 transform'
+						'text-4xl tracking-tight font-extrabold text-primary-9 sm:text-5xl md:text-6xl lg:text-7xl transition-transform -translate-y-0 sm:-translate-y-16 md:-translate-y-24 transform'
 					)}
 				>
 					<Link href={`${slugDynamic}`} as={`${slugDynamic}`} passHref>

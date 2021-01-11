@@ -111,7 +111,7 @@ const AboutPosts = () => {
 						priority
 					/>
 				</div>
-				<div className='w-full min-w-full'>
+				<div className='w-full min-w-full max-w-2xl px-5 md:px-2 md:max-w-4xl text-left sm:text-justify'>
 					<DynamicModified
 						modifiedString={modified}
 						root='font-bold prose-xl max-w-2xl sm:max-w-3xl md:max-w-5xl lg:max-w-7xl sm:prose-2xl tracking-tight text-primary-0 text-left sm:text-justify content-center mx-auto flex'
