@@ -36,6 +36,11 @@ const redirects = {
 				source: '/drisdell-consulting-services',
 				destination: '/',
 				permanent: true
+			},
+			{
+				source: '/about/:slug*',
+				destination: '/about-us/:slug*',
+				permanent: true
 			}
 		];
 	}
