@@ -412,7 +412,6 @@ module.exports = {
 					'odd',
 					'group-hover'
 				],
-				padding: ['responsive', 'last', 'first', 'hover', 'focus', 'even', 'odd'],
 				fontSize: ['responsive', 'last', 'first', 'hover', 'focus', 'even', 'odd'],
 				gap: ['responsive', 'last', 'first', 'hover', 'focus', 'even', 'odd'],
 				stroke: [
@@ -520,8 +519,36 @@ module.exports = {
 		}
 	},
 	variants: {
-		textColor: ['hover', 'group-hover'],
-		backgroundColor: ['group-hover', 'hover'],
+		padding: [
+			'responsive',
+			'group-hover',
+			'hover',
+			'focus',
+			'even',
+			'odd',
+			'first',
+			'last'
+		],
+		textColor: [
+			'responsive',
+			'group-hover',
+			'hover',
+			'focus',
+			'even',
+			'first',
+			'last',
+			'odd'
+		],
+		backgroundColor: [
+			'responsive',
+			'group-hover',
+			'hover',
+			'focus',
+			'even',
+			'first',
+			'last',
+			'odd'
+		],
 		display: ['responsive', 'hover', 'group-hover'],
 		visibility: ['responsive', 'hover', 'group-hover'],
 		transitionDuration: ['responsive', 'hover', 'group-hover']

@@ -50,7 +50,7 @@ const Navbar: FC<NavbarProps> = props => {
 								</button>
 							</div>
 							<div className='flex-shrink flex items-center align-middle'>
-								<Logo classNameParent={cn(css.svg, ' ')} />
+								<Logo className={cn(css.svg, ' ')} />
 							</div>
 							<div className='hidden lg:ml-6 lg:flex lg:items-center lg:space-x-4'>
 								{navLinksDesktop}

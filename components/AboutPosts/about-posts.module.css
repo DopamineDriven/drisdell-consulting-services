@@ -1,5 +1,24 @@
+.parentDiv {
+	@apply pt-8 pb-16 prose-xl max-w-2xl text-primary-0 text-left content-center mx-auto flex-row select-none tracking-tight;
+	&:hover {
+		@apply text-primary-7 transition-colors duration-300 ease-in-out transform;
+	}
+	@screen sm {
+		@apply max-w-3xl text-justify;
+	}
+	@screen md {
+		@apply max-w-5xl;
+	}
+	@screen lg {
+		@apply max-w-6xl;
+	}
+	@screen xl {
+		@apply max-w-7xl;
+	}
+}
+
 .table figure {
-	@apply flex-row w-full min-w-full bg-primary-8 bg-opacity-80 mx-auto;
+	@apply flex-row w-full min-w-full bg-primary-9 bg-opacity-80 mx-auto;
 }
 
 .table table {
@@ -11,20 +30,29 @@
 }
 
 .table tr {
-	@apply border-primary-1 border;
+	@apply border-primary-1 border text-primary-0 bg-primary-9;
+	&:hover {
+		@apply text-primary-3 transition-colors duration-300 ease-in-out transform;
+	}
 }
 
 .table td {
-	@apply border-primary-1 border-l border-r border-dashed;
+	@apply border-primary-1 border-l border-r border-dashed even:text-primary-7 even:bg-primary-4 bg-opacity-80;
+	&:hover {
+		@apply even:text-primary-9 transition-colors duration-300 ease-in-out transform;
+	}
 }
 
 .table a:link {
 	@apply font-semibold text-primary-0 underline;
 	&:hover {
-		@apply text-primary-5;
+		@apply text-primary-5 transition-colors duration-300 ease-in-out transform;
 	}
 }
 
-.table p:first-child::first-line {
-	@apply pl-4;
+.table div > p {
+	@apply select-none;
+	&:hover {
+		@apply text-primary-7 transition-colors duration-300 ease-in-out transform;
+	}
 }

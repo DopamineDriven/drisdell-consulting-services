@@ -1,5 +1,5 @@
 .root {
-	@apply min-w-full w-screen -mx-portfolioPadding bg-fixed;
+	@apply min-w-full w-screen bg-fixed -mb-10;
 }
 
 .success {
@@ -30,12 +30,12 @@
 }
 
 .successTitle {
-	@apply transition-all transform text-center mx-auto text-2xl animate-hero text-primary-9 -translate-y-24;
+	@apply transition-all transform text-center mx-auto text-2xl animate-hero text-primary-9 -translate-y-12;
 	@screen sm {
 		@apply text-3xl;
 	}
 	@screen md {
-		@apply text-4xl;
+		@apply text-4xl -translate-y-24;
 	}
 	@screen lg {
 		@apply text-5xl;
