@@ -92,7 +92,7 @@ export async function getStaticProps(
 		idTypeFoot: NAME,
 		idFoot: 'Footer',
 		idTypePage: URI,
-		idPage: `${params.slug}`
+		idPage: params.slug
 	};
 	const apolloClient = initializeApollo();
 	await apolloClient.query<HeaderFooter, HeaderFooterVariables>({
@@ -140,7 +140,7 @@ export const getStaticPaths = async (
 	props: PathsPropsResult
 ): Promise<{
 	paths: PathsProps;
-	fallback: boolean;
+	fallback: boolean | 'blocking';
 }> => {
 	const { pathsData = [] } = props;
 	const apolloClient = initializeApollo();

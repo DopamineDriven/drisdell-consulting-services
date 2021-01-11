@@ -27,14 +27,9 @@ import {
 import Layout, { HeaderFooterMenuQueryVers } from '@components/Layout/layout';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
+// import { useQuery } from '@apollo/client';
 import { Params } from 'next/dist/next-server/server/router';
 import AboutPosts from '@components/AboutPosts';
-
-type DynamicPaths = {
-	params: {
-		slug: string;
-	};
-}[];
 
 const LoadingDots = dynamic(() => import('@components/UI/LoadingDots'));
 
@@ -56,12 +51,29 @@ const DynamicAbout: NextPage &
 	InferGetStaticPropsType<typeof getStaticProps> = () => {
 	const { query } = useRouter();
 	const targetSlug = query.slug as string;
-	const kebabToTitle = targetSlug.replace('-', ' ');
-	console.log('kebab to title', kebabToTitle);
+	const slugToMetaTitle = targetSlug.replace('-', ' ');
+	console.log('slug to title', slugToMetaTitle);
+
+	// const AboutBySlugQueryVars: AboutBySlugVariables = {
+	// 	idType: SLUG,
+	// 	id: targetSlug
+	// };
+
+	// const { data } = useQuery<AboutBySlug, AboutBySlugVariables>(ABOUT_BY_SLUG, {
+	// 	variables: AboutBySlugQueryVars,
+	// 	notifyOnNetworkStatusChange: true
+	// });
+
+	// const title =
+	// 	data && data.aboutPost !== null && data.aboutPost.title !== null
+	// 		? data.aboutPost.title
+	// 		: 'Title null';
+
+	// console.log(title);
 
 	const router = useRouter();
 	return (
-		<Layout title={kebabToTitle}>
+		<Layout title={slugToMetaTitle}>
 			{router.isFallback ? (
 				<Loading />
 			) : (
@@ -114,14 +126,29 @@ export async function getStaticProps(
 	});
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
+type DynamicPaths = {
+	params: {
+		slug: string;
+	};
+}[];
+
+interface PathPropsResult extends GetStaticPaths {
+	pathsData: DynamicPaths;
+}
+
+export const getStaticPaths = async (
+	ctx: PathPropsResult
+): Promise<{
+	paths: DynamicPaths;
+	fallback: boolean | 'blocking';
+}> => {
 	const apolloClient = initializeApollo();
 	const { data } = await apolloClient.query<AboutSlugs, AboutSlugsVariables>({
 		query: ABOUT_SLUGS,
 		variables: AboutSlugsQueryVars
 	});
 
-	const pathsData: DynamicPaths = [];
+	const { pathsData = [] } = ctx;
 
 	if (
 		data &&
