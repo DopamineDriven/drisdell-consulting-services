@@ -21,7 +21,7 @@ interface SvgAbstracted {
 	classNameP2?: string;
 	classNameP3?: string;
 	classNameGtag?: string;
-	classNameParent?: string;
+	className?: string;
 	classNameSVG?: string;
 	rotateCenter?: number;
 	style0?: CSSProperties;
