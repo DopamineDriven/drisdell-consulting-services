@@ -46,7 +46,6 @@ const AboutData: FC<AboutDataProps> = props => {
 					/>
 				</a>
 			</Link>
-
 			<Link
 				as={`about-us/${slugConditional}`}
 				href={`about-us/${slugConditional}`}
@@ -63,7 +62,7 @@ const AboutData: FC<AboutDataProps> = props => {
 						allowDangerousHtml={true}
 						className={cn(
 							css.md,
-							'text-2xl font-poppins font-semibold text-primary-9 hover:text-primary-9 hover:opacity-100 z-50'
+							'text-2xl font-poppins font-semibold text-primary-9 hover:text-primary-8 z-50'
 						)}
 					/>
 				</a>
