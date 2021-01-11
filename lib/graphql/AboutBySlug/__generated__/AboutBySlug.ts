@@ -47,6 +47,10 @@ export interface AboutBySlug_aboutPost {
 	 * Connection between the NodeWithFeaturedImage type and the MediaItem type
 	 */
 	featuredImage: AboutBySlug_aboutPost_featuredImage | null;
+	/**
+	 * The local modified time for a post. If a post was recently updated the modified field will change to match the corresponding time.
+	 */
+	modified: string | null;
 }
 
 export interface AboutBySlug {

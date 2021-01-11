@@ -6,6 +6,7 @@ const ABOUT_BY_SLUG: TypedDocumentNode = gql`
 	query AboutBySlug($id: ID!, $idType: AboutIdType!) {
 		aboutPost: about(id: $id, idType: $idType) {
 			...AboutFields
+			modified
 		}
 	}
 `;

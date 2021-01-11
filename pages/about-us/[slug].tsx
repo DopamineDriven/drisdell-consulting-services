@@ -50,6 +50,11 @@ const dynamicProps = {
 
 const DynamicImage = dynamic(() => import('next/image'), dynamicProps);
 
+const DynamicModified = dynamic(
+	() => import('@components/UI/Modified'),
+	dynamicProps
+);
+
 const AboutSlugsQueryVars: AboutSlugsVariables = {
 	order: OrderEnum.ASC,
 	field: PostObjectsConnectionOrderbyEnum.SLUG,
@@ -61,11 +66,11 @@ const { SLUG } = AboutIdType;
 const DynamicAbout: NextPage &
 	InferGetStaticPropsType<typeof getStaticProps> = () => {
 	const { query } = useRouter();
-	const targetSlug = query.slug as string[];
+	const targetSlug = query.slug as string;
 
 	const AboutBySlugQueryVars: AboutBySlugVariables = {
 		idType: SLUG,
-		id: targetSlug[0]
+		id: targetSlug
 	};
 
 	const { data } = useQuery<AboutBySlug, AboutBySlugVariables>(ABOUT_BY_SLUG, {
@@ -83,6 +88,10 @@ const DynamicAbout: NextPage &
 			? data.aboutPost.content
 			: 'Content null';
 
+	const modified =
+		data && data.aboutPost !== null && data.aboutPost.id !== null
+			? data.aboutPost.modified
+			: '';
 	const featuredImage =
 		data &&
 		data.aboutPost !== null &&
@@ -100,25 +109,30 @@ const DynamicAbout: NextPage &
 			) : (
 				<>
 					<article className='font-poppins mx-auto select-none'>
-						<DynamicImage
-							src={featuredImage}
-							title={title}
-							loading='eager'
-							quality={80}
-							width={1000}
-							height={500}
-							objectFit='cover'
-							layout='responsive'
-							className='object-covershadow-lg w-screen min-w-full pb-10'
-							priority
-						/>
-						<div className='max-w-2xl sm:max-w-3xl md:max-w-5xl lg:max-w-7xl'>
+						<div className='max-w-7xl block mx-auto pt-10'>
 							<h1
-								className='text-primary-0 py-8 text-2xl sm:text-3xl md:text-4xl mx-auto text-center'
+								className='text-primary-0 py-8 text-2xl sm:text-3xl md:text-5xl font-extrabold mx-auto text-center'
 								dangerouslySetInnerHTML={{ __html: title }}
 							/>
+							<DynamicImage
+								src={featuredImage}
+								title={title}
+								loading='eager'
+								quality={80}
+								width={800}
+								height={500}
+								layout='responsive'
+								className='object-covershadow-lg w-7xl pb-10'
+								priority
+							/>
+						</div>
+						<div className='w-full min-w-full'>
+							<DynamicModified
+								modifiedString={modified}
+								root='font-bold prose-xl max-w-2xl sm:max-w-3xl md:max-w-5xl lg:max-w-7xl text-primary-0 text-left sm:text-justify content-center mx-auto flex'
+							/>
 							<div
-								className='py-16 prose-xl text-primary-0 text-left sm:text-justify content-center mx-auto block'
+								className='pt-8 pb-16 prose-xl max-w-2xl sm:max-w-3xl md:max-w-5xl lg:max-w-7xl text-primary-0 text-left sm:text-justify content-center mx-auto flex'
 								dangerouslySetInnerHTML={{ __html: content }}
 							/>
 						</div>
