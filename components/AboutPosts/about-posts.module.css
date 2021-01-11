@@ -1,0 +1,30 @@
+.table figure {
+	@apply flex-row w-full min-w-full bg-primary-8 bg-opacity-80 mx-auto;
+}
+
+.table table {
+	@apply flex-col w-full text-xl text-primary-0 text-center align-middle;
+}
+
+.table tbody {
+	@apply border-primary-0 border-2;
+}
+
+.table tr {
+	@apply border-primary-1 border;
+}
+
+.table td {
+	@apply border-primary-1 border-l border-r border-dashed;
+}
+
+.table a:link {
+	@apply font-semibold text-primary-0 underline;
+	&:hover {
+		@apply text-primary-5;
+	}
+}
+
+.table p:first-child::first-line {
+	@apply pl-4;
+}

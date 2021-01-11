@@ -27,8 +27,8 @@ import {
 import Layout, { HeaderFooterMenuQueryVers } from '@components/Layout/layout';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
-import { useQuery } from '@apollo/client';
 import { Params } from 'next/dist/next-server/server/router';
+import AboutPosts from '@components/AboutPosts';
 
 type DynamicPaths = {
 	params: {
@@ -44,17 +44,6 @@ const Loading = () => (
 	</div>
 );
 
-const dynamicProps = {
-	loading: () => <Loading />
-};
-
-const DynamicImage = dynamic(() => import('next/image'), dynamicProps);
-
-const DynamicModified = dynamic(
-	() => import('@components/UI/Modified'),
-	dynamicProps
-);
-
 const AboutSlugsQueryVars: AboutSlugsVariables = {
 	order: OrderEnum.ASC,
 	field: PostObjectsConnectionOrderbyEnum.SLUG,
@@ -67,76 +56,17 @@ const DynamicAbout: NextPage &
 	InferGetStaticPropsType<typeof getStaticProps> = () => {
 	const { query } = useRouter();
 	const targetSlug = query.slug as string;
-
-	const AboutBySlugQueryVars: AboutBySlugVariables = {
-		idType: SLUG,
-		id: targetSlug
-	};
-
-	const { data } = useQuery<AboutBySlug, AboutBySlugVariables>(ABOUT_BY_SLUG, {
-		variables: AboutBySlugQueryVars,
-		notifyOnNetworkStatusChange: true
-	});
-
-	const title =
-		data && data.aboutPost !== null && data.aboutPost.title !== null
-			? data.aboutPost.title
-			: 'Title null';
-
-	const content =
-		data && data.aboutPost !== null && data.aboutPost.content !== null
-			? data.aboutPost.content
-			: 'Content null';
-
-	const modified =
-		data && data.aboutPost !== null && data.aboutPost.id !== null
-			? data.aboutPost.modified
-			: '';
-	const featuredImage =
-		data &&
-		data.aboutPost !== null &&
-		data.aboutPost.featuredImage !== null &&
-		data.aboutPost.featuredImage.node !== null &&
-		data.aboutPost.featuredImage.node.sourceUrl !== null
-			? data.aboutPost.featuredImage.node.sourceUrl
-			: '/error-bot.png';
+	const kebabToTitle = targetSlug.replace('-', ' ');
+	console.log('kebab to title', kebabToTitle);
 
 	const router = useRouter();
 	return (
-		<Layout title={title}>
+		<Layout title={kebabToTitle}>
 			{router.isFallback ? (
 				<Loading />
 			) : (
 				<>
-					<article className='font-poppins mx-auto select-none'>
-						<div className='max-w-7xl block mx-auto pt-10'>
-							<h1
-								className='text-primary-0 py-8 text-2xl sm:text-3xl md:text-5xl font-extrabold mx-auto text-center'
-								dangerouslySetInnerHTML={{ __html: title }}
-							/>
-							<DynamicImage
-								src={featuredImage}
-								title={title}
-								loading='eager'
-								quality={80}
-								width={800}
-								height={500}
-								layout='responsive'
-								className='object-covershadow-lg w-7xl pb-10'
-								priority
-							/>
-						</div>
-						<div className='w-full min-w-full'>
-							<DynamicModified
-								modifiedString={modified}
-								root='font-bold prose-xl max-w-2xl sm:max-w-3xl md:max-w-5xl lg:max-w-7xl text-primary-0 text-left sm:text-justify content-center mx-auto flex'
-							/>
-							<div
-								className='pt-8 pb-16 prose-xl max-w-2xl sm:max-w-3xl md:max-w-5xl lg:max-w-7xl text-primary-0 text-left sm:text-justify content-center mx-auto flex'
-								dangerouslySetInnerHTML={{ __html: content }}
-							/>
-						</div>
-					</article>
+					<AboutPosts />
 				</>
 			)}
 		</Layout>
