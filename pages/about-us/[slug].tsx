@@ -50,11 +50,6 @@ const dynamicProps = {
 
 const DynamicImage = dynamic(() => import('next/image'), dynamicProps);
 
-const ApolloErrorMessage = dynamic(
-	() => import('@components/UI/ErrorMessage'),
-	dynamicProps
-);
-
 const AboutSlugsQueryVars: AboutSlugsVariables = {
 	order: OrderEnum.ASC,
 	field: PostObjectsConnectionOrderbyEnum.SLUG,
@@ -73,13 +68,10 @@ const DynamicAbout: NextPage &
 		id: targetSlug[0]
 	};
 
-	const { data, error, loading } = useQuery<AboutBySlug, AboutBySlugVariables>(
-		ABOUT_BY_SLUG,
-		{
-			variables: AboutBySlugQueryVars,
-			notifyOnNetworkStatusChange: true
-		}
-	);
+	const { data } = useQuery<AboutBySlug, AboutBySlugVariables>(ABOUT_BY_SLUG, {
+		variables: AboutBySlugQueryVars,
+		notifyOnNetworkStatusChange: true
+	});
 
 	const title =
 		data && data.aboutPost !== null && data.aboutPost.title !== null
@@ -101,20 +93,7 @@ const DynamicAbout: NextPage &
 			: '/error-bot.png';
 
 	const router = useRouter();
-	return error ? (
-		<>
-			<ApolloErrorMessage
-				message={`${error.message}`}
-				graphQLErrors={error.graphQLErrors}
-				networkError={error.networkError}
-				extraInfo={error.extraInfo}
-				stack={error.stack}
-				name={error.name}
-			/>
-		</>
-	) : loading && !error ? (
-		<Loading />
-	) : (
+	return (
 		<Layout title={title}>
 			{router.isFallback ? (
 				<Loading />
