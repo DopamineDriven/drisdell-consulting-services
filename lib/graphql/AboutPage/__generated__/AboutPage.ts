@@ -28,8 +28,8 @@ export interface AboutPage_pages_edges_node_featuredImage {
 	node: AboutPage_pages_edges_node_featuredImage_node | null;
 }
 
-export interface AboutPage_pages_edges_node_children_nodes_MediaItem {
-	__typename: 'MediaItem' | 'Post' | 'Testimonial';
+export interface AboutPage_pages_edges_node_children_nodes_About {
+	__typename: 'About' | 'MediaItem' | 'Post' | 'Testimonial';
 	/**
 	 * The uri slug for the post. This is equivalent to the WP_Post->post_name field and the post_name column in the database for the "post_objects" table.
 	 */
@@ -53,7 +53,7 @@ export interface AboutPage_pages_edges_node_children_nodes_Page {
 }
 
 export type AboutPage_pages_edges_node_children_nodes =
-	| AboutPage_pages_edges_node_children_nodes_MediaItem
+	| AboutPage_pages_edges_node_children_nodes_About
 	| AboutPage_pages_edges_node_children_nodes_Page;
 
 export interface AboutPage_pages_edges_node_children {

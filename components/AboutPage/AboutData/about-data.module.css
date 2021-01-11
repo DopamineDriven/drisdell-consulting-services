@@ -1,0 +1,3 @@
+.img {
+	@apply h-48 w-full object-cover;
+}

@@ -12,7 +12,15 @@ import {
 	HeaderFooter,
 	HeaderFooterVariables
 } from '@lib/graphql/HeaderFooter/__generated__/HeaderFooter';
+import {
+	AboutCardsData,
+	AboutCardsDataVariables
+} from '@lib/graphql/AboutCardsData/__generated__/AboutCardsData';
 import Layout, { HeaderFooterMenuQueryVers } from '@components/Layout/layout';
+import ABOUT_CARDS_DATA from '@lib/graphql/AboutCardsData/about-cards-data';
+import AboutCardsCoalesced, {
+	AboutCardsCoalescedQueryVars
+} from '@components/AboutPage/about-cards-coalesced';
 
 export const getStaticProps: GetStaticProps = async () => {
 	const apolloClient = initializeApollo();
@@ -23,6 +31,10 @@ export const getStaticProps: GetStaticProps = async () => {
 	await apolloClient.query<HeaderFooter, HeaderFooterVariables>({
 		query: HEADER_FOOTER,
 		variables: HeaderFooterMenuQueryVers
+	});
+	await apolloClient.query<AboutCardsData, AboutCardsDataVariables>({
+		query: ABOUT_CARDS_DATA,
+		variables: AboutCardsCoalescedQueryVars
 	});
 	return addApolloState(apolloClient, {
 		props: {},
@@ -35,6 +47,7 @@ const About: NextPage & InferGetStaticPropsType<typeof getStaticProps> = () => {
 		<>
 			<Layout title={'ABOUT DRISDELL CONSULTING SERVICES'}>
 				<AboutPageCoalesced />
+				<AboutCardsCoalesced />
 			</Layout>
 		</>
 	);

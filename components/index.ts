@@ -1,3 +1,4 @@
+export { default as AboutCardsCoalesced } from './AboutPage';
 export { default as AboutPageCoalesced } from './About';
 export { default as ConsultantsCoalesced } from './Consultants';
 export { default as LandingPageCoalesced } from './LandingPage';
