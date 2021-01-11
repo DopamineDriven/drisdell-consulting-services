@@ -9,6 +9,7 @@ import cn from 'classnames';
 import { AboutIdType } from '@_types/graphql-global-types';
 import { useRouter } from 'next/router';
 import css from './about-posts.module.css';
+import ReactMarkdown from 'react-markdown/with-html';
 
 const LoadingDots = dynamic(() => import('@components/UI/LoadingDots'));
 
@@ -26,11 +27,6 @@ const DynamicImage = dynamic(() => import('next/image'), dynamicProps);
 
 const DynamicModified = dynamic(
 	() => import('@components/UI/Modified'),
-	dynamicProps
-);
-
-const DynamicMarkdownWithHtml = dynamic(
-	() => import('react-markdown/with-html'),
 	dynamicProps
 );
 
@@ -94,11 +90,12 @@ const AboutPosts = () => {
 	) : (
 		<>
 			<article className='font-poppins mx-auto select-none'>
-				<div className='max-w-3xl sm:max-w-4xl md:max-w-5xl lg:max-w-7xl block mx-auto pt-10'>
-					<DynamicMarkdownWithHtml
+				<div className={cn(css.parentDiv)}>
+					<ReactMarkdown
 						allowDangerousHtml={false}
 						className={cn(
-							'text-primary-0 py-8 text-2xl sm:text-3xl md:text-5xl font-extrabold mx-auto text-center tracking-tight'
+							'text-primary-0 py-8 text-2xl sm:text-3xl md:text-5xl font-extrabold mx-auto text-center tracking-tight',
+							css.parentDiv
 						)}
 						children={title}
 					/>
@@ -110,7 +107,7 @@ const AboutPosts = () => {
 						width={800}
 						height={400}
 						layout='responsive'
-						className='object-covershadow-lg max-w-7xl pb-10'
+						className='object-covershadow-lg max-w-7xl pb-2'
 						priority
 					/>
 				</div>
@@ -119,7 +116,7 @@ const AboutPosts = () => {
 						modifiedString={modified}
 						root='font-bold prose-xl max-w-2xl sm:max-w-3xl md:max-w-5xl lg:max-w-7xl sm:prose-2xl tracking-tight text-primary-0 text-left sm:text-justify content-center mx-auto flex'
 					/>
-					<DynamicMarkdownWithHtml
+					<ReactMarkdown
 						allowDangerousHtml={true}
 						className={cn(
 							css.table,

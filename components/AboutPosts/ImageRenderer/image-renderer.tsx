@@ -1,6 +1,7 @@
 import Image, { ImageLoaderProps } from 'next/image';
 import ReactMarkdown from 'react-markdown/with-html';
 import { FC } from 'react';
+import { ReactMarkdownProps } from 'react-markdown';
 
 /*
 	const [bg] = useState(useMemo(() => ColorsSvg, []));
@@ -17,7 +18,7 @@ interface CustomImageRenderer {
 	height: number;
 }
 
-const ImageCustom: FC<CustomImageRenderer> = props => {
+const ImageCustom: FC<CustomImageRenderer & ReactMarkdownProps> = props => {
 	const { mdChildren } = props;
 
 	const CustomImage: FC<ImageLoaderProps> = props => {
