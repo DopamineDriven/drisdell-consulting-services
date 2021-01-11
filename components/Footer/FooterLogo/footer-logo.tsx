@@ -8,7 +8,7 @@ const FooterLogo = () => {
 		<Link href='/'>
 			<a className={cn(css.footerLogoA)}>
 				<span className={css.footerLogoSpan}>
-					<Logo className='bg-primary-0 rounded-full h-40 w-40' />
+					<Logo className='bg-primary-0 rounded-full h-40 w-40 z-50 ' />
 				</span>
 			</a>
 		</Link>

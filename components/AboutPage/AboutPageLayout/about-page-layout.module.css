@@ -30,7 +30,7 @@
 }
 
 .successTitle {
-	@apply transition-all transform text-center mx-auto text-2xl animate-hero text-primary-9 -translate-y-12;
+	@apply transition-all transform text-center mx-auto text-2xl animate-hero text-primary-9 -translate-y-12 cursor-default;
 	@screen sm {
 		@apply text-3xl;
 	}
@@ -49,7 +49,7 @@
 }
 
 .a {
-	@apply block text-center z-50 transition-all transform;
+	@apply block text-center z-50 transition-all transform cursor-default;
 }
 
 .rootTitle {
