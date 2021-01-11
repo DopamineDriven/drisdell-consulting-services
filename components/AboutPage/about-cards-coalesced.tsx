@@ -3,9 +3,9 @@ import {
 	AboutCardsData,
 	AboutCardsDataVariables
 } from '@lib/graphql/AboutCardsData/__generated__/AboutCardsData';
-import { Container } from '@components/UI';
+
 import { useQuery } from '@apollo/client';
-import cn from 'classnames';
+
 import AboutData from './AboutData';
 import AboutWrapper from './AboutWrapper';
 import dynamic from 'next/dynamic';
@@ -60,36 +60,34 @@ const AboutCardsCoalesced = () => {
 	) : loading && !error ? (
 		<Loading />
 	) : (
-		<Container className={cn('select-none')}>
-			<section>
-				<AboutWrapper>
-					{data &&
-					data.abouts !== null &&
-					data.abouts.edges !== null &&
-					data.abouts.edges.length > 0 ? (
-						data.abouts.edges.map(edge => {
-							return edge !== null &&
-								edge.node !== null &&
-								edge.node.content !== null ? (
-								<AboutData
-									featuredImage={edge.node.featuredImage}
-									title={edge.node.title}
-									slug={edge.node.slug}
-									id={edge.node.id}
-									key={edge.node.id}
-									__typename={edge.node.__typename}
-									content={edge.node.content}
-								/>
-							) : (
-								<div>{error}</div>
-							);
-						})
-					) : (
-						<div>{`${error} about data returned undefined`}</div>
-					)}
-				</AboutWrapper>
-			</section>
-		</Container>
+		<section>
+			<AboutWrapper>
+				{data &&
+				data.abouts !== null &&
+				data.abouts.edges !== null &&
+				data.abouts.edges.length > 0 ? (
+					data.abouts.edges.map(edge => {
+						return edge !== null &&
+							edge.node !== null &&
+							edge.node.content !== null ? (
+							<AboutData
+								featuredImage={edge.node.featuredImage}
+								title={edge.node.title}
+								slug={edge.node.slug}
+								id={edge.node.id}
+								key={edge.node.id}
+								__typename={edge.node.__typename}
+								content={edge.node.content}
+							/>
+						) : (
+							<div>{error}</div>
+						);
+					})
+				) : (
+					<div>{`${error} about data returned undefined`}</div>
+				)}
+			</AboutWrapper>
+		</section>
 	);
 };
 

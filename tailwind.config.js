@@ -160,6 +160,9 @@ module.exports = {
 					800: '#0A6C74',
 					900: '#044E54'
 				},
+				reds: {
+					0: '#8A041A'
+				},
 				black: '#000000',
 				white: '#FFFFFF',
 				success: '#0070F3',
@@ -511,7 +514,8 @@ module.exports = {
 					'last',
 					'even',
 					'odd'
-				]
+				],
+				backgroundColor: ['active', 'hover', 'focus', 'group-hover']
 			}
 		}
 	},

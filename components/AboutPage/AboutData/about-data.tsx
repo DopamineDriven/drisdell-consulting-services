@@ -22,48 +22,51 @@ const AboutData: FC<AboutDataProps> = props => {
 			: '/error-bot.png';
 	return (
 		<div
-			className={cn(root, 'flex flex-col rounded-lg shadow-lg overflow-hidden')}
+			className={cn(
+				root,
+				'flex flex-col text-center rounded-lg shadow-lg overflow-hidden group-hover:bg-opacity-50'
+			)}
 		>
-			<div className='flex-shrink-0'>
-				<Link
-					href={`about-us/${slugConditional}`}
-					as={`about-us/${slugConditional}`}
-					passHref
+			<Link
+				href={`about-us/${slugConditional}`}
+				as={`about-us/${slugConditional}`}
+				passHref
+			>
+				<a aria-label='anchor' className='' id={`#${slugConditional}`}>
+					<Image
+						src={featuredImageConditional}
+						loading='eager'
+						layout='responsive'
+						objectFit='cover'
+						quality={80}
+						width={100}
+						height={100}
+						className={css.img}
+						priority
+					/>
+				</a>
+			</Link>
+
+			<Link
+				as={`about-us/${slugConditional}`}
+				href={`about-us/${slugConditional}`}
+				passHref
+			>
+				<a
+					className={cn(
+						'flex-1 flex flex-col justify-between transition-transform transform -translate-y-52 z-50 -mb-8',
+						css.title
+					)}
 				>
-					<a aria-label='anchor' className='' id={`#${slugConditional}`}>
-						<Image
-							src={featuredImageConditional}
-							loading='eager'
-							layout='responsive'
-							objectFit='cover'
-							quality={80}
-							width={100}
-							height={100}
-							className={css.img}
-							priority
-						/>
-					</a>
-				</Link>
-			</div>
-			<div className='flex-1 bg-primary-9 flex flex-col justify-between'>
-				<div className='flex-1'>
-					<Link
-						as={`about-us/${slugConditional}`}
-						href={`about-us/${slugConditional}`}
-						passHref
-					>
-						<a className={cn('block mt-2')}>
-							<ReactMarkdown
-								children={titleConditional}
-								allowDangerousHtml={true}
-								className={cn(
-									'text-xl font-poppins font-semibold text-primary-0 hover:text-primary-2'
-								)}
-							/>
-						</a>
-					</Link>
-				</div>
-			</div>
+					<ReactMarkdown
+						children={titleConditional}
+						allowDangerousHtml={true}
+						className={cn(
+							'text-2xl font-poppins font-semibold bg-primary-0 bg-opacity-50 text-primary-9 hover:text-primary-9 hover:opacity-100 z-50'
+						)}
+					/>
+				</a>
+			</Link>
 		</div>
 	);
 };

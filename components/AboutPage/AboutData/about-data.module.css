@@ -1,3 +1,16 @@
 .img {
-	@apply h-48 w-full object-cover;
+	@apply h-48 w-full object-cover min-h-full;
+
+	&:hover {
+		@apply opacity-50;
+		background-image: linear-gradient(
+			to right,
+			rgba(126, 213, 111, 0.801),
+			hsla(160, 64%, 43%, 0.801)
+		);
+	}
+}
+
+.title {
+	@apply content-center;
 }

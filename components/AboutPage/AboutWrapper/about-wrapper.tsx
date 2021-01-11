@@ -1,5 +1,6 @@
 import cn from 'classnames';
 import { FC } from 'react';
+import css from './about-wrapper.module.css';
 
 interface AboutWrapperProps {
 	root?: string;
@@ -12,11 +13,11 @@ const AboutWrapper: FC<AboutWrapperProps> = props => {
 		<div
 			className={cn(
 				root,
-				'relative bg-primary-7 pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8 '
+				'relative bg-primary-9 pt-16 pb-16 px-4 sm:px-6 lg:pt-24 lg:pb-24 lg:px-8 '
 			)}
 		>
 			<div className='absolute inset-0'>
-				<div className='bg-primary-9 h-1/3 sm:h-2/3' />
+				<div className='bg-primary-9 h-1/3 sm:h-2/3 ' />
 			</div>
 			<div className='relative max-w-7xl mx-auto'>
 				<div className='text-center'>
@@ -26,7 +27,8 @@ const AboutWrapper: FC<AboutWrapperProps> = props => {
 				</div>
 				<div
 					className={cn(
-						'mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none'
+						css.gridDiv,
+						'mt-12 max-w-lg mx-auto text-center grid gap-5 md:max-w-3xl md:grid-cols-2 lg:grid-cols-3 lg:max-w-none group-hover:opacity-75'
 					)}
 				>
 					{children}
