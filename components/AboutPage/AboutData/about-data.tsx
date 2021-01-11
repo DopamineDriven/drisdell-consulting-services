@@ -62,7 +62,8 @@ const AboutData: FC<AboutDataProps> = props => {
 						children={titleConditional}
 						allowDangerousHtml={true}
 						className={cn(
-							'text-2xl font-poppins font-semibold bg-primary-0 bg-opacity-50 text-primary-9 hover:text-primary-9 hover:opacity-100 z-50'
+							css.md,
+							'text-2xl font-poppins font-semibold text-primary-9 hover:text-primary-9 hover:opacity-100 z-50'
 						)}
 					/>
 				</a>

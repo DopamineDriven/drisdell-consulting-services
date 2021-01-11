@@ -13,7 +13,7 @@ const AboutWrapper: FC<AboutWrapperProps> = props => {
 		<div
 			className={cn(
 				root,
-				'relative bg-primary-9 pt-16 pb-16 px-4 sm:px-6 lg:pt-24 lg:pb-24 lg:px-8 '
+				'relative bg-primary-9 pt-8 pb-16 px-4 sm:px-6 lg:pt-8 lg:pb-24 lg:px-8 select-none'
 			)}
 		>
 			<div className='absolute inset-0'>

@@ -3,12 +3,12 @@ import {
 	AboutCardsData,
 	AboutCardsDataVariables
 } from '@lib/graphql/AboutCardsData/__generated__/AboutCardsData';
-
 import { useQuery } from '@apollo/client';
 
 import AboutData from './AboutData';
 import AboutWrapper from './AboutWrapper';
 import dynamic from 'next/dynamic';
+import Container from '@components/UI/Container';
 import {
 	OrderEnum,
 	PostObjectsConnectionOrderbyEnum
@@ -60,7 +60,7 @@ const AboutCardsCoalesced = () => {
 	) : loading && !error ? (
 		<Loading />
 	) : (
-		<section>
+		<Container className='' clean>
 			<AboutWrapper>
 				{data &&
 				data.abouts !== null &&
@@ -87,7 +87,7 @@ const AboutCardsCoalesced = () => {
 					<div>{`${error} about data returned undefined`}</div>
 				)}
 			</AboutWrapper>
-		</section>
+		</Container>
 	);
 };
 

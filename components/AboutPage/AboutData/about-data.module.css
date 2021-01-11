@@ -14,3 +14,8 @@
 .title {
 	@apply content-center;
 }
+
+.md p {
+	@apply w-auto flex-1;
+	background-color: hsla(209, 61%, 16%, 0.5);
+}

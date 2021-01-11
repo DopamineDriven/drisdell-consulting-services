@@ -30,7 +30,6 @@ const AboutParent: FC<AboutParentProps> = props => {
 							<AboutLayout
 								title={page.node.title}
 								children={page.node.children}
-								content={page.node.content}
 								featuredImage={page.node.featuredImage}
 							/>
 							{children}

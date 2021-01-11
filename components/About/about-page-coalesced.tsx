@@ -63,7 +63,6 @@ const AboutPageCoalesced = () => {
 								<AboutLayout
 									title={page.node.title}
 									children={page.node.children}
-									content={page.node.content}
 									featuredImage={page.node.featuredImage}
 								/>
 								{page.node.children.nodes !== null &&
@@ -71,7 +70,7 @@ const AboutPageCoalesced = () => {
 									page.node.children.nodes.map(page =>
 										page !== null && page.slug !== null ? (
 											<div
-												className='flex-row w-full min-w-full text-xs text-accents-2'
+												className='flex-row w-full min-w-full text-xs text-accents-2 hidden'
 												key={page.slug}
 											>
 												<p className=' max-w-xs'>{page.slug}</p>
