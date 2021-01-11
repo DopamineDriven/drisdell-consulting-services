@@ -1,5 +1,5 @@
 .root {
-	@apply min-w-full w-screen -mx-portfolioPadding bg-fixed;
+	@apply min-w-full w-screen bg-fixed;
 }
 
 .success {
