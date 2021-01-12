@@ -11,7 +11,6 @@ import { useRouter } from 'next/router';
 import css from './about-posts.module.css';
 import ReactMarkdown from 'react-markdown/with-html';
 import Image, { ImageLoaderProps, ImageProps } from 'next/image';
-// import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 
 const LoadingDots = dynamic(() => import('@components/UI/LoadingDots'));
 
@@ -37,26 +36,26 @@ const ApolloErrorMessage = dynamic(
 	dynamicProps
 );
 
-const renderers = {
-	image: (img: ImageLoaderProps & ImageProps) => {
-		return (
-			<Image
-				src={img.src}
-				alt={img.alt}
-				height={img.height}
-				width={img.width}
-				quality={img.quality}
-				loading={img.loading}
-				objectFit={img.objectFit}
-				priority={img.priority}
-				layout={img.layout}
-				objectPosition={img.objectPosition}
-			/>
-		);
-	}
-};
+// const img = document.querySelector('img');
 
 const { SLUG } = AboutIdType;
+
+const ImageRenderer = (img: ImageLoaderProps & ImageProps) => {
+	return (
+		<Image
+			// src={(img.src = `${process.env.WORDPRESS_SRCSET}/*`)}
+			src={img.src}
+			alt={img.alt}
+			height={img.height}
+			// contentEditable={(img.contentEditable = true)}
+			width={img.width}
+			quality={(img.quality = 80)}
+			loading={'eager'}
+			priority={(img.priority = true)}
+			layout={(img.layout = 'responsive')}
+		/>
+	);
+};
 
 const AboutPosts = () => {
 	const { query } = useRouter();
@@ -143,7 +142,7 @@ const AboutPosts = () => {
 							css['tableMd'],
 							' pt-8 pb-16 prose-xl max-w-2xl sm:max-w-3xl md:max-w-5xl lg:max-w-6xl text-primary-0 text-left sm:text-justify content-center mx-auto flex-row'
 						)}
-						renderers={renderers}
+						renderers={{ img: ImageRenderer }}
 						children={content}
 					/>
 				</div>

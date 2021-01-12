@@ -1,5 +1,7 @@
 # drisdell-consulting-services
 
+## [Effective TS - Advanced Methods](https://effectivetypescript.com/2020/11/05/template-literal-types/a2sa)
+
 ## Next + ApolloClient v3
 
 - https://github.com/vercel/next.js/discussions/10946
