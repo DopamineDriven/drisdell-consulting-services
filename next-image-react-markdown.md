@@ -1,3 +1,13 @@
+## [HTML TO MARKDOWN CONVERTER](https://domchristie.github.io/turndown/)
+
+- Looks like additional config is required...
+- [react-markdown-html](https://reposhub.com/react/miscellaneous/rexxars-react-markdown.html)
+- [custom-processing-instructions](https://github.com/aknuds1/html-to-react#with-custom-processing-instructions)
+- [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote)
+- 01/12/21
+  My attempted solution with Typescript + Headless WordPress. The exported function is passed to `pages/about/[slug].tsx` for dynamic content handling.
+
+```tsx
 import dynamic from 'next/dynamic';
 import {
 	AboutBySlug,
@@ -23,8 +33,6 @@ const Loading = () => (
 const dynamicProps = {
 	loading: () => <Loading />
 };
-
-// const DynamicImage = dynamic(() => import('next/image'), dynamicProps);
 
 const DynamicModified = dynamic(
 	() => import('@components/UI/Modified'),
@@ -82,7 +90,7 @@ const AboutPosts = () => {
 			: 'Content null';
 
 	const modified =
-		data && data.aboutPost !== null && data.aboutPost.id !== null
+		data && data.aboutPost !== null && data.aboutPost.modified !== null
 			? data.aboutPost.modified
 			: '';
 	const featuredImage =
@@ -152,3 +160,29 @@ const AboutPosts = () => {
 };
 
 export default AboutPosts;
+```
+
+I changed `image` to `img` since that's the element being returned...it isn't working though. hmm...(from my apollo cache). It has the same url structure as the featured image that I can easily render with the next/image component. Any ideas on how to target images in the returned content?
+
+```s
+wait  - compiling...
+event - compiled successfully
+aboutPostDynamic:  {
+  __typename: 'About',
+  modified: '2021-01-11 04:42:32',
+  content: '\n' +
+    '<figure class="wp-block-image alignwide size-large"><img loading="lazy" width="1024" height="707" src="https://drisdell-headless.com/wp-content/uploads/2020/12/project-delivery-1024x707.png" alt="" class="wp-image-55" srcset="https://drisdell-headless.com/wp-content/uploads/2020/12/project-delivery-1024x707.png 1024w, https://drisdell-headless.com/wp-content/uploads/2020/12/project-delivery-300x207.png 300w, https://drisdell-headless.com/wp-content/uploads/2020/12/project-delivery-768x530.png 768w, https://drisdell-headless.com/wp-content/uploads/2020/12/project-delivery-1536x1061.png 1536w, https://drisdell-headless.com/wp-content/uploads/2020/12/project-delivery-1200x829.png 1200w, https://drisdell-headless.com/wp-content/uploads/2020/12/project-delivery.png 1875w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption>HCM/WFM Workforce Project Delivery Model.</figcaption></figure>\n',
+  id: 'cG9zdDoyNDE=',
+  title: 'Our Project Delivery',
+  slug: 'our-project-delivery',
+  featuredImage: {
+    __typename: 'NodeWithFeaturedImageToMediaItemConnectionEdge',
+    node: {
+      __typename: 'MediaItem',
+      sourceUrl: 'https://drisdell-headless.com/wp-content/uploads/2021/01/tim-mossholder-n_iR0KmFSbk-unsplash-1.jpg'
+    }
+  }
+}
+aboutSlugDynamic:  our-project-delivery
+
+```

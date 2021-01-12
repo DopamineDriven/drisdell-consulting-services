@@ -17,40 +17,40 @@
 	}
 }
 
-.table figure {
+.tableMd figure {
 	@apply flex-row w-full min-w-full bg-primary-9 bg-opacity-80 mx-auto;
 }
 
-.table table {
+.tableMd table {
 	@apply flex-col w-full text-xl text-primary-0 text-center align-middle;
 }
 
-.table tbody {
+.tableMd tbody {
 	@apply border-primary-0 border-2;
 }
 
-.table tr {
+.tableMd tr {
 	@apply border-primary-1 border text-primary-0 bg-primary-9;
 	&:hover {
 		@apply text-primary-3 transition-colors duration-300 ease-in-out transform;
 	}
 }
 
-.table td {
+.tableMd td {
 	@apply border-primary-1 border-l border-r border-dashed even:text-primary-7 even:bg-primary-4 bg-opacity-80;
 	&:hover {
 		@apply even:text-primary-9 transition-colors duration-300 ease-in-out transform;
 	}
 }
 
-.table a:link {
+.tableMd a:link {
 	@apply font-semibold text-primary-0 underline;
 	&:hover {
 		@apply text-primary-5 transition-colors duration-300 ease-in-out transform;
 	}
 }
 
-.table div > p {
+.tableMd div > p {
 	@apply select-none;
 	&:hover {
 		@apply text-primary-7 transition-colors duration-300 ease-in-out transform;

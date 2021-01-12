@@ -13,9 +13,16 @@
 
 .title {
 	@apply content-center;
+	&:focus {
+		@apply outline-none;
+	}
 }
 
-.md p {
-	@apply w-auto flex-1;
+.md p,
+.md a > div > p {
+	@apply w-auto flex-1 outline-none;
 	background-color: hsla(209, 61%, 16%, 0.5);
+	&:focus {
+		@apply outline-none border-transparent;
+	}
 }
