@@ -83,6 +83,7 @@ const KeenSlider: FC = ({ children }) => {
 			</div>
 			{slider && (
 				<div className={cn(css.positionIndicatorsContainer)} ref={ref}>
+					{/*@ts-ignore iterable-iterator*/}
 					{[...Array(slider.details().size).keys()].map(idx => {
 						return (
 							<button

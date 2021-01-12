@@ -1,4 +1,5 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
+const plugin = require('tailwindcss/plugin');
 
 module.exports = {
 	important: true,
@@ -201,6 +202,15 @@ module.exports = {
 				jujiMarigold: '#E6A63E'
 			},
 			keyframes: {
+				// bounceNinety: {
+				// 	transform: 'translate3d(0, -4px, 0)'
+				// },
+				// bounceSeventy: {
+				// 	transform: 'translate3d(0, -15px, 0)'
+				// },
+				// bounceForty: {
+				// 	transform: 'translate3d(0, -30px, 0)'
+				// },
 				wiggle: {
 					'0%, 100%': { transform: 'rotate(-3deg)' },
 					'50%': { transform: 'rotate(3deg)' }
@@ -559,6 +569,16 @@ module.exports = {
 		require('@tailwindcss/ui'),
 		require('@tailwindui/react'),
 		require('@tailwindcss/forms'),
-		require('@tailwindcss/aspect-ratio')
+		require('@tailwindcss/aspect-ratio'),
+		plugin(function ({ addUtilities }) {
+			addUtilities({
+				'.bg-overlay': {
+					background:
+						'linear-gradient(var(--overlay-angle, 0deg), var(--overlay-colors)), var(--overlay-image)',
+					'background-position': 'center',
+					'background-size': 'cover'
+				}
+			});
+		})
 	]
 };

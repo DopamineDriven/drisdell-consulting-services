@@ -1,7 +1,7 @@
 import { gql, TypedDocumentNode } from '@apollo/client';
 
-const FRAGMENT_ABOUT_PAGE_FIELDS: TypedDocumentNode = gql`
-	fragment AboutPageFields on Page {
+const FRAGMENT_CUSTOM_PAGE_FIELDS: TypedDocumentNode = gql`
+	fragment CustomPageFields on Page {
 		title
 		content
 		id
@@ -14,4 +14,4 @@ const FRAGMENT_ABOUT_PAGE_FIELDS: TypedDocumentNode = gql`
 	}
 `;
 
-export default FRAGMENT_ABOUT_PAGE_FIELDS;
+export default FRAGMENT_CUSTOM_PAGE_FIELDS;

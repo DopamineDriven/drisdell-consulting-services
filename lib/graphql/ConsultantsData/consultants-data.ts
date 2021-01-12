@@ -1,13 +1,13 @@
 import { gql, TypedDocumentNode } from '@apollo/client';
 import {
-	FRAGMENT_ABOUT_FIELDS,
+	FRAGMENT_CONSULTANTS_FIELDS,
 	FRAGMENT_CUSTOM_PAGE_FIELDS
 } from '@lib/fragments';
 
-const ABOUT_CARDS_DATA: TypedDocumentNode = gql`
-	${FRAGMENT_ABOUT_FIELDS},
-	${FRAGMENT_CUSTOM_PAGE_FIELDS}
-	query AboutCardsData(
+const CONSULTANTS_DATA: TypedDocumentNode = gql`
+  ${FRAGMENT_CONSULTANTS_FIELDS},
+  ${FRAGMENT_CUSTOM_PAGE_FIELDS}
+  query ConsultantsData(
 		$name: String!
 		$field: PostObjectsConnectionOrderbyEnum!
 		$order: OrderEnum!
@@ -20,14 +20,14 @@ const ABOUT_CARDS_DATA: TypedDocumentNode = gql`
 				}
 			}
 		}
-		abouts(where: { orderby: { field: $field, order: $order } }, first: $first) {
+		consultants(where: { orderby: { field: $field, order: $order } }, first: $first) {
 			edges {
 				node {
-					...AboutFields
+					...ConsultantFields
 				}
 			}
 		}
 	}
 `;
 
-export default ABOUT_CARDS_DATA;
+export default CONSULTANTS_DATA;

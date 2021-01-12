@@ -4,7 +4,8 @@
 - [react-markdown-html](https://reposhub.com/react/miscellaneous/rexxars-react-markdown.html)
 - [custom-processing-instructions](https://github.com/aknuds1/html-to-react#with-custom-processing-instructions)
 - [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote)
-- 01/12/21
+- [bulletproof-next-example-check-pages/post/[slug].js](https://github.com/arunoda/bulletproof-next-app/blob/using-dynamic-imports-final/pages/post/%5Bslug%5D.js)
+- 2021/01/12
   My attempted solution with Typescript + Headless WordPress. The exported function is passed to `pages/about/[slug].tsx` for dynamic content handling.
 
 ```tsx

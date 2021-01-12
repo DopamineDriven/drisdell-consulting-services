@@ -29,7 +29,13 @@ export interface ConsultantsPage_pages_edges_node_featuredImage {
 }
 
 export interface ConsultantsPage_pages_edges_node_children_nodes_About {
-	__typename: 'About' | 'MediaItem' | 'Post' | 'Testimonial';
+	__typename:
+		| 'About'
+		| 'Consultant'
+		| 'MediaItem'
+		| 'Position'
+		| 'Post'
+		| 'Testimonial';
 	/**
 	 * The uri slug for the post. This is equivalent to the WP_Post->post_name field and the post_name column in the database for the "post_objects" table.
 	 */

@@ -11,6 +11,7 @@ import { useRouter } from 'next/router';
 import css from './about-posts.module.css';
 import ReactMarkdown from 'react-markdown/with-html';
 import Image, { ImageLoaderProps, ImageProps } from 'next/image';
+// import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 
 const LoadingDots = dynamic(() => import('@components/UI/LoadingDots'));
 

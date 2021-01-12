@@ -1,7 +1,8 @@
-export { default as FRAGMENT_ABOUT_PAGE_FIELDS } from './FragmentAboutPage';
 export { default as FRAGMENT_ABOUT_FIELDS } from './FragmentAbouts';
 export { default as FRAGMENT_CHILDREN_PAGES } from './FragmentChildrenPages';
 export { default as FRAGMENT_COMMENT_FIELDS } from './FragmentComments';
+export { default as FRAGMENT_CONSULTANTS_FIELDS } from './FragmentConsultants';
+export { default as FRAGMENT_CUSTOM_PAGE_FIELDS } from './FragmentCustomPages';
 export { default as FRAGMENT_MENU_FIELDS } from './FragmentMenu';
 export { default as FRAGMENT_PAGE_FIELDS } from './FragmentPage';
 export { default as FRAGMENT_PREVIEW_PAGE } from './FragmentPreviewPage';

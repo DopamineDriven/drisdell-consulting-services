@@ -1,7 +1,7 @@
 {
 	"compilerOptions": {
-		"target": "esnext",
-		"lib": ["dom", "ES2017"],
+		"target": "es5",
+		"lib": ["dom", "esnext"],
 		"allowJs": true,
 		"skipLibCheck": true,
 		"strict": true,
@@ -19,6 +19,7 @@
 		"isolatedModules": true,
 		"experimentalDecorators": true,
 		"jsx": "preserve",
+		"rootDir": ".",
 		"baseUrl": ".",
 		"strictNullChecks": true,
 		"paths": {
@@ -36,7 +37,9 @@
 		"graphql.d.ts",
 		"**/*.ts",
 		"**/*.tsx",
-		"**/*.js"
+		"**/*.js",
+		"**/*.mdx",
+		"."
 	],
 	"exclude": ["node_modules", ".next"]
 }
