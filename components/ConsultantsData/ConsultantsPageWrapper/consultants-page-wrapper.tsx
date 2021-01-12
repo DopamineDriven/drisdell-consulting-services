@@ -1,13 +1,13 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import cn from 'classnames';
-import css from './consultant-wrapper.module.css';
+import css from './consultants-page-wrapper.module.css';
 
-interface ConsultantWrapperProps {
+interface ConsultantsPageWrapperProps {
 	root?: string;
 	children?: React.ReactNode;
 }
 
-const ConsultantWrapper: FC<ConsultantWrapperProps> = props => {
+const ConsultantsPageWrapper: FC<ConsultantsPageWrapperProps> = props => {
 	const { root, children } = props;
 	return (
 		<section className={cn(css.root, root)}>
@@ -18,4 +18,4 @@ const ConsultantWrapper: FC<ConsultantWrapperProps> = props => {
 	);
 };
 
-export default ConsultantWrapper;
+export default ConsultantsPageWrapper;

@@ -5,6 +5,7 @@ const FRAGMENT_ABOUT_FIELDS: TypedDocumentNode = gql`
 		content
 		id
 		title
+		modified
 		slug
 		featuredImage {
 			node {

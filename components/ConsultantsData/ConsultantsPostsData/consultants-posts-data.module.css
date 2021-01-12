@@ -1,0 +1,28 @@
+.img {
+	@apply h-48 w-full object-cover min-h-full;
+
+	&:hover {
+		@apply opacity-50;
+		background-image: linear-gradient(
+			to right,
+			rgba(126, 213, 111, 0.801),
+			hsla(160, 64%, 43%, 0.801)
+		);
+	}
+}
+
+.title {
+	@apply content-center;
+	&:focus {
+		@apply outline-none;
+	}
+}
+
+.md p,
+.md a > div > p {
+	@apply w-auto flex-1 outline-none;
+	background-color: hsla(209, 61%, 16%, 0.5);
+	&:focus {
+		@apply outline-none border-transparent;
+	}
+}

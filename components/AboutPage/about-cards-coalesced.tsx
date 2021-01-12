@@ -97,7 +97,8 @@ const AboutCardsCoalesced = () => {
 						data.abouts.edges.map(edge => {
 							return edge !== null &&
 								edge.node !== null &&
-								edge.node.content !== null ? (
+								edge.node.content !== null &&
+								edge.node.modified !== null ? (
 								<AboutData
 									featuredImage={edge.node.featuredImage}
 									title={edge.node.title}
@@ -106,6 +107,7 @@ const AboutCardsCoalesced = () => {
 									key={edge.node.id}
 									__typename={edge.node.__typename}
 									content={edge.node.content}
+									modified={edge.node.modified}
 								/>
 							) : (
 								<div>{error}</div>
