@@ -119,7 +119,7 @@ export async function getStaticProps(
 
 	return addApolloState(apolloClient, {
 		props: {
-			post: aboutPostDynamic,
+			about: aboutPostDynamic,
 			path: aboutSlugDynamic
 		},
 		revalidate: 10

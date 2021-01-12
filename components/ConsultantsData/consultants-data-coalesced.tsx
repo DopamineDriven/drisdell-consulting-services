@@ -94,7 +94,8 @@ const ConsultantsDataCoalesced = () => {
 						data.consultants.edges.map(post => {
 							return post !== null &&
 								post.node !== null &&
-								post.node.content !== null ? (
+								post.node.content !== null &&
+								post.node.modified !== null ? (
 								<ConsultantsPostsData
 									key={post.node.id}
 									featuredImage={post.node.featuredImage}
@@ -103,6 +104,7 @@ const ConsultantsDataCoalesced = () => {
 									id={post.node.id}
 									title={post.node.title}
 									__typename={post.node.__typename}
+									modified={post.node.modified}
 								/>
 							) : (
 								<div>{error} inner - consultants posts mapping</div>

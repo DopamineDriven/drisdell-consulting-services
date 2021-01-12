@@ -34,7 +34,7 @@ const LandingContent: PostBodyPropsFC = props => {
 			<div className='grid md:grid-cols-2 grid-cols-1'>
 				<ReactMarkdown
 					className={css.content + `${''}`}
-					allowDangerousHtml={false}
+					escapeHtml={false}
 					source={content}
 					renderers={{ code: CodeBlock }}
 				/>
@@ -42,8 +42,8 @@ const LandingContent: PostBodyPropsFC = props => {
 		) : (
 			<ReactMarkdown
 				className={`${classNameContent}`}
-				allowDangerousHtml={true}
-				children={`content failed to load`}
+				escapeHtml={false}
+				source={`content failed to load`}
 				renderers={{ code: CodeBlock }}
 			/>
 		);

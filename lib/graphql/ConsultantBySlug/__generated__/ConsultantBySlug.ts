@@ -3,11 +3,13 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
+import { ConsultantIdType } from './../../../../_types/graphql-global-types';
+
 // ====================================================
-// GraphQL fragment: ConsultantFields
+// GraphQL query operation: ConsultantBySlug
 // ====================================================
 
-export interface ConsultantFields_featuredImage_node {
+export interface ConsultantBySlug_consultantPost_featuredImage_node {
 	__typename: 'MediaItem';
 	/**
 	 * Url of the mediaItem
@@ -15,15 +17,15 @@ export interface ConsultantFields_featuredImage_node {
 	sourceUrl: string | null;
 }
 
-export interface ConsultantFields_featuredImage {
+export interface ConsultantBySlug_consultantPost_featuredImage {
 	__typename: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
 	/**
 	 * The nodes of the connection, without the edges
 	 */
-	node: ConsultantFields_featuredImage_node | null;
+	node: ConsultantBySlug_consultantPost_featuredImage_node | null;
 }
 
-export interface ConsultantFields {
+export interface ConsultantBySlug_consultantPost {
 	__typename: 'Consultant';
 	/**
 	 * The content of the post.
@@ -48,5 +50,17 @@ export interface ConsultantFields {
 	/**
 	 * Connection between the NodeWithFeaturedImage type and the MediaItem type
 	 */
-	featuredImage: ConsultantFields_featuredImage | null;
+	featuredImage: ConsultantBySlug_consultantPost_featuredImage | null;
+}
+
+export interface ConsultantBySlug {
+	/**
+	 * An object of the consultant Type. Children posts of the Consultants Page
+	 */
+	consultantPost: ConsultantBySlug_consultantPost | null;
+}
+
+export interface ConsultantBySlugVariables {
+	id: string;
+	idType: ConsultantIdType;
 }

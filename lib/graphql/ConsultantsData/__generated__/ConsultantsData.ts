@@ -103,6 +103,10 @@ export interface ConsultantsData_consultants_edges_node {
 	 */
 	slug: string | null;
 	/**
+	 * The local modified time for a post. If a post was recently updated the modified field will change to match the corresponding time.
+	 */
+	modified: string | null;
+	/**
 	 * Connection between the NodeWithFeaturedImage type and the MediaItem type
 	 */
 	featuredImage: ConsultantsData_consultants_edges_node_featuredImage | null;

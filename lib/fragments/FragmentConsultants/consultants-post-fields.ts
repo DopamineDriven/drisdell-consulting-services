@@ -6,6 +6,7 @@ const FRAGMENT_CONSULTANTS_FIELDS: TypedDocumentNode = gql`
 		id
 		title
 		slug
+		modified
 		featuredImage {
 			node {
 				sourceUrl

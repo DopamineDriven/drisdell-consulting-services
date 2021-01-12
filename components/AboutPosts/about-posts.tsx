@@ -40,16 +40,23 @@ const ApolloErrorMessage = dynamic(
 
 const { SLUG } = AboutIdType;
 
+const ImageLoad = ({ src, width, quality }: ImageLoaderProps) => {
+	return `https://${process.env.WORDPRESS_URL}/${src}?=w${width}?q=${
+		quality || 75
+	}`;
+};
+
 const ImageRenderer = (img: ImageLoaderProps & ImageProps) => {
+	console.log(`${img.src} custom image renderer`);
 	return (
 		<Image
 			// src={(img.src = `${process.env.WORDPRESS_SRCSET}/*`)}
-			src={img.src}
+			loader={ImageLoad}
+			src={`${img.src}`}
 			alt={img.alt}
 			height={img.height}
 			// contentEditable={(img.contentEditable = true)}
 			width={img.width}
-			quality={(img.quality = 80)}
 			loading={'eager'}
 			priority={(img.priority = true)}
 			layout={(img.layout = 'responsive')}
