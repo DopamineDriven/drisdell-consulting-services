@@ -93,7 +93,6 @@ export async function getStaticProps(
 		idType: SLUG,
 		id: params.slug
 	};
-
 	const apolloClient = initializeApollo();
 	await apolloClient.query<HeaderFooter, HeaderFooterVariables>({
 		query: HEADER_FOOTER,
@@ -107,20 +106,12 @@ export async function getStaticProps(
 		query: ABOUT_BY_SLUG,
 		variables: AboutBySlugQueryVars
 	});
-
-	const aboutPostDynamic = data && data.aboutPost !== null ? data.aboutPost : {};
-	const aboutSlugDynamic =
-		data && data.aboutPost !== null && data.aboutPost.slug !== null
-			? data.aboutPost.slug
-			: '';
-
-	console.log('aboutPostDynamic: ', aboutPostDynamic);
-	console.log('aboutSlugDynamic: ', aboutSlugDynamic);
-
+	console.log('aboutPostDynamic: ', data.aboutPost);
+	console.log('aboutSlugDynamic: ', data.aboutPost!.slug);
 	return addApolloState(apolloClient, {
 		props: {
-			about: aboutPostDynamic,
-			path: aboutSlugDynamic
+			about: data.aboutPost ?? {},
+			path: data.aboutPost!.slug ?? ''
 		},
 		revalidate: 10
 	});

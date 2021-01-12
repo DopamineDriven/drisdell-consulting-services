@@ -175,8 +175,7 @@ export const getStaticPaths = async (
 	)
 		data.consultantSlugs.edges.map(slugs => {
 			if (slugs !== null && slugs.node !== null && slugs.node.slug !== null) {
-				const returnedAboutPaths = { params: { slug: slugs.node.slug } };
-				pathsData.push(returnedAboutPaths);
+				pathsData.push({ params: { slug: slugs.node.slug } });
 			}
 		});
 

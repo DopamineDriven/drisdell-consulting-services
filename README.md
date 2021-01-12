@@ -1,6 +1,6 @@
 # drisdell-consulting-services
 
-## [Effective TS - Advanced Methods](https://effectivetypescript.com/2020/11/05/template-literal-types/a2sa)
+## [Effective TS - Advanced Methods](https://effectivetypescript.com/2020/11/05/template-literal-types)
 
 ## Next + ApolloClient v3
 
