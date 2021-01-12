@@ -46,6 +46,9 @@ const ImageLoad = ({ src, width, quality }: ImageLoaderProps) => {
 	}`;
 };
 
+// const imageSimple = document.querySelector('img');
+// const imageMutable = useRef<typeof imageSimple>(null);
+
 const ImageRenderer = (img: ImageLoaderProps & ImageProps) => {
 	console.log(`${img.src} custom image renderer`);
 	return (
@@ -119,7 +122,7 @@ const AboutPosts = () => {
 			<article className='font-poppins mx-auto select-none'>
 				<div className={cn(css.parentDiv)}>
 					<ReactMarkdown
-						allowDangerousHtml={false}
+						allowDangerousHtml={true}
 						className={cn(
 							'text-primary-0 py-8 text-2xl sm:text-3xl md:text-5xl font-extrabold mx-auto text-center tracking-tight',
 							css['parentDiv']

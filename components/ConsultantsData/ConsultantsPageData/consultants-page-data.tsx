@@ -30,13 +30,12 @@ const ConsultantsPageData: FC<ConsultantsPageDataProps> = props => {
 						<a className='cursor-default'>
 							<Image
 								src={`${featuredImageDynamic}`}
-								title='about-us'
-								alt={'About Us'}
-								aria-label='About Us'
+								title={titleDynamic}
+								alt={'Consultants'}
 								className={css['success']}
 								layout='responsive'
 								width={1500}
-								height={650}
+								height={450}
 								objectFit='cover'
 								loading='eager'
 								quality={75}
@@ -64,7 +63,7 @@ const ConsultantsPageData: FC<ConsultantsPageDataProps> = props => {
 					<ReactMarkdown
 						children={contentDynamic}
 						allowDangerousHtml={true}
-						className={cn(css['content'])}
+						className={cn(css['content'], 'hidden')}
 					/>
 				</h4>
 			</div>

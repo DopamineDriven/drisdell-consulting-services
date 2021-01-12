@@ -20,15 +20,15 @@ const ConsultantsPostsWrapper: FC<ConsultantsPostsWrapperProps> = props => {
 				<div className='bg-primary-9 h-1/3 sm:h-2/3 ' />
 			</div>
 			<div className='relative max-w-7xl mx-auto'>
-				{/* <div className='text-center'>
+				<div className='text-center'>
 					<h2 className='text-3xl tracking-tight font-extrabold text-primary-0 sm:text-4xl'>
 						Drisdell Consulting Services
 					</h2>
-				</div> */}
+				</div>
 				<div
 					className={cn(
 						css.gridDiv,
-						'mt-12 max-w-lg mx-auto text-center grid gap-5 md:max-w-3xl md:grid-cols-2 lg:grid-cols-3 lg:max-w-none group-hover:opacity-75'
+						'mt-12 max-w-lg mx-auto text-center grid gap-5 md:max-w-3xl md:grid-cols-1 lg:grid-cols-2 lg:max-w-none group-hover:opacity-75'
 					)}
 				>
 					{children}

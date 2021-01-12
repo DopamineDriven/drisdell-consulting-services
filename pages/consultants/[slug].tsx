@@ -34,9 +34,7 @@ import {
 	ConsultantIdType
 } from '@_types/graphql-global-types';
 // import hydrate from 'next-mdx-remote/hydrate';
-import Image from 'next/image';
-import ReactMarkdown from 'react-markdown/with-html';
-import cn from 'classnames';
+import ConsultantPosts from '@components/ConsultantPosts/consultant-posts';
 
 const { ASC } = OrderEnum;
 const { SLUG } = PostObjectsConnectionOrderbyEnum;
@@ -65,15 +63,6 @@ const Loading = () => (
 	</div>
 );
 
-const dynamicProps = {
-	loading: () => <Loading />
-};
-
-const DynamicModified = dynamic(
-	() => import('@components/UI/Modified'),
-	dynamicProps
-);
-
 // const DynamicImage = dynamic(() => import('next/image'), dynamicProps);
 
 const DynamicConsultant: NextPage &
@@ -91,76 +80,27 @@ const DynamicConsultant: NextPage &
 			notifyOnNetworkStatusChange: true
 		}
 	);
-	const title =
-		data && data.consultantPost !== null && data.consultantPost.title !== null
-			? data.consultantPost.title
-			: 'Title null';
-
-	const content =
-		data && data.consultantPost !== null && data.consultantPost.content !== null
-			? data.consultantPost.content
-			: 'Content null';
-
-	const modified =
-		data && data.consultantPost !== null && data.consultantPost.id !== null
-			? data.consultantPost.modified
-			: '';
-
-	const featuredImage =
-		data &&
-		data.consultantPost !== null &&
-		data.consultantPost.featuredImage !== null &&
-		data.consultantPost.featuredImage.node !== null &&
-		data.consultantPost.featuredImage.node.sourceUrl !== null
-			? data.consultantPost.featuredImage.node.sourceUrl
-			: '/error-bot.png';
 
 	const router = useRouter();
-	return (
-		<Layout title={title}>
+	return data &&
+		data.consultantPost !== null &&
+		data.consultantPost.title !== null ? (
+		<Layout title={data.consultantPost.title}>
 			{router.isFallback ? (
 				<Loading />
 			) : (
 				<>
-					<article className='font-poppins mx-auto select-none'>
-						<div
-							className={cn(
-								'pt-8 pb-16 prose-xl max-w-2xl text-primary-0 text-left content-center mx-auto flex-row select-none tracking-tight sm:max-w-3xl sm:text-justify md:max-w-5xl lg:max-w-6xl xl:max-w-7xl'
-							)}
-						>
-							<ReactMarkdown
-								allowDangerousHtml={true}
-								className={cn(
-									'text-primary-0 py-8 text-2xl sm:text-3xl md:text-5xl font-extrabold mx-auto text-center tracking-tight pt-8 pb-16 prose-xl max-w-2xl content-center flex-row select-none'
-								)}
-								children={title}
-							/>
-							<Image
-								src={featuredImage}
-								title={title}
-								loading='eager'
-								quality={80}
-								width={800}
-								height={400}
-								layout='responsive'
-								className='object-covershadow-lg max-w-7xl pb-2'
-								priority
-							/>
-						</div>
-						<div className='w-full min-w-full max-w-2xl px-5 md:px-2 md:max-w-4xl text-left sm:text-justify'>
-							<DynamicModified
-								modifiedString={modified}
-								root='font-bold prose-xl max-w-2xl sm:max-w-3xl md:max-w-5xl lg:max-w-7xl sm:prose-2xl tracking-tight text-primary-0 text-left sm:text-justify content-center mx-auto flex'
-							/>
-							<ReactMarkdown
-								allowDangerousHtml={false}
-								className={cn(
-									' pt-8 pb-16 prose-xl max-w-2xl sm:max-w-3xl md:max-w-5xl lg:max-w-6xl text-primary-0 text-left sm:text-justify content-center mx-auto flex-row'
-								)}
-								children={content}
-							/>
-						</div>
-					</article>
+					<ConsultantPosts />
+				</>
+			)}
+		</Layout>
+	) : (
+		<Layout title={'title null'}>
+			{router.isFallback ? (
+				<Loading />
+			) : (
+				<>
+					<ConsultantPosts />
 				</>
 			)}
 		</Layout>

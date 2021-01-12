@@ -75,6 +75,7 @@
 		"@graphql-codegen/typescript-react-apollo": "^2.1.1",
 		"@graphql-typed-document-node/core": "^3.1.0",
 		"@graphql-typed-document-node/patch-cli": "^3.0.8",
+		"@manifoldco/swagger-to-ts": "^2.1.0",
 		"@mdx-js/loader": "^1.6.22",
 		"@next/bundle-analyzer": "^10.0.3",
 		"@types/body-scroll-lock": "^2.6.1",
