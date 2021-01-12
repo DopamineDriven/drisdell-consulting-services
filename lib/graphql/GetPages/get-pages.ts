@@ -1,8 +1,10 @@
 import { gql, TypedDocumentNode } from '@apollo/client';
+import FRAGMENT_PAGE_FIELDS from '../../fragments/FragmentPage/page-fields';
 
 // fetching all pages for slug and id
 
 const GET_PAGES: TypedDocumentNode = gql`
+	${FRAGMENT_PAGE_FIELDS}
 	query GetPages(
 		$first: Int!
 		$field: PostObjectsConnectionOrderbyEnum!
@@ -14,11 +16,7 @@ const GET_PAGES: TypedDocumentNode = gql`
 			where: { parentIn: $parentIn, orderby: { field: $field, order: $order } }
 		) {
 			nodes {
-				id
-				uri
-				slug
-				title
-				content
+				...PageFragment
 			}
 		}
 	}

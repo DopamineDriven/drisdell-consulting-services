@@ -4,9 +4,12 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 });
 const withImages = {
 	images: {
-		domains: ['drisdell-headless.com', 'secure.gravatar.com']
+		domains: ['drisdell-headless.com', 'drisdell.com', 'secure.gravatar.com']
 	}
 };
+const withMDX = require('@next/mdx')({
+	extension: /\.mdx?$/
+});
 const webpackBundle = {
 	webpack: (config, options) => {
 		config.module.rules.push({
@@ -14,19 +17,16 @@ const webpackBundle = {
 			exclude: /node_modules/,
 			use: [options.defaultLoaders.babel, { loader: 'graphql-tag/loader' }]
 		});
-		return config;
-	},
-	webpack(config, _options) {
 		config.module.rules.push({
 			test: /\.ya?ml$/,
 			type: 'json',
 			use: 'yaml-loader'
 		});
 		return config;
-	},
-	webpackDevMiddleware: config => {
-		return config;
 	}
+	// webpackDevMiddleware: config => {
+	// 	return config;
+	// }
 };
 
 const redirects = {
@@ -41,6 +41,11 @@ const redirects = {
 				source: '/about/:slug*',
 				destination: '/about-us/:slug*',
 				permanent: true
+			},
+			{
+				source: '/consultant/:slug',
+				destination: '/consultants/:slug',
+				permanent: true
 			}
 		];
 	}
@@ -50,8 +55,12 @@ module.exports = withPlugins([
 	[
 		withBundleAnalyzer({
 			enabled: process.env.ANALYZE === true
+		}),
+		withMDX({
+			pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx']
 		})
 	],
+
 	webpackBundle,
 	withImages,
 	redirects

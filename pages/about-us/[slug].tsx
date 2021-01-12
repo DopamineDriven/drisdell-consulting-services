@@ -27,7 +27,7 @@ import {
 import Layout, { HeaderFooterMenuQueryVers } from '@components/Layout/layout';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
-// import { useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import { Params } from 'next/dist/next-server/server/router';
 import AboutPosts from '@components/AboutPosts';
 
@@ -54,26 +54,26 @@ const DynamicAbout: NextPage &
 	const slugToMetaTitle = targetSlug.replace('-', ' ');
 	console.log('slug to title', slugToMetaTitle);
 
-	// const AboutBySlugQueryVars: AboutBySlugVariables = {
-	// 	idType: SLUG,
-	// 	id: targetSlug
-	// };
+	const AboutBySlugQueryVars: AboutBySlugVariables = {
+		idType: SLUG,
+		id: targetSlug
+	};
 
-	// const { data } = useQuery<AboutBySlug, AboutBySlugVariables>(ABOUT_BY_SLUG, {
-	// 	variables: AboutBySlugQueryVars,
-	// 	notifyOnNetworkStatusChange: true
-	// });
+	const { data } = useQuery<AboutBySlug, AboutBySlugVariables>(ABOUT_BY_SLUG, {
+		variables: AboutBySlugQueryVars,
+		notifyOnNetworkStatusChange: true
+	});
 
-	// const title =
-	// 	data && data.aboutPost !== null && data.aboutPost.title !== null
-	// 		? data.aboutPost.title
-	// 		: 'Title null';
+	const title =
+		data && data.aboutPost !== null && data.aboutPost.title !== null
+			? data.aboutPost.title
+			: 'Title null';
 
-	// console.log(title);
+	console.log(title);
 
 	const router = useRouter();
 	return (
-		<Layout title={slugToMetaTitle}>
+		<Layout title={title}>
 			{router.isFallback ? (
 				<Loading />
 			) : (
@@ -119,7 +119,7 @@ export async function getStaticProps(
 
 	return addApolloState(apolloClient, {
 		props: {
-			post: aboutPostDynamic,
+			about: aboutPostDynamic,
 			path: aboutSlugDynamic
 		},
 		revalidate: 10

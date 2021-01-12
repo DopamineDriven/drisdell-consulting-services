@@ -1,10 +1,11 @@
 {
 	"compilerOptions": {
-		"target": "esnext",
-		"lib": ["dom", "ES2017"],
+		"target": "es5",
+		"lib": ["dom", "esnext"],
 		"allowJs": true,
 		"skipLibCheck": true,
 		"strict": true,
+		"alwaysStrict": true,
 		"forceConsistentCasingInFileNames": true,
 		"noFallthroughCasesInSwitch": true,
 		"noEmit": true,
@@ -12,13 +13,13 @@
 		"esModuleInterop": true,
 		"allowSyntheticDefaultImports": true,
 		"noUnusedParameters": true,
-		"preserveConstEnums": true,
 		"module": "esnext",
 		"moduleResolution": "node",
 		"resolveJsonModule": true,
 		"isolatedModules": true,
 		"experimentalDecorators": true,
 		"jsx": "preserve",
+		"rootDir": ".",
 		"baseUrl": ".",
 		"strictNullChecks": true,
 		"paths": {
@@ -34,9 +35,12 @@
 		"next-env.d.ts",
 		"global.d.ts",
 		"graphql.d.ts",
+		"graphql.schema.graphql",
 		"**/*.ts",
 		"**/*.tsx",
-		"**/*.js"
+		"**/*.js",
+		"**/*.mdx",
+		"."
 	],
 	"exclude": ["node_modules", ".next"]
 }

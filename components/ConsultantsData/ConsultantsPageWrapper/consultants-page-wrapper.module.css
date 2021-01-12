@@ -1,0 +1,11 @@
+.root {
+	@apply items-center content-center justify-center block min-w-full w-screen mx-auto;
+}
+
+.divOuter {
+	@apply content-center justify-center block mx-auto;
+}
+
+.divInner {
+	@apply content-center justify-center mx-auto gap-x-12 gap-y-12 w-full;
+}

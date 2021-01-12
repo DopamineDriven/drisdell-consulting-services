@@ -38,6 +38,10 @@ export interface AboutFields {
 	 */
 	title: string | null;
 	/**
+	 * The local modified time for a post. If a post was recently updated the modified field will change to match the corresponding time.
+	 */
+	modified: string | null;
+	/**
 	 * The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table.
 	 */
 	slug: string | null;

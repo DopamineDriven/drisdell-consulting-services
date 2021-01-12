@@ -54,14 +54,15 @@ const AboutData: FC<AboutDataProps> = props => {
 				<a
 					className={cn(
 						'flex-1 flex flex-col justify-between transition-transform transform -translate-y-52 z-50 -mb-8',
-						css.title
+						css.title,
+						css['md']
 					)}
 				>
 					<ReactMarkdown
 						children={titleConditional}
 						allowDangerousHtml={true}
 						className={cn(
-							css.md,
+							css['md'],
 							'text-2xl font-poppins font-semibold text-primary-9 hover:text-primary-8 z-50'
 						)}
 					/>

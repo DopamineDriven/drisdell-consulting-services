@@ -19,14 +19,6 @@ export interface GetPages_pages_nodes {
 	 */
 	id: string;
 	/**
-	 * URI path for the resource
-	 */
-	uri: string;
-	/**
-	 * The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table.
-	 */
-	slug: string | null;
-	/**
 	 * The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made.
 	 */
 	title: string | null;
@@ -34,6 +26,14 @@ export interface GetPages_pages_nodes {
 	 * The content of the post.
 	 */
 	content: string | null;
+	/**
+	 * The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table.
+	 */
+	slug: string | null;
+	/**
+	 * URI path for the resource
+	 */
+	uri: string;
 }
 
 export interface GetPages_pages {

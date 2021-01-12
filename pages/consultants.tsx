@@ -1,14 +1,14 @@
 import { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
 import { initializeApollo, addApolloState } from '@lib/apollo';
-import { CONSULTANTS_PAGE, HEADER_FOOTER } from '@lib/graphql';
-import ConsultantsCoalesced, {
-	ConsultantsPageQueryVars
-} from '@components/Consultants/consultants-coalesced';
-import Layout, { HeaderFooterMenuQueryVers } from '@components/Layout/layout';
+import { CONSULTANTS_DATA, HEADER_FOOTER } from '@lib/graphql';
+import ConsultantsDataCoalesced, {
+	ConsultantsDataQueryVars
+} from '@components/ConsultantsData/consultants-data-coalesced';
 import {
-	ConsultantsPage,
-	ConsultantsPageVariables
-} from '@lib/graphql/ConsultantsPage/__generated__/ConsultantsPage';
+	ConsultantsData,
+	ConsultantsDataVariables
+} from '@lib/graphql/ConsultantsData/__generated__/ConsultantsData';
+import Layout, { HeaderFooterMenuQueryVers } from '@components/Layout/layout';
 import {
 	HeaderFooter,
 	HeaderFooterVariables
@@ -16,9 +16,9 @@ import {
 
 export const getStaticProps: GetStaticProps = async () => {
 	const apolloClient = initializeApollo();
-	await apolloClient.query<ConsultantsPage, ConsultantsPageVariables>({
-		query: CONSULTANTS_PAGE,
-		variables: ConsultantsPageQueryVars
+	await apolloClient.query<ConsultantsData, ConsultantsDataVariables>({
+		query: CONSULTANTS_DATA,
+		variables: ConsultantsDataQueryVars
 	});
 	await apolloClient.query<HeaderFooter, HeaderFooterVariables>({
 		query: HEADER_FOOTER,
@@ -35,7 +35,7 @@ const Consultants: NextPage &
 	return (
 		<>
 			<Layout title={'Drisdell Consulting Services Consultants'}>
-				<ConsultantsCoalesced />
+				<ConsultantsDataCoalesced />
 			</Layout>
 		</>
 	);

@@ -1,4 +1,4 @@
-import Image, { ImageLoaderProps } from 'next/image';
+import Image, { ImageLoaderProps, ImageProps } from 'next/image';
 import ReactMarkdown from 'react-markdown/with-html';
 import { FC } from 'react';
 import { ReactMarkdownProps } from 'react-markdown';
@@ -13,31 +13,42 @@ import { ReactMarkdownProps } from 'react-markdown';
 	}, [bg]);
 */
 
-interface CustomImageRenderer {
+interface CustomImageRendererProps {
 	mdChildren: string;
-	height: number;
+	root?: string;
 }
 
-const ImageCustom: FC<CustomImageRenderer & ReactMarkdownProps> = props => {
-	const { mdChildren } = props;
-
-	const CustomImage: FC<ImageLoaderProps> = props => {
+const renderers = {
+	image: (image: ImageLoaderProps & ImageProps) => {
 		return (
 			<Image
-				src={props.src}
-				width={props.width}
-				height={props.width / 1.5}
-				quality={props.quality}
-				alt={props.src}
+				src={image.src}
+				alt={image.alt}
+				height={image.height}
+				width={image.width}
+				quality={image.quality}
+				loading={image.loading}
+				objectFit={image.objectFit}
+				priority={image.priority}
+				layout={image.layout}
+				objectPosition={image.objectPosition}
 			/>
 		);
-	};
+	}
+};
 
-	const render = {
-		image: CustomImage
-	};
+const ImageCustom: FC<
+	CustomImageRendererProps & ReactMarkdownProps
+> = props => {
+	const { mdChildren } = props;
 
-	return <ReactMarkdown children={mdChildren} renderers={render} />;
+	return (
+		<ReactMarkdown
+			allowDangerousHtml={true}
+			children={mdChildren}
+			renderers={renderers}
+		/>
+	);
 };
 
 export default ImageCustom;

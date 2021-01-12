@@ -13,7 +13,8 @@ import css from './keen-slider.module.css';
 const KeenSlider: FC = ({ children }) => {
 	const [currentSlide, setCurrentSlide] = useState(0);
 	const [isMounted, setIsMounted] = useState(false);
-	const sliderContainerRef = useRef<HTMLDivElement>(null);
+	const slidesimple = document.querySelector('div');
+	const sliderContainerRef = useRef<typeof slidesimple>(null);
 	const [ref, slider] = useKeenSlider<HTMLDivElement>({
 		loop: true,
 		slidesPerView: 1,
@@ -82,8 +83,9 @@ const KeenSlider: FC = ({ children }) => {
 				})}
 			</div>
 			{slider && (
-				<div className={cn(css.positionIndicatorsContainer)} ref={ref}>
-					{[...Array(slider.details().size).keys()].map(idx => {
+				<div className={cn(css.positionIndicatorsContainer)}>
+					{/*@ts-ignore iterable-iterator*/}
+					{[...Array(slider.details().size).keys()].map((idx: number) => {
 						return (
 							<button
 								aria-label='Position indicator'

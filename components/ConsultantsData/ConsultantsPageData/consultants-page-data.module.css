@@ -1,0 +1,73 @@
+.root {
+	@apply min-w-full w-screen bg-fixed -mb-10;
+}
+
+.success {
+	@apply block mx-auto align-middle content-center opacity-90;
+}
+
+.errorTitle {
+	@apply text-center transition-all transform text-2xl animate-hero;
+	@screen sm {
+		@apply text-3xl text-left;
+	}
+	@screen md {
+		@apply text-4xl;
+	}
+	@screen lg {
+		@apply text-5xl;
+	}
+	@screen xl {
+		@apply text-6xl;
+	}
+	@screen 2xl {
+		@apply text-7xl;
+	}
+}
+
+.successTitle {
+	@apply transition-all transform text-center mx-auto text-2xl animate-hero text-primary-9 -translate-y-12 cursor-default;
+	@screen sm {
+		@apply text-3xl;
+	}
+	@screen md {
+		@apply text-4xl -translate-y-24;
+	}
+	@screen lg {
+		@apply text-5xl;
+	}
+	@screen xl {
+		@apply text-7xl;
+	}
+	@screen 2xl {
+		@apply text-8xl;
+	}
+}
+
+.a {
+	@apply block text-center z-50 transition-all transform cursor-default;
+}
+
+.rootTitle {
+	@apply leading-loose my-3 w-auto;
+}
+
+.title p {
+	@apply text-primary-9;
+}
+
+.content h4 > p {
+	@apply text-3xl tracking-tight font-bold text-center py-2 font-poppins;
+	@screen sm {
+		@apply text-4xl py-4;
+	}
+	@screen md {
+		@apply text-5xl py-6;
+	}
+	@screen lg {
+		@apply text-6xl py-8;
+	}
+	@screen 2xl {
+		@apply text-7xl py-10;
+	}
+}

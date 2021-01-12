@@ -10,6 +10,7 @@ import { AboutIdType } from '@_types/graphql-global-types';
 import { useRouter } from 'next/router';
 import css from './about-posts.module.css';
 import ReactMarkdown from 'react-markdown/with-html';
+import Image, { ImageLoaderProps, ImageProps } from 'next/image';
 
 const LoadingDots = dynamic(() => import('@components/UI/LoadingDots'));
 
@@ -23,7 +24,7 @@ const dynamicProps = {
 	loading: () => <Loading />
 };
 
-const DynamicImage = dynamic(() => import('next/image'), dynamicProps);
+// const DynamicImage = dynamic(() => import('next/image'), dynamicProps);
 
 const DynamicModified = dynamic(
 	() => import('@components/UI/Modified'),
@@ -35,7 +36,36 @@ const ApolloErrorMessage = dynamic(
 	dynamicProps
 );
 
+// const img = document.querySelector('img');
+
 const { SLUG } = AboutIdType;
+
+const ImageLoad = ({ src, width, quality }: ImageLoaderProps) => {
+	return `https://${process.env.WORDPRESS_URL}/${src}?=w${width}?q=${
+		quality || 75
+	}`;
+};
+
+// const imageSimple = document.querySelector('img');
+// const imageMutable = useRef<typeof imageSimple>(null);
+
+const ImageRenderer = (img: ImageLoaderProps & ImageProps) => {
+	console.log(`${img.src} custom image renderer`);
+	return (
+		<Image
+			// src={(img.src = `${process.env.WORDPRESS_SRCSET}/*`)}
+			loader={ImageLoad}
+			src={`${img.src}`}
+			alt={img.alt}
+			height={img.height}
+			// contentEditable={(img.contentEditable = true)}
+			width={img.width}
+			loading={'eager'}
+			priority={(img.priority = true)}
+			layout={(img.layout = 'responsive')}
+		/>
+	);
+};
 
 const AboutPosts = () => {
 	const { query } = useRouter();
@@ -92,14 +122,14 @@ const AboutPosts = () => {
 			<article className='font-poppins mx-auto select-none'>
 				<div className={cn(css.parentDiv)}>
 					<ReactMarkdown
-						allowDangerousHtml={false}
+						allowDangerousHtml={true}
 						className={cn(
 							'text-primary-0 py-8 text-2xl sm:text-3xl md:text-5xl font-extrabold mx-auto text-center tracking-tight',
-							css.parentDiv
+							css['parentDiv']
 						)}
 						children={title}
 					/>
-					<DynamicImage
+					<Image
 						src={featuredImage}
 						title={title}
 						loading='eager'
@@ -119,9 +149,10 @@ const AboutPosts = () => {
 					<ReactMarkdown
 						allowDangerousHtml={true}
 						className={cn(
-							css.table,
+							css['tableMd'],
 							' pt-8 pb-16 prose-xl max-w-2xl sm:max-w-3xl md:max-w-5xl lg:max-w-6xl text-primary-0 text-left sm:text-justify content-center mx-auto flex-row'
 						)}
+						renderers={{ img: ImageRenderer }}
 						children={content}
 					/>
 				</div>
