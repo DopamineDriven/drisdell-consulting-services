@@ -12,7 +12,6 @@ import cn from 'classnames';
 import css from './consultant-posts.module.css';
 import ReactMarkdown from 'react-markdown/with-html';
 import Image from 'next/image';
-import { ImageRenderer } from '../Renderers/image-renderer';
 import Link from 'next/link';
 
 const LoadingDots = dynamic(() => import('@components/UI/LoadingDots'));
@@ -143,7 +142,6 @@ const ConsultantPosts = () => {
 								css['tableMd'],
 								' pt-8 pb-16 prose-xl max-w-2xl sm:max-w-3xl md:max-w-5xl lg:max-w-6xl text-primary-0 text-left sm:text-justify content-center mx-auto flex-row'
 							)}
-							renderers={{ img: ImageRenderer }}
 							children={data.consultantPost.content}
 						/>
 					</div>

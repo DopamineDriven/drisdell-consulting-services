@@ -2,6 +2,19 @@ const withPlugins = require('next-compose-plugins');
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
 	enabled: !!process.env.ANALYZE
 });
+const withImages = {
+	images: {
+		domains: [
+			'd2f904nk7e5fig.cloudfront.net',
+			'drisdell-headless.com',
+			'drisdell.com',
+			'secure.gravatar.com'
+		]
+	}
+};
+const withMDX = require('@next/mdx')({
+	extension: /\.mdx?$/
+});
 const webpackBundle = {
 	webpack: (config, options) => {
 		config.module.rules.push({
@@ -18,18 +31,7 @@ const webpackBundle = {
 	}
 };
 
-module.exports = withBundleAnalyzer({
-	webpackBundle,
-	withMDX: {
-		pageExtension: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx']
-	},
-	images: {
-		domains: [
-			'd2f904nk7e5fig.cloudfront.net',
-			'drisdell-headless.com',
-			'secure.gravatar.com'
-		]
-	},
+const redirects = {
 	async redirects() {
 		return [
 			{
@@ -49,4 +51,18 @@ module.exports = withBundleAnalyzer({
 			}
 		];
 	}
-});
+};
+
+module.exports = withPlugins([
+	[
+		withBundleAnalyzer({
+			enabled: process.env.ANALYZE === true
+		}),
+		withMDX({
+			pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx']
+		})
+	],
+	webpackBundle,
+	withImages,
+	redirects
+]);
