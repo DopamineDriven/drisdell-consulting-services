@@ -46,7 +46,7 @@ const TestimonialsData: FC<TestimonialsDataProps> = props => {
 								<div className='md:flex-shrink h-20 w-20 mx-auto'>
 									<Image
 										src={featuredImageConditional}
-										loading='eager'
+										priority
 										layout='responsive'
 										quality={75}
 										width={100}

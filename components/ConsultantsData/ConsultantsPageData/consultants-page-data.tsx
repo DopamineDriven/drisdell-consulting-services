@@ -37,7 +37,6 @@ const ConsultantsPageData: FC<ConsultantsPageDataProps> = props => {
 								width={1500}
 								height={450}
 								objectFit='cover'
-								loading='eager'
 								quality={75}
 								priority
 							/>

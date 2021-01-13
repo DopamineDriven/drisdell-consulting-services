@@ -35,7 +35,6 @@ const AboutData: FC<AboutDataProps> = props => {
 				<a aria-label='anchor' className='' id={`#${slugConditional}`}>
 					<Image
 						src={featuredImageConditional}
-						loading='eager'
 						layout='responsive'
 						objectFit='cover'
 						quality={80}

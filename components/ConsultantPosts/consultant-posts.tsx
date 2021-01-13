@@ -122,7 +122,6 @@ const ConsultantPosts = () => {
 								<Image
 									src={data.consultantPost.featuredImage.node.sourceUrl}
 									title={data.consultantPost.title}
-									loading='eager'
 									quality={80}
 									width={800}
 									height={400}

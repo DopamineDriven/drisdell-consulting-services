@@ -1,10 +1,10 @@
 .root {
-	@apply fixed text-primary flex items-center inset-0 z-50 justify-center;
+	@apply fixed text-primary-9 bg-primary-9 flex items-center inset-0 z-50 justify-center;
 	background-color: rgba(0, 0, 0, 0.35);
 }
 
 .modal {
-	@apply bg-primary-4 p-6 border border-accents-9;
+	@apply bg-primary-2 p-6 border border-accents-9 relative;
 
 	&:focus {
 		@apply outline-none;

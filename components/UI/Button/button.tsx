@@ -6,7 +6,6 @@ import React, {
 	useRef
 } from 'react';
 import mergeRefs from 'react-merge-refs';
-import { useButton } from 'react-aria';
 import css from './button.module.css';
 import { LoadingDots } from '@components/UI';
 
@@ -28,7 +27,7 @@ const Button: React.FC<ButtonProps> = forwardRef((props, buttonRef) => {
 		variant = 'flat',
 		children,
 		active,
-		onClick,
+		// onClick,
 		width,
 		Component = 'button',
 		loading = false,
@@ -37,17 +36,17 @@ const Button: React.FC<ButtonProps> = forwardRef((props, buttonRef) => {
 		...rest
 	} = props;
 	const ref = useRef<typeof Component>(null);
-	const { buttonProps, isPressed } = useButton(
-		{
-			...rest,
-			// @ts-ignore onClick === onPress for our purposes
-			onPress: onClick,
-			isDisabled: disabled,
-			// @ts-ignore onClick === onPress for our purposes
-			elementType: Component
-		},
-		ref
-	);
+	// const { buttonProps, isPressed } = useButton(
+	// 	{
+	// 		...rest,
+	// 		// @ts-ignore onClick === onPress for our purposes
+	// 		onPress: onClick,
+	// 		isDisabled: disabled,
+	// 		// @ts-ignore onClick === onPress for our purposes
+	// 		elementType: Component
+	// 	},
+	// 	ref
+	// );
 
 	const rootClassName = cn(
 		css.root,
@@ -64,14 +63,15 @@ const Button: React.FC<ButtonProps> = forwardRef((props, buttonRef) => {
 			aria-pressed={active}
 			data-variant={variant}
 			ref={mergeRefs([ref, buttonRef])}
-			{...buttonProps}
-			data-active={isPressed ? '' : undefined}
+			// {...buttonProps}
+			// data-active={isPressed ? '' : undefined}
 			className={rootClassName}
 			disabled={disabled}
 			style={{
 				width,
 				...style
 			}}
+			{...rest}
 		>
 			{children}
 			{loading && (

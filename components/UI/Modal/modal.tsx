@@ -1,4 +1,4 @@
-import { FC, useRef, useEffect } from 'react';
+import { FC, useRef, useEffect, useCallback } from 'react';
 import css from './modal.module.css';
 // import { FocusScope } from '@react-aria/focus';
 // import { Transition } from '@headlessui/react';
@@ -17,26 +17,37 @@ interface Props {
 }
 
 const Modal: FC<Props> = ({ children, open, onClose }) => {
-	const ref = useRef() as React.MutableRefObject<HTMLInputElement>;
+	const ref = useRef() as React.MutableRefObject<HTMLDivElement>;
+
+	const handleKey = useCallback(
+		(e: KeyboardEvent) => {
+			if (e.key === 'Escape') {
+				return onClose();
+			}
+		},
+		[onClose]
+	);
 
 	useEffect(() => {
 		if (ref.current) {
 			if (open) {
 				disableBodyScroll(ref.current);
+				window.addEventListener('keydown', handleKey);
 			} else {
 				enableBodyScroll(ref.current);
 			}
 		}
 		return () => {
+			window.removeEventListener('keydown', handleKey);
 			clearAllBodyScrollLocks();
 		};
-	}, [open]);
+	}, [open, handleKey]);
 
 	return (
 		<Portal>
 			{open ? (
-				<div className={css.root} ref={ref}>
-					<div className={css.modal}>
+				<div className={css.root}>
+					<div className={css.modal} role='dialog' ref={ref}>
 						<div className='h-7 flex items-center justify-end w-full'>
 							<button
 								onClick={() => onClose()}

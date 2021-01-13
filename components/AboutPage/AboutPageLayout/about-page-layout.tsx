@@ -37,7 +37,6 @@ const AboutPageLayout: FC<AboutLayoutProps> = props => {
 								width={1500}
 								height={500}
 								objectFit='cover'
-								loading='eager'
 								quality={75}
 								priority
 							/>

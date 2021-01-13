@@ -1,7 +1,6 @@
 {
 	"name": "drisdell-consulting-services",
 	"version": "1.0.0",
-	"main": "index.js",
 	"repository": "https://github.com/DopamineDriven/drisdell-consulting-services.git",
 	"author": {
 		"name": "Andrew Ross",
@@ -12,11 +11,12 @@
 	"license": "MIT",
 	"private": true,
 	"scripts": {
-		"dev": "next dev -p 4242 && NODE_OPTIONS=--inspect",
+		"dev": "next dev -p 4242",
 		"build": "next build",
 		"start": "next start -p 4343",
-		"analyze": "cross-env ANALYZE=true yarn build",
+		"analyze": "cross-env BUNDLE_ANALYZE=both yarn build",
 		"tsconfig:effective": "tsc --showConfig",
+		"find:unused": "next-unused",
 		"postinstall": "patch-typed-document-node",
 		"client:codegen": "yarn apollo codegen:generate --localSchemaFile=graphql.schema.json --target=typescript --includes=./lib/**/*.ts --tagName=gql --addTypename --globalTypesFile=_types/graphql-global-types.ts",
 		"codegen:generate": "graphql-codegen -r dotenv/config --config codegen.yml",
@@ -24,8 +24,40 @@
 	},
 	"husky": {
 		"hooks": {
-			"pre-commit": "yarn tsc && pretty-quick --staged && yarn tsconfig:effective"
+			"pre-commit": "yarn tsc && pretty-quick --staged && yarn tsconfig:effective && yarn find:unused"
 		}
+	},
+	"next-unused": {
+		"alias": {
+			"@_types": [
+				"_types/*"
+			],
+			"@components": [
+				"components/*"
+			],
+			"@config": [
+				"config/*"
+			],
+			"@lib": [
+				"lib/*"
+			],
+			"@pages": [
+				"pages/*"
+			],
+			"@styles": [
+				"styles/*"
+			]
+		},
+		"debug": true,
+		"include": [
+			"components",
+			"lib",
+			"pages"
+		],
+		"exclude": [],
+		"entrypoints": [
+			"pages"
+		]
 	},
 	"dependencies": {
 		"@apollo/client": "^3.3.6",
@@ -61,6 +93,7 @@
 		"react-merge-refs": "^1.1.0",
 		"react-query": "^3.5.12",
 		"react-syntax-highlighter": "^15.3.0",
+		"tabbable": "^5.1.5",
 		"tailwindcss": "^2.0.2",
 		"tailwindcss-gradients": "^3.0.0"
 	},
@@ -95,6 +128,7 @@
 		"graphql-tag": "^2.11.0",
 		"husky": "^4.3.0",
 		"next-compose-plugins": "^2.2.1",
+		"next-unused": "^0.0.3",
 		"npm-run-all": "^4.1.5",
 		"patch-package": "^6.2.2",
 		"postcss": "^8.2.1",

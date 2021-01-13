@@ -1,0 +1,10 @@
+{
+	"title": "Drisdell Consulting Services | Powered by Next.js and Headless WordPress",
+	"titleTemplate": "%s - Exceptional Human Capital and Workforce Management IT System Support",
+	"description": "Since 1995, we have provided quality services and custom application development solutions to our customers.  And as hard as it is to accomplish in this day and age, we have realized a 100% on time, on budget project completion record on all of our client projects. We successfully manage projects, implement systems and solve business problems—just ask any of our clients!",
+	"openGraph": {
+		"type": "website",
+		"locale": "en_US",
+		"url": "https://drisdell-consulting-services-pi.vercel.app/"
+	}
+}

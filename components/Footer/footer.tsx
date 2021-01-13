@@ -42,7 +42,7 @@ const Footer: FC<FooterProps> = props => {
 					</div>
 					<div className='flex items-center'>
 						<a
-							href='https://linkedin.com/asross/'
+							href='https://andrewross.dev/'
 							target='__blank'
 							aria-label='Andrew Ross'
 							className=''

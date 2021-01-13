@@ -132,7 +132,6 @@ const AboutPosts = () => {
 					<Image
 						src={featuredImage}
 						title={title}
-						loading='eager'
 						quality={80}
 						width={800}
 						height={400}

@@ -30,7 +30,6 @@ const LandingImage: FC<LandingPageProps> = props => {
 						width={2000}
 						height={650}
 						objectFit='cover'
-						loading='eager'
 						quality={75}
 						priority
 					/>
@@ -47,8 +46,8 @@ const LandingImage: FC<LandingPageProps> = props => {
 				layout='fixed'
 				width={250}
 				height={250}
-				loading='eager'
-				quality={100}
+				quality={750}
+				priority
 			/>
 		</div>
 	);
