@@ -5,35 +5,21 @@ module.exports = {
 	important: true,
 	future: {
 		removeDeprecatedGapUtilities: true,
-		purgeLayersByDefault: true
+		purgeLayersByDefault: true,
+		applyComplexClasses: true
 	},
 	purge: {
-		content: ['./components/**/*.{js,ts,jsx,tsx}', './pages/**/*.{js,ts,jsx,tsx}']
+		content: [
+			'./components/**/*.{js,ts,jsx,tsx}',
+			'./pages/**/*.{js,ts,jsx,tsx}'
+		],
+		options: {
+			safelist: {
+				standard: ['outline-none']
+			}
+		}
 	},
 	theme: {
-		stroke: {
-			current: 'currentColor',
-			jujiOrange: '#FF9933',
-			eaWhite: '#EAEAEA',
-			white: 'FFFFFF',
-			blueHover: 'BEE3F8'
-		},
-		fill: {
-			current: 'currentColor',
-			jujiOrange: '#FF9933',
-			eaWhite: '#EAEAEA',
-			white: 'FFFFFF',
-			blueHover: 'BEE3F8'
-		},
-		rotate: {
-			0: '0deg',
-			45: '45deg',
-			90: '90deg',
-			125: '125deg',
-			180: '180deg',
-			360: '360deg',
-			855: '845deg'
-		},
 		extend: {
 			maxWidth: {
 				'9xl': '2220px'
@@ -56,6 +42,15 @@ module.exports = {
 				2000: '2000ms',
 				3000: '3000ms',
 				10000: '10000ms'
+			},
+			rotate: {
+				0: '0deg',
+				45: '45deg',
+				90: '90deg',
+				125: '125deg',
+				180: '180deg',
+				360: '360deg',
+				855: '845deg'
 			},
 			fontFamily: {
 				header: ['goudy-bookletter-1911', 'serif'],
@@ -161,8 +156,54 @@ module.exports = {
 					800: '#0A6C74',
 					900: '#044E54'
 				},
-				reds: {
-					0: '#8A041A'
+				rojo: {
+					0: '#610316',
+					100: '#8A041A',
+					200: '#AB091E',
+					300: '#CF1124',
+					400: '#E12D39',
+					500: '#EF4E4E',
+					600: '#F86A6A',
+					700: '#FF9B9B',
+					800: '#FFBDBD',
+					900: '#FFE3E3'
+				},
+				rosado: {
+					0: '#620042',
+					100: '#870557',
+					200: '#A30664',
+					300: '#BC0A6F',
+					400: '#DA127D',
+					500: '#E8368F',
+					600: '#F364A2',
+					700: '#FF8CBA',
+					800: '#FFB8D2',
+					900: '#FFE3EC'
+				},
+				amarillo: {
+					0: 'hsl(15, 86%, 30%)',
+					100: 'hsl(22, 82%, 39%)',
+					200: 'hsl(29, 80%, 44%)',
+					300: 'hsl(36, 77%, 49%)',
+					400: 'hsl(42, 87%, 55%)',
+					500: 'hsl(44, 92%, 63%)',
+					600: 'hsl(48, 94%, 68%)',
+					700: 'hsl(48, 95%, 76%)',
+					800: 'hsl(48, 100%, 88%)',
+					900: 'hsl(49, 100%, 96%)'
+				},
+				verdeAzulado: {
+					// blueish-green === teal (espanol)
+					0: 'hsl(170, 97%, 15%)',
+					100: 'hsl(168, 80%, 23%)',
+					200: 'hsl(166, 72%, 28%)',
+					300: 'hsl(164, 71%, 34%)',
+					400: 'hsl(162, 63%, 41%)',
+					500: 'hsl(160, 51%, 49%)',
+					600: 'hsl(158, 58%, 62%)',
+					700: 'hsl(156, 73%, 74%)',
+					800: 'hsl(154, 75%, 87%)',
+					900: 'hsl(152, 68%, 96%)'
 				},
 				black: '#000000',
 				white: '#FFFFFF',

@@ -1,16 +1,20 @@
 import '@styles/index.css';
 import 'keen-slider/keen-slider.min.css';
+import '@styles/chrome-bug.css';
+
 import { AppProps, NextWebVitalsMetric } from 'next/app';
 import { useEffect } from 'react';
-import { useRouter } from 'next/router';
 import { gaInit, logPageView } from '@lib/google-analytics';
 import { ApolloProvider } from '@apollo/client';
 import { useApollo } from '@lib/apollo';
 import { ManagedUIContext } from '@components/context';
 
-function App({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps, router }: AppProps) {
 	const apolloClient = useApollo(pageProps);
-	const router = useRouter();
+
+	useEffect(() => {
+		document.body.classList?.remove('loading');
+	}, []);
 
 	useEffect(() => {
 		gaInit();
@@ -22,6 +26,7 @@ function App({ Component, pageProps }: AppProps) {
 			router.events.off('routeChangeComplete', handleRouteChange);
 		};
 	}, [router.events]);
+	console.log();
 	return (
 		<ManagedUIContext>
 			<ApolloProvider client={apolloClient}>

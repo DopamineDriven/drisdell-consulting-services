@@ -1,7 +1,5 @@
 import { FC, useRef, useEffect, useCallback } from 'react';
 import css from './modal.module.css';
-// import { FocusScope } from '@react-aria/focus';
-// import { Transition } from '@headlessui/react';
 import Portal from '@reach/portal';
 import { Cross } from '@components/Icons';
 import {
@@ -9,6 +7,7 @@ import {
 	enableBodyScroll,
 	clearAllBodyScrollLocks
 } from 'body-scroll-lock';
+import FocusTrap from '@lib/focus-trap';
 interface Props {
 	className?: string;
 	children?: any;
@@ -48,16 +47,14 @@ const Modal: FC<Props> = ({ children, open, onClose }) => {
 			{open ? (
 				<div className={css.root}>
 					<div className={css.modal} role='dialog' ref={ref}>
-						<div className='h-7 flex items-center justify-end w-full'>
-							<button
-								onClick={() => onClose()}
-								aria-label='Close panel'
-								className='hover:text-gray-500 transition ease-in-out duration-150 focus:outline-none'
-							>
-								<Cross className='h-6 w-6' />
-							</button>
-						</div>
-						{children}
+						<button
+							onClick={() => onClose()}
+							aria-label='Close panel'
+							className='hover:accents-4 transition ease-in-out duration-150 focus:outline-none absolute right-0 top-0 m-6'
+						>
+							<Cross className='h-6 w-6' />
+						</button>
+						<FocusTrap focusFirst>{children}</FocusTrap>
 					</div>
 				</div>
 			) : null}

@@ -1,6 +1,6 @@
 // import cn from 'classnames'
 import { FC, useState, useMemo, useRef, useEffect } from 'react';
-import { ColorsSvg } from '@lib/index';
+import ColorsSvg from '@lib/colors-svg';
 import cn from 'classnames';
 
 interface Props {
