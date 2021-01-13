@@ -4,9 +4,10 @@ import cn from 'classnames';
 import css from './navbar-user-dropdown.module.css';
 import NavbarUserLinks from '../NavbarUserLinks/navbar-user-links';
 import Avatar from '@components/Avatar';
-import { BellIcon, PlusIcon } from '@components/Icons';
 import { useRouter } from 'next/router';
 import { Button } from '@components/UI';
+import PlusIcon from '../../Icons/plus-icon';
+import BellIcon from '../../Icons/bell-icon';
 
 interface NavbarUserDropdownProps {
 	root?: string;

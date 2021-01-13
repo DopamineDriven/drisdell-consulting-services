@@ -1,11 +1,9 @@
 import { FC } from 'react';
 import cn from 'classnames';
-import {
-	FacebookIcon,
-	LinkedinIcon,
-	TwitterIcon,
-	InstagramIcon
-} from '@components/Icons';
+import TwitterIcon from '../../Icons/twitter';
+import LinkedinIcon from '../../Icons/linkedin';
+import FacebookIcon from '../../Icons/facebook';
+import InstagramIcon from '../../Icons/instagram';
 import css from './footer-social.module.css';
 
 interface FooterSocialIcons {

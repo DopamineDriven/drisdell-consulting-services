@@ -5,6 +5,12 @@
 	"openGraph": {
 		"type": "website",
 		"locale": "en_US",
-		"url": "https://drisdell-consulting-services-pi.vercel.app/"
+		"url": "https://drisdell-consulting-services-pi.vercel.app/",
+		"site_name": "Drisdell Consulting Services"
+	},
+	"twitter": {
+		"handle": "@Dopamine_Driven",
+		"site": "https://twitter.com/Dopamine_Driven",
+		"cardType": "summary_large_image"
 	}
 }

@@ -10,10 +10,10 @@ import {
 import { useQuery } from '@apollo/client';
 import dynamic from 'next/dynamic';
 import Container from '@components/UI/Container';
-import ConsultantsPageData from './ConsultantsPageData/consultants-page-data';
-import ConsultantsPageWrapper from './ConsultantsPageWrapper/consultants-page-wrapper';
-import ConsultantsPostsData from './ConsultantsPostsData/consultants-posts-data';
-import ConsultantsPostsWrapper from './ConsultantsPostsWrapper/consultants-posts-wrapper';
+import ConsultantsPageData from './ConsultantsPageData';
+import ConsultantsPageWrapper from './ConsultantsPageWrapper';
+import ConsultantsPostsData from './ConsultantsPostsData';
+import ConsultantsPostsWrapper from './ConsultantsPostsWrapper';
 
 export const ConsultantsDataQueryVars: ConsultantsDataVariables = {
 	name: 'consultants',

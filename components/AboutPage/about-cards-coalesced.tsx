@@ -10,7 +10,7 @@ import AboutWrapper from './AboutWrapper';
 import dynamic from 'next/dynamic';
 import Container from '@components/UI/Container';
 import AboutPageLayout from './AboutPageLayout';
-import AboutPageWrapper from './AboutPageWrapper/about-wrapper';
+import AboutPageWrapper from './AboutPageWrapper';
 import {
 	OrderEnum,
 	PostObjectsConnectionOrderbyEnum
