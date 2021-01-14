@@ -93,41 +93,39 @@ const Layout: FC<LayoutProps> = props => {
 								nodes.node.label !== null &&
 								nodes.node.childItems !== null ? (
 									<NavLinksHeadless
-										key={nodes.node.id}
 										parentId={nodes.node.parentId}
+										key={nodes.node.id}
 										path={nodes.node.path}
 										label={nodes.node.label}
 										id={nodes.node.id}
 										url={nodes.node.url}
 										__typename={nodes.node.__typename}
 										childItems={nodes.node.childItems}
-									>
-										<>
-											{nodes.node.childItems &&
+										subMenu={
 											nodes.node.childItems.edges !== null &&
-											nodes.node.childItems.edges.length > 0 ? (
-												nodes.node.childItems.edges.map(subMenu => {
-													return subMenu !== null &&
-														subMenu.node !== null &&
-														subMenu.node.label !== null ? (
-														<NavFlyoutHeadless
-															parentId={subMenu.node.parentId}
-															id={subMenu.node.id}
-															url={subMenu.node.url}
-															label={subMenu.node.label}
-															key={subMenu.node.id}
-															path={subMenu.node.path}
-															__typename={subMenu.node.__typename}
-														/>
-													) : (
-														<div>{error} on inner flyout headless</div>
-													);
-												})
-											) : (
-												<div>{error}</div>
-											)}
-										</>
-									</NavLinksHeadless>
+											nodes.node.childItems.edges.length > 0
+												? nodes.node.childItems.edges.map(edge => {
+														return edge !== null &&
+															edge.node !== null &&
+															edge.node.label !== null &&
+															edge.node.parentId !== null &&
+															edge.node.url !== null ? (
+															<NavFlyoutHeadless
+																__typename={edge.node.__typename}
+																id={edge.node.id}
+																key={edge.node.id}
+																path={edge.node.path}
+																url={edge.node.url}
+																parentId={edge.node.parentId}
+																label={edge.node.label}
+															/>
+														) : (
+															''
+														);
+												  })
+												: ''
+										}
+									/>
 								) : (
 									<div>error...{error}</div>
 								)
@@ -156,36 +154,34 @@ const Layout: FC<LayoutProps> = props => {
 										url={nodes.node.url}
 										__typename={nodes.node.__typename}
 										childItems={nodes.node.childItems}
-										root={cn(
+										root={
 											'block px-3 py-2 rounded-md text-base font-semibold text-primary-8 hover:text-primary-9'
-										)}
-									>
-										<>
-											{nodes.node.childItems &&
+										}
+										subMenu={
 											nodes.node.childItems.edges !== null &&
-											nodes.node.childItems.edges.length > 0 ? (
-												nodes.node.childItems.edges.map(subMenu => {
-													return subMenu !== null &&
-														subMenu.node !== null &&
-														subMenu.node.label !== null ? (
-														<NavFlyoutHeadless
-															parentId={subMenu.node.parentId}
-															id={subMenu.node.id}
-															url={subMenu.node.url}
-															label={subMenu.node.label}
-															key={subMenu.node.id}
-															path={subMenu.node.path}
-															__typename={subMenu.node.__typename}
-														/>
-													) : (
-														<div>{error} on inner flyout headless</div>
-													);
-												})
-											) : (
-												<div>{error}</div>
-											)}
-										</>
-									</NavLinksHeadless>
+											nodes.node.childItems.edges.length > 0
+												? nodes.node.childItems.edges.map(edge => {
+														return edge !== null &&
+															edge.node !== null &&
+															edge.node.label !== null &&
+															edge.node.parentId !== null &&
+															edge.node.url !== null ? (
+															<NavFlyoutHeadless
+																__typename={edge.node.__typename}
+																id={edge.node.id}
+																key={edge.node.id}
+																path={edge.node.path}
+																url={edge.node.url}
+																parentId={edge.node.parentId}
+																label={edge.node.label}
+															/>
+														) : (
+															''
+														);
+												  })
+												: ''
+										}
+									/>
 								) : (
 									<div>error...{error}</div>
 								)
