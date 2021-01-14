@@ -5,6 +5,7 @@ const InstagramIcon = ({ ...props }) => {
 			width='20'
 			height='20'
 			viewBox='0 0 62.643 62.63'
+			aria-hidden={true}
 			{...props}
 		>
 			<path

@@ -6,16 +6,7 @@ const FRAGMENT_MENU_FIELDS = gql`
 		label
 		url
 		path
-		childItems {
-			edges {
-				node {
-					id
-					label
-					parentId
-					path
-				}
-			}
-		}
+		parentId
 	}
 `;
 

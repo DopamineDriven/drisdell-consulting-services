@@ -12,44 +12,6 @@ import {
 // GraphQL query operation: GetPage
 // ====================================================
 
-export interface GetPage_headerMenus_menuItems_edges_node_childItems_edges_node_childItems_edges_node {
-	__typename: 'MenuItem';
-	/**
-	 * The globally unique identifier of the nav menu item object.
-	 */
-	id: string;
-	/**
-	 * Label or title of the menu item.
-	 */
-	label: string | null;
-	/**
-	 * The globally unique identifier of the parent nav menu item object.
-	 */
-	parentId: string | null;
-	/**
-	 * Path for the resource. Relative path for internal resources. Absolute path for external resources.
-	 */
-	path: string;
-}
-
-export interface GetPage_headerMenus_menuItems_edges_node_childItems_edges_node_childItems_edges {
-	__typename: 'MenuItemToMenuItemConnectionEdge';
-	/**
-	 * The item at the end of the edge
-	 */
-	node: GetPage_headerMenus_menuItems_edges_node_childItems_edges_node_childItems_edges_node | null;
-}
-
-export interface GetPage_headerMenus_menuItems_edges_node_childItems_edges_node_childItems {
-	__typename: 'MenuItemToMenuItemConnection';
-	/**
-	 * Edges for the MenuItemToMenuItemConnection connection
-	 */
-	edges:
-		| (GetPage_headerMenus_menuItems_edges_node_childItems_edges_node_childItems_edges | null)[]
-		| null;
-}
-
 export interface GetPage_headerMenus_menuItems_edges_node_childItems_edges_node {
 	__typename: 'MenuItem';
 	/**
@@ -61,21 +23,17 @@ export interface GetPage_headerMenus_menuItems_edges_node_childItems_edges_node 
 	 */
 	label: string | null;
 	/**
-	 * The globally unique identifier of the parent nav menu item object.
+	 * URL or destination of the menu item.
 	 */
-	parentId: string | null;
+	url: string | null;
 	/**
 	 * Path for the resource. Relative path for internal resources. Absolute path for external resources.
 	 */
 	path: string;
 	/**
-	 * URL or destination of the menu item.
+	 * The globally unique identifier of the parent nav menu item object.
 	 */
-	url: string | null;
-	/**
-	 * Connection between the MenuItem type and the MenuItem type
-	 */
-	childItems: GetPage_headerMenus_menuItems_edges_node_childItems_edges_node_childItems | null;
+	parentId: string | null;
 }
 
 export interface GetPage_headerMenus_menuItems_edges_node_childItems_edges {
@@ -115,6 +73,10 @@ export interface GetPage_headerMenus_menuItems_edges_node {
 	 */
 	path: string;
 	/**
+	 * The globally unique identifier of the parent nav menu item object.
+	 */
+	parentId: string | null;
+	/**
 	 * Connection between the MenuItem type and the MenuItem type
 	 */
 	childItems: GetPage_headerMenus_menuItems_edges_node_childItems | null;
@@ -144,44 +106,6 @@ export interface GetPage_headerMenus {
 	menuItems: GetPage_headerMenus_menuItems | null;
 }
 
-export interface GetPage_footerMenus_menuItems_edges_node_childItems_edges_node_childItems_edges_node {
-	__typename: 'MenuItem';
-	/**
-	 * The globally unique identifier of the nav menu item object.
-	 */
-	id: string;
-	/**
-	 * Label or title of the menu item.
-	 */
-	label: string | null;
-	/**
-	 * The globally unique identifier of the parent nav menu item object.
-	 */
-	parentId: string | null;
-	/**
-	 * Path for the resource. Relative path for internal resources. Absolute path for external resources.
-	 */
-	path: string;
-}
-
-export interface GetPage_footerMenus_menuItems_edges_node_childItems_edges_node_childItems_edges {
-	__typename: 'MenuItemToMenuItemConnectionEdge';
-	/**
-	 * The item at the end of the edge
-	 */
-	node: GetPage_footerMenus_menuItems_edges_node_childItems_edges_node_childItems_edges_node | null;
-}
-
-export interface GetPage_footerMenus_menuItems_edges_node_childItems_edges_node_childItems {
-	__typename: 'MenuItemToMenuItemConnection';
-	/**
-	 * Edges for the MenuItemToMenuItemConnection connection
-	 */
-	edges:
-		| (GetPage_footerMenus_menuItems_edges_node_childItems_edges_node_childItems_edges | null)[]
-		| null;
-}
-
 export interface GetPage_footerMenus_menuItems_edges_node_childItems_edges_node {
 	__typename: 'MenuItem';
 	/**
@@ -193,21 +117,17 @@ export interface GetPage_footerMenus_menuItems_edges_node_childItems_edges_node 
 	 */
 	label: string | null;
 	/**
-	 * The globally unique identifier of the parent nav menu item object.
+	 * URL or destination of the menu item.
 	 */
-	parentId: string | null;
+	url: string | null;
 	/**
 	 * Path for the resource. Relative path for internal resources. Absolute path for external resources.
 	 */
 	path: string;
 	/**
-	 * URL or destination of the menu item.
+	 * The globally unique identifier of the parent nav menu item object.
 	 */
-	url: string | null;
-	/**
-	 * Connection between the MenuItem type and the MenuItem type
-	 */
-	childItems: GetPage_footerMenus_menuItems_edges_node_childItems_edges_node_childItems | null;
+	parentId: string | null;
 }
 
 export interface GetPage_footerMenus_menuItems_edges_node_childItems_edges {
@@ -246,6 +166,10 @@ export interface GetPage_footerMenus_menuItems_edges_node {
 	 * Path for the resource. Relative path for internal resources. Absolute path for external resources.
 	 */
 	path: string;
+	/**
+	 * The globally unique identifier of the parent nav menu item object.
+	 */
+	parentId: string | null;
 	/**
 	 * Connection between the MenuItem type and the MenuItem type
 	 */

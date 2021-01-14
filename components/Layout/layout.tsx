@@ -19,6 +19,7 @@ import NavLinksHeadless from './NavLinksHeadless';
 import NavbarLinks from './NavbarLinks';
 import FooterNavLinksHeadless from './FooterHeadlessLinks';
 import FooterNavLinks from './FooterNavLinks';
+import NavFlyoutHeadless from './NavFlyoutHeadless/nav-flyout-headless';
 
 interface LayoutProps {
 	classNameRoot?: string;
@@ -93,13 +94,40 @@ const Layout: FC<LayoutProps> = props => {
 								nodes.node.childItems !== null ? (
 									<NavLinksHeadless
 										key={nodes.node.id}
+										parentId={nodes.node.parentId}
 										path={nodes.node.path}
 										label={nodes.node.label}
 										id={nodes.node.id}
 										url={nodes.node.url}
 										__typename={nodes.node.__typename}
 										childItems={nodes.node.childItems}
-									/>
+									>
+										<>
+											{nodes.node.childItems &&
+											nodes.node.childItems.edges !== null &&
+											nodes.node.childItems.edges.length > 0 ? (
+												nodes.node.childItems.edges.map(subMenu => {
+													return subMenu !== null &&
+														subMenu.node !== null &&
+														subMenu.node.label !== null ? (
+														<NavFlyoutHeadless
+															parentId={subMenu.node.parentId}
+															id={subMenu.node.id}
+															url={subMenu.node.url}
+															label={subMenu.node.label}
+															key={subMenu.node.id}
+															path={subMenu.node.path}
+															__typename={subMenu.node.__typename}
+														/>
+													) : (
+														<div>{error} on inner flyout headless</div>
+													);
+												})
+											) : (
+												<div>{error}</div>
+											)}
+										</>
+									</NavLinksHeadless>
 								) : (
 									<div>error...{error}</div>
 								)
@@ -120,6 +148,7 @@ const Layout: FC<LayoutProps> = props => {
 								nodes.node.label !== null &&
 								nodes.node.childItems !== null ? (
 									<NavLinksHeadless
+										parentId={nodes.node.parentId}
 										key={nodes.node.id}
 										path={nodes.node.path}
 										label={nodes.node.label}
@@ -130,7 +159,33 @@ const Layout: FC<LayoutProps> = props => {
 										root={cn(
 											'block px-3 py-2 rounded-md text-base font-semibold text-primary-8 hover:text-primary-9'
 										)}
-									/>
+									>
+										<>
+											{nodes.node.childItems &&
+											nodes.node.childItems.edges !== null &&
+											nodes.node.childItems.edges.length > 0 ? (
+												nodes.node.childItems.edges.map(subMenu => {
+													return subMenu !== null &&
+														subMenu.node !== null &&
+														subMenu.node.label !== null ? (
+														<NavFlyoutHeadless
+															parentId={subMenu.node.parentId}
+															id={subMenu.node.id}
+															url={subMenu.node.url}
+															label={subMenu.node.label}
+															key={subMenu.node.id}
+															path={subMenu.node.path}
+															__typename={subMenu.node.__typename}
+														/>
+													) : (
+														<div>{error} on inner flyout headless</div>
+													);
+												})
+											) : (
+												<div>{error}</div>
+											)}
+										</>
+									</NavLinksHeadless>
 								) : (
 									<div>error...{error}</div>
 								)
@@ -174,6 +229,7 @@ const Layout: FC<LayoutProps> = props => {
 									nodes.node.label !== null &&
 									nodes.node.childItems !== null ? (
 										<FooterNavLinksHeadless
+											parentId={nodes.node.parentId}
 											key={nodes.node.id}
 											path={nodes.node.path}
 											url={nodes.node.url}

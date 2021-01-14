@@ -66,14 +66,14 @@ const Navbar: FC<NavbarProps> = props => {
 									type='button'
 									onClick={() => router.push('/contact-us')}
 								>
-									<PlusIcon classNameSVG={cn('ml-1 mr-2 h-5 w-5 text-lg')} />
+									<PlusIcon className={cn('ml-1 mr-2 h-5 w-5 text-lg')} />
 									<span className='text-xl'>Contact</span>
 								</button>
 							</div>
 							<div className='hidden lg:mx-4 lg:flex-shrink-0 lg:flex lg:items-center'>
 								{/* <button className='bg-primary-0 p-1 my-auto rounded-full text-offset-secondary-0 ring-2 ring-primary-6 hover:text-primary-6 focus:outline-none focus:ring-2 focus:ring-priamry-8 focus:ring-accent-6'>
 									<span className='sr-only'>View Notifications</span>
-									<BellIcon classNameSVG='h-8 w-8' />
+									<BellIcon className='h-8 w-8' />
 								</button> */}
 
 								<div className='ml-3 '>
@@ -141,7 +141,7 @@ const Navbar: FC<NavbarProps> = props => {
 							</div>
 							<button className='bg-accents-6 p-1 ml-auto flex-shrink-0 ring-2 ring-secondary-0 rounded-full hover:text-accents-6 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-secondary-0 focus:ring-accent-6'>
 								<span className='sr-only'>View Notifications</span>
-								<BellIcon classNameSVG='h-6 w-6 stroke-secondary-0' />
+								<BellIcon className='h-6 w-6 stroke-secondary-0' />
 							</button>
 						</div>
 						<NavbarUserLinks

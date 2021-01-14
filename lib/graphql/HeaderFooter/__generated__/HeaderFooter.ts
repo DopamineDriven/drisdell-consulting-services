@@ -20,13 +20,17 @@ export interface HeaderFooter_headerDynamic_menuItems_edges_node_childItems_edge
 	 */
 	label: string | null;
 	/**
-	 * The globally unique identifier of the parent nav menu item object.
+	 * URL or destination of the menu item.
 	 */
-	parentId: string | null;
+	url: string | null;
 	/**
 	 * Path for the resource. Relative path for internal resources. Absolute path for external resources.
 	 */
 	path: string;
+	/**
+	 * The globally unique identifier of the parent nav menu item object.
+	 */
+	parentId: string | null;
 }
 
 export interface HeaderFooter_headerDynamic_menuItems_edges_node_childItems_edges {
@@ -65,6 +69,10 @@ export interface HeaderFooter_headerDynamic_menuItems_edges_node {
 	 * Path for the resource. Relative path for internal resources. Absolute path for external resources.
 	 */
 	path: string;
+	/**
+	 * The globally unique identifier of the parent nav menu item object.
+	 */
+	parentId: string | null;
 	/**
 	 * Connection between the MenuItem type and the MenuItem type
 	 */
@@ -106,13 +114,17 @@ export interface HeaderFooter_footerDynamic_menuItems_edges_node_childItems_edge
 	 */
 	label: string | null;
 	/**
-	 * The globally unique identifier of the parent nav menu item object.
+	 * URL or destination of the menu item.
 	 */
-	parentId: string | null;
+	url: string | null;
 	/**
 	 * Path for the resource. Relative path for internal resources. Absolute path for external resources.
 	 */
 	path: string;
+	/**
+	 * The globally unique identifier of the parent nav menu item object.
+	 */
+	parentId: string | null;
 }
 
 export interface HeaderFooter_footerDynamic_menuItems_edges_node_childItems_edges {
@@ -151,6 +163,10 @@ export interface HeaderFooter_footerDynamic_menuItems_edges_node {
 	 * Path for the resource. Relative path for internal resources. Absolute path for external resources.
 	 */
 	path: string;
+	/**
+	 * The globally unique identifier of the parent nav menu item object.
+	 */
+	parentId: string | null;
 	/**
 	 * Connection between the MenuItem type and the MenuItem type
 	 */

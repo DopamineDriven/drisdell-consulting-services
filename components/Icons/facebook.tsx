@@ -5,6 +5,7 @@ const FacebookIcon = ({ ...props }) => {
 			width='20'
 			height='20'
 			viewBox='0 0 62.684 62.304'
+			aria-hidden={true}
 			{...props}
 		>
 			<path

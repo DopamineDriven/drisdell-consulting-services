@@ -4,15 +4,15 @@ import Link from 'next/link';
 import cn from 'classnames';
 import css from './nav-links-headless.module.css';
 import { HeaderFooter_headerDynamic_menuItems_edges_node as NavRef } from '@lib/graphql/HeaderFooter/__generated__/HeaderFooter';
-import { Transition, Menu } from '@headlessui/react';
-import DownArrow from '../../Icons/down-arrow';
+// import { Transition, Menu } from '@headlessui/react';
+// import DownArrow from '../../Icons/down-arrow';
 
 export interface NavLinkProps extends NavRef {
 	root?: string;
 }
 
 const NavLinksHeadless: FC<NavLinkProps> = props => {
-	const { root, childItems, path, label } = props;
+	const { root, path, label, children } = props;
 	const { pathname } = useRouter();
 
 	return (
@@ -27,7 +27,8 @@ const NavLinksHeadless: FC<NavLinkProps> = props => {
 					{label ?? ''}
 				</a>
 			</Link>
-			<Menu>
+			{children}
+			{/* <Menu>
 				{({ open }) => (
 					<>
 						{childItems !== null &&
@@ -36,7 +37,7 @@ const NavLinksHeadless: FC<NavLinkProps> = props => {
 							<>
 								<Menu.Button>
 									<DownArrow />
-								</Menu.Button>
+									</Menu.Button>
 								<Transition
 									show={open}
 									enter='transition ease-out duration-200'
@@ -78,7 +79,7 @@ const NavLinksHeadless: FC<NavLinkProps> = props => {
 						)}
 					</>
 				)}
-			</Menu>
+			</Menu> */}
 		</>
 	);
 };

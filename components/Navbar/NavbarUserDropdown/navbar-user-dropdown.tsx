@@ -28,14 +28,14 @@ const NavbarUserDropdown: FC<NavbarUserDropdownProps> = props => {
 					type='button'
 					onClick={() => router.push('/signup')}
 				>
-					<PlusIcon classNameSVG={cn('ml-1 mr-2 h-6 w-6')} />
+					<PlusIcon className={cn('ml-1 mr-2 h-6 w-6')} />
 					<span>Sign Up</span>
 				</button>
 			</div>
 			<div className={cn(css.rootDiv, root)}>
 				<button className='bg-secondary-0 p-1 rounded-full text-accents-5 hover:text-accents-6 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-secondary-0 focus:ring-accent-6'>
 					<span className='sr-only'>View Notifications</span>
-					<BellIcon classNameSVG='h-6 w-6' />
+					<BellIcon className='h-6 w-6' />
 				</button>
 
 				<div className='ml-3 '>
