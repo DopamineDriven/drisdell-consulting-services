@@ -1,6 +1,6 @@
 import '@styles/index.css';
 import 'keen-slider/keen-slider.min.css';
-import '@styles/chrome-bug.css';
+// import '@styles/chrome-bug.css';
 
 import { AppProps, NextWebVitalsMetric } from 'next/app';
 import { useEffect } from 'react';
@@ -12,9 +12,9 @@ import { ManagedUIContext } from '@components/context';
 function App({ Component, pageProps, router }: AppProps) {
 	const apolloClient = useApollo(pageProps);
 
-	useEffect(() => {
-		document.body.classList?.remove('loading');
-	}, []);
+	// useEffect(() => {
+	// 	document.body.classList?.remove('loading');
+	// }, []);
 
 	useEffect(() => {
 		gaInit();

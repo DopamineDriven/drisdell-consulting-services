@@ -23,9 +23,9 @@ export interface GetPage_headerMenus_menuItems_edges_node_childItems_edges_node_
 	 */
 	label: string | null;
 	/**
-	 * URL or destination of the menu item.
+	 * The globally unique identifier of the parent nav menu item object.
 	 */
-	url: string | null;
+	parentId: string | null;
 	/**
 	 * Path for the resource. Relative path for internal resources. Absolute path for external resources.
 	 */
@@ -61,13 +61,17 @@ export interface GetPage_headerMenus_menuItems_edges_node_childItems_edges_node 
 	 */
 	label: string | null;
 	/**
-	 * URL or destination of the menu item.
+	 * The globally unique identifier of the parent nav menu item object.
 	 */
-	url: string | null;
+	parentId: string | null;
 	/**
 	 * Path for the resource. Relative path for internal resources. Absolute path for external resources.
 	 */
 	path: string;
+	/**
+	 * URL or destination of the menu item.
+	 */
+	url: string | null;
 	/**
 	 * Connection between the MenuItem type and the MenuItem type
 	 */
@@ -151,9 +155,9 @@ export interface GetPage_footerMenus_menuItems_edges_node_childItems_edges_node_
 	 */
 	label: string | null;
 	/**
-	 * URL or destination of the menu item.
+	 * The globally unique identifier of the parent nav menu item object.
 	 */
-	url: string | null;
+	parentId: string | null;
 	/**
 	 * Path for the resource. Relative path for internal resources. Absolute path for external resources.
 	 */
@@ -189,13 +193,17 @@ export interface GetPage_footerMenus_menuItems_edges_node_childItems_edges_node 
 	 */
 	label: string | null;
 	/**
-	 * URL or destination of the menu item.
+	 * The globally unique identifier of the parent nav menu item object.
 	 */
-	url: string | null;
+	parentId: string | null;
 	/**
 	 * Path for the resource. Relative path for internal resources. Absolute path for external resources.
 	 */
 	path: string;
+	/**
+	 * URL or destination of the menu item.
+	 */
+	url: string | null;
 	/**
 	 * Connection between the MenuItem type and the MenuItem type
 	 */

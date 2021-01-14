@@ -18,9 +18,9 @@ export interface MenuFragment_childItems_edges_node {
 	 */
 	label: string | null;
 	/**
-	 * URL or destination of the menu item.
+	 * The globally unique identifier of the parent nav menu item object.
 	 */
-	url: string | null;
+	parentId: string | null;
 	/**
 	 * Path for the resource. Relative path for internal resources. Absolute path for external resources.
 	 */

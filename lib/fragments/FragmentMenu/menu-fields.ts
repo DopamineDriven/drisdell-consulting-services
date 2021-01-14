@@ -11,7 +11,7 @@ const FRAGMENT_MENU_FIELDS = gql`
 				node {
 					id
 					label
-					url
+					parentId
 					path
 				}
 			}
