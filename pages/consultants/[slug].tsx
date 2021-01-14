@@ -39,22 +39,125 @@ import ConsultantPosts from '@components/ConsultantPosts/consultant-posts';
 const { ASC } = OrderEnum;
 const { SLUG } = PostObjectsConnectionOrderbyEnum;
 
+/**
+ ** @CONSULTANT_SLUGS @QueryVars targeting incoming @SLUG paths
+ */
 const ConsultantSlugsQueryVars: ConsultantSlugsVariables = {
 	order: ASC,
 	field: SLUG,
 	first: 15
 };
 
+/**
+ ** expected shape of @GetStaticPathsResult
+ */
 type DynamicPaths = {
 	params: {
 		slug: string;
 	};
 }[];
 
-interface PathPropsResult extends GetStaticPaths {
-	pathsData: DynamicPaths;
+export const getStaticPaths: GetStaticPaths = async () => {
+	const apolloClient = initializeApollo();
+	const { data } = await apolloClient.query<
+		ConsultantSlugs,
+		ConsultantSlugsVariables
+	>({
+		query: CONSULTANT_SLUGS,
+		variables: ConsultantSlugsQueryVars
+	});
+
+	/**
+	 * set @type annotation of @pathsData empty array to desired @GetStaticPathsResult
+	 */
+	const pathsData: DynamicPaths = [];
+
+	/**
+	 * @nullCheck to map @CONSULTANT_SLUGS edges
+	 */
+	if (
+		data &&
+		data.consultantSlugs !== null &&
+		data.consultantSlugs.edges !== null &&
+		data.consultantSlugs.edges.length > 0
+	)
+		data.consultantSlugs.edges.map(slugs => {
+			if (slugs !== null && slugs.node !== null && slugs.node.slug !== null) {
+				/**
+				 * @inject empty array of @pathsData of type @DynamicPaths with @dynamicSlugs
+				 */
+				pathsData.push({ params: { slug: slugs.node.slug } });
+			}
+		});
+
+	return {
+		paths: pathsData,
+		fallback: 'blocking'
+	};
+};
+
+/**
+ ** use @GetStaticPaths @slugs via @GetStaticPropsContext as @ctx
+ ** and @GetStaticPropsResultType @Params
+ ** to dynamically generate targeted @consultantPost Object and @consultantSlug path
+ */
+export async function getStaticProps(
+	ctx: GetStaticPropsContext
+): Promise<GetStaticPropsResult<Params>> {
+	/**
+	 ** @TypeAssertion otherwise @Params can return null or undefined for @RouteMatch
+	 ** @Params is defined as [param: string]: any;
+	 ** recall that params is the object key resolved in @GetStaticPathsResult
+	 */
+	const consultantParams = ctx.params as Params;
+	const ConsultantBySlugQueryVars: ConsultantBySlugVariables = {
+		idType: ConsultantIdType.SLUG,
+		id: consultantParams.slug
+	};
+
+	const apolloClient = initializeApollo();
+	/**
+	 ** injecting @ApolloState with @HeaderFooter @MenuPaths on @Layout
+	 */
+	await apolloClient.query<HeaderFooter, HeaderFooterVariables>({
+		query: HEADER_FOOTER,
+		variables: HeaderFooterMenuQueryVers
+	});
+
+	/**
+	 ** injecting @ApolloState with @ConsultantSlugs needed to resolve @GetStaticProps
+	 ** of type @GetStaticPathsResult
+	 */
+	await apolloClient.query<ConsultantSlugs, ConsultantSlugsVariables>({
+		query: CONSULTANT_SLUGS,
+		variables: ConsultantSlugsQueryVars
+	});
+
+	/**
+	 ** strongly typed destructuring of @ConsultantBySlug using @consultantParamsSlug
+	 */
+	const { data } = await apolloClient.query<
+		ConsultantBySlug,
+		ConsultantBySlugVariables
+	>({
+		query: CONSULTANT_BY_SLUG,
+		variables: ConsultantBySlugQueryVars
+	});
+
+	/**
+	 ** @NullishCoalescing for incoming dynamic @ConsultantObject @ConsultantPath
+	 */
+	return addApolloState(apolloClient, {
+		props: {
+			consultant: data.consultantPost ?? {},
+			path: data.consultantPost!.slug ?? ' '
+		}
+	});
 }
 
+/**
+ ** @LoadingDotsDynamic @routerIsFallback
+ */
 const LoadingDots = dynamic(() => import('@components/UI/LoadingDots'));
 
 const Loading = () => (
@@ -63,11 +166,17 @@ const Loading = () => (
 	</div>
 );
 
-// const DynamicImage = dynamic(() => import('next/image'), dynamicProps);
-
+/**
+ ** @InferGetStaticProps @infersPostSlug @infersPostObject from @GetStaticProps
+ */
 const DynamicConsultant: NextPage &
 	InferGetStaticPropsType<typeof getStaticProps> = () => {
 	const { query } = useRouter();
+
+	/**
+	 ** @TypeAssertion otherwise @querySlug returns string[], string, or undefined
+	 ** pass @consultantSlugTarget as @ConsultantBySlugQueryVars @id
+	 */
 	const consultantSlugTarget = query.slug as string;
 	const ConsultantBySlugQueryVars: ConsultantBySlugVariables = {
 		idType: ConsultantIdType.SLUG,
@@ -81,6 +190,10 @@ const DynamicConsultant: NextPage &
 		}
 	);
 
+	/**
+	 ** @HandleFallback and null check @postMetaTitle
+	 ** conditionally handle @Fallback and @Null via ternary
+	 */
 	const router = useRouter();
 	return data &&
 		data.consultantPost !== null &&
@@ -105,84 +218,6 @@ const DynamicConsultant: NextPage &
 			)}
 		</Layout>
 	);
-};
-
-export async function getStaticProps(
-	ctx: GetStaticPropsContext
-): Promise<GetStaticPropsResult<Params>> {
-	const consultantParams = ctx.params as Params;
-	const ConsultantBySlugQueryVars: ConsultantBySlugVariables = {
-		idType: ConsultantIdType.SLUG,
-		id: consultantParams.slug
-	};
-
-	const apolloClient = initializeApollo();
-	await apolloClient.query<HeaderFooter, HeaderFooterVariables>({
-		query: HEADER_FOOTER,
-		variables: HeaderFooterMenuQueryVers
-	});
-	await apolloClient.query<ConsultantSlugs, ConsultantSlugsVariables>({
-		query: CONSULTANT_SLUGS,
-		variables: ConsultantSlugsQueryVars
-	});
-	const { data } = await apolloClient.query<
-		ConsultantBySlug,
-		ConsultantBySlugVariables
-	>({
-		query: CONSULTANT_BY_SLUG,
-		variables: ConsultantBySlugQueryVars
-	});
-	const consultantPostDynamic =
-		data && data.consultantPost !== null ? data.consultantPost : {};
-	const consultantSlugDynamic =
-		data && data.consultantPost !== null && data.consultantPost.slug !== null
-			? data.consultantPost.slug
-			: '';
-
-	console.log('consultantPostDynamic: ', consultantPostDynamic);
-	console.log('consultantSlugDynamic: ', consultantSlugDynamic);
-
-	return addApolloState(apolloClient, {
-		props: {
-			consultant: data.consultantPost ?? {},
-			path: data.consultantPost!.slug ?? ' '
-		}
-	});
-}
-
-export const getStaticPaths = async (
-	ctx: PathPropsResult
-): Promise<{
-	paths: DynamicPaths;
-	fallback: boolean | 'blocking';
-}> => {
-	const apolloClient = initializeApollo();
-	const { data } = await apolloClient.query<
-		ConsultantSlugs,
-		ConsultantSlugsVariables
-	>({
-		query: CONSULTANT_SLUGS,
-		variables: ConsultantSlugsQueryVars
-	});
-
-	const { pathsData = [] } = ctx;
-
-	if (
-		data &&
-		data.consultantSlugs !== null &&
-		data.consultantSlugs.edges !== null &&
-		data.consultantSlugs.edges.length > 0
-	)
-		data.consultantSlugs.edges.map(slugs => {
-			if (slugs !== null && slugs.node !== null && slugs.node.slug !== null) {
-				pathsData.push({ params: { slug: slugs.node.slug } });
-			}
-		});
-
-	return {
-		paths: pathsData,
-		fallback: 'blocking'
-	};
 };
 
 export default DynamicConsultant;

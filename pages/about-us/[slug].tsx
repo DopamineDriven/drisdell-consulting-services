@@ -131,7 +131,7 @@ export const getStaticPaths = async (
 	ctx: PathPropsResult
 ): Promise<{
 	paths: DynamicPaths;
-	fallback: boolean | 'blocking';
+	fallback: true | false | 'blocking';
 }> => {
 	const apolloClient = initializeApollo();
 	const { data } = await apolloClient.query<AboutSlugs, AboutSlugsVariables>({
