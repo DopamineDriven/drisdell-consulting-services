@@ -151,7 +151,8 @@ export async function getStaticProps(
 		props: {
 			consultant: data.consultantPost ?? {},
 			path: data.consultantPost!.slug ?? ' '
-		}
+		},
+		revalidate: 10
 	});
 }
 
@@ -168,9 +169,14 @@ const Loading = () => (
 
 /**
  ** @InferGetStaticProps @infersPostSlug @infersPostObject from @GetStaticProps
- */
-const DynamicConsultant: NextPage &
-	InferGetStaticPropsType<typeof getStaticProps> = () => {
+ **/
+
+function DynamicConsultant({
+	consultant
+}: NextPage & InferGetStaticPropsType<typeof getStaticProps>) {
+	console.log({ consultant });
+	console.log(typeof consultant);
+	console.log(consultant);
 	const { query } = useRouter();
 
 	/**
@@ -218,6 +224,6 @@ const DynamicConsultant: NextPage &
 			)}
 		</Layout>
 	);
-};
+}
 
 export default DynamicConsultant;

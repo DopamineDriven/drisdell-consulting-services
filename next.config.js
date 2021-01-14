@@ -45,8 +45,8 @@ const redirects = {
 				permanent: true
 			},
 			{
-				source: '/consultant/:slug',
-				destination: '/consultants/:slug',
+				source: '/consultant/:slug*',
+				destination: '/consultants/:slug*',
 				permanent: true
 			}
 		];

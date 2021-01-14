@@ -33,6 +33,8 @@ import {
 	HeaderFooterVariables
 } from '@lib/graphql/HeaderFooter/__generated__/HeaderFooter';
 
+const apolloClient = initializeApollo();
+
 const getPagesQueryVars: GetPagesVariables = {
 	first: 30,
 	order: OrderEnum.ASC,
@@ -94,7 +96,6 @@ export async function getStaticProps(
 		idTypePage: URI,
 		idPage: params.slug
 	};
-	const apolloClient = initializeApollo();
 	await apolloClient.query<HeaderFooter, HeaderFooterVariables>({
 		query: HEADER_FOOTER,
 		variables: HeaderFooterMenuQueryVers
@@ -143,7 +144,6 @@ export const getStaticPaths = async (
 	fallback: boolean | 'blocking';
 }> => {
 	const { pathsData = [] } = props;
-	const apolloClient = initializeApollo();
 	const { data } = await apolloClient.query<GetPages, GetPagesVariables>({
 		query: GET_PAGES,
 		variables: getPagesQueryVars
