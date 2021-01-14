@@ -32,7 +32,7 @@ export default class MyDocument extends Document {
 						}}
 					/>
 				</Head>
-				<body className='root'>
+				<body>
 					<Main />
 					<NextScript />
 				</body>
