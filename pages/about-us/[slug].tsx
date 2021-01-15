@@ -126,8 +126,6 @@ const DynamicAbout: NextPage &
 	InferGetStaticPropsType<typeof getStaticProps> = () => {
 	const { query } = useRouter();
 	const targetSlug = query.slug as string;
-	const slugToMetaTitle = targetSlug.replace('-', ' ');
-	console.log('slug to title', slugToMetaTitle);
 
 	const AboutBySlugQueryVars: AboutBySlugVariables = {
 		idType: SLUG,
