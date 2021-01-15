@@ -86,7 +86,7 @@ export const getStaticPaths = async (
 
 	return {
 		paths: pathsData,
-		fallback: 'blocking'
+		fallback: true
 	};
 };
 
@@ -133,22 +133,23 @@ const DynamicAbout: NextPage &
 		idType: SLUG,
 		id: targetSlug
 	};
-
 	const { data } = useQuery<AboutBySlug, AboutBySlugVariables>(ABOUT_BY_SLUG, {
 		variables: AboutBySlugQueryVars,
 		notifyOnNetworkStatusChange: true
 	});
-
-	const title =
-		data && data.aboutPost !== null && data.aboutPost.title !== null
-			? data.aboutPost.title
-			: 'Title null';
-
-	console.log(title);
-
 	const router = useRouter();
-	return (
-		<Layout title={title}>
+	return data && data.aboutPost !== null && data.aboutPost.title !== null ? (
+		<Layout title={data.aboutPost.title}>
+			{router.isFallback ? (
+				<Loading />
+			) : (
+				<>
+					<AboutPosts />
+				</>
+			)}
+		</Layout>
+	) : (
+		<Layout title={'title null'}>
 			{router.isFallback ? (
 				<Loading />
 			) : (

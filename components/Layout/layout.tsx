@@ -19,7 +19,6 @@ import NavLinksHeadless from './NavLinksHeadless';
 import NavbarLinks from './NavbarLinks';
 import FooterNavLinksHeadless from './FooterHeadlessLinks';
 import FooterNavLinks from './FooterNavLinks';
-import NavFlyoutHeadless from './NavFlyoutHeadless/nav-flyout-headless';
 
 interface LayoutProps {
 	classNameRoot?: string;
@@ -69,7 +68,7 @@ const Layout: FC<LayoutProps> = props => {
 			{error ? (
 				<>
 					<ApolloErrorMessage
-						message={`${error.message}`}
+						message={error.message}
 						graphQLErrors={error.graphQLErrors}
 						networkError={error.networkError}
 						extraInfo={error.extraInfo}
@@ -94,37 +93,13 @@ const Layout: FC<LayoutProps> = props => {
 								nodes.node.childItems !== null ? (
 									<NavLinksHeadless
 										parentId={nodes.node.parentId}
+										url={nodes.node.url}
 										key={nodes.node.id}
 										path={nodes.node.path}
 										label={nodes.node.label}
 										id={nodes.node.id}
-										url={nodes.node.url}
 										__typename={nodes.node.__typename}
 										childItems={nodes.node.childItems}
-										subMenu={
-											nodes.node.childItems.edges !== null &&
-											nodes.node.childItems.edges.length > 0
-												? nodes.node.childItems.edges.map(edge => {
-														return edge !== null &&
-															edge.node !== null &&
-															edge.node.label !== null &&
-															edge.node.parentId !== null &&
-															edge.node.url !== null ? (
-															<NavFlyoutHeadless
-																__typename={edge.node.__typename}
-																id={edge.node.id}
-																key={edge.node.id}
-																path={edge.node.path}
-																url={edge.node.url}
-																parentId={edge.node.parentId}
-																label={edge.node.label}
-															/>
-														) : (
-															''
-														);
-												  })
-												: ''
-										}
 									/>
 								) : (
 									<div>error...{error}</div>
@@ -156,30 +131,6 @@ const Layout: FC<LayoutProps> = props => {
 										childItems={nodes.node.childItems}
 										root={
 											'block px-3 py-2 rounded-md text-base font-semibold text-primary-8 hover:text-primary-9'
-										}
-										subMenu={
-											nodes.node.childItems.edges !== null &&
-											nodes.node.childItems.edges.length > 0
-												? nodes.node.childItems.edges.map(edge => {
-														return edge !== null &&
-															edge.node !== null &&
-															edge.node.label !== null &&
-															edge.node.parentId !== null &&
-															edge.node.url !== null ? (
-															<NavFlyoutHeadless
-																__typename={edge.node.__typename}
-																id={edge.node.id}
-																key={edge.node.id}
-																path={edge.node.path}
-																url={edge.node.url}
-																parentId={edge.node.parentId}
-																label={edge.node.label}
-															/>
-														) : (
-															''
-														);
-												  })
-												: ''
 										}
 									/>
 								) : (

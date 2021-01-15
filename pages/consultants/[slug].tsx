@@ -90,9 +90,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
 			}
 		});
 
+	/**
+	 * @fallback must be true for @ISR to work at full force
+	 */
 	return {
 		paths: pathsData,
-		fallback: 'blocking'
+		fallback: true
 	};
 };
 
