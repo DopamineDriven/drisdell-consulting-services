@@ -17,9 +17,9 @@ const AboutWrapper: FC<AboutWrapperProps> = props => {
 			)}
 		>
 			<div className='absolute inset-0'>
-				<div className='bg-primary-9 h-1/3 sm:h-2/3 ' />
+				<div className='bg-primary-9 h-1/3 sm:h-1/4 ' />
 			</div>
-			<div className='relative max-w-7xl mx-auto'>
+			<div className='relative max-w-6xl mx-auto'>
 				<div className='text-center'>
 					<h2 className='text-3xl tracking-tight font-extrabold text-primary-0 sm:text-4xl'>
 						Drisdell Consulting Services

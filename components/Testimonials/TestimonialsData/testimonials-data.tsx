@@ -5,6 +5,7 @@ import { AllTestimonials_testimonials_edges_node as TestimonialsChildren } from 
 import Image from 'next/image';
 import ReactMarkdown from 'react-markdown/with-html';
 import css from './testimonials-data.module.css';
+import { Container } from '@components/UI';
 
 interface TestimonialsDataProps extends TestimonialsChildren {
 	root?: string;
@@ -22,7 +23,9 @@ const TestimonialsData: FC<TestimonialsDataProps> = props => {
 			? featuredImage.node.sourceUrl
 			: '/error-bot.png';
 	return (
-		<div className={cn(root, ' align-middle my-auto font-poppins flex-row')}>
+		<Container
+			className={cn(root, ' align-middle my-auto font-poppins flex-row')}
+		>
 			{/* <Link href={`testimonials/${slugConditional}`} passHref>
 				<a aria-label='anchor' className='' id='prosites'>
 					<h2
@@ -82,7 +85,7 @@ const TestimonialsData: FC<TestimonialsDataProps> = props => {
 					</blockquote>
 				</div>
 			</div>
-		</div>
+		</Container>
 	);
 };
 

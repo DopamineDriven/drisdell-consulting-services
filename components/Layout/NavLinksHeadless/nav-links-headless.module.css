@@ -1,9 +1,5 @@
-.linkActive {
-	@apply underline px-2 py-2 rounded-md text-base text-primary-8;
-}
-
 .link {
-	@apply px-2 py-2 rounded-md text-base text-primary-8;
+	@apply px-2 py-2 rounded-md text-base text-primary-8 font-semibold;
 	&:hover {
 		@apply text-primary-9;
 	}
@@ -13,4 +9,8 @@
 	@screen xl {
 		@apply text-base tracking-tight;
 	}
+}
+
+.link.active {
+	@apply font-bold;
 }

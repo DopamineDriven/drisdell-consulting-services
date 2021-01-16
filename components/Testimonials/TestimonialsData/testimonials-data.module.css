@@ -11,5 +11,5 @@
 }
 
 .prose blockquote {
-	@apply border-blue-900;
+	@apply border-blue-900 flex-shrink-0;
 }
