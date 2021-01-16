@@ -5,7 +5,7 @@ import {
 import dynamic from 'next/dynamic';
 import CONSULTANT_BY_SLUG from '@lib/graphql/ConsultantBySlug/consultant-by-slug';
 import { useQuery } from '@apollo/client';
-import { ConsultantIdType } from '@_types/graphql-global-types';
+import { ConsultantIdType } from '@lib/graphql-global-types';
 import { useRouter } from 'next/router';
 import cn from 'classnames';
 // import hydrate from 'next-mdx-remote/hydrate';

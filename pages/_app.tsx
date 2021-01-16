@@ -1,38 +1,45 @@
 import '@styles/index.css';
 import 'keen-slider/keen-slider.min.css';
-// import '@styles/chrome-bug.css';
+import '@styles/chrome-bug.css';
 
 import { AppProps, NextWebVitalsMetric } from 'next/app';
-import { useEffect } from 'react';
-import { gaInit, logPageView } from '@lib/google-analytics';
+import { useEffect, FC } from 'react';
+import * as gtag from '@lib/google-analytics';
 import { ApolloProvider } from '@apollo/client';
 import { useApollo } from '@lib/apollo';
 import { ManagedUIContext } from '@components/context';
+import Head from '@components/Head';
+import { useRouter } from 'next/router';
 
-function App({ Component, pageProps, router }: AppProps) {
+const Noop: FC = ({ children }) => <>{children}</>;
+
+function App({ Component, pageProps }: AppProps) {
+	const Layout = (Component as any).Layout || Noop;
 	const apolloClient = useApollo(pageProps);
-
-	// useEffect(() => {
-	// 	document.body.classList?.remove('loading');
-	// }, []);
+	const router = useRouter();
 
 	useEffect(() => {
-		gaInit();
-		const handleRouteChange = () => {
-			logPageView();
+		document.body.classList?.remove('loading');
+		const handleRouteChange = (url: string) => {
+			gtag.pageview(url);
 		};
 		router.events.on('routeChangeComplete', handleRouteChange);
 		return () => {
 			router.events.off('routeChangeComplete', handleRouteChange);
 		};
 	}, [router.events]);
-	console.log();
+
 	return (
-		<ManagedUIContext>
-			<ApolloProvider client={apolloClient}>
-				<Component {...pageProps} />
-			</ApolloProvider>
-		</ManagedUIContext>
+		<>
+			<Head />
+			<ManagedUIContext>
+				<ApolloProvider client={apolloClient}>
+					<Layout pageProps={pageProps}>
+						<Component {...pageProps} />
+					</Layout>
+				</ApolloProvider>
+			</ManagedUIContext>
+		</>
 	);
 }
 

@@ -6,7 +6,7 @@ import {
 import {
 	OrderEnum,
 	PostObjectsConnectionOrderbyEnum
-} from '@_types/graphql-global-types';
+} from '@lib/graphql-global-types';
 import { useQuery } from '@apollo/client';
 import dynamic from 'next/dynamic';
 import Container from '@components/UI/Container';

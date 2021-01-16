@@ -2,7 +2,7 @@ import { Transition, Menu } from '@headlessui/react';
 import { FC } from 'react';
 import { HeaderFooter_headerDynamic_menuItems_edges_node_childItems_edges_node as FlyoutProps } from '@lib/graphql/HeaderFooter/__generated__/HeaderFooter';
 import cn from 'classnames';
-import DownArrow from '../../Icons/down-arrow';
+import DownArrow from '../../icons/down-arrow';
 import css from './nav-flyout-headless.module.css';
 import Link from 'next/link';
 import Container from '@components/UI/Container';

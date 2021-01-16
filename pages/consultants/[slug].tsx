@@ -32,7 +32,7 @@ import {
 	PostObjectsConnectionOrderbyEnum,
 	OrderEnum,
 	ConsultantIdType
-} from '@_types/graphql-global-types';
+} from '@lib/graphql-global-types';
 // import hydrate from 'next-mdx-remote/hydrate';
 import ConsultantPosts from '@components/ConsultantPosts/consultant-posts';
 

@@ -3,10 +3,7 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
-import {
-	PageIdType,
-	MenuNodeIdTypeEnum
-} from './../../../../_types/graphql-global-types';
+import { PageIdType, MenuNodeIdTypeEnum } from '../../../graphql-global-types';
 
 // ====================================================
 // GraphQL query operation: GetPage

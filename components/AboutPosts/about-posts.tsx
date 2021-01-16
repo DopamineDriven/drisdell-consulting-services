@@ -6,7 +6,7 @@ import {
 import ABOUT_BY_SLUG from '@lib/graphql/AboutBySlug';
 import { useQuery } from '@apollo/client';
 import cn from 'classnames';
-import { AboutIdType } from '@_types/graphql-global-types';
+import { AboutIdType } from '@lib/graphql-global-types';
 import { useRouter } from 'next/router';
 import css from './about-posts.module.css';
 import ReactMarkdown from 'react-markdown/with-html';

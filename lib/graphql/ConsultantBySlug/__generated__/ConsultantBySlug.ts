@@ -3,7 +3,7 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
-import { ConsultantIdType } from './../../../../_types/graphql-global-types';
+import { ConsultantIdType } from '../../../graphql-global-types';
 
 // ====================================================
 // GraphQL query operation: ConsultantBySlug

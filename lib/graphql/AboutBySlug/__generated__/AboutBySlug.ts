@@ -3,7 +3,7 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
-import { AboutIdType } from './../../../../_types/graphql-global-types';
+import { AboutIdType } from '../../../graphql-global-types';
 
 // ====================================================
 // GraphQL query operation: AboutBySlug

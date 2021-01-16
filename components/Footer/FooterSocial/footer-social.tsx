@@ -1,9 +1,11 @@
 import { FC } from 'react';
 import cn from 'classnames';
-import TwitterIcon from '../../Icons/twitter';
-import LinkedinIcon from '../../Icons/linkedin';
-import FacebookIcon from '../../Icons/facebook';
-import InstagramIcon from '../../Icons/instagram';
+import {
+	TwitterIcon,
+	LinkedInIcon,
+	FacebookIcon,
+	InstagramIcon
+} from '@components/icons';
 import css from './footer-social.module.css';
 
 interface FooterSocialIcons {
@@ -18,7 +20,7 @@ const socialIcons: FooterSocialIcons[] = [
 		href: '#',
 		label: 'LinkedIn',
 		className: ``,
-		icon: <LinkedinIcon />
+		icon: <LinkedInIcon />
 	},
 	{
 		href: '#',

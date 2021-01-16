@@ -8,7 +8,7 @@ import { useQuery } from '@apollo/client';
 import {
 	PostObjectsConnectionOrderbyEnum,
 	OrderEnum
-} from '@_types/graphql-global-types';
+} from '@lib/graphql-global-types';
 import {
 	AllTestimonials,
 	AllTestimonialsVariables

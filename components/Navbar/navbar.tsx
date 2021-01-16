@@ -1,15 +1,15 @@
 import { FC, useState } from 'react';
 import cn from 'classnames';
 import { useRouter } from 'next/router';
-import Logo from '../Logo';
+import Logo from '../UI/Logo';
 import NavbarUserLinks from './NavbarUserLinks';
 import css from './navbar.module.css';
 import Avatar from '@components/Avatar';
 import { Transition } from '@headlessui/react/dist';
-import XIcon from '../Icons/x-icon';
-import PlusIcon from '../Icons/plus-icon';
-import MenuIcon from '../Icons/menu-icon';
-import BellIcon from '../Icons/bell-icon';
+import XIcon from '../icons/x-icon';
+import PlusIcon from '../icons/plus-icon';
+import MenuIcon from '../icons/menu-icon';
+import BellIcon from '../icons/bell-icon';
 
 interface NavbarProps {
 	root?: string;

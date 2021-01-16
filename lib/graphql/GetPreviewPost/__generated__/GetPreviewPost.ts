@@ -3,7 +3,7 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
-import { PostIdType } from './../../../../_types/graphql-global-types';
+import { PostIdType } from '../../../graphql-global-types';
 
 // ====================================================
 // GraphQL query operation: GetPreviewPost

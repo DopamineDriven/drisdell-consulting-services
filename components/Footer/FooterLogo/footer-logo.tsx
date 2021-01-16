@@ -1,4 +1,4 @@
-import Logo from '../../Logo';
+import Logo from '../../UI/Logo';
 import Link from 'next/link';
 import cn from 'classnames';
 import css from './footer-logo.module.css';

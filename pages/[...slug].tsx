@@ -19,7 +19,7 @@ import {
 	OrderEnum,
 	PageIdType,
 	PostObjectsConnectionOrderbyEnum
-} from '@_types/graphql-global-types';
+} from '@lib/graphql-global-types';
 import {
 	GetPages,
 	GetPagesVariables

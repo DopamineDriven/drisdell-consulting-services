@@ -23,7 +23,6 @@
 		"baseUrl": ".",
 		"strictNullChecks": true,
 		"paths": {
-			"@_types/*": ["_types/*"],
 			"@components/*": ["components/*"],
 			"@config/*": ["config/*"],
 			"@lib/*": ["lib/*"],

@@ -1,6 +1,6 @@
 import cn from 'classnames';
 
-const LinkedIn = ({ ...props }) => {
+const LinkedInIcon = ({ ...props }) => {
 	return (
 		<>
 			<span className='sr-only'>LinkedIn</span>
@@ -21,4 +21,4 @@ const LinkedIn = ({ ...props }) => {
 	);
 };
 
-export default LinkedIn;
+export default LinkedInIcon;

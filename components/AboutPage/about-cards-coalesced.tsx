@@ -14,7 +14,7 @@ import AboutPageWrapper from './AboutPageWrapper';
 import {
 	OrderEnum,
 	PostObjectsConnectionOrderbyEnum
-} from '@_types/graphql-global-types';
+} from '@lib/graphql-global-types';
 
 export const AboutCardsCoalescedQueryVars: AboutCardsDataVariables = {
 	name: 'about-us',

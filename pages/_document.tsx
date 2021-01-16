@@ -1,23 +1,13 @@
-import Document, {
-	Html,
-	Head,
-	Main,
-	NextScript,
-	DocumentContext
-} from 'next/document';
-
+import Document, { Html, Head, Main, NextScript } from 'next/document';
+import { GA_TRACKING_ID } from '@lib/google-analytics';
 export default class MyDocument extends Document {
-	static async getInitialProps(ctx: DocumentContext) {
-		const initialProps = await Document.getInitialProps(ctx);
-		return { ...initialProps };
-	}
 	render() {
 		return (
 			<Html lang='en-US'>
 				<Head>
 					<script
 						async
-						src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_TRACKING_ID}`}
+						src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
 					/>
 					<script
 						dangerouslySetInnerHTML={{
@@ -25,14 +15,15 @@ export default class MyDocument extends Document {
 				window.dataLayer = window.dataLayer || [];
 				function gtag(){dataLayer.push(arguments);}
 				gtag('js', new Date());
-				gtag('config', '${process.env.NEXT_PUBLIC_GA_TRACKING_ID}', {
+				
+				gtag('config', '${GA_TRACKING_ID}', {
 					page_path: window.location.pathname,
 				});
 			`
 						}}
 					/>
 				</Head>
-				<body>
+				<body className='loading'>
 					<Main />
 					<NextScript />
 				</body>

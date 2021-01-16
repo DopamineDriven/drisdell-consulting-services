@@ -5,7 +5,7 @@ import Footer from '../Footer';
 import cn from 'classnames';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
-import { Button, LoadingDots } from '../UI';
+import { Button, LoadingDots, Modal } from '../UI';
 import { useAcceptCookies } from '@lib/use-accept-cookies';
 import HEADER_FOOTER from '@lib/graphql/HeaderFooter';
 import {
@@ -13,12 +13,13 @@ import {
 	HeaderFooterVariables
 } from '@lib/graphql/HeaderFooter/__generated__/HeaderFooter';
 import { useQuery } from '@apollo/client';
-import { MenuNodeIdTypeEnum } from '@_types/graphql-global-types';
+import { MenuNodeIdTypeEnum } from '@lib/graphql-global-types';
 import Meta from './Meta';
 import NavLinksHeadless from './NavLinksHeadless';
 import NavbarLinks from './NavbarLinks';
 import FooterNavLinksHeadless from './FooterHeadlessLinks';
 import FooterNavLinks from './FooterNavLinks';
+import { useUI } from '@components/context';
 
 interface LayoutProps {
 	classNameRoot?: string;
@@ -43,13 +44,27 @@ const dynamicProps = {
 };
 
 const ApolloErrorMessage = dynamic(
-	() => import('../UI/ErrorMessage'),
+	() => import('@components/UI/ErrorMessage'),
 	dynamicProps
 );
 
-const FeatureBar = dynamic(() => import('../FeatureBar'), dynamicProps);
+const LoginView = dynamic(
+	() => import('@components/auth/user-login'),
+	dynamicProps
+);
+
+const SignUpView = dynamic(
+	() => import('@components/auth/sign-up'),
+	dynamicProps
+);
+
+const FeatureBar = dynamic(
+	() => import('@components/FeatureBar'),
+	dynamicProps
+);
 
 const Layout: FC<LayoutProps> = props => {
+	const { displayModal, closeModal, modalView } = useUI();
 	const { acceptedCookies, onAcceptCookies } = useAcceptCookies();
 	const { children, classNameRoot, title = 'default title' } = props;
 	const { loading, error, data } = useQuery<HeaderFooter, HeaderFooterVariables>(
@@ -147,6 +162,12 @@ const Layout: FC<LayoutProps> = props => {
 					}
 				/>
 			)}
+			<Modal open={displayModal} onClose={closeModal}>
+				{modalView === 'LOGIN_VIEW' && <LoginView />}
+				{modalView === 'SIGNUP_VIEW' && <SignUpView />}
+				{/* {modalView === 'FORGOT_VIEW' && <ForgotPassword />} */}
+				{/* {modalView === 'REQUEST_APPT_VIEW' && <RequestAppt />} */}
+			</Modal>
 			<div className={cn(css.bg, classNameRoot)}>
 				<main className={cn(css.main, 'fit')}>{children}</main>
 				{error ? (
@@ -203,7 +224,7 @@ const Layout: FC<LayoutProps> = props => {
 						action={
 							<Button
 								className='mx-5 rounded-xl border-accents-6 border-1 hover:text-primary-3 hover:bg-accents-6 hover:bg-opacity-70 hover:border-primary-3 duration-500 ease-in-out transform transition-colors'
-								onClick={onAcceptCookies}
+								onClick={() => onAcceptCookies()}
 							>
 								Accept Cookies
 							</Button>

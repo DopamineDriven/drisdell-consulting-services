@@ -1,6 +1,6 @@
 import cn from 'classnames';
 
-const Twitter = ({ ...props }) => {
+const TwitterIcon = ({ ...props }) => {
 	return (
 		<>
 			<span className='sr-only'>Twitter</span>
@@ -17,4 +17,4 @@ const Twitter = ({ ...props }) => {
 	);
 };
 
-export default Twitter;
+export default TwitterIcon;

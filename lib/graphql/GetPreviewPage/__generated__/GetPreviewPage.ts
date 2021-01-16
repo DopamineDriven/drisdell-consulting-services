@@ -3,7 +3,7 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
-import { PageIdType } from './../../../../_types/graphql-global-types';
+import { PageIdType } from '../../../graphql-global-types';
 
 // ====================================================
 // GraphQL query operation: GetPreviewPage

@@ -3,7 +3,7 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
-import { MenuNodeIdTypeEnum } from './../../../../_types/graphql-global-types';
+import { MenuNodeIdTypeEnum } from '../../../graphql-global-types';
 
 // ====================================================
 // GraphQL query operation: HeaderFooter

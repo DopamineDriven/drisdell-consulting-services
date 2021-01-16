@@ -5,7 +5,7 @@ import cn from 'classnames';
 import css from './nav-links-headless.module.css';
 import { HeaderFooter_headerDynamic_menuItems_edges_node as NavRef } from '@lib/graphql/HeaderFooter/__generated__/HeaderFooter';
 import { Transition, Menu } from '@headlessui/react';
-import DownArrow from '../../Icons/down-arrow';
+import DownArrow from '../../icons/down-arrow';
 
 export interface NavLinkProps extends NavRef {
 	root?: string;
