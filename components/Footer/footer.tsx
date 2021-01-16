@@ -3,7 +3,7 @@ import cn from 'classnames';
 import Container from '../UI/Container';
 import FooterLogo from './FooterLogo';
 import FooterSocial from './FooterSocial';
-import WcdIcon from '../icons/wcd';
+import WcdIcon from '../Icons/wcd';
 
 interface FooterProps {
 	classNameRoot?: string;

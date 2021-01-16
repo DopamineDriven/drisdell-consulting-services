@@ -6,8 +6,8 @@ import NavbarUserLinks from '../NavbarUserLinks/navbar-user-links';
 import Avatar from '@components/Avatar';
 import { useRouter } from 'next/router';
 import { Button } from '@components/UI';
-import PlusIcon from '../../icons/plus-icon';
-import BellIcon from '../../icons/bell-icon';
+import PlusIcon from '../../Icons/plus-icon';
+import BellIcon from '../../Icons/bell-icon';
 
 interface NavbarUserDropdownProps {
 	root?: string;

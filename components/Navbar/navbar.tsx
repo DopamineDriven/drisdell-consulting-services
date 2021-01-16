@@ -6,10 +6,10 @@ import NavbarUserLinks from './NavbarUserLinks';
 import css from './navbar.module.css';
 import Avatar from '@components/Avatar';
 import { Transition } from '@headlessui/react/dist';
-import XIcon from '../icons/x-icon';
-import PlusIcon from '../icons/plus-icon';
-import MenuIcon from '../icons/menu-icon';
-import BellIcon from '../icons/bell-icon';
+import XIcon from '../Icons/x-icon';
+import PlusIcon from '../Icons/plus-icon';
+import MenuIcon from '../Icons/menu-icon';
+import BellIcon from '../Icons/bell-icon';
 
 interface NavbarProps {
 	root?: string;

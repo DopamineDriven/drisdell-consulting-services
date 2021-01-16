@@ -1,7 +1,7 @@
 import { FC, useRef, useEffect, useCallback } from 'react';
 import css from './modal.module.css';
 import Portal from '@reach/portal';
-import Cross from '../../icons/cross';
+import Cross from '../../Icons/cross';
 import {
 	disableBodyScroll,
 	enableBodyScroll,

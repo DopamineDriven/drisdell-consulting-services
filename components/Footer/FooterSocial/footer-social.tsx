@@ -5,7 +5,7 @@ import {
 	LinkedInIcon,
 	FacebookIcon,
 	InstagramIcon
-} from '@components/icons';
+} from '@components/Icons';
 import css from './footer-social.module.css';
 
 interface FooterSocialIcons {
