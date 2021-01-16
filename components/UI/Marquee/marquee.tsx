@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import s from './Marquee.module.css';
+import s from './marquee.module.css';
 import { FC, ReactNode, Component } from 'react';
 import Ticker from 'react-ticker';
 
