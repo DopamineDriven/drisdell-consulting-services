@@ -50,45 +50,47 @@ const NavLinksHeadless: FC<NavLinkProps> = props => {
 										<div className='absolute z-10 left-1/2 transform -translate-x-1/2 mt-3 px-2 w-screen max-w-xs sm:px-0'>
 											<div className='rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden'>
 												<div className='relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8'>
-													{childItems.edges.map(subPage => {
-														return subPage !== null &&
-															subPage.node !== null &&
-															subPage.node.label !== null &&
-															subPage.node.parentId !== null &&
-															subPage.node.url !== null &&
-															subPage.node.path ? (
-															<Menu.Item>
-																<Link
-																	href={subPage.node.path}
-																	as={subPage.node.path}
-																	passHref
-																	key={subPage.node.id}
-																>
-																	<a
-																		id={`#${subPage.node.parentId}`}
-																		className='-m-3 p-3 block rounded-md hover:primary-8'
+													<Transition.Child>
+														{childItems.edges.map(subPage => {
+															return subPage !== null &&
+																subPage.node !== null &&
+																subPage.node.label !== null &&
+																subPage.node.parentId !== null &&
+																subPage.node.url !== null &&
+																subPage.node.path ? (
+																<Menu.Item>
+																	<Link
+																		href={subPage.node.path}
+																		as={subPage.node.path}
+																		passHref
+																		key={subPage.node.id}
 																	>
-																		<p className='text-base font-medium text-primary-1'>
-																			{subPage.node.label}
-																		</p>
-																	</a>
-																</Link>
-															</Menu.Item>
-														) : (
-															<Menu.Item>
-																<Link href='#' as={'#error'} passHref>
-																	<a
-																		id={'#iderror'}
-																		className='-m-3 p-3 block rounded-md hover:primary-8'
-																	>
-																		<p className='text-base font-medium text-primary-1'>
-																			{'error in subpage mapping'}
-																		</p>
-																	</a>
-																</Link>
-															</Menu.Item>
-														);
-													})}
+																		<a
+																			id={`#${subPage.node.parentId}`}
+																			className='-m-3 p-3 block rounded-md hover:primary-8'
+																		>
+																			<p className='text-base font-medium text-primary-1'>
+																				{subPage.node.label}
+																			</p>
+																		</a>
+																	</Link>
+																</Menu.Item>
+															) : (
+																<Menu.Item>
+																	<Link href='#' as={'#error'} passHref>
+																		<a
+																			id={'#iderror'}
+																			className='-m-3 p-3 block rounded-md hover:primary-8'
+																		>
+																			<p className='text-base font-medium text-primary-1'>
+																				{'error in subpage mapping'}
+																			</p>
+																		</a>
+																	</Link>
+																</Menu.Item>
+															);
+														})}
+													</Transition.Child>
 												</div>
 											</div>
 										</div>

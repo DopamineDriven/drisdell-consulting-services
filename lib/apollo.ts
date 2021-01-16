@@ -54,6 +54,25 @@ function createApolloClient(headers = {}) {
 								return incoming;
 							}
 						},
+						testimonials: {
+							keyArgs: false,
+							// Define how to use args.{where,take,...} to return flexible views of the existing data:
+							read(existing, { args }) {
+								console.log('existing', existing);
+								console.log('args', args);
+								// Note: existing is whatever merge returns, and may be undefined if no data has been written yet.
+								return existing;
+							},
+							merge(existing, incoming, { args }) {
+								console.log('existing', existing);
+								console.log('incoming', incoming);
+								console.log('args', args);
+								if (existing != null && incoming == existing) {
+									return existing;
+								}
+								return incoming;
+							}
+						},
 						pages: {
 							keyArgs: false,
 							// Define how to use args.{where,take,...} to return flexible views of the existing data:

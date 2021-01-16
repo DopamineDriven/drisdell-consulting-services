@@ -28,7 +28,7 @@ const Navbar: FC<NavbarProps> = props => {
 				<div className='max-w-full mx-auto px-4 sm:px-6 lg:px-8 font-poppins text-primary-9'>
 					<div className='flex justify-between h-48'>
 						<div className='flex'>
-							<div className='-ml-2 mr-2 flex items-center lg:hidden'>
+							<div className='-ml-2 mr-2 flex items-center lg:hidden w-full min-w-full'>
 								<button
 									className='inline-flex items-center justify-center p-2 rounded-md text-primary-8 hover:text-opacity-80 hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white'
 									aria-expanded={false}
@@ -52,7 +52,7 @@ const Navbar: FC<NavbarProps> = props => {
 									)}
 								</button>
 							</div>
-							<div className='flex-shrink flex items-center align-middle'>
+							<div className='lg:flex-shrink flex items-center align-middle -ml-2 lg:ml-0'>
 								<Logo className={cn(css.svg, ' ')} />
 							</div>
 							<div className='hidden lg:ml-6 lg:flex lg:items-center lg:space-x-4'>
@@ -62,7 +62,7 @@ const Navbar: FC<NavbarProps> = props => {
 						<div className='flex items-center'>
 							<div className='flex-shrink-0'>
 								<button
-									className={`relative inline-flex items-center px-4 py-2 border border-primary-9 shadow-sm font-medium rounded-md text-primary-8 hover:bg-opacity-70 hover:primary-8 focus:outline-none focus:ring-offset-2 focus:ring-2 focus:ring-primary-1 select-none`}
+									className={`hidden lg:relative lg:inline-flex lg:items-center lg:px-4 lg:py-2 lg:border lg:border-primary-9 lg:shadow-sm lg:font-medium lg:rounded-md lg:text-primary-8 lg:hover:bg-opacity-70 lg:hover:primary-8 lg:focus:outline-none lg:focus:ring-offset-2 lg:focus:ring-2 lg:focus:ring-primary-1 lg:select-none`}
 									type='button'
 									onClick={() => router.push('/contact-us')}
 								>

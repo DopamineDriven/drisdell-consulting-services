@@ -41,44 +41,49 @@ const getPagesQueryVars: GetPagesVariables = {
 	parentIn: [null],
 	field: PostObjectsConnectionOrderbyEnum.PARENT
 };
-
-const Dynamic: NextPage &
-	InferGetStaticPropsType<typeof getStaticProps> = () => {
-	const { query } = useRouter();
-	const targetSlug = query.slug as string[];
-	const { NAME } = MenuNodeIdTypeEnum;
-	const { URI } = PageIdType;
-	const GetPageQueryVars: GetPageVariables = {
-		idTypeHead: NAME,
-		idHead: 'HEADER',
-		idTypeFoot: NAME,
-		idFoot: 'Footer',
-		idTypePage: URI,
-		idPage: targetSlug[0]
+type PathsProps = {
+	params: {
+		slug: string[];
 	};
-	const { data } = useQuery<GetPage, GetPageVariables>(GET_PAGE, {
-		variables: GetPageQueryVars,
-		notifyOnNetworkStatusChange: true
+}[];
+
+interface PathsPropsResult extends GetStaticPaths {
+	pathsData: PathsProps;
+}
+
+export const getStaticPaths = async (
+	props: PathsPropsResult
+): Promise<{
+	paths: PathsProps;
+	fallback: boolean | 'blocking';
+}> => {
+	const { pathsData = [] } = props;
+	const { data } = await apolloClient.query<GetPages, GetPagesVariables>({
+		query: GET_PAGES,
+		variables: getPagesQueryVars
 	});
-	const titles =
-		data && data.page !== null && data.page.title !== null
-			? data.page.title
-			: 'Title Null';
-	const contents =
-		data && data.page !== null && data.page.content !== null
-			? data.page.content
-			: 'Content Null';
-	return (
-		<Layout title={`${titles}`}>
-			<div>
-				<h1
-					className='text-primary-0 py-8 px-20 text-4xl mx-auto text-left'
-					dangerouslySetInnerHTML={{ __html: titles }}
-				/>
-				<section dangerouslySetInnerHTML={{ __html: contents }} />
-			</div>
-		</Layout>
-	);
+
+	if (
+		data &&
+		data.pages !== null &&
+		data.pages.nodes !== null &&
+		data.pages.nodes.length > 0
+	)
+		data.pages.nodes.map(page => {
+			if (
+				page !== null &&
+				page.slug !== null &&
+				!customPagesSlugs.includes(page.slug)
+			) {
+				const returnedData = { params: { slug: [page.slug] } };
+				pathsData.push(returnedData);
+			}
+		});
+
+	return {
+		paths: pathsData,
+		fallback: false
+	};
 };
 
 export async function getStaticProps(
@@ -127,49 +132,43 @@ export async function getStaticProps(
 	});
 }
 
-type PathsProps = {
-	params: {
-		slug: string[];
+const Dynamic: NextPage &
+	InferGetStaticPropsType<typeof getStaticProps> = () => {
+	const { query } = useRouter();
+	const targetSlug = query.slug as string[];
+	const { NAME } = MenuNodeIdTypeEnum;
+	const { URI } = PageIdType;
+	const GetPageQueryVars: GetPageVariables = {
+		idTypeHead: NAME,
+		idHead: 'HEADER',
+		idTypeFoot: NAME,
+		idFoot: 'Footer',
+		idTypePage: URI,
+		idPage: targetSlug[0]
 	};
-}[];
-
-interface PathsPropsResult extends GetStaticPaths {
-	pathsData: PathsProps;
-}
-
-export const getStaticPaths = async (
-	props: PathsPropsResult
-): Promise<{
-	paths: PathsProps;
-	fallback: boolean | 'blocking';
-}> => {
-	const { pathsData = [] } = props;
-	const { data } = await apolloClient.query<GetPages, GetPagesVariables>({
-		query: GET_PAGES,
-		variables: getPagesQueryVars
+	const { data } = useQuery<GetPage, GetPageVariables>(GET_PAGE, {
+		variables: GetPageQueryVars,
+		notifyOnNetworkStatusChange: true
 	});
-
-	if (
-		data &&
-		data.pages !== null &&
-		data.pages.nodes !== null &&
-		data.pages.nodes.length > 0
-	)
-		data.pages.nodes.map(page => {
-			if (
-				page !== null &&
-				page.slug !== null &&
-				!customPagesSlugs.includes(page.slug)
-			) {
-				const returnedData = { params: { slug: [page.slug] } };
-				pathsData.push(returnedData);
-			}
-		});
-
-	return {
-		paths: pathsData,
-		fallback: false
-	};
+	const titles =
+		data && data.page !== null && data.page.title !== null
+			? data.page.title
+			: 'Title Null';
+	const contents =
+		data && data.page !== null && data.page.content !== null
+			? data.page.content
+			: 'Content Null';
+	return (
+		<Layout title={`${titles}`}>
+			<div>
+				<h1
+					className='text-primary-0 py-8 px-20 text-4xl mx-auto text-left'
+					dangerouslySetInnerHTML={{ __html: titles }}
+				/>
+				<section dangerouslySetInnerHTML={{ __html: contents }} />
+			</div>
+		</Layout>
+	);
 };
 
 export default Dynamic;
