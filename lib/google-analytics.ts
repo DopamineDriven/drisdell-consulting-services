@@ -1,6 +1,6 @@
 // import ReactGA, { EventArgs } from 'react-ga';
 // import { ParsedUrlQuery } from 'querystring';
-export const GA_TRACKING_ID = '177780141-4';
+export const GA_TRACKING_ID = 'UA-177780141-4';
 
 // export const gaInit = () => {
 // 	ReactGA.initialize(GA_TRACKING_ID);

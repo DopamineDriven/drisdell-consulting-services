@@ -1,9 +1,9 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
-import { GA_TRACKING_ID } from '@lib/google-analytics';
-export default class MyDocument extends Document {
+import { GA_TRACKING_ID } from '../lib/google-analytics';
+class MyDocument extends Document {
 	render() {
 		return (
-			<Html lang='en-US'>
+			<Html>
 				<Head>
 					<script
 						async
@@ -15,7 +15,7 @@ export default class MyDocument extends Document {
 				window.dataLayer = window.dataLayer || [];
 				function gtag(){dataLayer.push(arguments);}
 				gtag('js', new Date());
-				
+
 				gtag('config', '${GA_TRACKING_ID}', {
 					page_path: window.location.pathname,
 				});
@@ -31,3 +31,5 @@ export default class MyDocument extends Document {
 		);
 	}
 }
+
+export default MyDocument;
