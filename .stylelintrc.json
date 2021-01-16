@@ -16,6 +16,7 @@
 		],
 		"block-no-empty": null,
 		"unit-whitelist": ["em", "rem", "s", "px", "%", "vw", "vh", "deg"],
-		"at-rule-empty-line-before": null
+		"at-rule-empty-line-before": null,
+		"no-descending-specificity": null
 	}
 }

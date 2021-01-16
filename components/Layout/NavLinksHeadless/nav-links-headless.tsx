@@ -1,10 +1,10 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import cn from 'classnames';
 import css from './nav-links-headless.module.css';
 import { HeaderFooter_headerDynamic_menuItems_edges_node as NavRef } from '@lib/graphql/HeaderFooter/__generated__/HeaderFooter';
-import { Transition, Menu } from '@headlessui/react';
+import { Transition } from '@headlessui/react';
 import DownArrow from '../../Icons/down-arrow';
 
 export interface NavLinkProps extends NavRef {
@@ -12,9 +12,16 @@ export interface NavLinkProps extends NavRef {
 }
 
 const NavLinksHeadless: FC<NavLinkProps> = props => {
+	const [isOpen, setIsOpen] = useState(false);
 	const { root, path, label, childItems } = props;
 	const { pathname } = useRouter();
-
+	const childItemsCheck =
+		childItems !== null &&
+		childItems.edges !== null &&
+		childItems.edges.length > 0
+			? ``
+			: ``;
+	console.table(childItemsCheck);
 	return (
 		<>
 			<Link href={path} passHref>
@@ -27,82 +34,90 @@ const NavLinksHeadless: FC<NavLinkProps> = props => {
 					{label ?? ''}
 				</a>
 			</Link>
-			<Menu>
-				{({ open }) => (
-					<>
-						{childItems !== null &&
-						childItems.edges !== null &&
-						childItems.edges.length > 0 ? (
-							<>
-								<Menu.Button>
-									<DownArrow />
-								</Menu.Button>
-								<Transition
-									show={open}
-									enter='transition ease-out duration-200'
-									enterFrom='opacity-0 translate-y-1'
-									enterTo='opacity-100 translate-y-0'
-									leave='transition ease-in duration-150'
-									leaveFrom='opacity-100 translate-y-0'
-									leaveTo='opacity-0 translate-y-1'
+
+			{/* {({ open }) => ( */}
+			<>
+				{childItems !== null &&
+				childItems.edges !== null &&
+				childItems.edges.length > 0 ? (
+					<div className='relative z-10'>
+						<button
+							onClick={() => setIsOpen(!isOpen)}
+							id='sub-menu'
+							aria-haspopup={true}
+							aria-expanded={true}
+							type='button'
+							className={cn(
+								'bg-primary-0 rounded-full flex items-center lg:mx-auto lg:px-0 lg:py-0 my-auto text-primary-9 focus:outline-none transition-transform transform ease-in-out duration-500',
+								{
+									'-rotate-90 transform duration ': !isOpen,
+									'rotate-0': isOpen
+								}
+							)}
+						>
+							<DownArrow className='select-none lg:w-5 lg:h-5 w-10 h-10' />
+						</button>
+
+						<Transition
+							show={isOpen}
+							enter='transition ease-out duration-200 '
+							enterFrom='transform opacity-0 translate-y-1'
+							enterTo='transform opacity-100 translate-y-0'
+							leave='transition ease-in duration-150'
+							leaveFrom='transform opacity-100 translate-y-0'
+							leaveTo='transform opacity-0 translate-y-1'
+						>
+							<div className='lg:absolute relative z-10 -ml-4 mt-3 transform px-2 w-screen max-w-md sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2'>
+								<div
+									className='rounded-lg lg:shadow-lg lg:ring-1 lg:ring-black ring-opacity-5 overflow-hidden'
+									role='menu'
+									aria-orientation='vertical'
+									aria-labelledby='sub-menu'
 								>
-									<Menu.Items static>
-										<div className='absolute z-10 left-1/2 transform -translate-x-1/2 mt-3 px-2 w-screen max-w-xs sm:px-0'>
-											<div className='rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden'>
-												<div className='relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8'>
-													<Transition.Child>
-														{childItems.edges.map(subPage => {
-															return subPage !== null &&
-																subPage.node !== null &&
-																subPage.node.label !== null &&
-																subPage.node.parentId !== null &&
-																subPage.node.url !== null &&
-																subPage.node.path ? (
-																<Menu.Item>
-																	<Link
-																		href={subPage.node.path}
-																		as={subPage.node.path}
-																		passHref
-																		key={subPage.node.id}
-																	>
-																		<a
-																			id={`#${subPage.node.parentId}`}
-																			className='-m-3 p-3 block rounded-md hover:primary-8'
-																		>
-																			<p className='text-base font-medium text-primary-1'>
-																				{subPage.node.label}
-																			</p>
-																		</a>
-																	</Link>
-																</Menu.Item>
-															) : (
-																<Menu.Item>
-																	<Link href='#' as={'#error'} passHref>
-																		<a
-																			id={'#iderror'}
-																			className='-m-3 p-3 block rounded-md hover:primary-8'
-																		>
-																			<p className='text-base font-medium text-primary-1'>
-																				{'error in subpage mapping'}
-																			</p>
-																		</a>
-																	</Link>
-																</Menu.Item>
-															);
-														})}
-													</Transition.Child>
-												</div>
-											</div>
-										</div>
-									</Menu.Items>
-								</Transition>
-							</>
-						) : (
-							''
-						)}
-					</>
+									<div className='relative grid lg:gap-3 px-5 lg:py-6 bg-primary-0 sm:gap-8 sm:p-8 text-primary-9'>
+										{childItems!.edges!.map(subPage => {
+											return subPage !== null &&
+												subPage.node !== null &&
+												subPage.node.label !== null &&
+												subPage.node.parentId !== null &&
+												subPage.node.url !== null &&
+												subPage.node.path ? (
+												<Link
+													href={subPage.node.path}
+													as={subPage.node.path}
+													passHref
+													key={subPage.node.id}
+												>
+													<a
+														id={`#${subPage.node.parentId}`}
+														className='lg:-m-3 -m-1 p-3 flex items-start rounded-md hover:bg-primary-2'
+													>
+														<p className='text-base font-medium'>{subPage.node.label}</p>
+													</a>
+												</Link>
+											) : (
+												<Link href='#' passHref>
+													<a
+														id={'#iderror'}
+														className='-m-3 p-3 block rounded-md hover:primary-8'
+													>
+														<p className='text-base font-medium text-primary-1'>
+															{'error in subpage mapping'}
+														</p>
+													</a>
+												</Link>
+											);
+										})}
+									</div>
+								</div>
+							</div>
+						</Transition>
+					</div>
+				) : (
+					''
 				)}
-			</Menu>
+			</>
+			{/* )} */}
 		</>
 	);
 };

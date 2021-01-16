@@ -26,7 +26,7 @@ const Navbar: FC<NavbarProps> = props => {
 		<>
 			<nav className={cn(root, css.root)}>
 				<div className='max-w-full mx-auto px-4 sm:px-6 lg:px-8 font-poppins text-primary-9'>
-					<div className='flex justify-between h-48'>
+					<div className='flex justify-between h-48 '>
 						<div className='flex'>
 							<div className='-ml-2 mr-2 flex items-center lg:hidden w-full min-w-full'>
 								<button
@@ -52,8 +52,10 @@ const Navbar: FC<NavbarProps> = props => {
 									)}
 								</button>
 							</div>
-							<div className='lg:flex-shrink flex items-center align-middle -ml-2 lg:ml-0'>
-								<Logo className={cn(css.svg, ' ')} />
+							<div className='lg:flex-shrink lg:float-none float-right flex col-span-3 items-center align-middle text-right -ml-2 lg:ml-0'>
+								<p className='relative w-full min-w-full block float-right'>
+									<Logo className={cn(css.svg, ' ')} />
+								</p>
 							</div>
 							<div className='hidden lg:ml-6 lg:flex lg:items-center lg:space-x-4'>
 								{navLinksDesktop}
@@ -156,14 +158,3 @@ const Navbar: FC<NavbarProps> = props => {
 };
 
 export default Navbar;
-
-/*
-              Profile dropdown panel, show/hide based on dropdown state.
-
-              Entering: "transition ease-out duration-200"
-                From: "transform opacity-0 scale-95"
-                To: "transform opacity-100 scale-100"
-              Leaving: "transition ease-in duration-75"
-                From: "transform opacity-100 scale-100"
-                To: "transform opacity-0 scale-95"
-*/
