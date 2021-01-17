@@ -7,3 +7,5 @@ declare module '*.graphql' {
 	const Schema: DocumentNode;
 	export = Schema;
 }
+
+declare module '/graphql.d.ts';

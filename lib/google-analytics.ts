@@ -1,5 +1,3 @@
-// import ReactGA, { EventArgs } from 'react-ga';
-// import { ParsedUrlQuery } from 'querystring';
 export const GA_TRACKING_ID = 'UA-177780141-4';
 
 // https://developers.google.com/analytics/devguides/collection/gtagjs/pages
@@ -25,6 +23,8 @@ export const event = ({ action, category, label, value }: GTagEvent) => {
 	});
 };
 
+// import ReactGA, { EventArgs } from 'react-ga';
+// import { ParsedUrlQuery } from 'querystring';
 // export const gaInit = () => {
 // 	ReactGA.initialize(GA_TRACKING_ID);
 // };

@@ -12,7 +12,8 @@ generates:
     - 'typescript-react-apollo'
     - 'typescript-apollo-client-helpers'
     config:
-      skipTypename: true
+      withHOC: false
+      reactApolloVersion: 3
       withHooks: true
       apolloReactCommonImportFrom: '@apollo/client'
       apolloReactHooksImportFrom: '@apollo/client'
@@ -22,5 +23,70 @@ generates:
   ./graphql.schema.json:
     plugins:
       - 'introspection'
+  ./graphql.generated.tsx:
+    plugins:
+      - typescript:
+          constEnums: false
+          enumsAsTypes: false
+          numericEnums: false
+          futureProofEnums: false
+          enumsAsConst: false
+          onlyOperationTypes: false
+          immutableTypes: false
+          maybeValue: T | null
+          noExport: false
+          enumPrefix: true
+          fieldWrapperValue: T
+          wrapFieldDefinitions: false
+          skipTypename: false
+          nonOptionalTypename: false
+          useTypeImports: true
+      - typescript-operations:
+          immutableTypes: false
+          flattenGeneratedTypes: false
+          noExport: false
+          preResolveTypes: false
+          skipTypeNameForRoot: false 
+          dedupeOperationSuffix: false
+          omitOperationSuffix: false
+          exportFragmentSpreadSubTypes: false
+          enumPrefix: true
+          fieldWrapperValue: T
+          wrapFieldDefinitions: false
+          onlyOperationTypes: false
+          skipTypename: false
+          nonOptionalTypename: false
+          useTypeImports: true
+      - typescript-react-apollo:
+          withComponent: true
+          withHOC: false
+          withHooks: false
+          withMutationFn: true
+          withRefetchFn: true
+          apolloReactCommonImportFrom: ""
+          apolloReactComponentsImportFrom: ""
+          apolloReactHocImportFrom: ""
+          apolloReactHooksImportFrom: ""
+          componentSuffix: Component
+          reactApolloVersion: 3
+          withResultType: true
+          withMutationOptionsType: true
+          addDocBlocks: true
+          noGraphQLTag: false
+          gqlImport: gql#graphql-tag
+          noExport: false
+          dedupeOperationSuffix: false
+          omitOperationSuffix: false
+          operationResultSuffix: ""
+          documentVariablePrefix: ""
+          documentVariableSuffix: Document
+          fragmentVariablePrefix: ""
+          fragmentVariableSuffix: FragmentDoc
+          documentMode: graphQLTag
+          importDocumentNodeExternallyFrom: ""
+          pureMagicComment: false
+          skipTypename: false
+          nonOptionalTypename: false
+          useTypeImports: true
 hooks:
   afterAllFileWrite: "prettier --write"
