@@ -4,7 +4,7 @@
 }
 
 .modal {
-	@apply bg-primary-2 p-6 border border-accents-9 relative;
+	@apply bg-primary-0 p-6 ring-1 ring-offset-primary-9 select-none rounded-md relative;
 
 	&:focus {
 		@apply outline-none;

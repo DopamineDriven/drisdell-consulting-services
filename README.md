@@ -1,5 +1,7 @@
 # drisdell-consulting-services
 
+## [Nodemailer + Mailgun -- api for submitting emails with a form ✉](https://www.reddit.com/r/nextjs/comments/gvvkn7/email_with_forms_serverless_function/)
+
 ## [Effective TS - Advanced Methods](https://effectivetypescript.com/2020/11/05/template-literal-types)
 
 ## Next + ApolloClient v3
@@ -59,7 +61,7 @@ git rm -rf node_modules
 
 - https://www.color-hex.com/color-wheel/
 
-Nextjs, Headless WordPress, TypeScript, Apollo Client, GraphQL Codegen, WPGraphQL, Tailwindcss, and Vercel
+Nextjs, AWS Cloudfront, Headless WordPress, TypeScript, Apollo Client, GraphQL Codegen, WPGraphQL, Tailwindcss, and Vercel
 
 ### Headers Returned Demystified via Postman
 
@@ -85,23 +87,3 @@ Nextjs, Headless WordPress, TypeScript, Apollo Client, GraphQL Codegen, WPGraphQ
 | Via                           | 1.1 aae94205fef749bc8580cf140c626670.cloudfront.net (CloudFront)               |
 | X-Amz-Cf-Pop                  | SFO5-C1                                                                        |
 | X-Amz-Cf-Id                   | OcLSLSFemPJL5Tl6JFmSuhsWS4gq5Evg9Dg-wurJRrw2NiV4VR7CsA==                       |
-
-## develop branch init
-
-- Landing Page ✔
-- About Page content on home page
-- sub-page routing
-
-## svchost error troubleshooting (windows)
-
-- https://ugetfix.com/ask/how-to-fix-svchost-exe-application-error/
-
-## Debug node with vscode
-
-- https://itnext.io/the-absolute-easiest-way-to-debug-node-js-with-vscode-2e02ef5b1bad
-
-### JavaScript Heap out of Memory (Nodejs)
-
-- https://support.snyk.io/hc/en-us/articles/360002046418-JavaScript-heap-out-of-memory
-- https://stackoverflow.com/questions/38558989/node-js-heap-out-of-memory
-- https://platformengineer.com/limit-javascript-heap-usage-and-fix-heap-out-of-memory-error-using-max_old_space_size-header/

@@ -10,13 +10,15 @@ import {
 import FocusTrap from '@lib/focus-trap';
 interface Props {
 	className?: string;
-	children?: any;
+	children?: React.ReactNode | any;
 	open?: boolean;
 	onClose: () => void;
+	onEnter?: () => void | null;
 }
 
-const Modal: FC<Props> = ({ children, open, onClose }) => {
-	const ref = useRef() as React.MutableRefObject<HTMLDivElement>;
+// @ts-ignore no-unused-props
+const Modal: FC<Props> = ({ children, open, onClose, onEnter = null }) => {
+	const ref = useRef() as React.MutableRefObject<HTMLInputElement>;
 
 	const handleKey = useCallback(
 		(e: KeyboardEvent) => {
@@ -50,7 +52,8 @@ const Modal: FC<Props> = ({ children, open, onClose }) => {
 						<button
 							onClick={() => onClose()}
 							aria-label='Close panel'
-							className='hover:accents-4 transition ease-in-out duration-150 focus:outline-none absolute right-0 top-0 m-6'
+							type='submit'
+							className='rounded-lg hover:primary-3 transform transition ease-in-out duration-150 focus:outline-none absolute right-0 top-0 m-6'
 						>
 							<Cross className='h-6 w-6' />
 						</button>

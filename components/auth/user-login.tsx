@@ -1,6 +1,7 @@
 import { FC, useEffect, useState, useCallback } from 'react';
 import { Button, Input, Logo } from '@components/UI';
 import { useUI } from '@components/context';
+
 // import { validate } from 'email-validator';
 //
 // import LOGIN from '../../lib/mutations/Login/login';
@@ -61,7 +62,6 @@ const UserLogin: FC<Props> = () => {
 	useEffect(() => {
 		handleValidation();
 	}, [handleValidation]);
-
 	/* LoginError ? (
 		<aside>Error Loading Landing Page Content...{LoginError}</aside>
 	) : LoginLoading && !LoginError ? (
@@ -69,10 +69,10 @@ const UserLogin: FC<Props> = () => {
 	) : */ return (
 		<form
 			onSubmit={handleLogin}
-			className='w-80 flex flex-col justify-between p-3'
+			className='max-w-6xl flex flex-col justify-between p-3'
 		>
 			<div className='flex justify-center pb-4 '>
-				<Logo width='15rem' height='10rem' />
+				<Logo className='h-40 w-40' />
 			</div>
 			<div className={`flex flex-col space-y-3`}>
 				{message && (
@@ -86,24 +86,32 @@ const UserLogin: FC<Props> = () => {
 						</a>
 					</div>
 				)}
-				<Input type='email' placeholder='Email' onChange={setUsername} />
+				<Input
+					type='email'
+					placeholder={`Username`}
+					onChange={setUsername}
+					className='bg-primary-9 text-primary-0 font-medium focus:outline-none rounded-md'
+				/>
 				<Input
 					type='password'
 					placeholder='Password'
 					onChange={setPassword}
 					min={7}
+					className='bg-primary-9 text-primary-0 font-medium focus:outline-none rounded-md'
 				/>
-				<Button
-					variant='slim'
-					className={''}
-					type='submit'
-					loading={loading}
-					disabled={disabled}
-				>
-					Log In
-				</Button>
+				<div className='pt-2 w-auto px-8 flex flex-col max-w-sm'>
+					<Button
+						variant='slim'
+						type='submit'
+						loading={loading}
+						disabled={disabled}
+						className='w-auto max-w-xs bg-primary-7 text-primary-0 hover:bg-primary-9 rounded-md duration-150 transition-colors px-6'
+					>
+						Log In
+					</Button>
+				</div>
 				<div className='pt-1 text-center text-sm'>
-					<span className='text-primary-9'>Don't have an account?</span>
+					<span className='text-primary-9'>Don't have an account yet?</span>
 					{` `}
 					<a
 						className='text-primary-9 font-bold hover:underline cursor-pointer'
