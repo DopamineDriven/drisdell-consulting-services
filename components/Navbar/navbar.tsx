@@ -66,50 +66,50 @@ const Navbar: FC<NavbarProps> = ({ root, navLinksDesktop, navLinksMobile }) => {
 									<span className='text-xl'>Contact</span>
 								</button>
 							</div>
-							<div className='hidden lg:mx-4 lg:flex-shrink-0 lg:flex lg:items-center'>
 								<button className='bg-primary-0 p-1 my-auto rounded-full text-offset-secondary-0 ring-2 ring-primary-6 hover:text-primary-6 focus:outline-none focus:ring-2 focus:ring-priamry-8 focus:ring-accent-6'>
 									<span className='sr-only'>View Notifications</span>
 									<BellIcon className='h-8 w-8' />
 								</button> */}
-
-								<div className='ml-3 '>
-									<div>
-										<button
-											className={cn(
-												' bg-primary-7 rounded-full text-accents-6 text-base focus:outline-none focus:ring-2 focus:ring-primary-7 z-50 '
-											)}
-											onClick={() => setIsOpen(!isOpen)}
-										>
-											<span className='sr-only'>Open User Menu</span>
-											<Avatar className='h-18 w-18 ring-0.5 ring-opacity-50 ring-primary-2 align-middle' />
-										</button>
-									</div>
-									<Transition
-										show={isOpen}
-										enter='transition ease-out duration-200'
-										enterFrom='transform opacity-0 scale-95 right-0'
-										enterTo='transform opacity-100 scale-100'
-										leave='transition ease-in duration-200'
-										leaveFrom='transform opacity-100 scale-100'
-										leaveTo='transform opacity-0 scale-95'
-									>
-										<Transition.Child
+								<div className='hidden lg:mx-4 lg:flex-shrink-0 lg:flex lg:items-center'>
+									<div className='ml-3 '>
+										<div>
+											<button
+												className={cn(
+													' bg-primary-0 rounded-full text-primary-9 text-base focus:outline-none focus:ring-2 focus:ring-primary-0 z-50 '
+												)}
+												onClick={() => setIsOpen(!isOpen)}
+											>
+												<span className='sr-only'>Open User Menu</span>
+												<Avatar className='h-18 w-18 ring-0.5 ring-opacity-50 ring-red-900 align-middle' />
+											</button>
+										</div>
+										<Transition
+											show={isOpen}
 											enter='transition ease-out duration-200'
-											enterFrom='transform opacity-0 scale-95'
+											enterFrom='transform opacity-0 scale-95 right-0'
 											enterTo='transform opacity-100 scale-100'
 											leave='transition ease-in duration-200'
 											leaveFrom='transform opacity-100 scale-100'
 											leaveTo='transform opacity-0 scale-95'
 										>
-											<NavbarUserLinks
-												role='menuitem'
-												rootUserLink={cn('px-3 py-2 hover:bg-primary-8')}
-												rootDiv={cn(
-													'origin-top-right absolute right-0 mt-2 h-40 w-44 rounded-md shadow-lg ring-2 ring-offset-primary-0  outline-none grid grid-cols-1 bg-accents-6 z-50'
-												)}
-											/>
-										</Transition.Child>
-									</Transition>
+											<Transition.Child
+												enter='transition ease-out duration-200'
+												enterFrom='transform opacity-0 scale-95'
+												enterTo='transform opacity-100 scale-100'
+												leave='transition ease-in duration-200'
+												leaveFrom='transform opacity-100 scale-100'
+												leaveTo='transform opacity-0 scale-95'
+											>
+												<NavbarUserLinks
+													role='menuitem'
+													rootUserLink={cn('px-3 py-2 hover:bg-primary-1')}
+													rootDiv={cn(
+														'origin-top-right absolute right-0 mt-2 h-40 w-44 rounded-md shadow-lg ring-2 ring-red-900 outline-none grid grid-cols-1 bg-primary-0 z-50'
+													)}
+												/>
+											</Transition.Child>
+										</Transition>
+									</div>
 								</div>
 							</div>
 						</div>

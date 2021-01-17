@@ -1,9 +1,10 @@
 import css from './loading-dots.module.css';
+import { FC } from 'react';
 
-const LoadingDots: React.FC = () => {
+const LoadingDots: FC = () => {
 	return (
 		<>
-			<span className={css.root}>
+			<span className={css['root']}>
 				<span />
 				<span />
 				<span />

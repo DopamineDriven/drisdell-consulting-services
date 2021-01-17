@@ -24,7 +24,7 @@ const NavbarUserDropdown: FC<NavbarUserDropdownProps> = props => {
 		<div className='flex items-center'>
 			<div className='flex-shrink-0'>
 				<button
-					className={`relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm font-medium rounded-md text-accents-6 bg-secondary-2 hover:bg-secondary-1 focus:outline-none focus:ring-offset-2 focus:ring-2 focus:ring-secondary-1 select-none`}
+					className={`relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm font-medium rounded-md text-accents-6 bg-primary-0 hover:bg-secondary-1 focus:outline-none focus:ring-offset-2 focus:ring-2 focus:ring-secondary-1 select-none`}
 					type='button'
 					onClick={() => router.push('/signup')}
 				>
@@ -67,12 +67,14 @@ const NavbarUserDropdown: FC<NavbarUserDropdownProps> = props => {
 							aria-orientation='vertical'
 							aria-labelledby='user-menu'
 							className={cn(
-								'origin-top-right absolute right-0 mt-2 h-40 w-44 rounded-md shadow-lg py-1 ring-1 ring-offset-jujiCastletonGreen  outline-none grid grid-cols-1 bg-jujiMintCream z-50'
+								'text-primary-9 origin-top-right absolute right-0 mt-2 h-40 w-44 rounded-md shadow-lg py-1 ring-2 ring-red-900  outline-none grid grid-cols-1 bg-primary-0 z-50'
 							)}
 						>
 							<NavbarUserLinks
 								role='menuitem'
-								rootUserLink={cn('px-3 py-2 my-auto align-middle')}
+								rootUserLink={cn(
+									'px-3 py-2 my-auto align-middle content-center bg-primary-0'
+								)}
 							/>
 						</div>
 					</Transition>

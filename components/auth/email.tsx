@@ -125,7 +125,7 @@ const Email: FC<Props> = props => {
 					/>
 				</svg>
 				<div className='text-center'>
-					<h2 className='text-3xl font-extrabold tracking-tight text-primary-9 sm:text-4xl py-5'>
+					<h2 className='text-3xl font-extrabold tracking-tight text-primary-9 sm:text-4xl pb-5'>
 						Contact Us Today
 					</h2>
 				</div>

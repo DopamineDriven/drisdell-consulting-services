@@ -1,13 +1,13 @@
 .linkActive {
-	@apply underline px-3 py-2 rounded-md text-base font-semibold text-primary-0 tracking-tight;
+	@apply underline px-3 py-2 rounded-md text-base font-semibold text-primary-9 tracking-tight;
 }
 
 .link {
-	@apply px-3 py-2 rounded-md text-base font-semibold text-primary-0;
+	@apply px-3 py-2 rounded-md text-base font-semibold text-primary-9;
 }
 
 .root {
 	&:hover {
-		@apply bg-primary-2 transition-colors duration-150 ease-in-out;
+		@apply bg-primary-0 transition-colors duration-150 ease-in-out;
 	}
 }
