@@ -48,6 +48,8 @@ const ApolloErrorMessage = dynamic(
 	dynamicProps
 );
 
+const EmailView = dynamic(() => import('@components/auth/email'), dynamicProps);
+
 const LoginView = dynamic(
 	() => import('@components/auth/user-login'),
 	dynamicProps
@@ -163,6 +165,7 @@ const Layout: FC<LayoutProps> = props => {
 				/>
 			)}
 			<Modal open={displayModal} onClose={closeModal}>
+				{modalView === 'EMAIL_VIEW' && <EmailView />}
 				{modalView === 'LOGIN_VIEW' && <LoginView />}
 				{modalView === 'SIGNUP_VIEW' && <SignUpView />}
 				{/* {modalView === 'FORGOT_VIEW' && <ForgotPassword />} */}

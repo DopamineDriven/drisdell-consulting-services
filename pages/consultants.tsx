@@ -16,7 +16,7 @@ import {
 
 export const getStaticProps: GetStaticProps = async () => {
 	const apolloClient = initializeApollo();
-	const { data: consultant, data: edges } = await apolloClient.query<
+	const { data: consultant, data: pages } = await apolloClient.query<
 		ConsultantsData,
 		ConsultantsDataVariables
 	>({
@@ -35,7 +35,7 @@ export const getStaticProps: GetStaticProps = async () => {
 			headerDynamic: menu.headerDynamic ?? {},
 			footerDynamic: menu.footerDynamic ?? {},
 			consultants: consultant.consultants?.edges ?? {},
-			pages: edges.pages ?? {}
+			pages: pages.pages ?? {}
 		},
 		revalidate: 10
 	});
@@ -45,7 +45,7 @@ const Consultants: NextPage &
 	InferGetStaticPropsType<typeof getStaticProps> = () => {
 	return (
 		<>
-			<Layout title={'Drisdell Consulting Services Consultants'}>
+			<Layout title={'Drisdell Consulting Services -- Consultants'}>
 				<ConsultantsDataCoalesced />
 			</Layout>
 		</>

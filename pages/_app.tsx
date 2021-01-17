@@ -32,13 +32,13 @@ function App({ Component, pageProps }: AppProps) {
 	return (
 		<>
 			<Head />
-			<ManagedUIContext>
-				<ApolloProvider client={apolloClient}>
+			<ApolloProvider client={apolloClient}>
+				<ManagedUIContext>
 					<Layout pageProps={pageProps}>
 						<Component {...pageProps} />
 					</Layout>
-				</ApolloProvider>
-			</ManagedUIContext>
+				</ManagedUIContext>
+			</ApolloProvider>
 		</>
 	);
 }

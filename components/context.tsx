@@ -14,7 +14,7 @@ const initialState = {
 	displaySidebar: false,
 	displayDropdown: false,
 	displayModal: false,
-	modalView: 'LOGIN_VIEW',
+	modalView: 'EMAIL_VIEW',
 	displayToast: false,
 	toastText: ''
 };
@@ -54,6 +54,7 @@ type Action =
 	  };
 
 type MODAL_VIEWS =
+	| 'EMAIL_VIEW'
 	| 'SIGNUP_VIEW'
 	| 'LOGIN_VIEW'
 	| 'FORGOT_VIEW'

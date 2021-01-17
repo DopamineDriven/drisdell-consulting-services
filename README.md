@@ -91,3 +91,5 @@ Nextjs, AWS Cloudfront, Headless WordPress, TypeScript, Apollo Client, GraphQL C
 | Via                           | 1.1 aae94205fef749bc8580cf140c626670.cloudfront.net (CloudFront)               |
 | X-Amz-Cf-Pop                  | SFO5-C1                                                                        |
 | X-Amz-Cf-Id                   | OcLSLSFemPJL5Tl6JFmSuhsWS4gq5Evg9Dg-wurJRrw2NiV4VR7CsA==                       |
+
+### [Resume Refactoring](https://leerob.io/blog/resume)
