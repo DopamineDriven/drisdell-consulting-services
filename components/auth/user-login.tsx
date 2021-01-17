@@ -111,7 +111,7 @@ const UserLogin: FC<Props> = () => {
 					</Button>
 				</div>
 				<div className='pt-1 text-center text-sm'>
-					<span className='text-primary-9'>Don't have an account yet?</span>
+					<span className='text-primary-9'>Don't have an account?</span>
 					{` `}
 					<a
 						className='text-primary-9 font-bold hover:underline cursor-pointer'

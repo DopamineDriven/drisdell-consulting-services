@@ -16,16 +16,27 @@ import {
 
 export const getStaticProps: GetStaticProps = async () => {
 	const apolloClient = initializeApollo();
-	await apolloClient.query<ConsultantsData, ConsultantsDataVariables>({
+	const { data: consultant, data: edges } = await apolloClient.query<
+		ConsultantsData,
+		ConsultantsDataVariables
+	>({
 		query: CONSULTANTS_DATA,
 		variables: ConsultantsDataQueryVars
 	});
-	await apolloClient.query<HeaderFooter, HeaderFooterVariables>({
+	const { data: menu } = await apolloClient.query<
+		HeaderFooter,
+		HeaderFooterVariables
+	>({
 		query: HEADER_FOOTER,
 		variables: HeaderFooterMenuQueryVers
 	});
 	return addApolloState(apolloClient, {
-		props: {},
+		props: {
+			headerDynamic: menu.headerDynamic ?? {},
+			footerDynamic: menu.footerDynamic ?? {},
+			consultants: consultant.consultants?.edges ?? {},
+			pages: edges.pages ?? {}
+		},
 		revalidate: 10
 	});
 };

@@ -12,12 +12,17 @@ import { Button, Container } from '@components/UI';
 export const getStaticProps: GetStaticProps = async () => {
 	const apolloClient = initializeApollo();
 
-	await apolloClient.query<HeaderFooter, HeaderFooterVariables>({
-		query: HEADER_FOOTER,
-		variables: HeaderFooterMenuQueryVers
-	});
+	const { data } = await apolloClient.query<HeaderFooter, HeaderFooterVariables>(
+		{
+			query: HEADER_FOOTER,
+			variables: HeaderFooterMenuQueryVers
+		}
+	);
 	return addApolloState(apolloClient, {
-		props: {},
+		props: {
+			headerDynamic: data.headerDynamic ?? {},
+			footerDynamic: data.footerDynamic ?? {}
+		},
 		revalidate: 10
 	});
 };

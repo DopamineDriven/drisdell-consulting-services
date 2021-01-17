@@ -1,15 +1,11 @@
 import { FC, useState } from 'react';
 import cn from 'classnames';
-import { useRouter } from 'next/router';
-import Logo from '../UI/Logo';
+import Logo from '@components/UI/Logo';
 import NavbarUserLinks from './NavbarUserLinks';
 import css from './navbar.module.css';
 import Avatar from '@components/Avatar';
 import { Transition } from '@headlessui/react/dist';
-import XIcon from '../Icons/x-icon';
-import PlusIcon from '../Icons/plus-icon';
-import MenuIcon from '../Icons/menu-icon';
-import BellIcon from '../Icons/bell-icon';
+import { MenuIcon, BellIcon, XIcon } from '../Icons/index';
 
 interface NavbarProps {
 	root?: string;
@@ -17,9 +13,7 @@ interface NavbarProps {
 	navLinksMobile?: React.ReactNode;
 }
 
-const Navbar: FC<NavbarProps> = props => {
-	const router = useRouter();
-	const { root, navLinksDesktop, navLinksMobile } = props;
+const Navbar: FC<NavbarProps> = ({ root, navLinksDesktop, navLinksMobile }) => {
 	const [menuOpen, setMenuOpen] = useState(true);
 	const [isOpen, setIsOpen] = useState(false);
 	return (
@@ -63,7 +57,7 @@ const Navbar: FC<NavbarProps> = props => {
 						</div>
 						<div className='flex items-center'>
 							<div className='flex-shrink-0'>
-								<button
+								{/* <button
 									className={`hidden lg:relative lg:inline-flex lg:items-center lg:px-4 lg:py-2 lg:border lg:border-primary-9 lg:shadow-sm lg:font-medium lg:rounded-md lg:text-primary-8 lg:hover:bg-opacity-70 lg:hover:primary-8 lg:focus:outline-none lg:focus:ring-offset-2 lg:focus:ring-2 lg:focus:ring-primary-1 lg:select-none`}
 									type='button'
 									onClick={() => router.push('/contact-us')}
@@ -73,7 +67,7 @@ const Navbar: FC<NavbarProps> = props => {
 								</button>
 							</div>
 							<div className='hidden lg:mx-4 lg:flex-shrink-0 lg:flex lg:items-center'>
-								{/* <button className='bg-primary-0 p-1 my-auto rounded-full text-offset-secondary-0 ring-2 ring-primary-6 hover:text-primary-6 focus:outline-none focus:ring-2 focus:ring-priamry-8 focus:ring-accent-6'>
+								<button className='bg-primary-0 p-1 my-auto rounded-full text-offset-secondary-0 ring-2 ring-primary-6 hover:text-primary-6 focus:outline-none focus:ring-2 focus:ring-priamry-8 focus:ring-accent-6'>
 									<span className='sr-only'>View Notifications</span>
 									<BellIcon className='h-8 w-8' />
 								</button> */}

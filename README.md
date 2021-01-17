@@ -1,6 +1,10 @@
 # drisdell-consulting-services
 
+## [Auth0 -- TypeScript -- Nextjs](https://github.com/auth0/nextjs-auth0/tree/master/examples/typescript-example)
+
 ## [Nodemailer + Mailgun -- api for submitting emails with a form ✉](https://www.reddit.com/r/nextjs/comments/gvvkn7/email_with_forms_serverless_function/)
+
+- https://leerob.io/snippets/google-analytics
 
 ## [Effective TS - Advanced Methods](https://effectivetypescript.com/2020/11/05/template-literal-types)
 
