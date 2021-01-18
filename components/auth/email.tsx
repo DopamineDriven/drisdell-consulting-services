@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { Button, Input, Logo } from '@components/UI';
+import { Button, Input, Textarea, Logo } from '@components/UI';
 import { useState, FC, useCallback, useEffect } from 'react';
 import { useUI } from '@components/context';
 import { validate } from 'email-validator';
@@ -152,23 +152,13 @@ const Email: FC<Props> = props => {
 						onChange={setEmail}
 						className='bg-primary-9 text-primary-0 font-medium focus:outline-none rounded-md'
 					/>
-					<Input
-						type='content'
+					<Textarea
 						placeholder='Content'
 						onChange={setContent}
 						required={true}
-						min={10}
-						className='block align-top h-40 bg-primary-9 text-primary-0 font-medium text-sm focus:outline-none rounded-md'
-					>
-						<div className='mt-1'>
-							<textarea
-								id='message'
-								name='message'
-								rows={4}
-								className='py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md'
-							></textarea>
-						</div>
-					</Input>
+						minLength={10}
+						className='bg-primary-9 text-primary-0 font-medium focus:outline-none rounded-md'
+					/>
 					{/* <span className='text-primary-9'>
 					<span className='inline-block align-middle '>
 						<Info width='15' height='15' />
@@ -194,10 +184,10 @@ const Email: FC<Props> = props => {
 						</Button>
 					</div>
 					<span className='pt-1 text-center text-sm'>
-						<span className='text-accents-7'>Have an account?</span>
-						{` `}
+						<span className='text-primary-9'>Have an account?</span>
+						&nbsp;
 						<a
-							className='text-accent-9 font-bold hover:underline cursor-pointer'
+							className='text-primary-9 font-bold hover:underline cursor-pointer'
 							onClick={() => setModalView('LOGIN_VIEW')}
 						>
 							Log In

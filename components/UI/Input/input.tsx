@@ -12,7 +12,7 @@ const Input: React.FC<Props> = props => {
 
 	const rootClassName = cn(css.root, {}, className);
 
-	const handleOnChange = (e: any) => {
+	const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		if (onChange) {
 			onChange(e.target.value);
 		}

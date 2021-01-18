@@ -29,6 +29,7 @@ const KeenSlider: FC = ({ children }) => {
 			const touchXPosition = event.touches[0].pageX;
 			// Size of the touch area
 			const touchXRadius = event.touches[0].radiusX || 0;
+
 			// We set a threshold (10px) on both sizes of the screen,
 			// if the touch area overlaps with the screen edges
 			// it's likely to trigger the navigation. We prevent the
@@ -39,7 +40,9 @@ const KeenSlider: FC = ({ children }) => {
 			)
 				event.preventDefault();
 		};
+
 		sliderContainerRef.current!.addEventListener('touchstart', preventNavigation);
+
 		return () => {
 			sliderContainerRef.current!.removeEventListener(
 				'touchstart',

@@ -11,3 +11,4 @@ export { default as Modal } from './Modal';
 export { default as Modified } from './Modified';
 export { default as Skeleton } from './Skeleton';
 export { default as Text } from './Text';
+export { default as Textarea } from './TextArea';

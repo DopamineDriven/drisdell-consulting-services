@@ -17,11 +17,11 @@ export const APOLLO_STATE_PROP_NAME = '__APOLLO_STATE__';
 let apolloClient: ApolloClient<NormalizedCacheObject> | undefined;
 
 function createApolloClient(headers = {}) {
-	const token = process.env.WORDPRESS_AUTH_REFRESH_TOKEN;
+	const token = `${process.env.WORDPRESS_AUTH_REFRESH_TOKEN}`;
 	const authorization = `Bearer ${token}`;
 	const setHeaders = {
 		...headers,
-		'Content-Type': 'application/json; charset=utf-8',
+		'Content-Type': 'application/json; charset=UTF-8',
 		Authorization: authorization
 	};
 	return new ApolloClient({

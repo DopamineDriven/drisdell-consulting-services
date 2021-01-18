@@ -23,20 +23,34 @@ import {
 
 export const getStaticProps: GetStaticProps = async () => {
 	const apolloClient = initializeApollo();
-	await apolloClient.query<LandingPage, LandingPageVariables>({
+	const { data: page } = await apolloClient.query<
+		LandingPage,
+		LandingPageVariables
+	>({
 		query: LANDING_PAGE,
 		variables: LandingPageQueryVars
 	});
-	await apolloClient.query<HeaderFooter, HeaderFooterVariables>({
+	const { data: menu } = await apolloClient.query<
+		HeaderFooter,
+		HeaderFooterVariables
+	>({
 		query: HEADER_FOOTER,
 		variables: HeaderFooterMenuQueryVers
 	});
-	await apolloClient.query<AllTestimonials, AllTestimonialsVariables>({
+	const { data: testimonials } = await apolloClient.query<
+		AllTestimonials,
+		AllTestimonialsVariables
+	>({
 		query: ALL_TESTIMONIALS,
 		variables: TestimonialsQueryVars
 	});
 	return addApolloState(apolloClient, {
-		props: {},
+		props: {
+			headerDynamic: menu.headerDynamic ?? {},
+			footerDynamic: menu.footerDynamic ?? {},
+			page: page.pages?.edges ?? {},
+			testimonials: testimonials.testimonials?.edges ?? {}
+		},
 		revalidate: 10
 	});
 };
