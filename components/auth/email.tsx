@@ -157,6 +157,7 @@ const Email: FC<Props> = props => {
 						onChange={setContent}
 						required={true}
 						minLength={10}
+						cols={1}
 						className='bg-primary-9 text-primary-0 font-medium focus:outline-none rounded-md'
 					/>
 					{/* <span className='text-primary-9'>

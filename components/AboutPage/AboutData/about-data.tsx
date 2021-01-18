@@ -24,7 +24,7 @@ const AboutData: FC<AboutDataProps> = props => {
 		<div
 			className={cn(
 				root,
-				'flex flex-col text-center rounded-lg shadow-lg overflow-hidden group-hover:bg-opacity-50'
+				'flex flex-col text-center rounded-lg shadow-lg overflow-hidden group-hover:bg-opacity-50 hover:shadow-cardHover'
 			)}
 		>
 			<Link

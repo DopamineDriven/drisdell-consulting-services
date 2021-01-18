@@ -425,7 +425,12 @@ module.exports = {
 			boxShadow: {
 				'outline-2': '0 0 0 2px var(--accents-0)',
 				magical:
-					'rgba(0, 0, 0, 0.02) 0px 30px 30px, rgba(0, 0, 0, 0.03) 0px 0px 8px, rgba(0, 0, 0, 0.05) 0px 1px 0px'
+					'rgba(0, 0, 0, 0.02) 0px 30px 30px, rgba(0, 0, 0, 0.03) 0px 0px 8px, rgba(0, 0, 0, 0.05) 0px 1px 0px',
+				/**
+				 * thanks to ![@brian-lovin-next ](https://github.com/brianlovin/brian-lovin-next/blob/main/tailwind.config.js)
+				 */
+				cardHover:
+					'0 4px 4.1px rgba(0, 0, 0, 0.012),0 4.9px 5.8px rgba(0, 0, 0, 0.018),0 6.3px 8.4px rgba(0, 0, 0, 0.029),0 8.8px 12.9px rgba(0, 0, 0, 0.05),0 15px 23px rgba(0, 0, 0, 0.11)'
 			}
 		},
 		variants: {
