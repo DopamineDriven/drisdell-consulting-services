@@ -22,11 +22,16 @@ const webpackBundle = {
 			exclude: /node_modules/,
 			use: [options.defaultLoaders.babel, { loader: 'graphql-tag/loader' }]
 		});
+	},
+	webpack: (config, options) => {
 		config.module.rules.push({
 			test: /\.ya?ml$/,
 			type: 'json',
 			use: 'yaml-loader'
 		});
+		return config;
+	},
+	webpackDevMiddleware: config => {
 		return config;
 	}
 };

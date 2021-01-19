@@ -27,6 +27,7 @@
 			"@config/*": ["config/*"],
 			"@lib/*": ["lib/*"],
 			"@pages/*": ["pages/*"],
+			"@providers/*": ["providers/*"],
 			"@styles/*": ["styles/*"]
 		}
 	},

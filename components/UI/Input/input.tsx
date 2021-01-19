@@ -2,6 +2,7 @@ import cn from 'classnames';
 import css from './input.module.css';
 import React, { InputHTMLAttributes } from 'react';
 // import { MutableRefObject } from 'react';
+// import ReactHTMLElement from 'react';
 
 // type T = {
 // 	current: T;
@@ -40,3 +41,8 @@ const Input: React.FC<Props> = props => {
 };
 
 export default Input;
+
+export function InputSimplified({ ...props }) {
+	const rootClassName = cn(css.root);
+	return <input className={rootClassName} {...props} />;
+}
