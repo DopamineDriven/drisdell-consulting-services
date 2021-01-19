@@ -10,17 +10,50 @@ interface Props {
 
 const Email: FC<Props> = props => {
 	const [email, setEmail] = useState('');
-	const [firstName, setFirstName] = useState('');
-	const [lastName, setLastName] = useState('');
+	const [fullName, setFullName] = useState('');
 	const [loading, setLoading] = useState(false);
 	const [message, setMessage] = useState('');
 	const [dirty, setDirty] = useState(false);
 	const [content, setContent] = useState('');
 	const { setModalView, closeModal } = useUI();
 	const [disabled, setDisabled] = useState(false);
+	// const inputE1 = useRef<any>(email);
+	// const fullNameE1 = useRef<any>(null);
+	// const contentE1 = useRef<any>(null);
 
-	const handleEmail = async (e: React.SyntheticEvent<EventTarget>) => {
+	const handleEmail = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
+
+		// const MailGun = await fetch('/api/mailgun/index', {
+		// 	body: JSON.stringify({
+		// 		to: setEmail(email),
+		// 		from: inputE1.current?.value,
+		// 		fullName: fullNameE1.current?.value,
+		// 		content: contentE1.current?.value
+		// 	}),
+		// 	headers: {
+		// 		'Content-Type': 'application/json; charset=UTF-8'
+		// 	},
+		// 	method: 'POST'
+		// });
+
+		// const { error } = await MailGun.json();
+
+		// if (error) {
+		// 	setMessage(error);
+		// 	return;
+		// }
+		// if (
+		// 	inputE1.current?.value !== null &&
+		// 	!error &&
+		// 	fullNameE1.current?.value !== null &&
+		// 	!error &&
+		// 	contentE1.current?.value !== null &&
+		// 	!error
+		// ) {
+		// 	setMessage('Success! 🎉 Your email was delivered!' + `${message}`);
+		// 	return;
+		// }
 
 		if (!dirty && !disabled) {
 			setDirty(true);
@@ -29,7 +62,7 @@ const Email: FC<Props> = props => {
 		try {
 			setLoading(true);
 			setMessage('');
-			console.log(firstName, lastName, content);
+			console.log(fullName, content);
 			setLoading(false);
 			closeModal();
 		} catch ({ errors }) {
@@ -133,19 +166,15 @@ const Email: FC<Props> = props => {
 					{message && (
 						<div className='text-red-700 border border-red-800 p-3'>{message}</div>
 					)}
+					{/* <label htmlFor={"email-input"}></label> */}
 					<Input
-						placeholder='First Name'
+						placeholder='First &amp; Last Name'
 						required={true}
-						onChange={setFirstName}
+						onChange={setFullName}
 						className='bg-primary-9 text-primary-0 font-medium focus:outline-none rounded-md'
 					/>
 					<Input
-						placeholder='Last Name'
-						required={true}
-						onChange={setLastName}
-						className='bg-primary-9 text-primary-0 font-medium focus:outline-none rounded-md'
-					/>
-					<Input
+						id='email-input'
 						type='email'
 						required={true}
 						placeholder='Email'
@@ -175,6 +204,7 @@ const Email: FC<Props> = props => {
 				</span> */}
 					<div className='pt-2 w-auto px-8 flex flex-col'>
 						<Button
+							onClick={() => handleEmail}
 							variant='slim'
 							type='submit'
 							loading={loading}

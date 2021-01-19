@@ -1,10 +1,15 @@
 import cn from 'classnames';
 import css from './input.module.css';
 import React, { InputHTMLAttributes } from 'react';
+// import { MutableRefObject } from 'react';
 
+// type T = {
+// 	current: T;
+// };
 export interface Props extends InputHTMLAttributes<HTMLInputElement> {
 	className?: string;
 	onChange?: (...args: any[]) => any;
+	// ref: MutableRefObject<T>;
 }
 
 const Input: React.FC<Props> = props => {
