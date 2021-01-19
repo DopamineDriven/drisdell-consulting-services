@@ -88,7 +88,6 @@
 		"react-intersection-observer": "^8.30.3",
 		"react-markdown": "^5.0.2",
 		"react-merge-refs": "^1.1.0",
-		"react-query": "^3.5.12",
 		"react-syntax-highlighter": "^15.3.0",
 		"tabbable": "^5.1.5",
 		"tailwindcss": "^2.0.2",
