@@ -6,7 +6,6 @@ import { initializeApollo, addApolloState } from '@lib/apollo';
 import { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
 import Layout, { HeaderFooterMenuQueryVers } from '@components/Layout/layout';
 // import { Button } from '@components/UI';
-import { MailGun } from './api/mailgun/index';
 import TestimonialsCoalesced, {
 	TestimonialsQueryVars
 } from '@components/Testimonials/testimonials-coalesced';
@@ -58,7 +57,6 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 const Index: NextPage & InferGetStaticPropsType<typeof getStaticProps> = () => {
-	console.log(`${MailGun}`);
 	return (
 		<>
 			<Layout title={'Drisdell Consulting Services Landing Page'}>
