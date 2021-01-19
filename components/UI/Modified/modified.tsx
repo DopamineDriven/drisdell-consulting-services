@@ -9,7 +9,7 @@ interface ModifiedProps {
 
 const Modified: FC<ModifiedProps> = props => {
 	const { modifiedString, root } = props;
-	if (modifiedString != null) {
+	if (modifiedString !== null) {
 		const date: Date = parseISO(modifiedString);
 		return (
 			<time

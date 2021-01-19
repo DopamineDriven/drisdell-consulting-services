@@ -1,8 +1,13 @@
 import cn from 'classnames';
 import { Button, Input, Textarea, Logo } from '@components/UI';
-import { useState, FC, useCallback, useEffect } from 'react';
+import { useState, FC, useCallback, useEffect, useRef } from 'react';
 import { useUI } from '@components/context';
 import { validate } from 'email-validator';
+import fetch from 'isomorphic-unfetch';
+import { parseISO, format } from 'date-fns';
+const approvedeEmail = process.env.MAILGUN_APPROVED_RECIPIENT ?? '';
+const defaultSenderDomain = process.env.MAILGUN_DOMAIN ?? '';
+// const baseDomain = process.env.MAILGUN_DOMAIN ?? '';
 
 interface Props {
 	className?: string;
@@ -10,17 +15,95 @@ interface Props {
 
 const Email: FC<Props> = props => {
 	const [email, setEmail] = useState('');
-	const [firstName, setFirstName] = useState('');
-	const [lastName, setLastName] = useState('');
+	const [fullName, setFullName] = useState('');
 	const [loading, setLoading] = useState(false);
 	const [message, setMessage] = useState('');
 	const [dirty, setDirty] = useState(false);
 	const [content, setContent] = useState('');
 	const { setModalView, closeModal } = useUI();
 	const [disabled, setDisabled] = useState(false);
+	const contentEntry = useRef<string | null>(null);
+	const emailEntry = useRef<string | null>(null);
+	const nameEntry = useRef<string | null>(null);
 
-	const handleEmail = async (e: React.SyntheticEvent<EventTarget>) => {
+	const handleEmail = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
+		const formattedTimeStamp = parseISO(format(Date.now(), 'LLLL	d, yyyy'));
+
+		const MailGun = await fetch('api/mailgun/index', {
+			body: JSON.stringify({
+				to: `${approvedeEmail}`,
+				from: `${nameEntry.current?.valueOf()} at ${emailEntry.current?.valueOf()} <mailgun@${defaultSenderDomain}>`,
+				subject: `Sent via Mailgun -- ${emailEntry.current?.valueOf()} reached out on ${formattedTimeStamp}!`,
+				text: `-from: ${email} \n ${formattedTimeStamp} \n ${contentEntry.current?.valueOf()}`
+			}),
+			headers: {
+				'Content-Type': 'application/json; charset=UTF-8'
+			},
+			method: 'POST'
+		});
+		const { error } = await MailGun.json();
+		if (error) {
+			setMessage(error);
+			return;
+		}
+		if (
+			emailEntry.current?.valueOf() !== null &&
+			!error &&
+			nameEntry.current?.valueOf() !== null &&
+			!error &&
+			contentEntry.current?.valueOf() !== null &&
+			!error
+		) {
+			setMessage('Success! 🎉 Your email was delivered!' + `${message}`);
+			return;
+		}
+		const data = {
+			to: `${approvedeEmail}`,
+			from: `email: ${email} <mailgun@${process.env.MAILGUN_DOMAIN ?? ''}>`,
+			subject: `Sent via Mailgun -- ${email} reached out on ${formattedTimeStamp}!`,
+			text: `-from: ${email} \n ${formattedTimeStamp} \n ${content}`
+		};
+		console.log(data);
+		// const data = {
+		// 	to: `${approvedeEmail}`,
+		// 	from: `email: ${email} <mailgun@${process.env.MAILGUN_DOMAIN}>`,
+		// 	subject: `Sent via Mailgun, ${email} reached out on ${formattedTimeStamp}!`,
+		// 	text: ` - ${req.body.text}
+		//   - ${email}
+		//   ${formattedTimeStamp}`
+		// };
+		// console.log(data);
+		// const MailGun = await fetch('/api/mailgun/index', {
+		// 	body: JSON.stringify({
+		// 		to: setEmail(email),
+		// 		from: inputE1.current?.value,
+		// 		fullName: fullNameE1.current?.value,
+		// 		content: contentE1.current?.value
+		// 	}),
+		// 	headers: {
+		// 		'Content-Type': 'application/json; charset=UTF-8'
+		// 	},
+		// 	method: 'POST'
+		// });
+
+		// const { error } = await MailGun.json();
+
+		// if (error) {
+		// 	setMessage(error);
+		// 	return;
+		// }
+		// if (
+		// 	inputE1.current?.value !== null &&
+		// 	!error &&
+		// 	fullNameE1.current?.value !== null &&
+		// 	!error &&
+		// 	contentE1.current?.value !== null &&
+		// 	!error
+		// ) {
+		// 	setMessage('Success! 🎉 Your email was delivered!' + `${message}`);
+		// 	return;
+		// }
 
 		if (!dirty && !disabled) {
 			setDirty(true);
@@ -29,7 +112,7 @@ const Email: FC<Props> = props => {
 		try {
 			setLoading(true);
 			setMessage('');
-			console.log(firstName, lastName, content);
+			console.log(fullName, content);
 			setLoading(false);
 			closeModal();
 		} catch ({ errors }) {
@@ -48,6 +131,8 @@ const Email: FC<Props> = props => {
 	}, [handleValidation]);
 
 	const { className } = props;
+
+	console.table();
 
 	return (
 		<form
@@ -133,19 +218,15 @@ const Email: FC<Props> = props => {
 					{message && (
 						<div className='text-red-700 border border-red-800 p-3'>{message}</div>
 					)}
+					{/* <label htmlFor={"email-input"}></label> */}
 					<Input
-						placeholder='First Name'
+						placeholder='First &amp; Last names'
 						required={true}
-						onChange={setFirstName}
+						onChange={setFullName}
 						className='bg-primary-9 text-primary-0 font-medium focus:outline-none rounded-md'
 					/>
 					<Input
-						placeholder='Last Name'
-						required={true}
-						onChange={setLastName}
-						className='bg-primary-9 text-primary-0 font-medium focus:outline-none rounded-md'
-					/>
-					<Input
+						id='email-input'
 						type='email'
 						required={true}
 						placeholder='Email'
@@ -175,6 +256,7 @@ const Email: FC<Props> = props => {
 				</span> */}
 					<div className='pt-2 w-auto px-8 flex flex-col'>
 						<Button
+							onClick={() => handleEmail}
 							variant='slim'
 							type='submit'
 							loading={loading}

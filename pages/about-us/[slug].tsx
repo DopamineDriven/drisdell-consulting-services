@@ -136,18 +136,8 @@ const DynamicAbout: NextPage &
 		notifyOnNetworkStatusChange: true
 	});
 	const router = useRouter();
-	return data && data.aboutPost !== null && data.aboutPost.title !== null ? (
-		<Layout title={data.aboutPost.title}>
-			{router.isFallback ? (
-				<Loading />
-			) : (
-				<>
-					<AboutPosts />
-				</>
-			)}
-		</Layout>
-	) : (
-		<Layout title={'title null'}>
+	return (
+		<Layout title={data?.aboutPost?.title ?? ''}>
 			{router.isFallback ? (
 				<Loading />
 			) : (
