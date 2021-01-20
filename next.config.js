@@ -1,3 +1,4 @@
+const path = require('path');
 const withPlugins = require('next-compose-plugins');
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
 	enabled: !!process.env.ANALYZE
@@ -22,6 +23,11 @@ const webpackBundle = {
 			type: 'json',
 			use: 'yaml-loader'
 		});
+		const isServer = typeof window === 'undefined';
+		if (isServer) {
+			config.resolve.alias['@'] = path.resolve('./');
+		}
+
 		return config;
 	},
 	webpackDevMiddleware: config => {

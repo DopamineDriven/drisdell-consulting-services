@@ -81,6 +81,15 @@ const AboutPosts = () => {
 			notifyOnNetworkStatusChange: true
 		}
 	);
+	/*
+	const { data, loading, error } = useAboutBySlugQuery({
+		variables: {
+			idType: Types.AboutIdType.Slug,
+			id: targetSlug
+		},
+		notifyOnNetworkStatusChange: true
+	});
+	*/
 	const title =
 		data && data.aboutPost !== null && data.aboutPost.title !== null
 			? data.aboutPost.title

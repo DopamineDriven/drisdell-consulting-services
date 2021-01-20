@@ -23,7 +23,6 @@
 		"baseUrl": ".",
 		"strictNullChecks": true,
 		"paths": {
-			"@codegen/*": ["codegen/*"],
 			"@components/*": ["components/*"],
 			"@config/*": ["config/*"],
 			"@lib/*": ["lib/*"],
@@ -37,7 +36,6 @@
 		"global.d.ts",
 		"graphql.d.ts",
 		"content.type.d.ts",
-		"graphql.schema.graphql",
 		"**/*.ts",
 		"**/*.tsx",
 		"**/*.js",

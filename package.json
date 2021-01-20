@@ -18,8 +18,7 @@
 		"tsconfig:effective": "tsc --showConfig",
 		"find:unused": "next-unused",
 		"postinstall": "patch-typed-document-node",
-		"apollo-engine:update": "yarn apollo service:push --graph=",
-		"client:codegen": "yarn apollo codegen:generate --localSchemaFile=graphql.schema.json --target=typescript --includes=./lib/**/*.ts --tagName=gql --addTypename --globalTypesFile=lib/graphql-global-types.ts",
+		"client:codegen": "yarn apollo codegen:generate --localSchemaFile=./lib/global/graphql.schema.json --target=typescript --includes=./lib/**/*.ts --tagName=gql --addTypename --globalTypesFile=lib/graphql-global-types.ts",
 		"codegen:generate": "graphql-codegen -r dotenv/config --config codegen.yml",
 		"codegen:combo": "yarn codegen:generate && yarn client:codegen"
 	},
@@ -30,9 +29,6 @@
 	},
 	"next-unused": {
 		"alias": {
-			"@codegen": [
-				"codegen/*"
-			],
 			"@components": [
 				"components/*"
 			],
@@ -129,6 +125,7 @@
 		"@types/react": "^17.0.0",
 		"@types/react-dom": "^17.0.0",
 		"@types/react-syntax-highlighter": "^13.5.0",
+		"apollo": "^2.32.1",
 		"autoprefixer": "^10.2.1",
 		"cross-env": "^7.0.3",
 		"cross-var": "^1.1.0",
