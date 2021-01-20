@@ -18,7 +18,9 @@
 
 ## S3 Bucket
 
+- https://aws.amazon.com/blogs/compute/deploying-a-highly-available-wordpress-site-on-amazon-lightsail-part-1-implementing-a-highly-available-lightsail-database-with-wordpress/
 - https://aws.amazon.com/blogs/compute/deploying-a-highly-available-wordpress-site-on-amazon-lightsail-part-2-using-amazon-s3-with-wordpress-to-securely-deliver-media-files/
+- https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-connecting-wordpress-to-amazon-s3
 
 ## Use Amazon CloudFront
 
