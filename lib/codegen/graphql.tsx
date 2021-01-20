@@ -1,3 +1,6 @@
+import { gql } from '@apollo/client';
+import * as Apollo from '@apollo/client';
+import * as ApolloReactHooks from '@apollo/client';
 import {
 	FieldPolicy,
 	FieldReadFunction,
@@ -12534,6 +12537,1464 @@ export type FullWidthTemplate = ContentTemplate & {
 	templateName: Maybe<Scalars['String']>;
 };
 
+export type AboutFieldsFragment = {
+	__typename?: 'About';
+	content: Maybe<string>;
+	id: string;
+	title: Maybe<string>;
+	modified: Maybe<string>;
+	slug: Maybe<string>;
+	featuredImage: Maybe<{
+		__typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+		node: Maybe<{ __typename?: 'MediaItem'; sourceUrl: Maybe<string> }>;
+	}>;
+};
+
+export type CommentFieldsFragment = {
+	__typename?: 'Comment';
+	id: string;
+	date: Maybe<string>;
+	type: Maybe<string>;
+	approved: Maybe<boolean>;
+	content: Maybe<string>;
+};
+
+export type ConsultantFieldsFragment = {
+	__typename?: 'Consultant';
+	content: Maybe<string>;
+	id: string;
+	title: Maybe<string>;
+	slug: Maybe<string>;
+	modified: Maybe<string>;
+	featuredImage: Maybe<{
+		__typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+		node: Maybe<{ __typename?: 'MediaItem'; sourceUrl: Maybe<string> }>;
+	}>;
+};
+
+export type CustomPageFieldsFragment = {
+	__typename?: 'Page';
+	title: Maybe<string>;
+	content: Maybe<string>;
+	id: string;
+	slug: Maybe<string>;
+	featuredImage: Maybe<{
+		__typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+		node: Maybe<{ __typename?: 'MediaItem'; sourceUrl: Maybe<string> }>;
+	}>;
+};
+
+export type MenuFragmentFragment = {
+	__typename?: 'MenuItem';
+	id: string;
+	label: Maybe<string>;
+	url: Maybe<string>;
+	path: string;
+	parentId: Maybe<string>;
+};
+
+export type PageFragmentFragment = {
+	__typename?: 'Page';
+	id: string;
+	title: Maybe<string>;
+	content: Maybe<string>;
+	slug: Maybe<string>;
+	uri: string;
+};
+
+export type PreviewPageFragment = {
+	__typename?: 'Page';
+	databaseId: number;
+	slug: Maybe<string>;
+	status: Maybe<string>;
+	uri: string;
+};
+
+export type PreviewPostFragment = {
+	__typename?: 'Post';
+	databaseId: number;
+	slug: Maybe<string>;
+	status: Maybe<string>;
+	uri: string;
+};
+
+export type TestimonialFieldsFragment = {
+	__typename?: 'Testimonial';
+	content: Maybe<string>;
+	id: string;
+	title: Maybe<string>;
+	slug: Maybe<string>;
+	modified: Maybe<string>;
+	featuredImage: Maybe<{
+		__typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+		node: Maybe<{ __typename?: 'MediaItem'; sourceUrl: Maybe<string> }>;
+	}>;
+};
+
+export type AboutBySlugQueryVariables = Exact<{
+	id: Scalars['ID'];
+	idType: AboutIdType;
+}>;
+
+export type AboutBySlugQuery = {
+	__typename?: 'RootQuery';
+	aboutPost: Maybe<{ __typename?: 'About' } & AboutFieldsFragment>;
+};
+
+export type AboutCardsDataQueryVariables = Exact<{
+	name: Scalars['String'];
+	field: PostObjectsConnectionOrderbyEnum;
+	order: OrderEnum;
+	first: Scalars['Int'];
+}>;
+
+export type AboutCardsDataQuery = {
+	__typename?: 'RootQuery';
+	pages: Maybe<{
+		__typename?: 'RootQueryToPageConnection';
+		edges: Maybe<
+			Array<
+				Maybe<{
+					__typename?: 'RootQueryToPageConnectionEdge';
+					node: Maybe<{ __typename?: 'Page' } & CustomPageFieldsFragment>;
+				}>
+			>
+		>;
+	}>;
+	abouts: Maybe<{
+		__typename?: 'RootQueryToAboutConnection';
+		edges: Maybe<
+			Array<
+				Maybe<{
+					__typename?: 'RootQueryToAboutConnectionEdge';
+					node: Maybe<{ __typename?: 'About' } & AboutFieldsFragment>;
+				}>
+			>
+		>;
+	}>;
+};
+
+export type AboutSlugsQueryVariables = Exact<{
+	field: PostObjectsConnectionOrderbyEnum;
+	order: OrderEnum;
+	first: Scalars['Int'];
+}>;
+
+export type AboutSlugsQuery = {
+	__typename?: 'RootQuery';
+	aboutslugs: Maybe<{
+		__typename?: 'RootQueryToAboutConnection';
+		edges: Maybe<
+			Array<
+				Maybe<{
+					__typename?: 'RootQueryToAboutConnectionEdge';
+					node: Maybe<{ __typename?: 'About'; uri: string; slug: Maybe<string> }>;
+				}>
+			>
+		>;
+	}>;
+};
+
+export type AllTestimonialsQueryVariables = Exact<{
+	field: PostObjectsConnectionOrderbyEnum;
+	order: OrderEnum;
+	first: Scalars['Int'];
+}>;
+
+export type AllTestimonialsQuery = {
+	__typename?: 'RootQuery';
+	testimonials: Maybe<{
+		__typename?: 'RootQueryToTestimonialConnection';
+		edges: Maybe<
+			Array<
+				Maybe<{
+					__typename?: 'RootQueryToTestimonialConnectionEdge';
+					cursor: Maybe<string>;
+					node: Maybe<{ __typename?: 'Testimonial' } & TestimonialFieldsFragment>;
+				}>
+			>
+		>;
+	}>;
+};
+
+export type ConsultantBySlugQueryVariables = Exact<{
+	id: Scalars['ID'];
+	idType: ConsultantIdType;
+}>;
+
+export type ConsultantBySlugQuery = {
+	__typename?: 'RootQuery';
+	consultantPost: Maybe<
+		{ __typename?: 'Consultant' } & ConsultantFieldsFragment
+	>;
+};
+
+export type ConsultantSlugsQueryVariables = Exact<{
+	field: PostObjectsConnectionOrderbyEnum;
+	order: OrderEnum;
+	first: Scalars['Int'];
+}>;
+
+export type ConsultantSlugsQuery = {
+	__typename?: 'RootQuery';
+	consultantSlugs: Maybe<{
+		__typename?: 'RootQueryToConsultantConnection';
+		edges: Maybe<
+			Array<
+				Maybe<{
+					__typename?: 'RootQueryToConsultantConnectionEdge';
+					node: Maybe<{
+						__typename?: 'Consultant';
+						uri: string;
+						slug: Maybe<string>;
+					}>;
+				}>
+			>
+		>;
+	}>;
+};
+
+export type ConsultantsDataQueryVariables = Exact<{
+	name: Scalars['String'];
+	field: PostObjectsConnectionOrderbyEnum;
+	order: OrderEnum;
+	first: Scalars['Int'];
+}>;
+
+export type ConsultantsDataQuery = {
+	__typename?: 'RootQuery';
+	pages: Maybe<{
+		__typename?: 'RootQueryToPageConnection';
+		edges: Maybe<
+			Array<
+				Maybe<{
+					__typename?: 'RootQueryToPageConnectionEdge';
+					node: Maybe<{ __typename?: 'Page' } & CustomPageFieldsFragment>;
+				}>
+			>
+		>;
+	}>;
+	consultants: Maybe<{
+		__typename?: 'RootQueryToConsultantConnection';
+		edges: Maybe<
+			Array<
+				Maybe<{
+					__typename?: 'RootQueryToConsultantConnectionEdge';
+					node: Maybe<{ __typename?: 'Consultant' } & ConsultantFieldsFragment>;
+				}>
+			>
+		>;
+	}>;
+};
+
+export type GetPageQueryVariables = Exact<{
+	idPage: Scalars['ID'];
+	idTypePage: PageIdType;
+	idHead: Scalars['ID'];
+	idTypeHead: MenuNodeIdTypeEnum;
+	idFoot: Scalars['ID'];
+	idTypeFoot: MenuNodeIdTypeEnum;
+}>;
+
+export type GetPageQuery = {
+	__typename?: 'RootQuery';
+	headerMenus: Maybe<{
+		__typename?: 'Menu';
+		menuItems: Maybe<{
+			__typename?: 'MenuToMenuItemConnection';
+			edges: Maybe<
+				Array<
+					Maybe<{
+						__typename?: 'MenuToMenuItemConnectionEdge';
+						node: Maybe<
+							{
+								__typename?: 'MenuItem';
+								childItems: Maybe<{
+									__typename?: 'MenuItemToMenuItemConnection';
+									edges: Maybe<
+										Array<
+											Maybe<{
+												__typename?: 'MenuItemToMenuItemConnectionEdge';
+												node: Maybe<{ __typename?: 'MenuItem' } & MenuFragmentFragment>;
+											}>
+										>
+									>;
+								}>;
+							} & MenuFragmentFragment
+						>;
+					}>
+				>
+			>;
+		}>;
+	}>;
+	footerMenus: Maybe<{
+		__typename?: 'Menu';
+		menuItems: Maybe<{
+			__typename?: 'MenuToMenuItemConnection';
+			edges: Maybe<
+				Array<
+					Maybe<{
+						__typename?: 'MenuToMenuItemConnectionEdge';
+						node: Maybe<
+							{
+								__typename?: 'MenuItem';
+								childItems: Maybe<{
+									__typename?: 'MenuItemToMenuItemConnection';
+									edges: Maybe<
+										Array<
+											Maybe<{
+												__typename?: 'MenuItemToMenuItemConnectionEdge';
+												node: Maybe<{ __typename?: 'MenuItem' } & MenuFragmentFragment>;
+											}>
+										>
+									>;
+								}>;
+							} & MenuFragmentFragment
+						>;
+					}>
+				>
+			>;
+		}>;
+	}>;
+	page: Maybe<{ __typename?: 'Page' } & PageFragmentFragment>;
+};
+
+export type GetPagesQueryVariables = Exact<{
+	first: Scalars['Int'];
+	field: PostObjectsConnectionOrderbyEnum;
+	order: OrderEnum;
+	parentIn: Maybe<Array<Maybe<Scalars['ID']>>>;
+}>;
+
+export type GetPagesQuery = {
+	__typename?: 'RootQuery';
+	pages: Maybe<{
+		__typename?: 'RootQueryToPageConnection';
+		nodes: Maybe<Array<Maybe<{ __typename?: 'Page' } & PageFragmentFragment>>>;
+	}>;
+};
+
+export type GetPreviewPageQueryVariables = Exact<{
+	idPage: Scalars['ID'];
+	idTypePage: PageIdType;
+}>;
+
+export type GetPreviewPageQuery = {
+	__typename?: 'RootQuery';
+	preview: Maybe<{ __typename?: 'Page' } & PreviewPageFragment>;
+};
+
+export type GetPreviewPostQueryVariables = Exact<{
+	idPost: Scalars['ID'];
+	idTypePost: PostIdType;
+}>;
+
+export type GetPreviewPostQuery = {
+	__typename?: 'RootQuery';
+	previewPost: Maybe<{ __typename?: 'Post' } & PreviewPostFragment>;
+};
+
+export type HeaderFooterQueryVariables = Exact<{
+	idHead: Scalars['ID'];
+	idTypeHead: MenuNodeIdTypeEnum;
+	idFoot: Scalars['ID'];
+	idTypeFoot: MenuNodeIdTypeEnum;
+}>;
+
+export type HeaderFooterQuery = {
+	__typename?: 'RootQuery';
+	headerDynamic: Maybe<{
+		__typename?: 'Menu';
+		menuItems: Maybe<{
+			__typename?: 'MenuToMenuItemConnection';
+			edges: Maybe<
+				Array<
+					Maybe<{
+						__typename?: 'MenuToMenuItemConnectionEdge';
+						node: Maybe<
+							{
+								__typename?: 'MenuItem';
+								childItems: Maybe<{
+									__typename?: 'MenuItemToMenuItemConnection';
+									edges: Maybe<
+										Array<
+											Maybe<{
+												__typename?: 'MenuItemToMenuItemConnectionEdge';
+												node: Maybe<{ __typename?: 'MenuItem' } & MenuFragmentFragment>;
+											}>
+										>
+									>;
+								}>;
+							} & MenuFragmentFragment
+						>;
+					}>
+				>
+			>;
+		}>;
+	}>;
+	footerDynamic: Maybe<{
+		__typename?: 'Menu';
+		menuItems: Maybe<{
+			__typename?: 'MenuToMenuItemConnection';
+			edges: Maybe<
+				Array<
+					Maybe<{
+						__typename?: 'MenuToMenuItemConnectionEdge';
+						node: Maybe<
+							{
+								__typename?: 'MenuItem';
+								childItems: Maybe<{
+									__typename?: 'MenuItemToMenuItemConnection';
+									edges: Maybe<
+										Array<
+											Maybe<{
+												__typename?: 'MenuItemToMenuItemConnectionEdge';
+												node: Maybe<{ __typename?: 'MenuItem' } & MenuFragmentFragment>;
+											}>
+										>
+									>;
+								}>;
+							} & MenuFragmentFragment
+						>;
+					}>
+				>
+			>;
+		}>;
+	}>;
+};
+
+export type LandingPageQueryVariables = Exact<{
+	name: Scalars['String'];
+}>;
+
+export type LandingPageQuery = {
+	__typename?: 'RootQuery';
+	pages: Maybe<{
+		__typename?: 'RootQueryToPageConnection';
+		edges: Maybe<
+			Array<
+				Maybe<{
+					__typename?: 'RootQueryToPageConnectionEdge';
+					node: Maybe<{ __typename?: 'Page' } & CustomPageFieldsFragment>;
+				}>
+			>
+		>;
+	}>;
+};
+
+export const AboutFieldsFragmentDoc = gql`
+	fragment AboutFields on About {
+		content
+		id
+		title
+		modified
+		slug
+		featuredImage {
+			node {
+				sourceUrl
+			}
+		}
+	}
+`;
+export const CommentFieldsFragmentDoc = gql`
+	fragment commentFields on Comment {
+		id
+		date
+		type
+		approved
+		content
+	}
+`;
+export const ConsultantFieldsFragmentDoc = gql`
+	fragment ConsultantFields on Consultant {
+		content
+		id
+		title
+		slug
+		modified
+		featuredImage {
+			node {
+				sourceUrl
+			}
+		}
+	}
+`;
+export const CustomPageFieldsFragmentDoc = gql`
+	fragment CustomPageFields on Page {
+		title
+		content
+		id
+		slug
+		featuredImage {
+			node {
+				sourceUrl
+			}
+		}
+	}
+`;
+export const MenuFragmentFragmentDoc = gql`
+	fragment MenuFragment on MenuItem {
+		id
+		label
+		url
+		path
+		parentId
+	}
+`;
+export const PageFragmentFragmentDoc = gql`
+	fragment PageFragment on Page {
+		id
+		title
+		content
+		slug
+		uri
+	}
+`;
+export const PreviewPageFragmentDoc = gql`
+	fragment PreviewPage on Page {
+		databaseId
+		slug
+		status
+		uri
+	}
+`;
+export const PreviewPostFragmentDoc = gql`
+	fragment PreviewPost on Post {
+		databaseId
+		slug
+		status
+		uri
+	}
+`;
+export const TestimonialFieldsFragmentDoc = gql`
+	fragment TestimonialFields on Testimonial {
+		content
+		id
+		title
+		slug
+		modified
+		featuredImage {
+			node {
+				sourceUrl
+			}
+		}
+	}
+`;
+export const AboutBySlugDocument = gql`
+	query AboutBySlug($id: ID!, $idType: AboutIdType!) {
+		aboutPost: about(id: $id, idType: $idType) {
+			...AboutFields
+		}
+	}
+	${AboutFieldsFragmentDoc}
+`;
+
+/**
+ * __useAboutBySlugQuery__
+ *
+ * To run a query within a React component, call `useAboutBySlugQuery` and pass it any options that fit your needs.
+ * When your component renders, `useAboutBySlugQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useAboutBySlugQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *      idType: // value for 'idType'
+ *   },
+ * });
+ */
+export function useAboutBySlugQuery(
+	baseOptions: ApolloReactHooks.QueryHookOptions<
+		AboutBySlugQuery,
+		AboutBySlugQueryVariables
+	>
+) {
+	return ApolloReactHooks.useQuery<AboutBySlugQuery, AboutBySlugQueryVariables>(
+		AboutBySlugDocument,
+		baseOptions
+	);
+}
+export function useAboutBySlugLazyQuery(
+	baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
+		AboutBySlugQuery,
+		AboutBySlugQueryVariables
+	>
+) {
+	return ApolloReactHooks.useLazyQuery<
+		AboutBySlugQuery,
+		AboutBySlugQueryVariables
+	>(AboutBySlugDocument, baseOptions);
+}
+export type AboutBySlugQueryHookResult = ReturnType<typeof useAboutBySlugQuery>;
+export type AboutBySlugLazyQueryHookResult = ReturnType<
+	typeof useAboutBySlugLazyQuery
+>;
+export type AboutBySlugQueryResult = Apollo.QueryResult<
+	AboutBySlugQuery,
+	AboutBySlugQueryVariables
+>;
+export const AboutCardsDataDocument = gql`
+	query AboutCardsData(
+		$name: String!
+		$field: PostObjectsConnectionOrderbyEnum!
+		$order: OrderEnum!
+		$first: Int!
+	) {
+		pages(where: { name: $name }) {
+			edges {
+				node {
+					...CustomPageFields
+				}
+			}
+		}
+		abouts(where: { orderby: { field: $field, order: $order } }, first: $first) {
+			edges {
+				node {
+					...AboutFields
+				}
+			}
+		}
+	}
+	${CustomPageFieldsFragmentDoc}
+	${AboutFieldsFragmentDoc}
+`;
+
+/**
+ * __useAboutCardsDataQuery__
+ *
+ * To run a query within a React component, call `useAboutCardsDataQuery` and pass it any options that fit your needs.
+ * When your component renders, `useAboutCardsDataQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useAboutCardsDataQuery({
+ *   variables: {
+ *      name: // value for 'name'
+ *      field: // value for 'field'
+ *      order: // value for 'order'
+ *      first: // value for 'first'
+ *   },
+ * });
+ */
+export function useAboutCardsDataQuery(
+	baseOptions: ApolloReactHooks.QueryHookOptions<
+		AboutCardsDataQuery,
+		AboutCardsDataQueryVariables
+	>
+) {
+	return ApolloReactHooks.useQuery<
+		AboutCardsDataQuery,
+		AboutCardsDataQueryVariables
+	>(AboutCardsDataDocument, baseOptions);
+}
+export function useAboutCardsDataLazyQuery(
+	baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
+		AboutCardsDataQuery,
+		AboutCardsDataQueryVariables
+	>
+) {
+	return ApolloReactHooks.useLazyQuery<
+		AboutCardsDataQuery,
+		AboutCardsDataQueryVariables
+	>(AboutCardsDataDocument, baseOptions);
+}
+export type AboutCardsDataQueryHookResult = ReturnType<
+	typeof useAboutCardsDataQuery
+>;
+export type AboutCardsDataLazyQueryHookResult = ReturnType<
+	typeof useAboutCardsDataLazyQuery
+>;
+export type AboutCardsDataQueryResult = Apollo.QueryResult<
+	AboutCardsDataQuery,
+	AboutCardsDataQueryVariables
+>;
+export const AboutSlugsDocument = gql`
+	query AboutSlugs(
+		$field: PostObjectsConnectionOrderbyEnum!
+		$order: OrderEnum!
+		$first: Int!
+	) {
+		aboutslugs: abouts(
+			where: { orderby: { field: $field, order: $order } }
+			first: $first
+		) {
+			edges {
+				node {
+					uri
+					slug
+				}
+			}
+		}
+	}
+`;
+
+/**
+ * __useAboutSlugsQuery__
+ *
+ * To run a query within a React component, call `useAboutSlugsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useAboutSlugsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useAboutSlugsQuery({
+ *   variables: {
+ *      field: // value for 'field'
+ *      order: // value for 'order'
+ *      first: // value for 'first'
+ *   },
+ * });
+ */
+export function useAboutSlugsQuery(
+	baseOptions: ApolloReactHooks.QueryHookOptions<
+		AboutSlugsQuery,
+		AboutSlugsQueryVariables
+	>
+) {
+	return ApolloReactHooks.useQuery<AboutSlugsQuery, AboutSlugsQueryVariables>(
+		AboutSlugsDocument,
+		baseOptions
+	);
+}
+export function useAboutSlugsLazyQuery(
+	baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
+		AboutSlugsQuery,
+		AboutSlugsQueryVariables
+	>
+) {
+	return ApolloReactHooks.useLazyQuery<
+		AboutSlugsQuery,
+		AboutSlugsQueryVariables
+	>(AboutSlugsDocument, baseOptions);
+}
+export type AboutSlugsQueryHookResult = ReturnType<typeof useAboutSlugsQuery>;
+export type AboutSlugsLazyQueryHookResult = ReturnType<
+	typeof useAboutSlugsLazyQuery
+>;
+export type AboutSlugsQueryResult = Apollo.QueryResult<
+	AboutSlugsQuery,
+	AboutSlugsQueryVariables
+>;
+export const AllTestimonialsDocument = gql`
+	query AllTestimonials(
+		$field: PostObjectsConnectionOrderbyEnum!
+		$order: OrderEnum!
+		$first: Int!
+	) {
+		testimonials(
+			where: { orderby: { field: $field, order: $order } }
+			first: $first
+		) {
+			edges {
+				cursor
+				node {
+					...TestimonialFields
+				}
+			}
+		}
+	}
+	${TestimonialFieldsFragmentDoc}
+`;
+
+/**
+ * __useAllTestimonialsQuery__
+ *
+ * To run a query within a React component, call `useAllTestimonialsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useAllTestimonialsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useAllTestimonialsQuery({
+ *   variables: {
+ *      field: // value for 'field'
+ *      order: // value for 'order'
+ *      first: // value for 'first'
+ *   },
+ * });
+ */
+export function useAllTestimonialsQuery(
+	baseOptions: ApolloReactHooks.QueryHookOptions<
+		AllTestimonialsQuery,
+		AllTestimonialsQueryVariables
+	>
+) {
+	return ApolloReactHooks.useQuery<
+		AllTestimonialsQuery,
+		AllTestimonialsQueryVariables
+	>(AllTestimonialsDocument, baseOptions);
+}
+export function useAllTestimonialsLazyQuery(
+	baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
+		AllTestimonialsQuery,
+		AllTestimonialsQueryVariables
+	>
+) {
+	return ApolloReactHooks.useLazyQuery<
+		AllTestimonialsQuery,
+		AllTestimonialsQueryVariables
+	>(AllTestimonialsDocument, baseOptions);
+}
+export type AllTestimonialsQueryHookResult = ReturnType<
+	typeof useAllTestimonialsQuery
+>;
+export type AllTestimonialsLazyQueryHookResult = ReturnType<
+	typeof useAllTestimonialsLazyQuery
+>;
+export type AllTestimonialsQueryResult = Apollo.QueryResult<
+	AllTestimonialsQuery,
+	AllTestimonialsQueryVariables
+>;
+export const ConsultantBySlugDocument = gql`
+	query ConsultantBySlug($id: ID!, $idType: ConsultantIdType!) {
+		consultantPost: consultant(id: $id, idType: $idType) {
+			...ConsultantFields
+		}
+	}
+	${ConsultantFieldsFragmentDoc}
+`;
+
+/**
+ * __useConsultantBySlugQuery__
+ *
+ * To run a query within a React component, call `useConsultantBySlugQuery` and pass it any options that fit your needs.
+ * When your component renders, `useConsultantBySlugQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useConsultantBySlugQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *      idType: // value for 'idType'
+ *   },
+ * });
+ */
+export function useConsultantBySlugQuery(
+	baseOptions: ApolloReactHooks.QueryHookOptions<
+		ConsultantBySlugQuery,
+		ConsultantBySlugQueryVariables
+	>
+) {
+	return ApolloReactHooks.useQuery<
+		ConsultantBySlugQuery,
+		ConsultantBySlugQueryVariables
+	>(ConsultantBySlugDocument, baseOptions);
+}
+export function useConsultantBySlugLazyQuery(
+	baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
+		ConsultantBySlugQuery,
+		ConsultantBySlugQueryVariables
+	>
+) {
+	return ApolloReactHooks.useLazyQuery<
+		ConsultantBySlugQuery,
+		ConsultantBySlugQueryVariables
+	>(ConsultantBySlugDocument, baseOptions);
+}
+export type ConsultantBySlugQueryHookResult = ReturnType<
+	typeof useConsultantBySlugQuery
+>;
+export type ConsultantBySlugLazyQueryHookResult = ReturnType<
+	typeof useConsultantBySlugLazyQuery
+>;
+export type ConsultantBySlugQueryResult = Apollo.QueryResult<
+	ConsultantBySlugQuery,
+	ConsultantBySlugQueryVariables
+>;
+export const ConsultantSlugsDocument = gql`
+	query ConsultantSlugs(
+		$field: PostObjectsConnectionOrderbyEnum!
+		$order: OrderEnum!
+		$first: Int!
+	) {
+		consultantSlugs: consultants(
+			where: { orderby: { field: $field, order: $order } }
+			first: $first
+		) {
+			edges {
+				node {
+					uri
+					slug
+				}
+			}
+		}
+	}
+`;
+
+/**
+ * __useConsultantSlugsQuery__
+ *
+ * To run a query within a React component, call `useConsultantSlugsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useConsultantSlugsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useConsultantSlugsQuery({
+ *   variables: {
+ *      field: // value for 'field'
+ *      order: // value for 'order'
+ *      first: // value for 'first'
+ *   },
+ * });
+ */
+export function useConsultantSlugsQuery(
+	baseOptions: ApolloReactHooks.QueryHookOptions<
+		ConsultantSlugsQuery,
+		ConsultantSlugsQueryVariables
+	>
+) {
+	return ApolloReactHooks.useQuery<
+		ConsultantSlugsQuery,
+		ConsultantSlugsQueryVariables
+	>(ConsultantSlugsDocument, baseOptions);
+}
+export function useConsultantSlugsLazyQuery(
+	baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
+		ConsultantSlugsQuery,
+		ConsultantSlugsQueryVariables
+	>
+) {
+	return ApolloReactHooks.useLazyQuery<
+		ConsultantSlugsQuery,
+		ConsultantSlugsQueryVariables
+	>(ConsultantSlugsDocument, baseOptions);
+}
+export type ConsultantSlugsQueryHookResult = ReturnType<
+	typeof useConsultantSlugsQuery
+>;
+export type ConsultantSlugsLazyQueryHookResult = ReturnType<
+	typeof useConsultantSlugsLazyQuery
+>;
+export type ConsultantSlugsQueryResult = Apollo.QueryResult<
+	ConsultantSlugsQuery,
+	ConsultantSlugsQueryVariables
+>;
+export const ConsultantsDataDocument = gql`
+	query ConsultantsData(
+		$name: String!
+		$field: PostObjectsConnectionOrderbyEnum!
+		$order: OrderEnum!
+		$first: Int!
+	) {
+		pages(where: { name: $name }) {
+			edges {
+				node {
+					...CustomPageFields
+				}
+			}
+		}
+		consultants(
+			where: { orderby: { field: $field, order: $order } }
+			first: $first
+		) {
+			edges {
+				node {
+					...ConsultantFields
+				}
+			}
+		}
+	}
+	${CustomPageFieldsFragmentDoc}
+	${ConsultantFieldsFragmentDoc}
+`;
+
+/**
+ * __useConsultantsDataQuery__
+ *
+ * To run a query within a React component, call `useConsultantsDataQuery` and pass it any options that fit your needs.
+ * When your component renders, `useConsultantsDataQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useConsultantsDataQuery({
+ *   variables: {
+ *      name: // value for 'name'
+ *      field: // value for 'field'
+ *      order: // value for 'order'
+ *      first: // value for 'first'
+ *   },
+ * });
+ */
+export function useConsultantsDataQuery(
+	baseOptions: ApolloReactHooks.QueryHookOptions<
+		ConsultantsDataQuery,
+		ConsultantsDataQueryVariables
+	>
+) {
+	return ApolloReactHooks.useQuery<
+		ConsultantsDataQuery,
+		ConsultantsDataQueryVariables
+	>(ConsultantsDataDocument, baseOptions);
+}
+export function useConsultantsDataLazyQuery(
+	baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
+		ConsultantsDataQuery,
+		ConsultantsDataQueryVariables
+	>
+) {
+	return ApolloReactHooks.useLazyQuery<
+		ConsultantsDataQuery,
+		ConsultantsDataQueryVariables
+	>(ConsultantsDataDocument, baseOptions);
+}
+export type ConsultantsDataQueryHookResult = ReturnType<
+	typeof useConsultantsDataQuery
+>;
+export type ConsultantsDataLazyQueryHookResult = ReturnType<
+	typeof useConsultantsDataLazyQuery
+>;
+export type ConsultantsDataQueryResult = Apollo.QueryResult<
+	ConsultantsDataQuery,
+	ConsultantsDataQueryVariables
+>;
+export const GetPageDocument = gql`
+	query GetPage(
+		$idPage: ID!
+		$idTypePage: PageIdType!
+		$idHead: ID!
+		$idTypeHead: MenuNodeIdTypeEnum!
+		$idFoot: ID!
+		$idTypeFoot: MenuNodeIdTypeEnum!
+	) {
+		headerMenus: menu(id: $idHead, idType: $idTypeHead) {
+			menuItems(where: { parentId: 0 }) {
+				edges {
+					node {
+						...MenuFragment
+						childItems {
+							edges {
+								node {
+									...MenuFragment
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		footerMenus: menu(id: $idFoot, idType: $idTypeFoot) {
+			menuItems(where: { parentId: 0 }) {
+				edges {
+					node {
+						...MenuFragment
+						childItems {
+							edges {
+								node {
+									...MenuFragment
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		page: page(id: $idPage, idType: $idTypePage) {
+			...PageFragment
+		}
+	}
+	${MenuFragmentFragmentDoc}
+	${PageFragmentFragmentDoc}
+`;
+
+/**
+ * __useGetPageQuery__
+ *
+ * To run a query within a React component, call `useGetPageQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetPageQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetPageQuery({
+ *   variables: {
+ *      idPage: // value for 'idPage'
+ *      idTypePage: // value for 'idTypePage'
+ *      idHead: // value for 'idHead'
+ *      idTypeHead: // value for 'idTypeHead'
+ *      idFoot: // value for 'idFoot'
+ *      idTypeFoot: // value for 'idTypeFoot'
+ *   },
+ * });
+ */
+export function useGetPageQuery(
+	baseOptions: ApolloReactHooks.QueryHookOptions<
+		GetPageQuery,
+		GetPageQueryVariables
+	>
+) {
+	return ApolloReactHooks.useQuery<GetPageQuery, GetPageQueryVariables>(
+		GetPageDocument,
+		baseOptions
+	);
+}
+export function useGetPageLazyQuery(
+	baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
+		GetPageQuery,
+		GetPageQueryVariables
+	>
+) {
+	return ApolloReactHooks.useLazyQuery<GetPageQuery, GetPageQueryVariables>(
+		GetPageDocument,
+		baseOptions
+	);
+}
+export type GetPageQueryHookResult = ReturnType<typeof useGetPageQuery>;
+export type GetPageLazyQueryHookResult = ReturnType<typeof useGetPageLazyQuery>;
+export type GetPageQueryResult = Apollo.QueryResult<
+	GetPageQuery,
+	GetPageQueryVariables
+>;
+export const GetPagesDocument = gql`
+	query GetPages(
+		$first: Int!
+		$field: PostObjectsConnectionOrderbyEnum!
+		$order: OrderEnum!
+		$parentIn: [ID]
+	) {
+		pages: pages(
+			first: $first
+			where: { parentIn: $parentIn, orderby: { field: $field, order: $order } }
+		) {
+			nodes {
+				...PageFragment
+			}
+		}
+	}
+	${PageFragmentFragmentDoc}
+`;
+
+/**
+ * __useGetPagesQuery__
+ *
+ * To run a query within a React component, call `useGetPagesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetPagesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetPagesQuery({
+ *   variables: {
+ *      first: // value for 'first'
+ *      field: // value for 'field'
+ *      order: // value for 'order'
+ *      parentIn: // value for 'parentIn'
+ *   },
+ * });
+ */
+export function useGetPagesQuery(
+	baseOptions: ApolloReactHooks.QueryHookOptions<
+		GetPagesQuery,
+		GetPagesQueryVariables
+	>
+) {
+	return ApolloReactHooks.useQuery<GetPagesQuery, GetPagesQueryVariables>(
+		GetPagesDocument,
+		baseOptions
+	);
+}
+export function useGetPagesLazyQuery(
+	baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
+		GetPagesQuery,
+		GetPagesQueryVariables
+	>
+) {
+	return ApolloReactHooks.useLazyQuery<GetPagesQuery, GetPagesQueryVariables>(
+		GetPagesDocument,
+		baseOptions
+	);
+}
+export type GetPagesQueryHookResult = ReturnType<typeof useGetPagesQuery>;
+export type GetPagesLazyQueryHookResult = ReturnType<
+	typeof useGetPagesLazyQuery
+>;
+export type GetPagesQueryResult = Apollo.QueryResult<
+	GetPagesQuery,
+	GetPagesQueryVariables
+>;
+export const GetPreviewPageDocument = gql`
+	query GetPreviewPage($idPage: ID!, $idTypePage: PageIdType!) {
+		preview: page(id: $idPage, idType: $idTypePage) {
+			...PreviewPage
+		}
+	}
+	${PreviewPageFragmentDoc}
+`;
+
+/**
+ * __useGetPreviewPageQuery__
+ *
+ * To run a query within a React component, call `useGetPreviewPageQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetPreviewPageQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetPreviewPageQuery({
+ *   variables: {
+ *      idPage: // value for 'idPage'
+ *      idTypePage: // value for 'idTypePage'
+ *   },
+ * });
+ */
+export function useGetPreviewPageQuery(
+	baseOptions: ApolloReactHooks.QueryHookOptions<
+		GetPreviewPageQuery,
+		GetPreviewPageQueryVariables
+	>
+) {
+	return ApolloReactHooks.useQuery<
+		GetPreviewPageQuery,
+		GetPreviewPageQueryVariables
+	>(GetPreviewPageDocument, baseOptions);
+}
+export function useGetPreviewPageLazyQuery(
+	baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
+		GetPreviewPageQuery,
+		GetPreviewPageQueryVariables
+	>
+) {
+	return ApolloReactHooks.useLazyQuery<
+		GetPreviewPageQuery,
+		GetPreviewPageQueryVariables
+	>(GetPreviewPageDocument, baseOptions);
+}
+export type GetPreviewPageQueryHookResult = ReturnType<
+	typeof useGetPreviewPageQuery
+>;
+export type GetPreviewPageLazyQueryHookResult = ReturnType<
+	typeof useGetPreviewPageLazyQuery
+>;
+export type GetPreviewPageQueryResult = Apollo.QueryResult<
+	GetPreviewPageQuery,
+	GetPreviewPageQueryVariables
+>;
+export const GetPreviewPostDocument = gql`
+	query GetPreviewPost($idPost: ID!, $idTypePost: PostIdType!) {
+		previewPost: post(id: $idPost, idType: $idTypePost) {
+			...PreviewPost
+		}
+	}
+	${PreviewPostFragmentDoc}
+`;
+
+/**
+ * __useGetPreviewPostQuery__
+ *
+ * To run a query within a React component, call `useGetPreviewPostQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetPreviewPostQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetPreviewPostQuery({
+ *   variables: {
+ *      idPost: // value for 'idPost'
+ *      idTypePost: // value for 'idTypePost'
+ *   },
+ * });
+ */
+export function useGetPreviewPostQuery(
+	baseOptions: ApolloReactHooks.QueryHookOptions<
+		GetPreviewPostQuery,
+		GetPreviewPostQueryVariables
+	>
+) {
+	return ApolloReactHooks.useQuery<
+		GetPreviewPostQuery,
+		GetPreviewPostQueryVariables
+	>(GetPreviewPostDocument, baseOptions);
+}
+export function useGetPreviewPostLazyQuery(
+	baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
+		GetPreviewPostQuery,
+		GetPreviewPostQueryVariables
+	>
+) {
+	return ApolloReactHooks.useLazyQuery<
+		GetPreviewPostQuery,
+		GetPreviewPostQueryVariables
+	>(GetPreviewPostDocument, baseOptions);
+}
+export type GetPreviewPostQueryHookResult = ReturnType<
+	typeof useGetPreviewPostQuery
+>;
+export type GetPreviewPostLazyQueryHookResult = ReturnType<
+	typeof useGetPreviewPostLazyQuery
+>;
+export type GetPreviewPostQueryResult = Apollo.QueryResult<
+	GetPreviewPostQuery,
+	GetPreviewPostQueryVariables
+>;
+export const HeaderFooterDocument = gql`
+	query HeaderFooter(
+		$idHead: ID!
+		$idTypeHead: MenuNodeIdTypeEnum!
+		$idFoot: ID!
+		$idTypeFoot: MenuNodeIdTypeEnum!
+	) {
+		headerDynamic: menu(id: $idHead, idType: $idTypeHead) {
+			menuItems(where: { parentId: 0 }) {
+				edges {
+					node {
+						...MenuFragment
+						childItems {
+							edges {
+								node {
+									...MenuFragment
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		footerDynamic: menu(id: $idFoot, idType: $idTypeFoot) {
+			menuItems(where: { parentId: 0 }) {
+				edges {
+					node {
+						...MenuFragment
+						childItems {
+							edges {
+								node {
+									...MenuFragment
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	${MenuFragmentFragmentDoc}
+`;
+
+/**
+ * __useHeaderFooterQuery__
+ *
+ * To run a query within a React component, call `useHeaderFooterQuery` and pass it any options that fit your needs.
+ * When your component renders, `useHeaderFooterQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useHeaderFooterQuery({
+ *   variables: {
+ *      idHead: // value for 'idHead'
+ *      idTypeHead: // value for 'idTypeHead'
+ *      idFoot: // value for 'idFoot'
+ *      idTypeFoot: // value for 'idTypeFoot'
+ *   },
+ * });
+ */
+export function useHeaderFooterQuery(
+	baseOptions: ApolloReactHooks.QueryHookOptions<
+		HeaderFooterQuery,
+		HeaderFooterQueryVariables
+	>
+) {
+	return ApolloReactHooks.useQuery<
+		HeaderFooterQuery,
+		HeaderFooterQueryVariables
+	>(HeaderFooterDocument, baseOptions);
+}
+export function useHeaderFooterLazyQuery(
+	baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
+		HeaderFooterQuery,
+		HeaderFooterQueryVariables
+	>
+) {
+	return ApolloReactHooks.useLazyQuery<
+		HeaderFooterQuery,
+		HeaderFooterQueryVariables
+	>(HeaderFooterDocument, baseOptions);
+}
+export type HeaderFooterQueryHookResult = ReturnType<
+	typeof useHeaderFooterQuery
+>;
+export type HeaderFooterLazyQueryHookResult = ReturnType<
+	typeof useHeaderFooterLazyQuery
+>;
+export type HeaderFooterQueryResult = Apollo.QueryResult<
+	HeaderFooterQuery,
+	HeaderFooterQueryVariables
+>;
+export const LandingPageDocument = gql`
+	query LandingPage($name: String!) {
+		pages(where: { name: $name }) {
+			edges {
+				node {
+					...CustomPageFields
+				}
+			}
+		}
+	}
+	${CustomPageFieldsFragmentDoc}
+`;
+
+/**
+ * __useLandingPageQuery__
+ *
+ * To run a query within a React component, call `useLandingPageQuery` and pass it any options that fit your needs.
+ * When your component renders, `useLandingPageQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useLandingPageQuery({
+ *   variables: {
+ *      name: // value for 'name'
+ *   },
+ * });
+ */
+export function useLandingPageQuery(
+	baseOptions: ApolloReactHooks.QueryHookOptions<
+		LandingPageQuery,
+		LandingPageQueryVariables
+	>
+) {
+	return ApolloReactHooks.useQuery<LandingPageQuery, LandingPageQueryVariables>(
+		LandingPageDocument,
+		baseOptions
+	);
+}
+export function useLandingPageLazyQuery(
+	baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
+		LandingPageQuery,
+		LandingPageQueryVariables
+	>
+) {
+	return ApolloReactHooks.useLazyQuery<
+		LandingPageQuery,
+		LandingPageQueryVariables
+	>(LandingPageDocument, baseOptions);
+}
+export type LandingPageQueryHookResult = ReturnType<typeof useLandingPageQuery>;
+export type LandingPageLazyQueryHookResult = ReturnType<
+	typeof useLandingPageLazyQuery
+>;
+export type LandingPageQueryResult = Apollo.QueryResult<
+	LandingPageQuery,
+	LandingPageQueryVariables
+>;
 export type RootQueryKeySpecifier = (
 	| 'about'
 	| 'aboutBy'

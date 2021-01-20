@@ -18,13 +18,6 @@ const withMDX = require('@next/mdx')({
 const webpackBundle = {
 	webpack: (config, options) => {
 		config.module.rules.push({
-			test: /\.(graphql|gql)$/,
-			exclude: /node_modules/,
-			use: [options.defaultLoaders.babel, { loader: 'graphql-tag/loader' }]
-		});
-	},
-	webpack: (config, options) => {
-		config.module.rules.push({
 			test: /\.ya?ml$/,
 			type: 'json',
 			use: 'yaml-loader'
