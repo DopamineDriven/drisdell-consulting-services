@@ -5,19 +5,22 @@ schema:
       Authorization: Bearer ${WORDPRESS_AUTH_REFRESH_TOKEN_YML}
 documents: './lib/**/*.ts'
 generates:
-  ./graphql.d.ts:
+  codegen/generated/graphql.tsx:
     plugins:
     - 'typescript'
     - 'typescript-operations'
     - 'typescript-react-apollo'
     - 'typescript-apollo-client-helpers'
     config:
+      withResultType: true
       withHOC: false
       reactApolloVersion: 3
       withHooks: true
-      apolloReactCommonImportFrom: '@apollo/client'
+      avoidOptionals: true
+      withComponent: false
+      gqlImport: '@apollo/client#gql'
       apolloReactHooksImportFrom: '@apollo/client'
-  ./graphql.schema.graphql:
+  codegen/generated/graphql.schema.graphql:
     plugins:
       - 'schema-ast'
   ./graphql.schema.json:

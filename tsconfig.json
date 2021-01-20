@@ -23,6 +23,7 @@
 		"baseUrl": ".",
 		"strictNullChecks": true,
 		"paths": {
+			"@codegen/*": ["codegen/*"],
 			"@components/*": ["components/*"],
 			"@config/*": ["config/*"],
 			"@lib/*": ["lib/*"],
