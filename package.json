@@ -122,7 +122,7 @@
 		"@types/lodash.random": "^3.2.6",
 		"@types/lodash.throttle": "^4.1.6",
 		"@types/mailgun-js": "^0.22.11",
-		"@types/node": "^14.14.20",
+		"@types/node": "^14.14.22",
 		"@types/react": "^17.0.0",
 		"@types/react-dom": "^17.0.0",
 		"@types/react-syntax-highlighter": "^13.5.0",
