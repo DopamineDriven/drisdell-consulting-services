@@ -5,6 +5,8 @@ export { default as ALL_TESTIMONIALS } from './AllTestimonials';
 export { default as CONSULTANT_BY_SLUG } from './ConsultantBySlug';
 export { default as CONSULTANTS_DATA } from './ConsultantsData';
 export { default as CONSULTANT_SLUGS } from './ConsultantSlugs';
+export { default as CONTACT_US } from '@lib/graphql/ContactUs';
+export { default as CONTACT_US_QUERY } from './ContactUsQuery';
 export { default as GET_PAGE } from './GetPage';
 export { default as GET_PAGES } from './GetPages';
 export { default as GET_PREVIEW_PAGE } from './GetPreviewPage';

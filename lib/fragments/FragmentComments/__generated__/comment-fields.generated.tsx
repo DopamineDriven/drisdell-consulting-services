@@ -1,14 +1,10 @@
-import * as Types from '../../../global-types';
+import * as Types from '../../../global/global-types.generated';
 
 import { gql } from '@apollo/client';
-export type CommentFieldsFragment = {
-	__typename?: 'Comment';
-	id: string;
-	date: Types.Maybe<string>;
-	type: Types.Maybe<string>;
-	approved: Types.Maybe<boolean>;
-	content: Types.Maybe<string>;
-};
+export type CommentFieldsFragment = { __typename?: 'Comment' } & Pick<
+	Types.Comment,
+	'id' | 'date' | 'type' | 'approved' | 'content'
+>;
 
 export const CommentFieldsFragmentDoc = gql`
 	fragment commentFields on Comment {

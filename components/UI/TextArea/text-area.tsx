@@ -40,3 +40,7 @@ const Textarea: FC<TextareaProps> = ({
 };
 
 export default Textarea;
+
+export function TextAreaSimplified({ ...props }) {
+	return <textarea className={css.root} {...props} />;
+}

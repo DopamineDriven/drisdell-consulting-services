@@ -4,7 +4,7 @@ import css from './loading-spinner.module.css';
 export default function Spinner({ ...props }) {
 	return (
 		<svg
-			className={cn(css.spinnerRoot, ...props.className)}
+			className={cn(css.spinnerRoot)}
 			xmlns='http://www.w3.org/2000/svg'
 			fill='none'
 			viewBox='0 0 24 24'

@@ -1,4 +1,4 @@
-import * as Types from '../../../global-types';
+import * as Types from '../../../global/global-types.generated';
 
 import { PreviewPageFragment } from '../../../fragments/FragmentPreviewPage/__generated__/preview-page-fields.generated';
 import { gql } from '@apollo/client';
@@ -10,9 +10,8 @@ export type GetPreviewPageQueryVariables = Types.Exact<{
 	idTypePage: Types.PageIdType;
 }>;
 
-export type GetPreviewPageQuery = {
-	__typename?: 'RootQuery';
-	preview: Types.Maybe<{ __typename?: 'Page' } & PreviewPageFragment>;
+export type GetPreviewPageQuery = { __typename?: 'RootQuery' } & {
+	preview?: Types.Maybe<{ __typename?: 'Page' } & PreviewPageFragment>;
 };
 
 export const GetPreviewPageDocument = gql`

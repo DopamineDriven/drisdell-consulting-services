@@ -11,6 +11,11 @@ import { concatPagination } from '@apollo/client/utilities';
 // import { WebSocketLink } from "@apollo/client/link/ws";
 // https://hasura.io/learn/graphql/nextjs-fullstack-serverless/apollo-client/
 // import deepmerge from 'deepmerge';
+// import dynamic from 'next/dynamic';
+
+// // @ts-ignore
+// global.fetch = require('node-fetch');
+// global.fetch = dynamic(() => import('node-fetch'));
 
 export const APOLLO_STATE_PROP_NAME = '__APOLLO_STATE__';
 
@@ -39,14 +44,14 @@ function createApolloClient(headers = {}) {
 							keyArgs: false,
 							// Define how to use args.{where,take,...} to return flexible views of the existing data:
 							read(existing, { args }) {
-								console.log('existing', existing);
+								// console.log('existing', existing);
 								console.log('args', args);
 								// Note: existing is whatever merge returns, and may be undefined if no data has been written yet.
 								return existing;
 							},
 							merge(existing, incoming, { args }) {
-								console.log('existing', existing);
-								console.log('incoming', incoming);
+								// console.log('existing', existing);
+								// console.log('incoming', incoming);
 								console.log('args', args);
 								if (existing != null && incoming == existing) {
 									return existing;
@@ -58,14 +63,14 @@ function createApolloClient(headers = {}) {
 							keyArgs: false,
 							// Define how to use args.{where,take,...} to return flexible views of the existing data:
 							read(existing, { args }) {
-								console.log('existing', existing);
+								// console.log('existing', existing);
 								console.log('args', args);
 								// Note: existing is whatever merge returns, and may be undefined if no data has been written yet.
 								return existing;
 							},
 							merge(existing, incoming, { args }) {
-								console.log('existing', existing);
-								console.log('incoming', incoming);
+								// console.log('existing', existing);
+								// console.log('incoming', incoming);
 								console.log('args', args);
 								if (existing != null && incoming == existing) {
 									return existing;
@@ -77,14 +82,14 @@ function createApolloClient(headers = {}) {
 							keyArgs: false,
 							// Define how to use args.{where,take,...} to return flexible views of the existing data:
 							read(existing, { args }) {
-								console.log('existing', existing);
+								// console.log('existing', existing);
 								console.log('args', args);
 								// Note: existing is whatever merge returns, and may be undefined if no data has been written yet.
 								return existing;
 							},
 							merge(existing, incoming, { args }) {
-								console.log('existing', existing);
-								console.log('incoming', incoming);
+								// console.log('existing', existing);
+								// console.log('incoming', incoming);
 								console.log('args', args);
 								if (existing != null && incoming == existing) {
 									return existing;
@@ -96,14 +101,14 @@ function createApolloClient(headers = {}) {
 							keyArgs: false,
 							// Define how to use args.{where,take,...} to return flexible views of the existing data:
 							read(existing, { args }) {
-								console.log('existing', existing);
+								// console.log('existing', existing);
 								console.log('args', args);
 								// Note: existing is whatever merge returns, and may be undefined if no data has been written yet.
 								return existing;
 							},
 							merge(existing, incoming, { args }) {
-								console.log('existing', existing);
-								console.log('incoming', incoming);
+								// console.log('existing', existing);
+								// console.log('incoming', incoming);
 								console.log('args', args);
 								if (existing != null && incoming == existing) {
 									return existing;

@@ -1,4 +1,4 @@
-import * as Types from '../../../global-types';
+import * as Types from '../../../global/global-types.generated';
 
 import { MenuFragmentFragment } from '../../../fragments/FragmentMenu/__generated__/menu-fields.generated';
 import { PageFragmentFragment } from '../../../fragments/FragmentPage/__generated__/page-fields.generated';
@@ -16,71 +16,78 @@ export type GetPageQueryVariables = Types.Exact<{
 	idTypeFoot: Types.MenuNodeIdTypeEnum;
 }>;
 
-export type GetPageQuery = {
-	__typename?: 'RootQuery';
-	headerMenus: Types.Maybe<{
-		__typename?: 'Menu';
-		menuItems: Types.Maybe<{
-			__typename?: 'MenuToMenuItemConnection';
-			edges: Types.Maybe<
-				Array<
-					Types.Maybe<{
-						__typename?: 'MenuToMenuItemConnectionEdge';
-						node: Types.Maybe<
-							{
-								__typename?: 'MenuItem';
-								childItems: Types.Maybe<{
-									__typename?: 'MenuItemToMenuItemConnection';
-									edges: Types.Maybe<
-										Array<
-											Types.Maybe<{
-												__typename?: 'MenuItemToMenuItemConnectionEdge';
-												node: Types.Maybe<
-													{ __typename?: 'MenuItem' } & MenuFragmentFragment
-												>;
-											}>
-										>
+export type GetPageQuery = { __typename?: 'RootQuery' } & {
+	headerMenus?: Types.Maybe<
+		{ __typename?: 'Menu' } & {
+			menuItems?: Types.Maybe<
+				{ __typename?: 'MenuToMenuItemConnection' } & {
+					edges?: Types.Maybe<
+						Array<
+							Types.Maybe<
+								{ __typename?: 'MenuToMenuItemConnectionEdge' } & {
+									node?: Types.Maybe<
+										{ __typename?: 'MenuItem' } & {
+											childItems?: Types.Maybe<
+												{ __typename?: 'MenuItemToMenuItemConnection' } & {
+													edges?: Types.Maybe<
+														Array<
+															Types.Maybe<
+																{ __typename?: 'MenuItemToMenuItemConnectionEdge' } & {
+																	node?: Types.Maybe<
+																		{ __typename?: 'MenuItem' } & MenuFragmentFragment
+																	>;
+																}
+															>
+														>
+													>;
+												}
+											>;
+										} & MenuFragmentFragment
 									>;
-								}>;
-							} & MenuFragmentFragment
-						>;
-					}>
-				>
+								}
+							>
+						>
+					>;
+				}
 			>;
-		}>;
-	}>;
-	footerMenus: Types.Maybe<{
-		__typename?: 'Menu';
-		menuItems: Types.Maybe<{
-			__typename?: 'MenuToMenuItemConnection';
-			edges: Types.Maybe<
-				Array<
-					Types.Maybe<{
-						__typename?: 'MenuToMenuItemConnectionEdge';
-						node: Types.Maybe<
-							{
-								__typename?: 'MenuItem';
-								childItems: Types.Maybe<{
-									__typename?: 'MenuItemToMenuItemConnection';
-									edges: Types.Maybe<
-										Array<
-											Types.Maybe<{
-												__typename?: 'MenuItemToMenuItemConnectionEdge';
-												node: Types.Maybe<
-													{ __typename?: 'MenuItem' } & MenuFragmentFragment
-												>;
-											}>
-										>
+		}
+	>;
+	footerMenus?: Types.Maybe<
+		{ __typename?: 'Menu' } & {
+			menuItems?: Types.Maybe<
+				{ __typename?: 'MenuToMenuItemConnection' } & {
+					edges?: Types.Maybe<
+						Array<
+							Types.Maybe<
+								{ __typename?: 'MenuToMenuItemConnectionEdge' } & {
+									node?: Types.Maybe<
+										{ __typename?: 'MenuItem' } & {
+											childItems?: Types.Maybe<
+												{ __typename?: 'MenuItemToMenuItemConnection' } & {
+													edges?: Types.Maybe<
+														Array<
+															Types.Maybe<
+																{ __typename?: 'MenuItemToMenuItemConnectionEdge' } & {
+																	node?: Types.Maybe<
+																		{ __typename?: 'MenuItem' } & MenuFragmentFragment
+																	>;
+																}
+															>
+														>
+													>;
+												}
+											>;
+										} & MenuFragmentFragment
 									>;
-								}>;
-							} & MenuFragmentFragment
-						>;
-					}>
-				>
+								}
+							>
+						>
+					>;
+				}
 			>;
-		}>;
-	}>;
-	page: Types.Maybe<{ __typename?: 'Page' } & PageFragmentFragment>;
+		}
+	>;
+	page?: Types.Maybe<{ __typename?: 'Page' } & PageFragmentFragment>;
 };
 
 export const GetPageDocument = gql`

@@ -1,4 +1,4 @@
-import * as Types from '../../../global-types';
+import * as Types from '../../../global/global-types.generated';
 
 import { CustomPageFieldsFragment } from '../../../fragments/FragmentCustomPages/__generated__/custom-page-fields.generated';
 import { gql } from '@apollo/client';
@@ -9,19 +9,20 @@ export type LandingPageQueryVariables = Types.Exact<{
 	name: Types.Scalars['String'];
 }>;
 
-export type LandingPageQuery = {
-	__typename?: 'RootQuery';
-	pages: Types.Maybe<{
-		__typename?: 'RootQueryToPageConnection';
-		edges: Types.Maybe<
-			Array<
-				Types.Maybe<{
-					__typename?: 'RootQueryToPageConnectionEdge';
-					node: Types.Maybe<{ __typename?: 'Page' } & CustomPageFieldsFragment>;
-				}>
-			>
-		>;
-	}>;
+export type LandingPageQuery = { __typename?: 'RootQuery' } & {
+	pages?: Types.Maybe<
+		{ __typename?: 'RootQueryToPageConnection' } & {
+			edges?: Types.Maybe<
+				Array<
+					Types.Maybe<
+						{ __typename?: 'RootQueryToPageConnectionEdge' } & {
+							node?: Types.Maybe<{ __typename?: 'Page' } & CustomPageFieldsFragment>;
+						}
+					>
+				>
+			>;
+		}
+	>;
 };
 
 export const LandingPageDocument = gql`

@@ -1,4 +1,4 @@
-import * as Types from '../../../global-types';
+import * as Types from '../../../global/global-types.generated';
 
 import { PageFragmentFragment } from '../../../fragments/FragmentPage/__generated__/page-fields.generated';
 import { gql } from '@apollo/client';
@@ -9,17 +9,17 @@ export type GetPagesQueryVariables = Types.Exact<{
 	first: Types.Scalars['Int'];
 	field: Types.PostObjectsConnectionOrderbyEnum;
 	order: Types.OrderEnum;
-	parentIn: Types.Maybe<Array<Types.Maybe<Types.Scalars['ID']>>>;
+	parentIn?: Types.Maybe<Array<Types.Maybe<Types.Scalars['ID']>>>;
 }>;
 
-export type GetPagesQuery = {
-	__typename?: 'RootQuery';
-	pages: Types.Maybe<{
-		__typename?: 'RootQueryToPageConnection';
-		nodes: Types.Maybe<
-			Array<Types.Maybe<{ __typename?: 'Page' } & PageFragmentFragment>>
-		>;
-	}>;
+export type GetPagesQuery = { __typename?: 'RootQuery' } & {
+	pages?: Types.Maybe<
+		{ __typename?: 'RootQueryToPageConnection' } & {
+			nodes?: Types.Maybe<
+				Array<Types.Maybe<{ __typename?: 'Page' } & PageFragmentFragment>>
+			>;
+		}
+	>;
 };
 
 export const GetPagesDocument = gql`

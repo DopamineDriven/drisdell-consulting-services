@@ -1,4 +1,4 @@
-import * as Types from '../../../global-types';
+import * as Types from '../../../global/global-types.generated';
 
 import { AboutFieldsFragment } from '../../../fragments/FragmentAbouts/__generated__/about-fields.generated';
 import { gql } from '@apollo/client';
@@ -10,9 +10,8 @@ export type AboutBySlugQueryVariables = Types.Exact<{
 	idType: Types.AboutIdType;
 }>;
 
-export type AboutBySlugQuery = {
-	__typename?: 'RootQuery';
-	aboutPost: Types.Maybe<{ __typename?: 'About' } & AboutFieldsFragment>;
+export type AboutBySlugQuery = { __typename?: 'RootQuery' } & {
+	aboutPost?: Types.Maybe<{ __typename?: 'About' } & AboutFieldsFragment>;
 };
 
 export const AboutBySlugDocument = gql`

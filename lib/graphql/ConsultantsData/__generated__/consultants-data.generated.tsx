@@ -1,4 +1,4 @@
-import * as Types from '../../../global-types';
+import * as Types from '../../../global/global-types.generated';
 
 import { CustomPageFieldsFragment } from '../../../fragments/FragmentCustomPages/__generated__/custom-page-fields.generated';
 import { ConsultantFieldsFragment } from '../../../fragments/FragmentConsultants/__generated__/consultants-post-fields.generated';
@@ -14,32 +14,35 @@ export type ConsultantsDataQueryVariables = Types.Exact<{
 	first: Types.Scalars['Int'];
 }>;
 
-export type ConsultantsDataQuery = {
-	__typename?: 'RootQuery';
-	pages: Types.Maybe<{
-		__typename?: 'RootQueryToPageConnection';
-		edges: Types.Maybe<
-			Array<
-				Types.Maybe<{
-					__typename?: 'RootQueryToPageConnectionEdge';
-					node: Types.Maybe<{ __typename?: 'Page' } & CustomPageFieldsFragment>;
-				}>
-			>
-		>;
-	}>;
-	consultants: Types.Maybe<{
-		__typename?: 'RootQueryToConsultantConnection';
-		edges: Types.Maybe<
-			Array<
-				Types.Maybe<{
-					__typename?: 'RootQueryToConsultantConnectionEdge';
-					node: Types.Maybe<
-						{ __typename?: 'Consultant' } & ConsultantFieldsFragment
-					>;
-				}>
-			>
-		>;
-	}>;
+export type ConsultantsDataQuery = { __typename?: 'RootQuery' } & {
+	pages?: Types.Maybe<
+		{ __typename?: 'RootQueryToPageConnection' } & {
+			edges?: Types.Maybe<
+				Array<
+					Types.Maybe<
+						{ __typename?: 'RootQueryToPageConnectionEdge' } & {
+							node?: Types.Maybe<{ __typename?: 'Page' } & CustomPageFieldsFragment>;
+						}
+					>
+				>
+			>;
+		}
+	>;
+	consultants?: Types.Maybe<
+		{ __typename?: 'RootQueryToConsultantConnection' } & {
+			edges?: Types.Maybe<
+				Array<
+					Types.Maybe<
+						{ __typename?: 'RootQueryToConsultantConnectionEdge' } & {
+							node?: Types.Maybe<
+								{ __typename?: 'Consultant' } & ConsultantFieldsFragment
+							>;
+						}
+					>
+				>
+			>;
+		}
+	>;
 };
 
 export const ConsultantsDataDocument = gql`

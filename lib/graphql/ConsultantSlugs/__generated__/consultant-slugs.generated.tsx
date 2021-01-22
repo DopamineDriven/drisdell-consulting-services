@@ -1,4 +1,4 @@
-import * as Types from '../../../global-types';
+import * as Types from '../../../global/global-types.generated';
 
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
@@ -9,23 +9,22 @@ export type ConsultantSlugsQueryVariables = Types.Exact<{
 	first: Types.Scalars['Int'];
 }>;
 
-export type ConsultantSlugsQuery = {
-	__typename?: 'RootQuery';
-	consultantSlugs: Types.Maybe<{
-		__typename?: 'RootQueryToConsultantConnection';
-		edges: Types.Maybe<
-			Array<
-				Types.Maybe<{
-					__typename?: 'RootQueryToConsultantConnectionEdge';
-					node: Types.Maybe<{
-						__typename?: 'Consultant';
-						uri: string;
-						slug: Types.Maybe<string>;
-					}>;
-				}>
-			>
-		>;
-	}>;
+export type ConsultantSlugsQuery = { __typename?: 'RootQuery' } & {
+	consultantSlugs?: Types.Maybe<
+		{ __typename?: 'RootQueryToConsultantConnection' } & {
+			edges?: Types.Maybe<
+				Array<
+					Types.Maybe<
+						{ __typename?: 'RootQueryToConsultantConnectionEdge' } & {
+							node?: Types.Maybe<
+								{ __typename?: 'Consultant' } & Pick<Types.Consultant, 'uri' | 'slug'>
+							>;
+						}
+					>
+				>
+			>;
+		}
+	>;
 };
 
 export const ConsultantSlugsDocument = gql`

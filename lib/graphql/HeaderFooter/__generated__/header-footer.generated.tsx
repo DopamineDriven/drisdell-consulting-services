@@ -1,4 +1,4 @@
-import * as Types from '../../../global-types';
+import * as Types from '../../../global/global-types.generated';
 
 import { MenuFragmentFragment } from '../../../fragments/FragmentMenu/__generated__/menu-fields.generated';
 import { gql } from '@apollo/client';
@@ -12,70 +12,77 @@ export type HeaderFooterQueryVariables = Types.Exact<{
 	idTypeFoot: Types.MenuNodeIdTypeEnum;
 }>;
 
-export type HeaderFooterQuery = {
-	__typename?: 'RootQuery';
-	headerDynamic: Types.Maybe<{
-		__typename?: 'Menu';
-		menuItems: Types.Maybe<{
-			__typename?: 'MenuToMenuItemConnection';
-			edges: Types.Maybe<
-				Array<
-					Types.Maybe<{
-						__typename?: 'MenuToMenuItemConnectionEdge';
-						node: Types.Maybe<
-							{
-								__typename?: 'MenuItem';
-								childItems: Types.Maybe<{
-									__typename?: 'MenuItemToMenuItemConnection';
-									edges: Types.Maybe<
-										Array<
-											Types.Maybe<{
-												__typename?: 'MenuItemToMenuItemConnectionEdge';
-												node: Types.Maybe<
-													{ __typename?: 'MenuItem' } & MenuFragmentFragment
-												>;
-											}>
-										>
+export type HeaderFooterQuery = { __typename?: 'RootQuery' } & {
+	headerDynamic?: Types.Maybe<
+		{ __typename?: 'Menu' } & {
+			menuItems?: Types.Maybe<
+				{ __typename?: 'MenuToMenuItemConnection' } & {
+					edges?: Types.Maybe<
+						Array<
+							Types.Maybe<
+								{ __typename?: 'MenuToMenuItemConnectionEdge' } & {
+									node?: Types.Maybe<
+										{ __typename?: 'MenuItem' } & {
+											childItems?: Types.Maybe<
+												{ __typename?: 'MenuItemToMenuItemConnection' } & {
+													edges?: Types.Maybe<
+														Array<
+															Types.Maybe<
+																{ __typename?: 'MenuItemToMenuItemConnectionEdge' } & {
+																	node?: Types.Maybe<
+																		{ __typename?: 'MenuItem' } & MenuFragmentFragment
+																	>;
+																}
+															>
+														>
+													>;
+												}
+											>;
+										} & MenuFragmentFragment
 									>;
-								}>;
-							} & MenuFragmentFragment
-						>;
-					}>
-				>
+								}
+							>
+						>
+					>;
+				}
 			>;
-		}>;
-	}>;
-	footerDynamic: Types.Maybe<{
-		__typename?: 'Menu';
-		menuItems: Types.Maybe<{
-			__typename?: 'MenuToMenuItemConnection';
-			edges: Types.Maybe<
-				Array<
-					Types.Maybe<{
-						__typename?: 'MenuToMenuItemConnectionEdge';
-						node: Types.Maybe<
-							{
-								__typename?: 'MenuItem';
-								childItems: Types.Maybe<{
-									__typename?: 'MenuItemToMenuItemConnection';
-									edges: Types.Maybe<
-										Array<
-											Types.Maybe<{
-												__typename?: 'MenuItemToMenuItemConnectionEdge';
-												node: Types.Maybe<
-													{ __typename?: 'MenuItem' } & MenuFragmentFragment
-												>;
-											}>
-										>
+		}
+	>;
+	footerDynamic?: Types.Maybe<
+		{ __typename?: 'Menu' } & {
+			menuItems?: Types.Maybe<
+				{ __typename?: 'MenuToMenuItemConnection' } & {
+					edges?: Types.Maybe<
+						Array<
+							Types.Maybe<
+								{ __typename?: 'MenuToMenuItemConnectionEdge' } & {
+									node?: Types.Maybe<
+										{ __typename?: 'MenuItem' } & {
+											childItems?: Types.Maybe<
+												{ __typename?: 'MenuItemToMenuItemConnection' } & {
+													edges?: Types.Maybe<
+														Array<
+															Types.Maybe<
+																{ __typename?: 'MenuItemToMenuItemConnectionEdge' } & {
+																	node?: Types.Maybe<
+																		{ __typename?: 'MenuItem' } & MenuFragmentFragment
+																	>;
+																}
+															>
+														>
+													>;
+												}
+											>;
+										} & MenuFragmentFragment
 									>;
-								}>;
-							} & MenuFragmentFragment
-						>;
-					}>
-				>
+								}
+							>
+						>
+					>;
+				}
 			>;
-		}>;
-	}>;
+		}
+	>;
 };
 
 export const HeaderFooterDocument = gql`

@@ -1,4 +1,4 @@
-import * as Types from '../../../global-types';
+import * as Types from '../../../global/global-types.generated';
 
 import { ConsultantFieldsFragment } from '../../../fragments/FragmentConsultants/__generated__/consultants-post-fields.generated';
 import { gql } from '@apollo/client';
@@ -10,9 +10,8 @@ export type ConsultantBySlugQueryVariables = Types.Exact<{
 	idType: Types.ConsultantIdType;
 }>;
 
-export type ConsultantBySlugQuery = {
-	__typename?: 'RootQuery';
-	consultantPost: Types.Maybe<
+export type ConsultantBySlugQuery = { __typename?: 'RootQuery' } & {
+	consultantPost?: Types.Maybe<
 		{ __typename?: 'Consultant' } & ConsultantFieldsFragment
 	>;
 };

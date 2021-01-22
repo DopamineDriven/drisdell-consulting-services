@@ -9,6 +9,14 @@ const Head: FC = () => {
 			<DefaultSeo {...config} />
 			<NextHead>
 				<meta name='viewport' content='width=device-width, initial-scale=1' />
+			</NextHead>
+		</>
+	);
+};
+
+export default Head;
+
+/*
 				<link
 					href='/wp-includes/css/dist/block-library/style.min.css'
 					rel='stylesheet'
@@ -17,9 +25,4 @@ const Head: FC = () => {
 					href='/wp-includes/css/dist/block-library/theme.min.css'
 					rel='stylesheet'
 				/>
-			</NextHead>
-		</>
-	);
-};
-
-export default Head;
+*/

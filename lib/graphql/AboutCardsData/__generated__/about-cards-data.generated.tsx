@@ -1,4 +1,4 @@
-import * as Types from '../../../global-types';
+import * as Types from '../../../global/global-types.generated';
 
 import { CustomPageFieldsFragment } from '../../../fragments/FragmentCustomPages/__generated__/custom-page-fields.generated';
 import { AboutFieldsFragment } from '../../../fragments/FragmentAbouts/__generated__/about-fields.generated';
@@ -14,30 +14,33 @@ export type AboutCardsDataQueryVariables = Types.Exact<{
 	first: Types.Scalars['Int'];
 }>;
 
-export type AboutCardsDataQuery = {
-	__typename?: 'RootQuery';
-	pages: Types.Maybe<{
-		__typename?: 'RootQueryToPageConnection';
-		edges: Types.Maybe<
-			Array<
-				Types.Maybe<{
-					__typename?: 'RootQueryToPageConnectionEdge';
-					node: Types.Maybe<{ __typename?: 'Page' } & CustomPageFieldsFragment>;
-				}>
-			>
-		>;
-	}>;
-	abouts: Types.Maybe<{
-		__typename?: 'RootQueryToAboutConnection';
-		edges: Types.Maybe<
-			Array<
-				Types.Maybe<{
-					__typename?: 'RootQueryToAboutConnectionEdge';
-					node: Types.Maybe<{ __typename?: 'About' } & AboutFieldsFragment>;
-				}>
-			>
-		>;
-	}>;
+export type AboutCardsDataQuery = { __typename?: 'RootQuery' } & {
+	pages?: Types.Maybe<
+		{ __typename?: 'RootQueryToPageConnection' } & {
+			edges?: Types.Maybe<
+				Array<
+					Types.Maybe<
+						{ __typename?: 'RootQueryToPageConnectionEdge' } & {
+							node?: Types.Maybe<{ __typename?: 'Page' } & CustomPageFieldsFragment>;
+						}
+					>
+				>
+			>;
+		}
+	>;
+	abouts?: Types.Maybe<
+		{ __typename?: 'RootQueryToAboutConnection' } & {
+			edges?: Types.Maybe<
+				Array<
+					Types.Maybe<
+						{ __typename?: 'RootQueryToAboutConnectionEdge' } & {
+							node?: Types.Maybe<{ __typename?: 'About' } & AboutFieldsFragment>;
+						}
+					>
+				>
+			>;
+		}
+	>;
 };
 
 export const AboutCardsDataDocument = gql`

@@ -1,20 +1,18 @@
-import * as Types from '../../../global-types';
+import * as Types from '../../../global/global-types.generated';
 
 import { gql } from '@apollo/client';
-export type CustomPageFieldsFragment = {
-	__typename?: 'Page';
-	title: Types.Maybe<string>;
-	content: Types.Maybe<string>;
-	id: string;
-	slug: Types.Maybe<string>;
-	featuredImage: Types.Maybe<{
-		__typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-		node: Types.Maybe<{
-			__typename?: 'MediaItem';
-			sourceUrl: Types.Maybe<string>;
-		}>;
-	}>;
-};
+export type CustomPageFieldsFragment = { __typename?: 'Page' } & Pick<
+	Types.Page,
+	'title' | 'content' | 'id' | 'slug'
+> & {
+		featuredImage?: Types.Maybe<
+			{ __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge' } & {
+				node?: Types.Maybe<
+					{ __typename?: 'MediaItem' } & Pick<Types.MediaItem, 'sourceUrl'>
+				>;
+			}
+		>;
+	};
 
 export const CustomPageFieldsFragmentDoc = gql`
 	fragment CustomPageFields on Page {

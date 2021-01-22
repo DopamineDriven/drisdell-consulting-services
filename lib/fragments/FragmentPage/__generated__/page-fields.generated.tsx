@@ -1,14 +1,10 @@
-import * as Types from '../../../global-types';
+import * as Types from '../../../global/global-types.generated';
 
 import { gql } from '@apollo/client';
-export type PageFragmentFragment = {
-	__typename?: 'Page';
-	id: string;
-	title: Types.Maybe<string>;
-	content: Types.Maybe<string>;
-	slug: Types.Maybe<string>;
-	uri: string;
-};
+export type PageFragmentFragment = { __typename?: 'Page' } & Pick<
+	Types.Page,
+	'id' | 'title' | 'content' | 'slug' | 'uri'
+>;
 
 export const PageFragmentFragmentDoc = gql`
 	fragment PageFragment on Page {

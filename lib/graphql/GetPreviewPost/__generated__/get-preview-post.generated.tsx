@@ -1,4 +1,4 @@
-import * as Types from '../../../global-types';
+import * as Types from '../../../global/global-types.generated';
 
 import { PreviewPostFragment } from '../../../fragments/FragmentPreviewPost/__generated__/preview-post-fields.generated';
 import { gql } from '@apollo/client';
@@ -10,9 +10,8 @@ export type GetPreviewPostQueryVariables = Types.Exact<{
 	idTypePost: Types.PostIdType;
 }>;
 
-export type GetPreviewPostQuery = {
-	__typename?: 'RootQuery';
-	previewPost: Types.Maybe<{ __typename?: 'Post' } & PreviewPostFragment>;
+export type GetPreviewPostQuery = { __typename?: 'RootQuery' } & {
+	previewPost?: Types.Maybe<{ __typename?: 'Post' } & PreviewPostFragment>;
 };
 
 export const GetPreviewPostDocument = gql`

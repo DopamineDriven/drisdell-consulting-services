@@ -20,6 +20,12 @@ module.exports = {
 		}
 	},
 	theme: {
+		lineClamp: {
+			1: 1,
+			2: 2,
+			3: 3,
+			10: 10
+		},
 		extend: {
 			maxWidth: {
 				'9xl': '2220px'
@@ -479,6 +485,7 @@ module.exports = {
 		require('@tailwindcss/ui'),
 		require('@tailwindui/react'),
 		require('@tailwindcss/forms'),
+		require('tailwindcss-line-clamp'),
 		require('@tailwindcss/aspect-ratio'),
 		plugin(function ({ addUtilities }) {
 			addUtilities({

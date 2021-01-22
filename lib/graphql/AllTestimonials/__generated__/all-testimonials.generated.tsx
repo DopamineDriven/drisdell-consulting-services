@@ -1,4 +1,4 @@
-import * as Types from '../../../global-types';
+import * as Types from '../../../global/global-types.generated';
 
 import { TestimonialFieldsFragment } from '../../../fragments/FragmentTestimonials/__generated__/testimonial-fields.generated';
 import { gql } from '@apollo/client';
@@ -11,22 +11,25 @@ export type AllTestimonialsQueryVariables = Types.Exact<{
 	first: Types.Scalars['Int'];
 }>;
 
-export type AllTestimonialsQuery = {
-	__typename?: 'RootQuery';
-	testimonials: Types.Maybe<{
-		__typename?: 'RootQueryToTestimonialConnection';
-		edges: Types.Maybe<
-			Array<
-				Types.Maybe<{
-					__typename?: 'RootQueryToTestimonialConnectionEdge';
-					cursor: Types.Maybe<string>;
-					node: Types.Maybe<
-						{ __typename?: 'Testimonial' } & TestimonialFieldsFragment
-					>;
-				}>
-			>
-		>;
-	}>;
+export type AllTestimonialsQuery = { __typename?: 'RootQuery' } & {
+	testimonials?: Types.Maybe<
+		{ __typename?: 'RootQueryToTestimonialConnection' } & {
+			edges?: Types.Maybe<
+				Array<
+					Types.Maybe<
+						{ __typename?: 'RootQueryToTestimonialConnectionEdge' } & Pick<
+							Types.RootQueryToTestimonialConnectionEdge,
+							'cursor'
+						> & {
+								node?: Types.Maybe<
+									{ __typename?: 'Testimonial' } & TestimonialFieldsFragment
+								>;
+							}
+					>
+				>
+			>;
+		}
+	>;
 };
 
 export const AllTestimonialsDocument = gql`

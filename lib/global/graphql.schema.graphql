@@ -187,6 +187,25 @@ type RootQuery {
 	#
 	discussionSettings: DiscussionSettings
 
+	# Ninja form object data.
+	form(id: ID!, idType: FormIdTypeEnum): Form
+
+	#
+	formField(id: ID!, idType: FormIdTypeEnum): FormField
+
+	# Connection between the RootQuery type and the Form type
+	forms(
+		# The number of items to return after the referenced "after" cursor
+		first: Int
+		last: Int
+
+		# Cursor used along with the "first" argument to reference where in the dataset to get data
+		after: String
+
+		# Cursor used along with the "last" argument to reference where in the dataset to get data
+		before: String
+	): RootQueryToFormConnection
+
 	#
 	generalSettings: GeneralSettings
 
@@ -10604,6 +10623,244 @@ type DiscussionSettings {
 	defaultPingStatus: String
 }
 
+# The Type of Identifier used to fetch a single Form. Default is ID.
+enum FormIdTypeEnum {
+	# Identify a resource by the Database ID.
+	DATABASE_ID
+
+	# Identify a resource by the (hashed) Global ID.
+	ID
+}
+
+# The form object
+type Form implements Node & DatabaseIdentifier {
+	# Add Submit Button
+	addSubmit: Boolean
+
+	# Allow a public link?
+	allowPublicLink: Boolean
+
+	# Custom Class Names
+	classes: FormClasses
+
+	# Clear successfully completed form?
+	clearComplete: Boolean
+
+	# Currency
+	currency: String
+
+	# Custom Labels
+	customMessages: FormCustomMessages
+
+	# The Id of the form
+	databaseId: Int!
+
+	# Default Label Position
+	defaultLabelPos: String
+
+	# Embed Your Form
+	embedForm: String
+
+	# Connection between the Form type and the FormField type
+	fields(
+		# The number of items to return after the referenced "after" cursor
+		first: Int
+		last: Int
+
+		# Cursor used along with the "first" argument to reference where in the dataset to get data
+		after: String
+
+		# Cursor used along with the "last" argument to reference where in the dataset to get data
+		before: String
+	): FormToFormFieldConnection
+
+	# The Id of the form
+	formId: Int
+
+	# Hide successfully completed form?
+	hideComplete: Boolean
+
+	# The globally unique identifier of the form
+	id: ID!
+
+	# Form Key
+	key: String
+
+	# Limit Submissions
+	limitSubmissionsSet: FormLimitSubmissionsSet
+
+	# Logged In
+	loggedInSet: FormLoggedInSet
+
+	# Link To Your Form
+	publicLink: String
+
+	# The Locale of the form
+	seqNum: Int
+
+	# Display Form Title
+	showTitle: Boolean
+
+	# Form Title
+	title: String
+
+	# Unique Field
+	uniqueFieldSet: FormUniqueFieldSet
+}
+
+# Custom Class Names
+type FormClasses {
+	# Element
+	elementClass: String
+
+	# Wrapper
+	wrapperClass: String
+}
+
+# Custom Labels
+type FormCustomMessages {
+	# Please enter a valid date!
+	changeDateErrorMsg: String
+
+	# Please enter a valid email address!
+	changeEmailErrorMsg: String
+
+	# These fields must match!
+	confirmFieldErrorMsg: String
+
+	# Please increment by
+	fieldNumberIncrementBy: String
+
+	# Number Max Error
+	fieldNumberNumMaxError: String
+
+	# Number Min Error
+	fieldNumberNumMinError: String
+
+	# Fields marked with an &lt;span class=&quot;ninja-forms-req-symbol&quot;&gt;*&lt;/span&gt; are required
+	fieldsMarkedRequired: String
+
+	# Please correct errors before submitting this form.
+	formErrorsCorrectErrors: String
+
+	# Honeypot Error
+	honeypotHoneypotError: String
+
+	# This is a required field.
+	validateRequiredField: String
+}
+
+# Connection between the Form type and the FormField type
+type FormToFormFieldConnection {
+	# Edges for the FormToFormFieldConnection connection
+	edges: [FormToFormFieldConnectionEdge]
+
+	# The nodes of the connection, without the edges
+	nodes: [FormField]
+
+	# Information about pagination in a connection.
+	pageInfo: WPPageInfo
+}
+
+# An edge in a connection
+type FormToFormFieldConnectionEdge {
+	# A cursor for use in pagination
+	cursor: String
+
+	# The item at the end of the edge
+	node: FormField
+}
+
+# Action object
+interface FormField {
+	# Creation date
+	createdAt: Int
+
+	# The Id of the field
+	fieldId: Int
+
+	# Key of the field
+	fieldKey: String
+
+	# Label of the field
+	fieldLabel: String
+
+	# The globally unique identifier of the field
+	id: ID!
+
+	# Key of the field
+	key: String
+
+	# Label of the field
+	label: String
+
+	# Position order of the field
+	order: Int
+
+	# Parent form id
+	parentId: Int
+
+	# Indtifiable?
+	personallyIdentifiable: Boolean
+
+	# The field is required?
+	required: Boolean
+
+	# type of the field
+	type: String
+
+	# Update date
+	updatedAt: Int
+}
+
+# Limit Submissions
+type FormLimitSubmissionsSet {
+	# Limit Reached Message
+	subLimitMsg: String
+
+	# Submission Limit
+	subLimitNumber: Int
+}
+
+# Logged In
+type FormLoggedInSet {
+	# Require user to be logged in to view form?
+	loggedIn: Boolean
+
+	# Not Logged-In Message
+	notLoggedInMsg: String
+}
+
+# Unique Field
+type FormUniqueFieldSet {
+	# unique_field
+	uniqueField: String
+
+	# Unique Field Error Message
+	uniqueFieldError: String
+}
+
+# Connection between the RootQuery type and the Form type
+type RootQueryToFormConnection {
+	# Edges for the RootQueryToFormConnection connection
+	edges: [RootQueryToFormConnectionEdge]
+
+	# The nodes of the connection, without the edges
+	nodes: [Form]
+
+	# Information about pagination in a connection.
+	pageInfo: WPPageInfo
+}
+
+# An edge in a connection
+type RootQueryToFormConnectionEdge {
+	# A cursor for use in pagination
+	cursor: String
+
+	# The item at the end of the edge
+	node: Form
+}
+
 # The general setting type
 type GeneralSettings {
 	# A date format for all date strings.
@@ -12723,6 +12980,12 @@ type RootMutation {
 		input: SendPasswordResetEmailInput!
 	): SendPasswordResetEmailPayload
 
+	# The payload for the submitForm mutation
+	submitForm(
+		# Input for the submitForm mutation
+		input: SubmitFormInput!
+	): SubmitFormPayload
+
 	# The payload for the updateAbout mutation
 	updateAbout(
 		# Input for the updateAbout mutation
@@ -14145,6 +14408,53 @@ type SendPasswordResetEmailPayload {
 
 	# The user that the password reset email was sent to
 	user: User
+}
+
+# Input for the submitForm mutation
+input SubmitFormInput {
+	clientMutationId: String
+
+	# Submited form data
+	data: [InputField]
+
+	# Submited form Id
+	formId: Int
+}
+
+# Submitted field data
+input InputField {
+	# Field Id
+	id: Int
+
+	# Field value
+	value: String
+}
+
+# The payload for the submitForm mutation
+type SubmitFormPayload {
+	#
+	clientMutationId: String
+
+	# Field errors
+	errors: [FieldError]
+
+	# Generic operation message
+	message: String
+
+	# Form submitted successfuly
+	success: Boolean
+}
+
+# Type of ID being used identify the form
+type FieldError {
+	# Field Id
+	fieldId: Int!
+
+	# Localized error message
+	message: String
+
+	# Slug error identifier
+	slug: String
 }
 
 # Input for the updateAbout mutation
@@ -16174,4 +16484,3472 @@ type CoverTemplate implements ContentTemplate {
 type FullWidthTemplate implements ContentTemplate {
 	# The name of the template
 	templateName: String
+}
+
+# Custom Class Names
+type AddressFieldClasses {
+	# Container
+	containerClass: String
+
+	# Element
+	elementClass: String
+}
+
+# Limit Input to this Number
+type AddressFieldInputLimitSet {
+	#
+	inputLimit: String
+
+	# Text to Appear After Counter
+	inputLimitMsg: String
+
+	#
+	inputLimitType: String
+}
+
+# Help Text
+type AddressFieldHelp {
+	#
+	helpText: String
+}
+
+# Description
+type AddressFieldDescription {
+	#
+	descText: String
+}
+
+# Address
+type AddressField implements Node & DatabaseIdentifier & FormField {
+	# Admin Label
+	adminLabel: String
+
+	# Custom Class Names
+	classes: AddressFieldClasses
+
+	# Creation date
+	createdAt: Int
+
+	# Custom Mask
+	customMask: String
+
+	# Custom Name Attribute
+	customNameAttribute: String
+
+	# The Id of the field
+	databaseId: Int!
+
+	# Default Value
+	default: String
+
+	# Description
+	description: AddressFieldDescription
+
+	# Disable Browser Autocomplete
+	disableBrowserAutocomplete: Boolean
+
+	# Disable Input
+	disableInput: Boolean
+
+	# The Id of the field
+	fieldId: Int
+
+	# Key of the field
+	fieldKey: String
+
+	# Label of the field
+	fieldLabel: String
+
+	# Help Text
+	help: AddressFieldHelp
+
+	# The globally unique identifier of the field
+	id: ID!
+
+	# Limit Input to this Number
+	inputLimitSet: AddressFieldInputLimitSet
+
+	# Field Key
+	key: String
+
+	# Label
+	label: String
+
+	# Label Position
+	labelPos: String
+
+	# manual_key
+	manualKey: String
+
+	# Input Mask
+	mask: String
+
+	# Position order of the field
+	order: Int
+
+	# Parent form id
+	parentId: Int
+
+	# This Field Is Personally Identifiable Data
+	personallyIdentifiable: Boolean
+
+	# Placeholder
+	placeholder: String
+
+	# Required Field
+	required: Boolean
+
+	# type of the field
+	type: String
+
+	# Update date
+	updatedAt: Int
+}
+
+# Custom Class Names
+type Address2FieldClasses {
+	# Container
+	containerClass: String
+
+	# Element
+	elementClass: String
+}
+
+# Limit Input to this Number
+type Address2FieldInputLimitSet {
+	#
+	inputLimit: String
+
+	# Text to Appear After Counter
+	inputLimitMsg: String
+
+	#
+	inputLimitType: String
+}
+
+# Help Text
+type Address2FieldHelp {
+	#
+	helpText: String
+}
+
+# Description
+type Address2FieldDescription {
+	#
+	descText: String
+}
+
+# Address 2
+type Address2Field implements Node & DatabaseIdentifier & FormField {
+	# Admin Label
+	adminLabel: String
+
+	# Custom Class Names
+	classes: Address2FieldClasses
+
+	# Creation date
+	createdAt: Int
+
+	# Custom Mask
+	customMask: String
+
+	# Custom Name Attribute
+	customNameAttribute: String
+
+	# The Id of the field
+	databaseId: Int!
+
+	# Default Value
+	default: String
+
+	# Description
+	description: Address2FieldDescription
+
+	# Disable Browser Autocomplete
+	disableBrowserAutocomplete: Boolean
+
+	# Disable Input
+	disableInput: Boolean
+
+	# The Id of the field
+	fieldId: Int
+
+	# Key of the field
+	fieldKey: String
+
+	# Label of the field
+	fieldLabel: String
+
+	# Help Text
+	help: Address2FieldHelp
+
+	# The globally unique identifier of the field
+	id: ID!
+
+	# Limit Input to this Number
+	inputLimitSet: Address2FieldInputLimitSet
+
+	# Field Key
+	key: String
+
+	# Label
+	label: String
+
+	# Label Position
+	labelPos: String
+
+	# manual_key
+	manualKey: String
+
+	# Input Mask
+	mask: String
+
+	# Position order of the field
+	order: Int
+
+	# Parent form id
+	parentId: Int
+
+	# This Field Is Personally Identifiable Data
+	personallyIdentifiable: Boolean
+
+	# Placeholder
+	placeholder: String
+
+	# Required Field
+	required: Boolean
+
+	# type of the field
+	type: String
+
+	# Update date
+	updatedAt: Int
+}
+
+# Button
+type ButtonField implements Node & DatabaseIdentifier & FormField {
+	# Creation date
+	createdAt: Int
+
+	# The Id of the field
+	databaseId: Int!
+
+	# The Id of the field
+	fieldId: Int
+
+	# Key of the field
+	fieldKey: String
+
+	# Label of the field
+	fieldLabel: String
+
+	# The globally unique identifier of the field
+	id: ID!
+
+	# Key of the field
+	key: String
+
+	# Label
+	label: String
+
+	# Position order of the field
+	order: Int
+
+	# Parent form id
+	parentId: Int
+
+	# Indtifiable?
+	personallyIdentifiable: Boolean
+
+	# The field is required?
+	required: Boolean
+
+	# type of the field
+	type: String
+
+	# Update date
+	updatedAt: Int
+}
+
+# Custom Class Names
+type CheckboxFieldClasses {
+	# Container
+	containerClass: String
+
+	# Element
+	elementClass: String
+}
+
+# Help Text
+type CheckboxFieldHelp {
+	#
+	helpText: String
+}
+
+# Description
+type CheckboxFieldDescription {
+	#
+	descText: String
+}
+
+# Checkbox Values
+type CheckboxFieldCheckboxValues {
+	# Checked Value
+	checkedValue: String
+
+	# Unchecked Value
+	uncheckedValue: String
+}
+
+# Single Checkbox
+type CheckboxField implements Node & DatabaseIdentifier & FormField {
+	# Admin Label
+	adminLabel: String
+
+	# Checkbox Values
+	checkboxValues: CheckboxFieldCheckboxValues
+
+	# Checked Calculation Value
+	checkedCalcValue: String
+
+	# Custom Class Names
+	classes: CheckboxFieldClasses
+
+	# Creation date
+	createdAt: Int
+
+	# The Id of the field
+	databaseId: Int!
+
+	# Default Value
+	defaultValue: String
+
+	# Description
+	description: CheckboxFieldDescription
+
+	# Disable Input
+	disableInput: Boolean
+
+	# The Id of the field
+	fieldId: Int
+
+	# Key of the field
+	fieldKey: String
+
+	# Label of the field
+	fieldLabel: String
+
+	# Help Text
+	help: CheckboxFieldHelp
+
+	# The globally unique identifier of the field
+	id: ID!
+
+	# Field Key
+	key: String
+
+	# Label
+	label: String
+
+	# Label Position
+	labelPos: String
+
+	# manual_key
+	manualKey: String
+
+	# Position order of the field
+	order: Int
+
+	# Parent form id
+	parentId: Int
+
+	# Indtifiable?
+	personallyIdentifiable: Boolean
+
+	# Required Field
+	required: Boolean
+
+	# type of the field
+	type: String
+
+	# Unchecked Calculation Value
+	uncheckedCalcValue: String
+
+	# Update date
+	updatedAt: Int
+}
+
+# Custom Class Names
+type CityFieldClasses {
+	# Container
+	containerClass: String
+
+	# Element
+	elementClass: String
+}
+
+# Limit Input to this Number
+type CityFieldInputLimitSet {
+	#
+	inputLimit: String
+
+	# Text to Appear After Counter
+	inputLimitMsg: String
+
+	#
+	inputLimitType: String
+}
+
+# Help Text
+type CityFieldHelp {
+	#
+	helpText: String
+}
+
+# Description
+type CityFieldDescription {
+	#
+	descText: String
+}
+
+# City
+type CityField implements Node & DatabaseIdentifier & FormField {
+	# Admin Label
+	adminLabel: String
+
+	# Custom Class Names
+	classes: CityFieldClasses
+
+	# Creation date
+	createdAt: Int
+
+	# Custom Mask
+	customMask: String
+
+	# Custom Name Attribute
+	customNameAttribute: String
+
+	# The Id of the field
+	databaseId: Int!
+
+	# Default Value
+	default: String
+
+	# Description
+	description: CityFieldDescription
+
+	# Disable Browser Autocomplete
+	disableBrowserAutocomplete: Boolean
+
+	# Disable Input
+	disableInput: Boolean
+
+	# The Id of the field
+	fieldId: Int
+
+	# Key of the field
+	fieldKey: String
+
+	# Label of the field
+	fieldLabel: String
+
+	# Help Text
+	help: CityFieldHelp
+
+	# The globally unique identifier of the field
+	id: ID!
+
+	# Limit Input to this Number
+	inputLimitSet: CityFieldInputLimitSet
+
+	# Field Key
+	key: String
+
+	# Label
+	label: String
+
+	# Label Position
+	labelPos: String
+
+	# manual_key
+	manualKey: String
+
+	# Input Mask
+	mask: String
+
+	# Position order of the field
+	order: Int
+
+	# Parent form id
+	parentId: Int
+
+	# This Field Is Personally Identifiable Data
+	personallyIdentifiable: Boolean
+
+	# Placeholder
+	placeholder: String
+
+	# Required Field
+	required: Boolean
+
+	# type of the field
+	type: String
+
+	# Update date
+	updatedAt: Int
+}
+
+# Custom Class Names
+type ConfirmFieldClasses {
+	# Container
+	containerClass: String
+
+	# Element
+	elementClass: String
+}
+
+# Limit Input to this Number
+type ConfirmFieldInputLimitSet {
+	#
+	inputLimit: String
+
+	# Text to Appear After Counter
+	inputLimitMsg: String
+
+	#
+	inputLimitType: String
+}
+
+# Help Text
+type ConfirmFieldHelp {
+	#
+	helpText: String
+}
+
+# Description
+type ConfirmFieldDescription {
+	#
+	descText: String
+}
+
+# Confirm
+type ConfirmField implements Node & DatabaseIdentifier & FormField {
+	# Admin Label
+	adminLabel: String
+
+	# Custom Class Names
+	classes: ConfirmFieldClasses
+
+	# Confirm
+	confirmField: String
+
+	# Creation date
+	createdAt: Int
+
+	# The Id of the field
+	databaseId: Int!
+
+	# Default Value
+	default: String
+
+	# Description
+	description: ConfirmFieldDescription
+
+	# Disable Input
+	disableInput: Boolean
+
+	# The Id of the field
+	fieldId: Int
+
+	# Key of the field
+	fieldKey: String
+
+	# Label of the field
+	fieldLabel: String
+
+	# Help Text
+	help: ConfirmFieldHelp
+
+	# The globally unique identifier of the field
+	id: ID!
+
+	# Limit Input to this Number
+	inputLimitSet: ConfirmFieldInputLimitSet
+
+	# Field Key
+	key: String
+
+	# Label
+	label: String
+
+	# Label Position
+	labelPos: String
+
+	# manual_key
+	manualKey: String
+
+	# Position order of the field
+	order: Int
+
+	# Parent form id
+	parentId: Int
+
+	# Indtifiable?
+	personallyIdentifiable: Boolean
+
+	# Placeholder
+	placeholder: String
+
+	# Required Field
+	required: Boolean
+
+	# type of the field
+	type: String
+
+	# Update date
+	updatedAt: Int
+}
+
+# Custom Class Names
+type DateFieldClasses {
+	# Container
+	containerClass: String
+
+	# Element
+	elementClass: String
+}
+
+# Help Text
+type DateFieldHelp {
+	#
+	helpText: String
+}
+
+# Description
+type DateFieldDescription {
+	#
+	descText: String
+}
+
+# Year Range
+type DateFieldYearRange {
+	# End Year
+	yearRangeEnd: Int
+
+	# Start Year
+	yearRangeStart: Int
+}
+
+# Date
+type DateField implements Node & DatabaseIdentifier & FormField {
+	# Admin Label
+	adminLabel: String
+
+	# Custom Class Names
+	classes: DateFieldClasses
+
+	# Creation date
+	createdAt: Int
+
+	# The Id of the field
+	databaseId: Int!
+
+	# Default To Current Date
+	dateDefault: Boolean
+
+	# Format
+	dateFormat: String
+
+	# Description
+	description: DateFieldDescription
+
+	# The Id of the field
+	fieldId: Int
+
+	# Key of the field
+	fieldKey: String
+
+	# Label of the field
+	fieldLabel: String
+
+	# Help Text
+	help: DateFieldHelp
+
+	# The globally unique identifier of the field
+	id: ID!
+
+	# Field Key
+	key: String
+
+	# Label
+	label: String
+
+	# Label Position
+	labelPos: String
+
+	# manual_key
+	manualKey: String
+
+	# Position order of the field
+	order: Int
+
+	# Parent form id
+	parentId: Int
+
+	# Indtifiable?
+	personallyIdentifiable: Boolean
+
+	# Placeholder
+	placeholder: String
+
+	# Required Field
+	required: Boolean
+
+	# type of the field
+	type: String
+
+	# Update date
+	updatedAt: Int
+
+	# Year Range
+	yearRange: DateFieldYearRange
+}
+
+# Custom Class Names
+type EmailFieldClasses {
+	# Container
+	containerClass: String
+
+	# Element
+	elementClass: String
+}
+
+# Help Text
+type EmailFieldHelp {
+	#
+	helpText: String
+}
+
+# Description
+type EmailFieldDescription {
+	#
+	descText: String
+}
+
+# Email
+type EmailField implements Node & DatabaseIdentifier & FormField {
+	# Admin Label
+	adminLabel: String
+
+	# Custom Class Names
+	classes: EmailFieldClasses
+
+	# Creation date
+	createdAt: Int
+
+	# Custom Name Attribute
+	customNameAttribute: String
+
+	# The Id of the field
+	databaseId: Int!
+
+	# Default Value
+	default: String
+
+	# Description
+	description: EmailFieldDescription
+
+	# Disable Browser Autocomplete
+	disableBrowserAutocomplete: Boolean
+
+	# The Id of the field
+	fieldId: Int
+
+	# Key of the field
+	fieldKey: String
+
+	# Label of the field
+	fieldLabel: String
+
+	# Help Text
+	help: EmailFieldHelp
+
+	# The globally unique identifier of the field
+	id: ID!
+
+	# Field Key
+	key: String
+
+	# Label
+	label: String
+
+	# Label Position
+	labelPos: String
+
+	# Position order of the field
+	order: Int
+
+	# Parent form id
+	parentId: Int
+
+	# This Field Is Personally Identifiable Data
+	personallyIdentifiable: Boolean
+
+	# Placeholder
+	placeholder: String
+
+	# Required Field
+	required: Boolean
+
+	# type of the field
+	type: String
+
+	# Update date
+	updatedAt: Int
+}
+
+# Custom Class Names
+type FirstnameFieldClasses {
+	# Container
+	containerClass: String
+
+	# Element
+	elementClass: String
+}
+
+# Help Text
+type FirstnameFieldHelp {
+	#
+	helpText: String
+}
+
+# Description
+type FirstnameFieldDescription {
+	#
+	descText: String
+}
+
+# First Name
+type FirstnameField implements Node & DatabaseIdentifier & FormField {
+	# Admin Label
+	adminLabel: String
+
+	# Custom Class Names
+	classes: FirstnameFieldClasses
+
+	# Creation date
+	createdAt: Int
+
+	# Custom Name Attribute
+	customNameAttribute: String
+
+	# The Id of the field
+	databaseId: Int!
+
+	# Default Value
+	default: String
+
+	# Description
+	description: FirstnameFieldDescription
+
+	# Disable Browser Autocomplete
+	disableBrowserAutocomplete: Boolean
+
+	# The Id of the field
+	fieldId: Int
+
+	# Key of the field
+	fieldKey: String
+
+	# Label of the field
+	fieldLabel: String
+
+	# Help Text
+	help: FirstnameFieldHelp
+
+	# The globally unique identifier of the field
+	id: ID!
+
+	# Field Key
+	key: String
+
+	# Label
+	label: String
+
+	# Label Position
+	labelPos: String
+
+	# Position order of the field
+	order: Int
+
+	# Parent form id
+	parentId: Int
+
+	# This Field Is Personally Identifiable Data
+	personallyIdentifiable: Boolean
+
+	# Placeholder
+	placeholder: String
+
+	# Required Field
+	required: Boolean
+
+	# type of the field
+	type: String
+
+	# Update date
+	updatedAt: Int
+}
+
+# Custom Class Names
+type HtmlFieldClasses {
+	# Container
+	containerClass: String
+
+	# Element
+	elementClass: String
+}
+
+# HTML
+type HtmlField implements Node & DatabaseIdentifier & FormField {
+	# Custom Class Names
+	classes: HtmlFieldClasses
+
+	# Creation date
+	createdAt: Int
+
+	# The Id of the field
+	databaseId: Int!
+
+	# Default Value
+	default: String
+
+	# The Id of the field
+	fieldId: Int
+
+	# Key of the field
+	fieldKey: String
+
+	# Label of the field
+	fieldLabel: String
+
+	# The globally unique identifier of the field
+	id: ID!
+
+	# Key of the field
+	key: String
+
+	# Label
+	label: String
+
+	# Position order of the field
+	order: Int
+
+	# Parent form id
+	parentId: Int
+
+	# Indtifiable?
+	personallyIdentifiable: Boolean
+
+	# The field is required?
+	required: Boolean
+
+	# type of the field
+	type: String
+
+	# Update date
+	updatedAt: Int
+}
+
+# Hidden
+type HiddenField implements Node & DatabaseIdentifier & FormField {
+	# Admin Label
+	adminLabel: String
+
+	# Creation date
+	createdAt: Int
+
+	# The Id of the field
+	databaseId: Int!
+
+	# Default Value
+	default: String
+
+	# The Id of the field
+	fieldId: Int
+
+	# Key of the field
+	fieldKey: String
+
+	# Label of the field
+	fieldLabel: String
+
+	# The globally unique identifier of the field
+	id: ID!
+
+	# Field Key
+	key: String
+
+	# Label
+	label: String
+
+	# Position order of the field
+	order: Int
+
+	# Parent form id
+	parentId: Int
+
+	# Indtifiable?
+	personallyIdentifiable: Boolean
+
+	# The field is required?
+	required: Boolean
+
+	# type of the field
+	type: String
+
+	# Update date
+	updatedAt: Int
+}
+
+# Custom Class Names
+type LastnameFieldClasses {
+	# Container
+	containerClass: String
+
+	# Element
+	elementClass: String
+}
+
+# Help Text
+type LastnameFieldHelp {
+	#
+	helpText: String
+}
+
+# Description
+type LastnameFieldDescription {
+	#
+	descText: String
+}
+
+# Last Name
+type LastnameField implements Node & DatabaseIdentifier & FormField {
+	# Admin Label
+	adminLabel: String
+
+	# Custom Class Names
+	classes: LastnameFieldClasses
+
+	# Creation date
+	createdAt: Int
+
+	# Custom Name Attribute
+	customNameAttribute: String
+
+	# The Id of the field
+	databaseId: Int!
+
+	# Default Value
+	default: String
+
+	# Description
+	description: LastnameFieldDescription
+
+	# Disable Browser Autocomplete
+	disableBrowserAutocomplete: Boolean
+
+	# The Id of the field
+	fieldId: Int
+
+	# Key of the field
+	fieldKey: String
+
+	# Label of the field
+	fieldLabel: String
+
+	# Help Text
+	help: LastnameFieldHelp
+
+	# The globally unique identifier of the field
+	id: ID!
+
+	# Field Key
+	key: String
+
+	# Label
+	label: String
+
+	# Label Position
+	labelPos: String
+
+	# Position order of the field
+	order: Int
+
+	# Parent form id
+	parentId: Int
+
+	# This Field Is Personally Identifiable Data
+	personallyIdentifiable: Boolean
+
+	# Placeholder
+	placeholder: String
+
+	# Required Field
+	required: Boolean
+
+	# type of the field
+	type: String
+
+	# Update date
+	updatedAt: Int
+}
+
+# Custom Class Names
+type ListcheckboxFieldClasses {
+	# Container
+	containerClass: String
+
+	# Element
+	elementClass: String
+}
+
+# Help Text
+type ListcheckboxFieldHelp {
+	#
+	helpText: String
+}
+
+# Description
+type ListcheckboxFieldDescription {
+	#
+	descText: String
+}
+
+# Checkbox List
+type ListcheckboxField implements Node & DatabaseIdentifier & FormField {
+	# Admin Label
+	adminLabel: String
+
+	# Custom Class Names
+	classes: ListcheckboxFieldClasses
+
+	# Creation date
+	createdAt: Int
+
+	# The Id of the field
+	databaseId: Int!
+
+	# Description
+	description: ListcheckboxFieldDescription
+
+	# The Id of the field
+	fieldId: Int
+
+	# Key of the field
+	fieldKey: String
+
+	# Label of the field
+	fieldLabel: String
+
+	# Help Text
+	help: ListcheckboxFieldHelp
+
+	# The globally unique identifier of the field
+	id: ID!
+
+	# Field Key
+	key: String
+
+	# Label
+	label: String
+
+	# Label Position
+	labelPos: String
+
+	# options
+	options: [String]
+
+	# Position order of the field
+	order: Int
+
+	# Parent form id
+	parentId: Int
+
+	# Indtifiable?
+	personallyIdentifiable: Boolean
+
+	# Required Field
+	required: Boolean
+
+	# type of the field
+	type: String
+
+	# Update date
+	updatedAt: Int
+}
+
+# Custom Class Names
+type ListcountryFieldClasses {
+	# Container
+	containerClass: String
+
+	# Element
+	elementClass: String
+}
+
+# Help Text
+type ListcountryFieldHelp {
+	#
+	helpText: String
+}
+
+# Description
+type ListcountryFieldDescription {
+	#
+	descText: String
+}
+
+# Country
+type ListcountryField implements Node & DatabaseIdentifier & FormField {
+	# Admin Label
+	adminLabel: String
+
+	# Custom Class Names
+	classes: ListcountryFieldClasses
+
+	# Creation date
+	createdAt: Int
+
+	# The Id of the field
+	databaseId: Int!
+
+	# Default Value
+	default: String
+
+	# Description
+	description: ListcountryFieldDescription
+
+	# The Id of the field
+	fieldId: Int
+
+	# Key of the field
+	fieldKey: String
+
+	# Label of the field
+	fieldLabel: String
+
+	# Help Text
+	help: ListcountryFieldHelp
+
+	# The globally unique identifier of the field
+	id: ID!
+
+	# Field Key
+	key: String
+
+	# Label
+	label: String
+
+	# Label Position
+	labelPos: String
+
+	# options
+	options: [String]
+
+	# Position order of the field
+	order: Int
+
+	# Parent form id
+	parentId: Int
+
+	# Indtifiable?
+	personallyIdentifiable: Boolean
+
+	# Required Field
+	required: Boolean
+
+	# type of the field
+	type: String
+
+	# Update date
+	updatedAt: Int
+}
+
+# Custom Class Names
+type ListimageFieldClasses {
+	# Container
+	containerClass: String
+
+	# Element
+	elementClass: String
+}
+
+# Help Text
+type ListimageFieldHelp {
+	#
+	helpText: String
+}
+
+# Description
+type ListimageFieldDescription {
+	#
+	descText: String
+}
+
+# Select Image
+type ListimageField implements Node & DatabaseIdentifier & FormField {
+	# Admin Label
+	adminLabel: String
+
+	# Allow Multiple Selections
+	allowMultiSelect: Boolean
+
+	# Custom Class Names
+	classes: ListimageFieldClasses
+
+	# Creation date
+	createdAt: Int
+
+	# The Id of the field
+	databaseId: Int!
+
+	# Description
+	description: ListimageFieldDescription
+
+	# The Id of the field
+	fieldId: Int
+
+	# Key of the field
+	fieldKey: String
+
+	# Label of the field
+	fieldLabel: String
+
+	# Help Text
+	help: ListimageFieldHelp
+
+	# The globally unique identifier of the field
+	id: ID!
+
+	# Image Options &lt;a href=&quot;#&quot; class=&quot;nf-add-new&quot;&gt;Add New&lt;/a&gt;
+	imageOptions: String
+
+	# Field Key
+	key: String
+
+	# Label
+	label: String
+
+	# Label Position
+	labelPos: String
+
+	# List Orientation
+	listOrientation: String
+
+	# Number of Columns
+	numColumns: Int
+
+	# Position order of the field
+	order: Int
+
+	# Parent form id
+	parentId: Int
+
+	# Indtifiable?
+	personallyIdentifiable: Boolean
+
+	# Required Field
+	required: Boolean
+
+	# Show Labels
+	showOptionLabels: Boolean
+
+	# type of the field
+	type: String
+
+	# Update date
+	updatedAt: Int
+}
+
+# Custom Class Names
+type ListmultiselectFieldClasses {
+	# Container
+	containerClass: String
+
+	# Element
+	elementClass: String
+}
+
+# Help Text
+type ListmultiselectFieldHelp {
+	#
+	helpText: String
+}
+
+# Description
+type ListmultiselectFieldDescription {
+	#
+	descText: String
+}
+
+# Multi-Select
+type ListmultiselectField implements Node & DatabaseIdentifier & FormField {
+	# Admin Label
+	adminLabel: String
+
+	# Custom Class Names
+	classes: ListmultiselectFieldClasses
+
+	# Creation date
+	createdAt: Int
+
+	# The Id of the field
+	databaseId: Int!
+
+	# Description
+	description: ListmultiselectFieldDescription
+
+	# The Id of the field
+	fieldId: Int
+
+	# Key of the field
+	fieldKey: String
+
+	# Label of the field
+	fieldLabel: String
+
+	# Help Text
+	help: ListmultiselectFieldHelp
+
+	# The globally unique identifier of the field
+	id: ID!
+
+	# Field Key
+	key: String
+
+	# Label
+	label: String
+
+	# Label Position
+	labelPos: String
+
+	# Multi-Select Box Size
+	multiSize: Int
+
+	# options
+	options: [String]
+
+	# Position order of the field
+	order: Int
+
+	# Parent form id
+	parentId: Int
+
+	# Indtifiable?
+	personallyIdentifiable: Boolean
+
+	# Required Field
+	required: Boolean
+
+	# type of the field
+	type: String
+
+	# Update date
+	updatedAt: Int
+}
+
+# Custom Class Names
+type ListradioFieldClasses {
+	# Container
+	containerClass: String
+
+	# Element
+	elementClass: String
+}
+
+# Help Text
+type ListradioFieldHelp {
+	#
+	helpText: String
+}
+
+# Description
+type ListradioFieldDescription {
+	#
+	descText: String
+}
+
+# Radio List
+type ListradioField implements Node & DatabaseIdentifier & FormField {
+	# Admin Label
+	adminLabel: String
+
+	# Custom Class Names
+	classes: ListradioFieldClasses
+
+	# Creation date
+	createdAt: Int
+
+	# The Id of the field
+	databaseId: Int!
+
+	# Description
+	description: ListradioFieldDescription
+
+	# The Id of the field
+	fieldId: Int
+
+	# Key of the field
+	fieldKey: String
+
+	# Label of the field
+	fieldLabel: String
+
+	# Help Text
+	help: ListradioFieldHelp
+
+	# The globally unique identifier of the field
+	id: ID!
+
+	# Field Key
+	key: String
+
+	# Label
+	label: String
+
+	# Label Position
+	labelPos: String
+
+	# options
+	options: [String]
+
+	# Position order of the field
+	order: Int
+
+	# Parent form id
+	parentId: Int
+
+	# Indtifiable?
+	personallyIdentifiable: Boolean
+
+	# Required Field
+	required: Boolean
+
+	# type of the field
+	type: String
+
+	# Update date
+	updatedAt: Int
+}
+
+# Custom Class Names
+type ListselectFieldClasses {
+	# Container
+	containerClass: String
+
+	# Element
+	elementClass: String
+}
+
+# Help Text
+type ListselectFieldHelp {
+	#
+	helpText: String
+}
+
+# Description
+type ListselectFieldDescription {
+	#
+	descText: String
+}
+
+# Select
+type ListselectField implements Node & DatabaseIdentifier & FormField {
+	# Admin Label
+	adminLabel: String
+
+	# Custom Class Names
+	classes: ListselectFieldClasses
+
+	# Creation date
+	createdAt: Int
+
+	# The Id of the field
+	databaseId: Int!
+
+	# Description
+	description: ListselectFieldDescription
+
+	# The Id of the field
+	fieldId: Int
+
+	# Key of the field
+	fieldKey: String
+
+	# Label of the field
+	fieldLabel: String
+
+	# Help Text
+	help: ListselectFieldHelp
+
+	# The globally unique identifier of the field
+	id: ID!
+
+	# Field Key
+	key: String
+
+	# Label
+	label: String
+
+	# Label Position
+	labelPos: String
+
+	# options
+	options: [String]
+
+	# Position order of the field
+	order: Int
+
+	# Parent form id
+	parentId: Int
+
+	# Indtifiable?
+	personallyIdentifiable: Boolean
+
+	# Required Field
+	required: Boolean
+
+	# type of the field
+	type: String
+
+	# Update date
+	updatedAt: Int
+}
+
+# Custom Class Names
+type ListstateFieldClasses {
+	# Container
+	containerClass: String
+
+	# Element
+	elementClass: String
+}
+
+# Help Text
+type ListstateFieldHelp {
+	#
+	helpText: String
+}
+
+# Description
+type ListstateFieldDescription {
+	#
+	descText: String
+}
+
+# US States
+type ListstateField implements Node & DatabaseIdentifier & FormField {
+	# Admin Label
+	adminLabel: String
+
+	# Custom Class Names
+	classes: ListstateFieldClasses
+
+	# Creation date
+	createdAt: Int
+
+	# The Id of the field
+	databaseId: Int!
+
+	# Description
+	description: ListstateFieldDescription
+
+	# The Id of the field
+	fieldId: Int
+
+	# Key of the field
+	fieldKey: String
+
+	# Label of the field
+	fieldLabel: String
+
+	# Help Text
+	help: ListstateFieldHelp
+
+	# The globally unique identifier of the field
+	id: ID!
+
+	# Field Key
+	key: String
+
+	# Label
+	label: String
+
+	# Label Position
+	labelPos: String
+
+	# options
+	options: [String]
+
+	# Position order of the field
+	order: Int
+
+	# Parent form id
+	parentId: Int
+
+	# Indtifiable?
+	personallyIdentifiable: Boolean
+
+	# Required Field
+	required: Boolean
+
+	# type of the field
+	type: String
+
+	# Update date
+	updatedAt: Int
+}
+
+# Note
+type NoteField implements Node & DatabaseIdentifier & FormField {
+	# Creation date
+	createdAt: Int
+
+	# The Id of the field
+	databaseId: Int!
+
+	# Default Value
+	default: String
+
+	# The Id of the field
+	fieldId: Int
+
+	# Key of the field
+	fieldKey: String
+
+	# Label of the field
+	fieldLabel: String
+
+	# The globally unique identifier of the field
+	id: ID!
+
+	# Key of the field
+	key: String
+
+	# Label
+	label: String
+
+	# Position order of the field
+	order: Int
+
+	# Parent form id
+	parentId: Int
+
+	# Indtifiable?
+	personallyIdentifiable: Boolean
+
+	# The field is required?
+	required: Boolean
+
+	# type of the field
+	type: String
+
+	# Update date
+	updatedAt: Int
+
+	# HTML
+	valueMirror: String
+}
+
+# Custom Class Names
+type NumberFieldClasses {
+	# Container
+	containerClass: String
+
+	# Element
+	elementClass: String
+}
+
+# Help Text
+type NumberFieldHelp {
+	#
+	helpText: String
+}
+
+# Description
+type NumberFieldDescription {
+	#
+	descText: String
+}
+
+# Number Options
+type NumberFieldNumber {
+	# Max
+	numMax: Int
+
+	# Min
+	numMin: Int
+
+	# Step
+	numStep: String
+}
+
+# Number
+type NumberField implements Node & DatabaseIdentifier & FormField {
+	# Admin Label
+	adminLabel: String
+
+	# Custom Class Names
+	classes: NumberFieldClasses
+
+	# Creation date
+	createdAt: Int
+
+	# The Id of the field
+	databaseId: Int!
+
+	# Default Value
+	default: String
+
+	# Description
+	description: NumberFieldDescription
+
+	# The Id of the field
+	fieldId: Int
+
+	# Key of the field
+	fieldKey: String
+
+	# Label of the field
+	fieldLabel: String
+
+	# Help Text
+	help: NumberFieldHelp
+
+	# The globally unique identifier of the field
+	id: ID!
+
+	# Field Key
+	key: String
+
+	# Label
+	label: String
+
+	# Label Position
+	labelPos: String
+
+	# manual_key
+	manualKey: String
+
+	# Number Options
+	number: NumberFieldNumber
+
+	# Position order of the field
+	order: Int
+
+	# Parent form id
+	parentId: Int
+
+	# Indtifiable?
+	personallyIdentifiable: Boolean
+
+	# Placeholder
+	placeholder: String
+
+	# Required Field
+	required: Boolean
+
+	# type of the field
+	type: String
+
+	# Update date
+	updatedAt: Int
+}
+
+# Custom Class Names
+type PasswordFieldClasses {
+	# Container
+	containerClass: String
+
+	# Element
+	elementClass: String
+}
+
+# Limit Input to this Number
+type PasswordFieldInputLimitSet {
+	#
+	inputLimit: String
+
+	# Text to Appear After Counter
+	inputLimitMsg: String
+
+	#
+	inputLimitType: String
+}
+
+# Help Text
+type PasswordFieldHelp {
+	#
+	helpText: String
+}
+
+# Description
+type PasswordFieldDescription {
+	#
+	descText: String
+}
+
+# Password
+type PasswordField implements Node & DatabaseIdentifier & FormField {
+	# Admin Label
+	adminLabel: String
+
+	# Custom Class Names
+	classes: PasswordFieldClasses
+
+	# Creation date
+	createdAt: Int
+
+	# The Id of the field
+	databaseId: Int!
+
+	# Default Value
+	default: String
+
+	# Description
+	description: PasswordFieldDescription
+
+	# Disable Input
+	disableInput: Boolean
+
+	# The Id of the field
+	fieldId: Int
+
+	# Key of the field
+	fieldKey: String
+
+	# Label of the field
+	fieldLabel: String
+
+	# Help Text
+	help: PasswordFieldHelp
+
+	# The globally unique identifier of the field
+	id: ID!
+
+	# Limit Input to this Number
+	inputLimitSet: PasswordFieldInputLimitSet
+
+	# Field Key
+	key: String
+
+	# Label
+	label: String
+
+	# Label Position
+	labelPos: String
+
+	# manual_key
+	manualKey: String
+
+	# Position order of the field
+	order: Int
+
+	# Parent form id
+	parentId: Int
+
+	# Indtifiable?
+	personallyIdentifiable: Boolean
+
+	# Placeholder
+	placeholder: String
+
+	# Required Field
+	required: Boolean
+
+	# type of the field
+	type: String
+
+	# Update date
+	updatedAt: Int
+}
+
+# Custom Class Names
+type PasswordconfirmFieldClasses {
+	# Container
+	containerClass: String
+
+	# Element
+	elementClass: String
+}
+
+# Limit Input to this Number
+type PasswordconfirmFieldInputLimitSet {
+	#
+	inputLimit: String
+
+	# Text to Appear After Counter
+	inputLimitMsg: String
+
+	#
+	inputLimitType: String
+}
+
+# Help Text
+type PasswordconfirmFieldHelp {
+	#
+	helpText: String
+}
+
+# Description
+type PasswordconfirmFieldDescription {
+	#
+	descText: String
+}
+
+# Password Confirm
+type PasswordconfirmField implements Node & DatabaseIdentifier & FormField {
+	# Admin Label
+	adminLabel: String
+
+	# Custom Class Names
+	classes: PasswordconfirmFieldClasses
+
+	# Confirm
+	confirmField: String
+
+	# Creation date
+	createdAt: Int
+
+	# The Id of the field
+	databaseId: Int!
+
+	# Default Value
+	default: String
+
+	# Description
+	description: PasswordconfirmFieldDescription
+
+	# Disable Input
+	disableInput: Boolean
+
+	# The Id of the field
+	fieldId: Int
+
+	# Key of the field
+	fieldKey: String
+
+	# Label of the field
+	fieldLabel: String
+
+	# Help Text
+	help: PasswordconfirmFieldHelp
+
+	# The globally unique identifier of the field
+	id: ID!
+
+	# Limit Input to this Number
+	inputLimitSet: PasswordconfirmFieldInputLimitSet
+
+	# Field Key
+	key: String
+
+	# Label
+	label: String
+
+	# Label Position
+	labelPos: String
+
+	# manual_key
+	manualKey: String
+
+	# Position order of the field
+	order: Int
+
+	# Parent form id
+	parentId: Int
+
+	# Indtifiable?
+	personallyIdentifiable: Boolean
+
+	# Placeholder
+	placeholder: String
+
+	# Required Field
+	required: Boolean
+
+	# type of the field
+	type: String
+
+	# Update date
+	updatedAt: Int
+}
+
+# Custom Class Names
+type PhoneFieldClasses {
+	# Container
+	containerClass: String
+
+	# Element
+	elementClass: String
+}
+
+# Limit Input to this Number
+type PhoneFieldInputLimitSet {
+	#
+	inputLimit: String
+
+	# Text to Appear After Counter
+	inputLimitMsg: String
+
+	#
+	inputLimitType: String
+}
+
+# Help Text
+type PhoneFieldHelp {
+	#
+	helpText: String
+}
+
+# Description
+type PhoneFieldDescription {
+	#
+	descText: String
+}
+
+# Phone
+type PhoneField implements Node & DatabaseIdentifier & FormField {
+	# Admin Label
+	adminLabel: String
+
+	# Custom Class Names
+	classes: PhoneFieldClasses
+
+	# Creation date
+	createdAt: Int
+
+	# Custom Mask
+	customMask: String
+
+	# Custom Name Attribute
+	customNameAttribute: String
+
+	# The Id of the field
+	databaseId: Int!
+
+	# Default Value
+	default: String
+
+	# Description
+	description: PhoneFieldDescription
+
+	# Disable Browser Autocomplete
+	disableBrowserAutocomplete: Boolean
+
+	# Disable Input
+	disableInput: Boolean
+
+	# The Id of the field
+	fieldId: Int
+
+	# Key of the field
+	fieldKey: String
+
+	# Label of the field
+	fieldLabel: String
+
+	# Help Text
+	help: PhoneFieldHelp
+
+	# The globally unique identifier of the field
+	id: ID!
+
+	# Limit Input to this Number
+	inputLimitSet: PhoneFieldInputLimitSet
+
+	# Field Key
+	key: String
+
+	# Label
+	label: String
+
+	# Label Position
+	labelPos: String
+
+	# manual_key
+	manualKey: String
+
+	# Input Mask
+	mask: String
+
+	# Position order of the field
+	order: Int
+
+	# Parent form id
+	parentId: Int
+
+	# This Field Is Personally Identifiable Data
+	personallyIdentifiable: Boolean
+
+	# Placeholder
+	placeholder: String
+
+	# Required Field
+	required: Boolean
+
+	# type of the field
+	type: String
+
+	# Update date
+	updatedAt: Int
+}
+
+# Custom Class Names
+type ProductFieldClasses {
+	# Container
+	containerClass: String
+
+	# Element
+	elementClass: String
+}
+
+# Help Text
+type ProductFieldHelp {
+	#
+	helpText: String
+}
+
+# Description
+type ProductFieldDescription {
+	#
+	descText: String
+}
+
+# Product
+type ProductField implements Node & DatabaseIdentifier & FormField {
+	# Admin Label
+	adminLabel: String
+
+	# Custom Class Names
+	classes: ProductFieldClasses
+
+	# Creation date
+	createdAt: Int
+
+	# The Id of the field
+	databaseId: Int!
+
+	# Default Value
+	default: String
+
+	# Description
+	description: ProductFieldDescription
+
+	# The Id of the field
+	fieldId: Int
+
+	# Key of the field
+	fieldKey: String
+
+	# Label of the field
+	fieldLabel: String
+
+	# Help Text
+	help: ProductFieldHelp
+
+	# The globally unique identifier of the field
+	id: ID!
+
+	# Field Key
+	key: String
+
+	# Label
+	label: String
+
+	# Label Position
+	labelPos: String
+
+	# manual_key
+	manualKey: String
+
+	# Position order of the field
+	order: Int
+
+	# Parent form id
+	parentId: Int
+
+	# Indtifiable?
+	personallyIdentifiable: Boolean
+
+	# Placeholder
+	placeholder: String
+
+	# Price
+	productPrice: String
+
+	# Product Type
+	productType: String
+
+	# Use Inline Quantity
+	productUseQuantity: Boolean
+
+	# The field is required?
+	required: Boolean
+
+	# type of the field
+	type: String
+
+	# Update date
+	updatedAt: Int
+}
+
+# Custom Class Names
+type QuantityFieldClasses {
+	# Container
+	containerClass: String
+
+	# Element
+	elementClass: String
+}
+
+# Help Text
+type QuantityFieldHelp {
+	#
+	helpText: String
+}
+
+# Description
+type QuantityFieldDescription {
+	#
+	descText: String
+}
+
+# Number Options
+type QuantityFieldNumber {
+	# Max
+	numMax: Int
+
+	# Min
+	numMin: Int
+
+	# Step
+	numStep: String
+}
+
+# Quantity
+type QuantityField implements Node & DatabaseIdentifier & FormField {
+	# Admin Label
+	adminLabel: String
+
+	# Custom Class Names
+	classes: QuantityFieldClasses
+
+	# Creation date
+	createdAt: Int
+
+	# The Id of the field
+	databaseId: Int!
+
+	# Default Value
+	default: String
+
+	# Description
+	description: QuantityFieldDescription
+
+	# Disable Input
+	disableInput: Boolean
+
+	# The Id of the field
+	fieldId: Int
+
+	# Key of the field
+	fieldKey: String
+
+	# Label of the field
+	fieldLabel: String
+
+	# Help Text
+	help: QuantityFieldHelp
+
+	# The globally unique identifier of the field
+	id: ID!
+
+	# Field Key
+	key: String
+
+	# Label
+	label: String
+
+	# Label Position
+	labelPos: String
+
+	# manual_key
+	manualKey: String
+
+	# Number Options
+	number: QuantityFieldNumber
+
+	# Position order of the field
+	order: Int
+
+	# Parent form id
+	parentId: Int
+
+	# Indtifiable?
+	personallyIdentifiable: Boolean
+
+	# Placeholder
+	placeholder: String
+
+	# Product
+	productAssignment: String
+
+	# The field is required?
+	required: Boolean
+
+	# type of the field
+	type: String
+
+	# Update date
+	updatedAt: Int
+}
+
+# Custom Class Names
+type RecaptchaFieldClasses {
+	# Container
+	containerClass: String
+
+	# Element
+	elementClass: String
+}
+
+# Recaptcha
+type RecaptchaField implements Node & DatabaseIdentifier & FormField {
+	# Custom Class Names
+	classes: RecaptchaFieldClasses
+
+	# Creation date
+	createdAt: Int
+
+	# The Id of the field
+	databaseId: Int!
+
+	# The Id of the field
+	fieldId: Int
+
+	# Key of the field
+	fieldKey: String
+
+	# Label of the field
+	fieldLabel: String
+
+	# The globally unique identifier of the field
+	id: ID!
+
+	# Key of the field
+	key: String
+
+	# Label
+	label: String
+
+	# Position order of the field
+	order: Int
+
+	# Parent form id
+	parentId: Int
+
+	# Indtifiable?
+	personallyIdentifiable: Boolean
+
+	# The field is required?
+	required: Boolean
+
+	# Visibility
+	size: String
+
+	# type of the field
+	type: String
+
+	# Update date
+	updatedAt: Int
+}
+
+# Custom Class Names
+type ShippingFieldClasses {
+	# Container
+	containerClass: String
+
+	# Element
+	elementClass: String
+}
+
+# Help Text
+type ShippingFieldHelp {
+	#
+	helpText: String
+}
+
+# Description
+type ShippingFieldDescription {
+	#
+	descText: String
+}
+
+# Shipping
+type ShippingField implements Node & DatabaseIdentifier & FormField {
+	# Admin Label
+	adminLabel: String
+
+	# Custom Class Names
+	classes: ShippingFieldClasses
+
+	# Creation date
+	createdAt: Int
+
+	# The Id of the field
+	databaseId: Int!
+
+	# Default Value
+	default: String
+
+	# Description
+	description: ShippingFieldDescription
+
+	# The Id of the field
+	fieldId: Int
+
+	# Key of the field
+	fieldKey: String
+
+	# Label of the field
+	fieldLabel: String
+
+	# Help Text
+	help: ShippingFieldHelp
+
+	# The globally unique identifier of the field
+	id: ID!
+
+	# Field Key
+	key: String
+
+	# Label
+	label: String
+
+	# Label Position
+	labelPos: String
+
+	# manual_key
+	manualKey: String
+
+	# Position order of the field
+	order: Int
+
+	# Parent form id
+	parentId: Int
+
+	# Indtifiable?
+	personallyIdentifiable: Boolean
+
+	# Placeholder
+	placeholder: String
+
+	# The field is required?
+	required: Boolean
+
+	# Cost
+	shippingCost: String
+
+	# shipping_options
+	shippingOptions: [String]
+
+	# Cost Type
+	shippingType: String
+
+	# type of the field
+	type: String
+
+	# Update date
+	updatedAt: Int
+}
+
+# Custom Class Names
+type SpamFieldClasses {
+	# Container
+	containerClass: String
+
+	# Element
+	elementClass: String
+}
+
+# Limit Input to this Number
+type SpamFieldInputLimitSet {
+	#
+	inputLimit: String
+
+	# Text to Appear After Counter
+	inputLimitMsg: String
+
+	#
+	inputLimitType: String
+}
+
+# Help Text
+type SpamFieldHelp {
+	#
+	helpText: String
+}
+
+# Description
+type SpamFieldDescription {
+	#
+	descText: String
+}
+
+# Anti-Spam
+type SpamField implements Node & DatabaseIdentifier & FormField {
+	# Admin Label
+	adminLabel: String
+
+	# Custom Class Names
+	classes: SpamFieldClasses
+
+	# Creation date
+	createdAt: Int
+
+	# The Id of the field
+	databaseId: Int!
+
+	# Default Value
+	default: String
+
+	# Description
+	description: SpamFieldDescription
+
+	# Disable Input
+	disableInput: Boolean
+
+	# The Id of the field
+	fieldId: Int
+
+	# Key of the field
+	fieldKey: String
+
+	# Label of the field
+	fieldLabel: String
+
+	# Help Text
+	help: SpamFieldHelp
+
+	# The globally unique identifier of the field
+	id: ID!
+
+	# Limit Input to this Number
+	inputLimitSet: SpamFieldInputLimitSet
+
+	# Field Key
+	key: String
+
+	# Question
+	label: String
+
+	# Question Position
+	labelPos: String
+
+	# manual_key
+	manualKey: String
+
+	# Position order of the field
+	order: Int
+
+	# Parent form id
+	parentId: Int
+
+	# Indtifiable?
+	personallyIdentifiable: Boolean
+
+	# Placeholder
+	placeholder: String
+
+	# Required Field
+	required: Boolean
+
+	# Answer
+	spamAnswer: String
+
+	# type of the field
+	type: String
+
+	# Update date
+	updatedAt: Int
+}
+
+# Custom Class Names
+type StarratingFieldClasses {
+	# Container
+	containerClass: String
+
+	# Element
+	elementClass: String
+}
+
+# Star Rating
+type StarratingField implements Node & DatabaseIdentifier & FormField {
+	# Admin Label
+	adminLabel: String
+
+	# Custom Class Names
+	classes: StarratingFieldClasses
+
+	# Creation date
+	createdAt: Int
+
+	# The Id of the field
+	databaseId: Int!
+
+	# Default Value
+	default: String
+
+	# The Id of the field
+	fieldId: Int
+
+	# Key of the field
+	fieldKey: String
+
+	# Label of the field
+	fieldLabel: String
+
+	# The globally unique identifier of the field
+	id: ID!
+
+	# Field Key
+	key: String
+
+	# Label
+	label: String
+
+	# Label Position
+	labelPos: String
+
+	# Number of stars
+	numberOfStars: String
+
+	# Position order of the field
+	order: Int
+
+	# Parent form id
+	parentId: Int
+
+	# Indtifiable?
+	personallyIdentifiable: Boolean
+
+	# Required Field
+	required: Boolean
+
+	# type of the field
+	type: String
+
+	# Update date
+	updatedAt: Int
+}
+
+# Custom Class Names
+type SubmitFieldClasses {
+	# Container
+	containerClass: String
+
+	# Element
+	elementClass: String
+}
+
+# Submit
+type SubmitField implements Node & DatabaseIdentifier & FormField {
+	# Custom Class Names
+	classes: SubmitFieldClasses
+
+	# Creation date
+	createdAt: Int
+
+	# The Id of the field
+	databaseId: Int!
+
+	# The Id of the field
+	fieldId: Int
+
+	# Key of the field
+	fieldKey: String
+
+	# Label of the field
+	fieldLabel: String
+
+	# The globally unique identifier of the field
+	id: ID!
+
+	# Field Key
+	key: String
+
+	# Label
+	label: String
+
+	# Position order of the field
+	order: Int
+
+	# Parent form id
+	parentId: Int
+
+	# Indtifiable?
+	personallyIdentifiable: Boolean
+
+	# Processing Label
+	processingLabel: String
+
+	# The field is required?
+	required: Boolean
+
+	# type of the field
+	type: String
+
+	# Update date
+	updatedAt: Int
+}
+
+# Custom Class Names
+type TermsFieldClasses {
+	# Container
+	containerClass: String
+
+	# Element
+	elementClass: String
+}
+
+# Help Text
+type TermsFieldHelp {
+	#
+	helpText: String
+}
+
+# Description
+type TermsFieldDescription {
+	#
+	descText: String
+}
+
+# Terms List
+type TermsField implements Node & DatabaseIdentifier & FormField {
+	# Add New Terms
+	addNewTerms: Boolean
+
+	# Admin Label
+	adminLabel: String
+
+	# Custom Class Names
+	classes: TermsFieldClasses
+
+	# Creation date
+	createdAt: Int
+
+	# The Id of the field
+	databaseId: Int!
+
+	# Description
+	description: TermsFieldDescription
+
+	# The Id of the field
+	fieldId: Int
+
+	# Key of the field
+	fieldKey: String
+
+	# Label of the field
+	fieldLabel: String
+
+	# Help Text
+	help: TermsFieldHelp
+
+	# The globally unique identifier of the field
+	id: ID!
+
+	# Field Key
+	key: String
+
+	# Label
+	label: String
+
+	# Label Position
+	labelPos: String
+
+	# options
+	options: [String]
+
+	# Position order of the field
+	order: Int
+
+	# Parent form id
+	parentId: Int
+
+	# Indtifiable?
+	personallyIdentifiable: Boolean
+
+	# The field is required?
+	required: Boolean
+
+	# Taxonomy
+	taxonomy: String
+
+	# type of the field
+	type: String
+
+	# Update date
+	updatedAt: Int
+}
+
+# Custom Class Names
+type TextareaFieldClasses {
+	# Container
+	containerClass: String
+
+	# Element
+	elementClass: String
+}
+
+# Limit Input to this Number
+type TextareaFieldInputLimitSet {
+	#
+	inputLimit: String
+
+	# Text to Appear After Counter
+	inputLimitMsg: String
+
+	#
+	inputLimitType: String
+}
+
+# Help Text
+type TextareaFieldHelp {
+	#
+	helpText: String
+}
+
+# Description
+type TextareaFieldDescription {
+	#
+	descText: String
+}
+
+# Paragraph Text
+type TextareaField implements Node & DatabaseIdentifier & FormField {
+	# Admin Label
+	adminLabel: String
+
+	# Custom Class Names
+	classes: TextareaFieldClasses
+
+	# Creation date
+	createdAt: Int
+
+	# The Id of the field
+	databaseId: Int!
+
+	# Default Value
+	default: String
+
+	# Description
+	description: TextareaFieldDescription
+
+	# Disable Browser Autocomplete
+	disableBrowserAutocomplete: Boolean
+
+	# Disable Input
+	disableInput: Boolean
+
+	# Disable Rich Text Editor on Mobile
+	disableRteMobile: Boolean
+
+	# The Id of the field
+	fieldId: Int
+
+	# Key of the field
+	fieldKey: String
+
+	# Label of the field
+	fieldLabel: String
+
+	# Help Text
+	help: TextareaFieldHelp
+
+	# The globally unique identifier of the field
+	id: ID!
+
+	# Limit Input to this Number
+	inputLimitSet: TextareaFieldInputLimitSet
+
+	# Field Key
+	key: String
+
+	# Label
+	label: String
+
+	# Label Position
+	labelPos: String
+
+	# manual_key
+	manualKey: String
+
+	# Position order of the field
+	order: Int
+
+	# Parent form id
+	parentId: Int
+
+	# Indtifiable?
+	personallyIdentifiable: Boolean
+
+	# Placeholder
+	placeholder: String
+
+	# Required Field
+	required: Boolean
+
+	# Show Media Upload Button
+	textareaMedia: Boolean
+
+	# Show Rich Text Editor
+	textareaRte: Boolean
+
+	# type of the field
+	type: String
+
+	# Update date
+	updatedAt: Int
+}
+
+# Custom Class Names
+type TextboxFieldClasses {
+	# Container
+	containerClass: String
+
+	# Element
+	elementClass: String
+}
+
+# Limit Input to this Number
+type TextboxFieldInputLimitSet {
+	#
+	inputLimit: String
+
+	# Text to Appear After Counter
+	inputLimitMsg: String
+
+	#
+	inputLimitType: String
+}
+
+# Help Text
+type TextboxFieldHelp {
+	#
+	helpText: String
+}
+
+# Description
+type TextboxFieldDescription {
+	#
+	descText: String
+}
+
+# Single Line Text
+type TextboxField implements Node & DatabaseIdentifier & FormField {
+	# Admin Label
+	adminLabel: String
+
+	# Custom Class Names
+	classes: TextboxFieldClasses
+
+	# Creation date
+	createdAt: Int
+
+	# Custom Mask
+	customMask: String
+
+	# Custom Name Attribute
+	customNameAttribute: String
+
+	# The Id of the field
+	databaseId: Int!
+
+	# Default Value
+	default: String
+
+	# Description
+	description: TextboxFieldDescription
+
+	# Disable Browser Autocomplete
+	disableBrowserAutocomplete: Boolean
+
+	# Disable Input
+	disableInput: Boolean
+
+	# The Id of the field
+	fieldId: Int
+
+	# Key of the field
+	fieldKey: String
+
+	# Label of the field
+	fieldLabel: String
+
+	# Help Text
+	help: TextboxFieldHelp
+
+	# The globally unique identifier of the field
+	id: ID!
+
+	# Limit Input to this Number
+	inputLimitSet: TextboxFieldInputLimitSet
+
+	# Field Key
+	key: String
+
+	# Label
+	label: String
+
+	# Label Position
+	labelPos: String
+
+	# manual_key
+	manualKey: String
+
+	# Input Mask
+	mask: String
+
+	# Position order of the field
+	order: Int
+
+	# Parent form id
+	parentId: Int
+
+	# This Field Is Personally Identifiable Data
+	personallyIdentifiable: Boolean
+
+	# Placeholder
+	placeholder: String
+
+	# Required Field
+	required: Boolean
+
+	# type of the field
+	type: String
+
+	# Update date
+	updatedAt: Int
+}
+
+# Custom Class Names
+type TotalFieldClasses {
+	# Container
+	containerClass: String
+
+	# Element
+	elementClass: String
+}
+
+# Help Text
+type TotalFieldHelp {
+	#
+	helpText: String
+}
+
+# Description
+type TotalFieldDescription {
+	#
+	descText: String
+}
+
+# Total
+type TotalField implements Node & DatabaseIdentifier & FormField {
+	# Admin Label
+	adminLabel: String
+
+	# Custom Class Names
+	classes: TotalFieldClasses
+
+	# Creation date
+	createdAt: Int
+
+	# The Id of the field
+	databaseId: Int!
+
+	# Description
+	description: TotalFieldDescription
+
+	# The Id of the field
+	fieldId: Int
+
+	# Key of the field
+	fieldKey: String
+
+	# Label of the field
+	fieldLabel: String
+
+	# Help Text
+	help: TotalFieldHelp
+
+	# The globally unique identifier of the field
+	id: ID!
+
+	# Field Key
+	key: String
+
+	# Label
+	label: String
+
+	# Label Position
+	labelPos: String
+
+	# manual_key
+	manualKey: String
+
+	# Position order of the field
+	order: Int
+
+	# Parent form id
+	parentId: Int
+
+	# Indtifiable?
+	personallyIdentifiable: Boolean
+
+	# The field is required?
+	required: Boolean
+
+	# type of the field
+	type: String
+
+	# Update date
+	updatedAt: Int
+}
+
+# Unknown
+type UnknownField implements Node & DatabaseIdentifier & FormField {
+	# Creation date
+	createdAt: Int
+
+	# The Id of the field
+	databaseId: Int!
+
+	# The Id of the field
+	fieldId: Int
+
+	# Key of the field
+	fieldKey: String
+
+	# Label of the field
+	fieldLabel: String
+
+	# The globally unique identifier of the field
+	id: ID!
+
+	# Key of the field
+	key: String
+
+	# Label
+	label: String
+
+	#
+	message: String
+
+	# Position order of the field
+	order: Int
+
+	# Parent form id
+	parentId: Int
+
+	# Indtifiable?
+	personallyIdentifiable: Boolean
+
+	# The field is required?
+	required: Boolean
+
+	# type of the field
+	type: String
+
+	# Update date
+	updatedAt: Int
+}
+
+# Custom Class Names
+type ZipFieldClasses {
+	# Container
+	containerClass: String
+
+	# Element
+	elementClass: String
+}
+
+# Limit Input to this Number
+type ZipFieldInputLimitSet {
+	#
+	inputLimit: String
+
+	# Text to Appear After Counter
+	inputLimitMsg: String
+
+	#
+	inputLimitType: String
+}
+
+# Help Text
+type ZipFieldHelp {
+	#
+	helpText: String
+}
+
+# Description
+type ZipFieldDescription {
+	#
+	descText: String
+}
+
+# Zip
+type ZipField implements Node & DatabaseIdentifier & FormField {
+	# Admin Label
+	adminLabel: String
+
+	# Custom Class Names
+	classes: ZipFieldClasses
+
+	# Creation date
+	createdAt: Int
+
+	# Custom Mask
+	customMask: String
+
+	# Custom Name Attribute
+	customNameAttribute: String
+
+	# The Id of the field
+	databaseId: Int!
+
+	# Default Value
+	default: String
+
+	# Description
+	description: ZipFieldDescription
+
+	# Disable Browser Autocomplete
+	disableBrowserAutocomplete: Boolean
+
+	# Disable Input
+	disableInput: Boolean
+
+	# The Id of the field
+	fieldId: Int
+
+	# Key of the field
+	fieldKey: String
+
+	# Label of the field
+	fieldLabel: String
+
+	# Help Text
+	help: ZipFieldHelp
+
+	# The globally unique identifier of the field
+	id: ID!
+
+	# Limit Input to this Number
+	inputLimitSet: ZipFieldInputLimitSet
+
+	# Field Key
+	key: String
+
+	# Label
+	label: String
+
+	# Label Position
+	labelPos: String
+
+	# manual_key
+	manualKey: String
+
+	# Input Mask
+	mask: String
+
+	# Position order of the field
+	order: Int
+
+	# Parent form id
+	parentId: Int
+
+	# This Field Is Personally Identifiable Data
+	personallyIdentifiable: Boolean
+
+	# Placeholder
+	placeholder: String
+
+	# Required Field
+	required: Boolean
+
+	# type of the field
+	type: String
+
+	# Update date
+	updatedAt: Int
+}
+
+# Custom Class Names
+type HrFieldClasses {
+	# Container
+	containerClass: String
+
+	# Element
+	elementClass: String
+}
+
+# Divider
+type HrField implements Node & DatabaseIdentifier & FormField {
+	# Custom Class Names
+	classes: HrFieldClasses
+
+	# Creation date
+	createdAt: Int
+
+	# The Id of the field
+	databaseId: Int!
+
+	# The Id of the field
+	fieldId: Int
+
+	# Key of the field
+	fieldKey: String
+
+	# Label of the field
+	fieldLabel: String
+
+	# The globally unique identifier of the field
+	id: ID!
+
+	# Key of the field
+	key: String
+
+	# Label of the field
+	label: String
+
+	# Position order of the field
+	order: Int
+
+	# Parent form id
+	parentId: Int
+
+	# Indtifiable?
+	personallyIdentifiable: Boolean
+
+	# The field is required?
+	required: Boolean
+
+	# type of the field
+	type: String
+
+	# Update date
+	updatedAt: Int
 }
