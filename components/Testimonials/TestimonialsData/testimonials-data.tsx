@@ -41,7 +41,7 @@ const TestimonialsData: FC<TestimonialsDataProps> = props => {
 							<ReactMarkdown
 								children={contentConditional}
 								allowDangerousHtml={true}
-								className={cn(css.content)}
+								className={cn(css.content, 'clamp-3')}
 							/>
 						</div>
 						<footer className='mt-8'>

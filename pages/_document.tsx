@@ -2,15 +2,16 @@ import Document, {
 	Html,
 	Head,
 	Main,
-	NextScript,
-	DocumentContext
+	NextScript
+	// DocumentContext
 } from 'next/document';
 import { GA_TRACKING_ID } from '@lib/google-analytics';
+// import Index from './index';
 export default class MyDocument extends Document {
-	static async getInitialProps(ctx: DocumentContext) {
-		const initialProps = await Document.getInitialProps(ctx);
-		return { ...initialProps };
-	}
+	// static async getInitialProps(ctx: DocumentContext) {
+	// 	const initialProps = await Document.getInitialProps(ctx);
+	// 	return { ...initialProps, Index };
+	// }
 	render() {
 		return (
 			<Html>

@@ -15,3 +15,14 @@ const Head: FC = () => {
 };
 
 export default Head;
+
+/*
+				<link
+					href='/wp-includes/css/dist/block-library/style.min.css'
+					rel='stylesheet'
+				/>
+				<link
+					href='/wp-includes/css/dist/block-library/theme.min.css'
+					rel='stylesheet'
+				/>
+*/

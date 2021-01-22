@@ -1,27 +1,41 @@
 overwrite: true
 schema:
- ${WORDPRESS_API_URL_YML}:
+  ${WORDPRESS_API_URL_YML}:
     headers:
       Authorization: Bearer ${WORDPRESS_AUTH_REFRESH_TOKEN_YML}
-documents: './lib/**/*.ts'
+documents: './lib/{graphql,fragments,mutations,global}/**/!(*.generated).{ts,tsx,graphql}'
 generates:
-  ./graphql.d.ts:
+  lib/global/global-types.generated.ts:
     plugins:
-    - 'typescript'
-    - 'typescript-operations'
-    - 'typescript-react-apollo'
-    - 'typescript-apollo-client-helpers'
+      - typescript
+  lib/global/graphql.schema.graphql:
+    plugins:
+      - schema-ast
     config:
+      commentDescriptions: true
+  lib/global/graphql.schema.json:
+    plugins:
+      - introspection
+    config:
+      commentDescriptions: true
+  lib/:
+    overwrite: true
+    preset: near-operation-file
+    presetConfig:
+      extension: .generated.tsx
+      folder: __generated__
+      baseTypesPath: global/global-types.generated.ts
+    plugins:
+      - typescript-operations
+      - typescript-react-apollo
+    config:
+      commentDescriptions: true
+      withResultType: true
       withHOC: false
       reactApolloVersion: 3
       withHooks: true
-      apolloReactCommonImportFrom: '@apollo/client'
+      withComponent: false
       apolloReactHooksImportFrom: '@apollo/client'
-  ./graphql.schema.graphql:
-    plugins:
-      - 'schema-ast'
-  ./graphql.schema.json:
-    plugins:
-      - 'introspection'
 hooks:
-  afterAllFileWrite: "prettier --write"
+  afterAllFileWrite: 
+    - prettier --write

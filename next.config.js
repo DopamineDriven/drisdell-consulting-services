@@ -1,3 +1,4 @@
+const path = require('path');
 const withPlugins = require('next-compose-plugins');
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
 	enabled: !!process.env.ANALYZE
@@ -18,15 +19,18 @@ const withMDX = require('@next/mdx')({
 const webpackBundle = {
 	webpack: (config, options) => {
 		config.module.rules.push({
-			test: /\.(graphql|gql)$/,
-			exclude: /node_modules/,
-			use: [options.defaultLoaders.babel, { loader: 'graphql-tag/loader' }]
-		});
-		config.module.rules.push({
 			test: /\.ya?ml$/,
 			type: 'json',
 			use: 'yaml-loader'
 		});
+		const isServer = typeof window === 'undefined';
+		if (isServer) {
+			config.resolve.alias['@'] = path.resolve('./');
+		}
+
+		return config;
+	},
+	webpackDevMiddleware: config => {
 		return config;
 	}
 };

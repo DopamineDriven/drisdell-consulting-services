@@ -1,0 +1,7 @@
+# import AboutFields from '../../fragments/FragmentAbouts/about-fields.graphql'
+
+query AboutBySlug($id: ID!, $idType: AboutIdType!) {
+	aboutPost: about(id: $id, idType: $idType) {
+		...AboutFields
+	}
+}

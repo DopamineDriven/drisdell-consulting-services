@@ -28,6 +28,14 @@ export enum ConsultantIdType {
 }
 
 /**
+ * The Type of Identifier used to fetch a single Form. Default is ID.
+ */
+export enum FormIdTypeEnum {
+	DATABASE_ID = 'DATABASE_ID',
+	ID = 'ID'
+}
+
+/**
  * The Type of Identifier used to fetch a single node. Default is "ID". To be used along with the "id" field.
  */
 export enum MenuNodeIdTypeEnum {
@@ -77,6 +85,14 @@ export enum PostObjectsConnectionOrderbyEnum {
 	PARENT = 'PARENT',
 	SLUG = 'SLUG',
 	TITLE = 'TITLE'
+}
+
+/**
+ * Submitted field data
+ */
+export interface InputField {
+	id?: number | null;
+	value?: string | null;
 }
 
 //==============================================================

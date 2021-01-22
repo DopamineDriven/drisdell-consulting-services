@@ -27,6 +27,7 @@
 			"@config/*": ["config/*"],
 			"@lib/*": ["lib/*"],
 			"@pages/*": ["pages/*"],
+			"@providers/*": ["providers/*"],
 			"@styles/*": ["styles/*"]
 		}
 	},
@@ -35,7 +36,6 @@
 		"global.d.ts",
 		"graphql.d.ts",
 		"content.type.d.ts",
-		"graphql.schema.graphql",
 		"**/*.ts",
 		"**/*.tsx",
 		"**/*.js",

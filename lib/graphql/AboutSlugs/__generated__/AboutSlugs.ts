@@ -6,7 +6,7 @@
 import {
 	PostObjectsConnectionOrderbyEnum,
 	OrderEnum
-} from '../../../graphql-global-types';
+} from './../../../graphql-global-types';
 
 // ====================================================
 // GraphQL query operation: AboutSlugs

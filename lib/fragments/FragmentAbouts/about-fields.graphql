@@ -1,0 +1,12 @@
+fragment AboutFields on About {
+	content
+	id
+	title
+	modified
+	slug
+	featuredImage {
+		node {
+			sourceUrl
+		}
+	}
+}
