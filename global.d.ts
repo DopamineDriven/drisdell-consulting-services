@@ -9,3 +9,12 @@ declare module '*.graphql' {
 }
 
 declare module '/graphql.d.ts';
+
+export type ReNonNullable<T> = Required<
+	NonNullable<{ [K in keyof T]: RecursiveNonNullable<T[K]> }>
+>;
+
+export type HeadlessContentElement = [
+	string,
+	(domNode: DomElement) => React.ReactNode
+];
