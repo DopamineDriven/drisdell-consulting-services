@@ -11,7 +11,8 @@ module.exports = {
 	purge: {
 		content: [
 			'./components/**/*.{js,ts,jsx,tsx}',
-			'./pages/**/*.{js,ts,jsx,tsx}'
+			'./pages/**/*.{js,ts,jsx,tsx}',
+			'./styles/**/*.{js,ts,jsx,tsx}'
 		],
 		options: {
 			safelist: {
@@ -92,14 +93,6 @@ module.exports = {
 				'outline-2': 'var(--outline-2)',
 				'outline-3': 'var(--outline-3)'
 			},
-			fill: {
-				primary: 'var(--color-fill-primary)',
-				auxiliary: 'var(--color-fill-auxiliary)',
-				tertiary: 'var(--color-fill-tertiary)',
-				quaternary: 'var(--color-fill-quaternary)',
-				quinary: 'var(--color-fill-quinary)',
-				senary: 'var(--color-fill-senary)'
-			},
 			strokeColor: {
 				primary: 'var(--stroke-primary)',
 				auxiliary: 'var(--stroke-auxiliary)',
@@ -150,7 +143,7 @@ module.exports = {
 					800: '#0B69A3',
 					900: '#035388'
 				},
-				Cyan: {
+				cyan: {
 					0: '#E0FCFF',
 					100: '#BEF8FD',
 					200: '#87EAF2',
