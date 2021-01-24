@@ -10,7 +10,7 @@ declare module '*.graphql' {
 
 declare module '/graphql.d.ts';
 
-export type ReNonNullable<T> = Required<
+export type RecursiveNonNullable<T> = Required<
 	NonNullable<{ [K in keyof T]: RecursiveNonNullable<T[K]> }>
 >;
 

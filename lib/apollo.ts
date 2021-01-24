@@ -19,7 +19,7 @@ import { concatPagination } from '@apollo/client/utilities';
 
 export const APOLLO_STATE_PROP_NAME = '__APOLLO_STATE__';
 
-let apolloClient: ApolloClient<NormalizedCacheObject> | undefined;
+let apolloClient: ApolloClient<NormalizedCacheObject> | undefined | null;
 
 function createApolloClient(headers = {}) {
 	const token = `${process.env.WORDPRESS_AUTH_REFRESH_TOKEN}`;
@@ -135,10 +135,10 @@ export function initializeApollo(initialState: any = null) {
 		// Get existing cache, loaded during client side data fetching
 		const existingCache = _apolloClient.extract();
 		// Merge the existing cache into data passed from getStaticProps/getServerSideProps
-		const data = { ...existingCache, ...initialState };
+		// const data = { ...existingCache, ...initialState };
 		// const data = deepmerge(initialState, existingCache, { clone: false });
 		// Restore the cache with the merged data
-		_apolloClient.cache.restore(data);
+		_apolloClient.cache.restore({ ...existingCache, ...initialState });
 	}
 	// for SSG and SSR ALWAYS create a new Apollo Client
 	if (typeof window === 'undefined') return _apolloClient;
