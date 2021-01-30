@@ -13,6 +13,7 @@ const withImages = {
 		]
 	}
 };
+// https://nextjs.org/docs/api-reference/next.config.js/headers
 const withMDX = require('@next/mdx')({
 	extension: /\.mdx?$/
 });

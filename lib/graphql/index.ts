@@ -12,4 +12,5 @@ export { default as GET_PAGES } from './GetPages';
 export { default as GET_PREVIEW_PAGE } from './GetPreviewPage';
 export { default as GET_PREVIEW_POST } from './GetPreviewPost';
 export { default as HEADER_FOOTER } from './HeaderFooter';
+export { default as LANDING_COALESCED } from './LandingCoalesced';
 export { default as LANDING_PAGE } from './LandingPage';

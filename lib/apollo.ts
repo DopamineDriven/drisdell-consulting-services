@@ -1,128 +1,45 @@
 import { useMemo } from 'react';
 import {
 	ApolloClient,
+	// ServerError,
 	InMemoryCache,
 	NormalizedCacheObject,
 	HttpLink
+	// from
 } from '@apollo/client';
-// import { AppInitialProps } from 'next/app';
-import { concatPagination } from '@apollo/client/utilities';
-// import { SubscriptionClient } from 'subscriptions-transport-ws';
-// import { WebSocketLink } from "@apollo/client/link/ws";
-// https://hasura.io/learn/graphql/nextjs-fullstack-serverless/apollo-client/
-// import deepmerge from 'deepmerge';
-// import dynamic from 'next/dynamic';
-
-// // @ts-ignore
-// global.fetch = require('node-fetch');
-// global.fetch = dynamic(() => import('node-fetch'));
+// import { RetryLink } from '@apollo/client/link/retry';
+import { AllTestimonials } from './graphql/AllTestimonials/__generated__/AllTestimonials';
+import { offsetLimitPaginatedField } from './apollo-helper';
+import { GetPages } from './graphql/GetPages/__generated__/GetPages';
 
 export const APOLLO_STATE_PROP_NAME = '__APOLLO_STATE__';
 
-let apolloClient: ApolloClient<NormalizedCacheObject> | undefined | null;
+let apolloClient: ApolloClient<NormalizedCacheObject> | undefined;
 
-function createApolloClient(headers = {}) {
-	const token = `${process.env.WORDPRESS_AUTH_REFRESH_TOKEN}`;
-	const authorization = `Bearer ${token}`;
-	const setHeaders = {
-		...headers,
-		'Content-Type': 'application/json; charset=UTF-8',
-		Authorization: authorization
-	};
+function createApolloClient() {
+	const httpLink = new HttpLink({
+		uri: process.env.WORDPRESS_API_URL,
+		headers: {
+			'Content-Type': 'application/json; charset=utf-8',
+			authorization: `Bearer ${process.env.WORDPRESS_AUTH_REFRESH_TOKEN}`
+		},
+		credentials: 'same-origin',
+		...(typeof window !== undefined && { fetch })
+	});
 	return new ApolloClient({
 		ssrMode: typeof window === 'undefined',
-		link: new HttpLink({
-			uri: process.env.WORDPRESS_API_URL,
-			credentials: 'include',
-			headers: { ...setHeaders }
-		}),
+		link: httpLink,
 		cache: new InMemoryCache({
 			typePolicies: {
 				Query: {
 					fields: {
-						posts: {
-							keyArgs: false,
-							// Define how to use args.{where,take,...} to return flexible views of the existing data:
-							read(existing, { args }) {
-								// console.log('existing', existing);
-								console.log('args', args);
-								// Note: existing is whatever merge returns, and may be undefined if no data has been written yet.
-								return existing;
-							},
-							merge(existing, incoming, { args }) {
-								// console.log('existing', existing);
-								// console.log('incoming', incoming);
-								console.log('args', args);
-								if (existing != null && incoming == existing) {
-									return existing;
-								}
-								return incoming;
-							}
-						},
-						testimonials: {
-							keyArgs: false,
-							// Define how to use args.{where,take,...} to return flexible views of the existing data:
-							read(existing, { args }) {
-								// console.log('existing', existing);
-								console.log('args', args);
-								// Note: existing is whatever merge returns, and may be undefined if no data has been written yet.
-								return existing;
-							},
-							merge(existing, incoming, { args }) {
-								// console.log('existing', existing);
-								// console.log('incoming', incoming);
-								console.log('args', args);
-								if (existing != null && incoming == existing) {
-									return existing;
-								}
-								return incoming;
-							}
-						},
-						pages: {
-							keyArgs: false,
-							// Define how to use args.{where,take,...} to return flexible views of the existing data:
-							read(existing, { args }) {
-								// console.log('existing', existing);
-								console.log('args', args);
-								// Note: existing is whatever merge returns, and may be undefined if no data has been written yet.
-								return existing;
-							},
-							merge(existing, incoming, { args }) {
-								// console.log('existing', existing);
-								// console.log('incoming', incoming);
-								console.log('args', args);
-								if (existing != null && incoming == existing) {
-									return existing;
-								}
-								return incoming;
-							}
-						},
-						consultants: {
-							keyArgs: false,
-							// Define how to use args.{where,take,...} to return flexible views of the existing data:
-							read(existing, { args }) {
-								// console.log('existing', existing);
-								console.log('args', args);
-								// Note: existing is whatever merge returns, and may be undefined if no data has been written yet.
-								return existing;
-							},
-							merge(existing, incoming, { args }) {
-								// console.log('existing', existing);
-								// console.log('incoming', incoming);
-								console.log('args', args);
-								if (existing != null && incoming == existing) {
-									return existing;
-								}
-								return incoming;
-							}
-						},
+						allTestimonials: offsetLimitPaginatedField<AllTestimonials>(),
+						getPages: offsetLimitPaginatedField<GetPages>()
 						// https://github.com/apollographql/apollo-client/issues/6734
-						allPostsFields: concatPagination()
+						// https://www.apollographql.com/docs/link/links/http/
 					}
 				}
 			}
-			// addTypename: true,
-			// resultCaching: true
 		})
 	});
 }
@@ -135,10 +52,10 @@ export function initializeApollo(initialState: any = null) {
 		// Get existing cache, loaded during client side data fetching
 		const existingCache = _apolloClient.extract();
 		// Merge the existing cache into data passed from getStaticProps/getServerSideProps
-		// const data = { ...existingCache, ...initialState };
+		const data = { ...existingCache, ...initialState };
 		// const data = deepmerge(initialState, existingCache, { clone: false });
 		// Restore the cache with the merged data
-		_apolloClient.cache.restore({ ...existingCache, ...initialState });
+		_apolloClient.cache.restore(data);
 	}
 	// for SSG and SSR ALWAYS create a new Apollo Client
 	if (typeof window === 'undefined') return _apolloClient;
@@ -161,10 +78,6 @@ export function useApollo(pageProps: any) {
 	return store;
 }
 
-// export function useApollo(initialState: any) {
-// 	const store = useMemo(() => initializeApollo(initialState), [initialState]);
-// 	return store;
-// }
 // https://nextjs-graphql-with-prisma-simple.vercel.app/api?
 // https://github.com/vercel/next.js/blob/canary/examples/with-apollo/lib/apolloClient.js
 // https://www.apollographql.com/docs/react/development-testing/static-typing/
@@ -172,3 +85,48 @@ export function useApollo(pageProps: any) {
 // https://www.apollographql.com/docs/react/caching/cache-configuration/
 // https://www.apollographql.com/docs/react/caching/cache-configuration/#typepolicy-fields
 // https://www.apollographql.com/blog/local-state-management-with-reactive-variables/
+// posts: {
+// 	// Define how to use args.{where,take,...} to return flexible views of the existing data:
+// 	read(existing, { args }) {
+// 		console.log('existing', existing);
+// 		console.log('args', args);
+// 		// Note: existing is whatever merge returns, and may be undefined if no data has been written yet.
+// 		return existing;
+// 	},
+// 	merge(existing, incoming, { args }) {
+// 		console.log('existing', existing);
+// 		console.log('incoming', incoming);
+// 		console.log('args', args);
+// 		if (existing != null && incoming == existing) {
+// 			return existing;
+// 		}
+// 		return incoming;
+// 	}
+// },
+// const links = [httpLink, retryLink];
+// console.log(errorLink);
+// const retryIf = (error: ServerError) => {
+// 	const doNotRetryCodes = [500, 400];
+// 	return !!error && !doNotRetryCodes.includes(error.statusCode);
+// };
+
+// const retryLink = new RetryLink({
+// 	delay: {
+// 		initial: 100,
+// 		max: 2000,
+// 		jitter: true
+// 	},
+// 	attempts: {
+// 		max: 5,
+// 		retryIf
+// 	}
+// });
+
+// const errorLink = onError(({ graphQLErrors, networkError }: ErrorResponse) => {
+// 	if (graphQLErrors) {
+// 		graphQLErrors.map(({ message }) => console.log(`GraphQL Error: ${message}`));
+// 	}
+// 	if (networkError) {
+// 		console.log(`Network Error: ${networkError.message}`);
+// 	}
+// });
