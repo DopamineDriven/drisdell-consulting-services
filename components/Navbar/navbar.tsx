@@ -113,7 +113,7 @@ const Navbar: FC<NavbarProps> = ({ root, navLinksDesktop, navLinksMobile }) => {
 											<Link href='/' passHref scroll={true}>
 												<a className='#logo'>
 													<OgLogo
-														className={cn(css.svg, '', {
+														className={cn(css.svg, 'cursor-default focus:outline-none', {
 															'w-40 h-40': !hasScrolled,
 															'w-20 h-20': hasScrolled
 														})}
