@@ -6,7 +6,7 @@ import Document, {
 	DocumentContext
 } from 'next/document';
 import { GA_TRACKING_ID } from '@lib/google-analytics';
-
+import { mediaStyles } from '@lib/artsy-fresnel';
 class MyDocument extends Document {
 	static async getInitialProps(ctx: DocumentContext) {
 		const initialProps = await Document.getInitialProps(ctx);
@@ -18,18 +18,18 @@ class MyDocument extends Document {
 	 * @returns
 	 */
 	render() {
-		const isDev = process.env.NODE_ENV === 'development';
+		// const isDev = process.env.NODE_ENV === 'development';
 		return (
 			<Html>
-				{!isDev ? (
-					<Head>
-						<script
-							async
-							src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
-						/>
-						<script
-							dangerouslySetInnerHTML={{
-								__html: `
+				<Head>
+					<style type='text/css' dangerouslySetInnerHTML={{ __html: mediaStyles }} />
+					<script
+						async
+						src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+					/>
+					<script
+						dangerouslySetInnerHTML={{
+							__html: `
 		window.dataLayer = window.dataLayer || [];
 		function gtag(){dataLayer.push(arguments);}
 		gtag('js', new Date());
@@ -38,21 +38,9 @@ class MyDocument extends Document {
 			page_path: window.location.pathname,
 		});
 	`
-							}}
-						/>
-						<script
-							src={`https://cdn.tiny.cloud/1/${process.env.TinyMCE_API_KEY}/tinymce/5/tinymce.min.js`}
-							referrerPolicy='origin'
-						/>
-					</Head>
-				) : (
-					<Head>
-						<script
-							src={`https://cdn.tiny.cloud/1/${process.env.TinyMCE_API_KEY}/tinymce/5/tinymce.min.js`}
-							referrerPolicy='origin'
-						/>
-					</Head>
-				)}
+						}}
+					/>
+				</Head>
 				<body className='loading'>
 					<Main />
 					{/* {isDev && <NextScript />} */}
