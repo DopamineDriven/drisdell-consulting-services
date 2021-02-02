@@ -49,18 +49,14 @@ const NavLinksHeadless: FC<NavLinkProps> = props => {
 						aria-expanded={true}
 						type='button'
 						className={cn(
-							'bg-primary-0 rounded-full flex items-center lg:mx-auto lg:px-0 lg:py-0 my-auto text-primary-9 focus:outline-none transition-transform transform ease-in-out duration-200',
+							'bg-primary-9 rounded-full flex ml-4 lg:ml-0 items-center lg:mx-auto-0 md:py-0 my-auto text-primary-0 transition-transform transform-gpu ease-in-out duration-200 outline-none focus:outline-none translate-x-0',
 							{
-								'-rotate-90 ': !isOpen,
-								'rotate-0 ': isOpen
-							},
-							{
-								'ring-primary-9 ring-1 ': isOpen,
-								'ring-primary-0 ring-0 ': !isOpen
+								'lg:-translate-x-4 ring-primary-0 ring-1 rotate-0 ': isOpen,
+								'lg:-translate-x-5 ring-primary-9 ring-0 -rotate-90 ': !isOpen
 							}
 						)}
 					>
-						<DownArrow className='select-none lg:w-5 lg:h-5 w-10 h-10' />
+						<DownArrow className='select-none lg:w-5 lg:h-5 w-8 h-8' />
 					</button>
 
 					<Transition
@@ -81,7 +77,7 @@ const NavLinksHeadless: FC<NavLinkProps> = props => {
 									aria-orientation='vertical'
 									aria-labelledby='sub-menu'
 								>
-									<div className='relative grid lg:gap-3 px-5 lg:py-6 bg-primary-0 sm:gap-8 sm:p-8 text-primary-9'>
+									<div className='relative grid lg:gap-3 px-5 lg:py-6 bg-primary-9 sm:gap-8 sm:p-8 text-primary-0'>
 										{childItems!.edges!.map(subPage => {
 											return subPage !== null &&
 												subPage.node !== null &&
@@ -97,7 +93,7 @@ const NavLinksHeadless: FC<NavLinkProps> = props => {
 												>
 													<a
 														id={`#${subPage.node.parentId}`}
-														className='lg:-m-3 -m-1 p-3 flex items-start rounded-md hover:bg-primary-2'
+														className='lg:-m-3 -m-1 p-3 flex items-start rounded-md hover:bg-primary-8'
 													>
 														<p className='text-base font-medium'>{subPage.node.label}</p>
 													</a>

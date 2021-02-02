@@ -37,7 +37,7 @@ const LandingPageData: FC<LandingPageDataProps> = ({
 				viewBox='0 0 1928 446'
 				fill='none'
 				className={cn(
-					'lg:align-bottom lg:absolute lg:bottom-25 lg:left-0 lg:right-0 lg:top-0 lg:min-h-full lg:z-50 lg:h-screen'
+					'lg:align-bottom lg:absolute lg:bottom-25 xl:bottom-15 lg:left-0 lg:right-0 lg:top-0 lg:min-h-full lg:z-50 lg:h-screen mx-auto'
 				)}
 				xmlns='http://www.w3.org/2000/svg'
 				style={{ backgroundBlendMode: 'overlay' }}
@@ -71,12 +71,24 @@ const LandingPageData: FC<LandingPageDataProps> = ({
 			<ReactMarkdown
 				children={contentDynamic}
 				allowDangerousHtml={true}
-				className='mt-6 max-w-lg mx-auto text-center text-xl text-indigo-100 sm:max-w-3xl font-somaRoman'
+				className='mt-6 max-w-lg mx-auto text-center text-lg md:text-xl text-indigo-100 sm:max-w-3xl font-somaRoman'
+			/>
+		</Media>
+	);
+
+	const mobileContent = (
+		<Media lessThan='sm'>
+			<ReactMarkdown
+				children={contentDynamic}
+				allowDangerousHtml={true}
+				className='mt-6 max-w-lg mx-auto prose-lg text-indigo-100 sm:max-w-3xl font-somaRoman'
 			/>
 		</Media>
 	);
 	return (
-		<main className={cn(root, 'z-50 fit select-none h-screen')}>
+		<main
+			className={cn(root, 'z-50 fit select-none h-screen mb-64 md:mb-8 lg:mb-0')}
+		>
 			<div className='relative'>
 				<div className='absolute inset-x-0 bottom-0 h-full bg-primary-0'>
 					<div className='mx-auto'>
@@ -101,7 +113,7 @@ const LandingPageData: FC<LandingPageDataProps> = ({
 								{mobile}
 								{desktop}
 							</div>
-							<div className='relative px-4 py-16 sm:px-6 sm:pt-24 lg:py-8 lg:px-8'>
+							<div className='relative px-4 py-16 sm:px-6 sm:pt-16 lg:py-8 lg:px-8'>
 								<h1 className='text-center text-4xl tracking-tight sm:text-5xl lg:text-6xl'>
 									<ReactMarkdown
 										className='sr-only'
@@ -115,21 +127,17 @@ const LandingPageData: FC<LandingPageDataProps> = ({
 										<em>Radiant</em>?
 									</span> */}
 								</h1>
-								<ReactMarkdown
-									children={contentDynamic}
-									allowDangerousHtml={true}
-									className='mt-6 max-w-lg mx-auto text-center text-xl text-indigo-100 sm:max-w-3xl font-somaRoman'
-								/>
+								{mobileContent}
 								{desktopContent}
 								<div className='mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center z-50'>
 									<div className='space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5'>
 										<Link href={'/about-us'} as='/about-us' passHref>
-											<a className='flex items-center justify-center px-4 py-3 border border-transparent text-lg font-semibold rounded-md shadow-sm text-primary-0 bg-white hover:bg-indigo-50 sm:px-8 z-50'>
+											<a className='flex items-center justify-center px-4 py-3 border border-transparent text-lg font-semibold rounded-full shadow-sm text-primary-9 bg-transparent ring-2 ring-white ring-inset hover:bg-primary-9 hover:text-primary-0 hover:opacity-75 sm:px-8 z-50 transition-colors duration-150'>
 												About Us
 											</a>
 										</Link>
 										<Link href={'/contact-us'} as='/contact-us' passHref>
-											<a className='flex items-center justify-center px-4 py-3 border border-transparent text-lg font-semibold rounded-md shadow-sm text-primary-0 bg-white hover:bg-indigo-50 sm:px-8 z-50'>
+											<a className='flex items-center justify-center px-4 py-3 border border-transparent text-lg font-semibold rounded-full shadow-sm text-primary-9 bg-transparent ring-2 ring-white ring-inset hover:bg-primary-9 hover:text-primary-0 hover:opacity-75 sm:px-8 z-50 transition-colors duration-150'>
 												Contact Us
 											</a>
 										</Link>

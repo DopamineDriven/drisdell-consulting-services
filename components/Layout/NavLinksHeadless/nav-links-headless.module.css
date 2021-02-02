@@ -1,10 +1,7 @@
 .link {
-	@apply px-2 py-2 rounded-md text-base text-primary-1 font-semibold;
+	@apply px-2 py-2 rounded-md text-lg text-primary-1 font-semibold;
 	&:hover {
-		@apply text-primary-3;
-	}
-	@screen lg {
-		@apply text-lg;
+		@apply text-primary-2;
 	}
 	@screen xl {
 		@apply text-xl tracking-tight;

@@ -154,7 +154,7 @@ const Navbar: FC<NavbarProps> = ({ root, navLinksDesktop, navLinksMobile }) => {
 					</div>
 				</div>
 				<div
-					className={cn('lg:hidden primary-8', {
+					className={cn('lg:hidden text-primary-0', {
 						block: !menuOpen,
 						hidden: menuOpen
 					})}
