@@ -85,6 +85,10 @@ const LandingPageData: FC<LandingPageDataProps> = ({
 			/>
 		</Media>
 	);
+
+	// const myLoader = ({ src, width, quality }: ImageLoaderProps) => {
+	// 	return `https://drisdell-headless.com/$`;
+	// };
 	return (
 		<main
 			className={cn(root, 'z-50 fit select-none h-screen mb-64 md:mb-8 lg:mb-0')}

@@ -113,20 +113,14 @@ export async function getStaticProps(
 		query: GET_PAGE,
 		variables: GetPageQueryVars
 	});
-	const pageDynamic = data && data.page !== null ? data.page : {};
-	const pathDynamic =
-		data && data.page !== null && data.page.uri !== null ? data.page.uri : '';
-	const slugDynamic =
-		data && data.page !== null && data.page.slug !== null ? data.page.slug : '';
-
-	console.log('contentDynamic: ', pageDynamic);
-	console.log('pathDynamic: ', pathDynamic);
-	console.log('slugDynamic: ', slugDynamic);
+	// const pageDynamic = data && data.page !== null ? data.page : {};
+	// const pathDynamic =
+	// 	data && data.page !== null && data.page.uri !== null ? data.page.uri : '';
 
 	return addApolloState(apolloClient, {
 		props: {
-			page: pageDynamic ?? {},
-			path: pathDynamic ?? params.slug
+			page: data.page! ?? {},
+			path: data.page!.uri ?? params.slug
 		},
 		revalidate: 10
 	});

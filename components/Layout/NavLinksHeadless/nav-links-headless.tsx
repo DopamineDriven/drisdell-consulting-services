@@ -16,8 +16,6 @@ const NavLinksHeadless: FC<NavLinkProps> = props => {
 	const [isOpen, setIsOpen] = useState(false);
 	const { root, path, label, childItems } = props;
 	const { pathname } = useRouter();
-	console.log(path);
-	console.log(getSlug(path));
 	const childItemsCheck =
 		childItems !== null &&
 		childItems.edges !== null &&
