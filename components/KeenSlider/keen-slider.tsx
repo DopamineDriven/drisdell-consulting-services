@@ -44,10 +44,11 @@ const KeenSlider: FC = ({ children }) => {
 		sliderContainerRef.current!.addEventListener('touchstart', preventNavigation);
 
 		return () => {
-			sliderContainerRef.current!.removeEventListener(
-				'touchstart',
-				preventNavigation
-			);
+			if (sliderContainerRef.current !== null)
+				sliderContainerRef.current.removeEventListener(
+					'touchstart',
+					preventNavigation
+				);
 		};
 	}, []);
 

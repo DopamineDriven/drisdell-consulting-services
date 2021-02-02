@@ -4,6 +4,9 @@ import { LandingCoalesced_landingPage_edges_node as LandingPageDataGenerated } f
 import Link from 'next/link';
 import Image from 'next/image';
 import ReactMarkdown from 'react-markdown/with-html';
+// import css from './landing-data.module.css';
+import toPixels from '@lib/to-pixels';
+import { Media } from '@lib/artsy-fresnel';
 
 interface LandingPageDataProps extends LandingPageDataGenerated {
 	root?: string;
@@ -25,32 +28,78 @@ const LandingPageData: FC<LandingPageDataProps> = ({
 		featuredImage.node.sourceUrl !== null
 			? featuredImage.node.sourceUrl
 			: '/lighthouse.webp';
+
+	const desktop = (
+		<Media greaterThanOrEqual='sm'>
+			<svg
+				width='1928'
+				height='446'
+				viewBox='0 0 1928 446'
+				fill='none'
+				className={cn(
+					'lg:align-bottom lg:absolute lg:bottom-25 lg:left-0 lg:right-0 lg:top-0 lg:min-h-full lg:z-50 lg:h-screen'
+				)}
+				xmlns='http://www.w3.org/2000/svg'
+				style={{ backgroundBlendMode: 'overlay' }}
+			>
+				<path
+					fillRule='evenodd'
+					clipRule='evenodd'
+					d='M0 357.735V387.635L542.885 286.819L0 357.735ZM193 275.5L185.885 276.822L196 275.5H193ZM0 301.1V311.337L185.885 276.819L0 301.1ZM550 285.5L542.885 286.821L553 285.5H550ZM1656.19 138.444L0 446H1928V198.485L984 289.5L1656.19 138.444ZM1390.97 98.3L1928 28.145V0L1390.97 98.3ZM1928 74.6V51.49L1619.96 108.69L1928 74.6Z'
+					fill='white'
+					className='lg:inset-0 lg:align-bottom'
+				/>
+			</svg>
+			<div
+				className='absolute inset-0 bg-gradient-to-r from-white to-purple-300'
+				style={{ mixBlendMode: 'multiply' }}
+			></div>
+		</Media>
+	);
+
+	const mobile = (
+		<Media lessThan='sm'>
+			<div
+				className='absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400'
+				style={{ mixBlendMode: 'multiply' }}
+			></div>
+		</Media>
+	);
+
+	const desktopContent = (
+		<Media greaterThanOrEqual='sm'>
+			<ReactMarkdown
+				children={contentDynamic}
+				allowDangerousHtml={true}
+				className='mt-6 max-w-lg mx-auto text-center text-xl text-indigo-100 sm:max-w-3xl font-somaRoman'
+			/>
+		</Media>
+	);
 	return (
-		<main className={cn(root, 'z-50 fit')}>
+		<main className={cn(root, 'z-50 fit select-none h-screen')}>
 			<div className='relative'>
 				<div className='absolute inset-x-0 bottom-0 h-full bg-primary-0'>
-					<div className='max-w-8xl mx-auto sm:px-6 lg:px-8 lg:py-8 sm:py-6'>
-						<div className='relative shadow-xl sm:rounded-2xl sm:overflow-hidden'>
-							<div className='absolute inset-0'>
+					<div className='mx-auto'>
+						<div className='relative  sm:overflow-hidden'>
+							<div className='sm:absolute sm:inset-0'>
 								<Link href={slugDynamic} as={`/`} passHref scroll={false}>
-									<a className='cursor-default h-full w-full object-cover'>
+									<a className='cursor-default h-screen w-full object-cover'>
 										<Image
 											src={featuredImageDynamic}
 											title='drisdell consulting services'
 											alt='drisdell consulting services'
-											width={2200}
-											height={1400}
+											width={toPixels(1880)}
+											height={toPixels(1400)}
 											quality={80}
 											layout='responsive'
+											objectFit={'cover'}
 											priority
 											className='h-full w-full object-cover'
 										/>
-										<div
-											className='absolute inset-0 bg-gradient-to-r from-primary-2 to-rojo-0 opacity-50'
-											style={{ mixBlendMode: 'multiply' }}
-										></div>
 									</a>
 								</Link>
+								{mobile}
+								{desktop}
 							</div>
 							<div className='relative px-4 py-16 sm:px-6 sm:pt-24 lg:py-8 lg:px-8'>
 								<h1 className='text-center text-4xl tracking-tight sm:text-5xl lg:text-6xl'>
@@ -59,7 +108,7 @@ const LandingPageData: FC<LandingPageDataProps> = ({
 										children={titleDynamic}
 										allowDangerousHtml={true}
 									/>
-									<span className='block tracking-wide text-primary-9 font-bold py-2'>
+									<span className='block tracking-wide text-primary-9 font-bold py-2 font-poppins'>
 										Drisdell Consulting Services
 									</span>
 									{/* <span className='tracking-wider block text-primary-9 font-extrabold py-2'>
@@ -69,17 +118,18 @@ const LandingPageData: FC<LandingPageDataProps> = ({
 								<ReactMarkdown
 									children={contentDynamic}
 									allowDangerousHtml={true}
-									className='mt-6 max-w-lg mx-auto text-center text-xl text-indigo-200 sm:max-w-3xl'
+									className='mt-6 max-w-lg mx-auto text-center text-xl text-indigo-100 sm:max-w-3xl font-somaRoman'
 								/>
-								<div className='mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center'>
+								{desktopContent}
+								<div className='mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center z-50'>
 									<div className='space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5'>
 										<Link href={'/about-us'} as='/about-us' passHref>
-											<a className='flex items-center justify-center px-4 py-3 border border-transparent text-lg font-semibold rounded-md shadow-sm text-rojo-100 bg-primary-9 hover:bg-indigo-50 sm:px-8'>
+											<a className='flex items-center justify-center px-4 py-3 border border-transparent text-lg font-semibold rounded-md shadow-sm text-primary-0 bg-white hover:bg-indigo-50 sm:px-8 z-50'>
 												About Us
 											</a>
 										</Link>
 										<Link href={'/contact-us'} as='/contact-us' passHref>
-											<a className='flex items-center justify-center px-4 py-3 border border-transparent text-lg font-semibold rounded-md shadow-sm text-rojo-100 bg-white hover:bg-indigo-50 sm:px-8'>
+											<a className='flex items-center justify-center px-4 py-3 border border-transparent text-lg font-semibold rounded-md shadow-sm text-primary-0 bg-white hover:bg-indigo-50 sm:px-8 z-50'>
 												Contact Us
 											</a>
 										</Link>
