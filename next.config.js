@@ -8,35 +8,41 @@ const withImages = {
 		domains: [
 			'd2f904nk7e5fig.cloudfront.net',
 			'drisdell-headless.com',
+			'www.drisdell-headless.com',
 			'drisdell.com',
 			'secure.gravatar.com'
 		]
 	}
 };
-// https://nextjs.org/docs/api-reference/next.config.js/headers
-const withMDX = require('@next/mdx')({
-	extension: /\.mdx?$/
-});
-const webpackBundle = {
-	webpack: (config, options) => {
+
+const withWebpackMods = {
+	webpack(
+		config,
+		{
+			isDev = process.env.NODE_ENV === 'development',
+			isServer = typeof window === 'undefined'
+		}
+	) {
+		if (isServer) {
+			require('./scripts/generate-sitemap');
+		}
+		if (!isDev && !isServer) {
+			Object.assign((config.resolve.alias['@'] = path.resolve('./')), {
+				react: 'preact/compat',
+				'react-dom': 'preact/compat'
+			});
+		}
 		config.module.rules.push({
 			test: /\.ya?ml$/,
 			type: 'json',
 			use: 'yaml-loader'
 		});
-		const isServer = typeof window === 'undefined';
-		if (isServer) {
-			config.resolve.alias['@'] = path.resolve('./');
-		}
 
-		return config;
-	},
-	webpackDevMiddleware: config => {
 		return config;
 	}
 };
 
-const redirects = {
+const withRedirects = {
 	async redirects() {
 		return [
 			{
@@ -62,12 +68,11 @@ module.exports = withPlugins([
 	[
 		withBundleAnalyzer({
 			enabled: process.env.ANALYZE === true
-		}),
-		withMDX({
-			pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx']
 		})
 	],
-	webpackBundle,
+	withWebpackMods,
 	withImages,
-	redirects
+	withRedirects
 ]);
+
+// https://nextjs.org/docs/api-reference/next.config.js/headers

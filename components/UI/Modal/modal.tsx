@@ -1,7 +1,7 @@
 import { FC, useRef, useEffect, useCallback } from 'react';
 import css from './modal.module.css';
 import Portal from '@reach/portal';
-import Cross from '../../Icons/cross';
+import { Cross } from '@components/Icons';
 import {
 	disableBodyScroll,
 	enableBodyScroll,
@@ -18,7 +18,7 @@ interface Props {
 
 // @ts-ignore no-unused-props
 const Modal: FC<Props> = ({ children, open, onClose, onEnter = null }) => {
-	const ref = useRef() as React.MutableRefObject<HTMLInputElement>;
+	const ref = useRef() as React.MutableRefObject<HTMLDivElement>;
 
 	const handleKey = useCallback(
 		(e: KeyboardEvent) => {
