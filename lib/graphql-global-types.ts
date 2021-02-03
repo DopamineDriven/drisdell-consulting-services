@@ -64,6 +64,16 @@ export enum PageIdType {
 /**
  * The Type of Identifier used to fetch a single resource. Default is ID.
  */
+export enum PositionIdType {
+	DATABASE_ID = 'DATABASE_ID',
+	ID = 'ID',
+	SLUG = 'SLUG',
+	URI = 'URI'
+}
+
+/**
+ * The Type of Identifier used to fetch a single resource. Default is ID.
+ */
 export enum PostIdType {
 	DATABASE_ID = 'DATABASE_ID',
 	ID = 'ID',
