@@ -2,11 +2,10 @@ import cn from 'classnames';
 import { FC } from 'react';
 import { LandingCoalesced_landingPage_edges_node as LandingPageDataGenerated } from '@lib/graphql/LandingCoalesced/__generated__/LandingCoalesced';
 import Link from 'next/link';
-import Image from 'next/image';
 import ReactMarkdown from 'react-markdown/with-html';
 // import css from './landing-data.module.css';
-import toPixels from '@lib/to-pixels';
 import { Media } from '@lib/artsy-fresnel';
+import Particles from 'react-tsparticles';
 
 interface LandingPageDataProps extends LandingPageDataGenerated {
 	root?: string;
@@ -28,7 +27,7 @@ const LandingPageData: FC<LandingPageDataProps> = ({
 		featuredImage.node.sourceUrl !== null
 			? featuredImage.node.sourceUrl
 			: '/lighthouse.webp';
-
+	console.log(featuredImageDynamic);
 	const desktop = (
 		<Media greaterThanOrEqual='sm'>
 			<svg
@@ -100,17 +99,86 @@ const LandingPageData: FC<LandingPageDataProps> = ({
 							<div className='sm:absolute sm:inset-0'>
 								<Link href={slugDynamic} as={`/`} passHref scroll={false}>
 									<a className='cursor-default h-screen w-full object-cover'>
-										<Image
-											src={featuredImageDynamic}
-											title='drisdell consulting services'
-											alt='drisdell consulting services'
-											width={toPixels(1880)}
-											height={toPixels(1400)}
-											quality={80}
-											layout='responsive'
-											objectFit={'cover'}
-											priority
-											className='h-full w-full object-cover'
+										<Particles
+											id='tsparticles'
+											options={{
+												background: {
+													color: {
+														value: '#0d47a1'
+													}
+												},
+												fpsLimit: 60,
+												interactivity: {
+													detectsOn: 'canvas',
+													events: {
+														onClick: {
+															enable: true,
+															mode: 'push'
+														},
+														onHover: {
+															enable: true,
+															mode: 'repulse'
+														},
+														resize: true
+													},
+													modes: {
+														bubble: {
+															distance: 400,
+															duration: 2,
+															opacity: 0.8,
+															size: 40
+														},
+														push: {
+															quantity: 4
+														},
+														repulse: {
+															distance: 200,
+															duration: 0.4
+														}
+													}
+												},
+												particles: {
+													color: {
+														value: '#ffffff'
+													},
+													links: {
+														color: '#ffffff',
+														distance: 150,
+														enable: true,
+														opacity: 0.5,
+														width: 1
+													},
+													collisions: {
+														enable: true
+													},
+													move: {
+														direction: 'none',
+														enable: true,
+														outMode: 'bounce',
+														random: false,
+														speed: 6,
+														straight: false
+													},
+													number: {
+														density: {
+															enable: true,
+															value_area: 800
+														},
+														value: 80
+													},
+													opacity: {
+														value: 0.5
+													},
+													shape: {
+														type: 'circle'
+													},
+													size: {
+														random: true,
+														value: 5
+													}
+												},
+												detectRetina: true
+											}}
 										/>
 									</a>
 								</Link>
@@ -223,6 +291,22 @@ const LandingPageData: FC<LandingPageDataProps> = ({
 export default LandingPageData;
 
 /*
+
+										<Image
+											src={featuredImageDynamic}
+											title='drisdell consulting services'
+											alt='drisdell consulting services'
+											width={toPixels(1880)}
+											height={toPixels(1400)}
+											quality={80}
+											layout='responsive'
+											objectFit={'cover'}
+											priority
+											className='h-full w-full object-cover'
+										/>
+
+
+
 	<div className='bg-primary-9'>
 					<div className='max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8'>
 						<p className='text-center text-base uppercase text-primary- tracking-wide font-bold'>
