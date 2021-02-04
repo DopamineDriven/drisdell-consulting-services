@@ -30,13 +30,13 @@ const LandingPageData: FC<LandingPageDataProps> = ({
 	console.log(featuredImageDynamic);
 	const desktop = (
 		<Media greaterThanOrEqual='sm'>
-			<svg
+			{/* <svg
 				width='1928'
 				height='446'
 				viewBox='0 0 1928 446'
 				fill='none'
 				className={cn(
-					'lg:align-bottom lg:absolute lg:bottom-25 xl:bottom-15 lg:left-0 lg:right-0 lg:top-0 lg:min-h-full lg:z-50 lg:h-screen mx-auto'
+					'lg:align-bottom lg:absolute lg:bottom-25 xl:bottom-15 lg:left-0 lg:right-0 lg:top-0  lg:z-50 lg:h-screen mx-auto'
 				)}
 				xmlns='http://www.w3.org/2000/svg'
 				style={{ backgroundBlendMode: 'overlay' }}
@@ -48,11 +48,11 @@ const LandingPageData: FC<LandingPageDataProps> = ({
 					fill='white'
 					className='lg:inset-0 lg:align-bottom'
 				/>
-			</svg>
-			<div
+			</svg> */}
+			{/* <div
 				className='absolute inset-0 bg-gradient-to-r from-white to-purple-300'
 				style={{ mixBlendMode: 'multiply' }}
-			></div>
+			></div> */}
 		</Media>
 	);
 

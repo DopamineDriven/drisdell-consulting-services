@@ -39,11 +39,11 @@ const Navbar: FC<NavbarProps> = ({ root, navLinksDesktop, navLinksMobile }) => {
 					className={cn(
 						css.stickyNav,
 						{ 'shadow-magical': hasScrolled },
-						'max-w-full mx-auto px-4 sm:px-6 lg:px-8 font-poppins text-primary-1'
+						'max-w-full mx-auto px-4 sm:px-6 lg:px-8 font-poppins text-primary-1 transform-gpu duration-200 ease-in-out transition-all'
 					)}
 				>
 					<div
-						className={cn('flex justify-between ', {
+						className={cn('flex justify-between ', css.stickyNav, {
 							'h-48': !hasScrolled,
 							'h-24': hasScrolled
 						})}
