@@ -104,7 +104,7 @@ const LandingPageData: FC<LandingPageDataProps> = ({
 											options={{
 												background: {
 													color: {
-														value: '#0d47a1'
+														value: '#102a43'
 													}
 												},
 												fpsLimit: 60,

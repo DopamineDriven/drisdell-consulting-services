@@ -9,6 +9,23 @@ import { PositionIdType } from './../../../graphql-global-types';
 // GraphQL query operation: PositionBySlug
 // ====================================================
 
+export interface PositionBySlug_positionBySlug_positionDetails {
+	__typename: 'Position_Positiondetails';
+	dateclosing: string | null;
+	/**
+	 * Title of open position
+	 */
+	jobtitle: string | null;
+	/**
+	 * Full-time, part-time. contract, temporary
+	 */
+	positiontype: string | null;
+	/**
+	 * remote, in-person, mixed
+	 */
+	remotestatus: string | null;
+}
+
 export interface PositionBySlug_positionBySlug_featuredImage_node {
 	__typename: 'MediaItem';
 	/**
@@ -51,6 +68,7 @@ export interface PositionBySlug_positionBySlug {
 	 * The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table.
 	 */
 	slug: string | null;
+	positionDetails: PositionBySlug_positionBySlug_positionDetails | null;
 	/**
 	 * Connection between the NodeWithFeaturedImage type and the MediaItem type
 	 */

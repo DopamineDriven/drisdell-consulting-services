@@ -1,0 +1,6 @@
+.root {
+	@apply bg-primary-9 px-4 py-5 border-b border-accents-7;
+	@screen sm {
+		@apply px-6;
+	}
+}

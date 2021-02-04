@@ -5315,6 +5315,9 @@ type Position implements Node & ContentNode & DatabaseIdentifier & NodeWithTempl
 	# URLs that have been pinged.
 	pinged: [String]
 
+	#
+	positionDetails: Position_Positiondetails
+
 	# The id field matches the WP_Post-&gt;ID field.
 	positionId: Int!
 		@deprecated(reason: "Deprecated in favor of the databaseId field")
@@ -5584,6 +5587,24 @@ type PositionToCommentConnectionEdge {
 
 	# The item at the end of the edge
 	node: Comment
+}
+
+# Field Group
+type Position_Positiondetails {
+	#
+	dateclosing: String
+
+	#
+	fieldGroupName: String
+
+	# Title of open position
+	jobtitle: String
+
+	# Full-time, part-time. contract, temporary
+	positiontype: String
+
+	# remote, in-person, mixed
+	remotestatus: String
 }
 
 # Arguments for filtering the PositionToPostFormatConnection connection

@@ -12,6 +12,23 @@ import {
 // GraphQL query operation: Positions
 // ====================================================
 
+export interface Positions_positions_edges_node_positionDetails {
+	__typename: 'Position_Positiondetails';
+	dateclosing: string | null;
+	/**
+	 * Title of open position
+	 */
+	jobtitle: string | null;
+	/**
+	 * Full-time, part-time. contract, temporary
+	 */
+	positiontype: string | null;
+	/**
+	 * remote, in-person, mixed
+	 */
+	remotestatus: string | null;
+}
+
 export interface Positions_positions_edges_node_featuredImage_node {
 	__typename: 'MediaItem';
 	/**
@@ -54,6 +71,7 @@ export interface Positions_positions_edges_node {
 	 * The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table.
 	 */
 	slug: string | null;
+	positionDetails: Positions_positions_edges_node_positionDetails | null;
 	/**
 	 * Connection between the NodeWithFeaturedImage type and the MediaItem type
 	 */

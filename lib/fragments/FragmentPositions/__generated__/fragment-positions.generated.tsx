@@ -5,6 +5,12 @@ export type PositionFieldsFragment = { __typename?: 'Position' } & Pick<
 	Types.Position,
 	'content' | 'id' | 'title' | 'modified' | 'excerpt' | 'slug'
 > & {
+		positionDetails?: Types.Maybe<
+			{ __typename?: 'Position_Positiondetails' } & Pick<
+				Types.Position_Positiondetails,
+				'dateclosing' | 'jobtitle' | 'positiontype' | 'remotestatus'
+			>
+		>;
 		featuredImage?: Types.Maybe<
 			{ __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge' } & {
 				node?: Types.Maybe<
@@ -22,6 +28,12 @@ export const PositionFieldsFragmentDoc = gql`
 		modified
 		excerpt
 		slug
+		positionDetails {
+			dateclosing
+			jobtitle
+			positiontype
+			remotestatus
+		}
 		featuredImage {
 			node {
 				sourceUrl

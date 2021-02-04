@@ -8,6 +8,12 @@ const FRAGMENT_POSITIONS_FIELDS: TypedDocumentNode = gql`
 		modified
 		excerpt
 		slug
+		positionDetails {
+			dateclosing
+			jobtitle
+			positiontype
+			remotestatus
+		}
 		featuredImage {
 			node {
 				sourceUrl

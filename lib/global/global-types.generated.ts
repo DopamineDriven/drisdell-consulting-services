@@ -4185,6 +4185,7 @@ export type Position = Node &
 		pingStatus?: Maybe<Scalars['String']>;
 		/** URLs that have been pinged. */
 		pinged?: Maybe<Array<Maybe<Scalars['String']>>>;
+		positionDetails?: Maybe<Position_Positiondetails>;
 		/**
 		 * The id field matches the WP_Post-&gt;ID field.
 		 * @deprecated Deprecated in favor of the databaseId field
@@ -4430,6 +4431,19 @@ export type PositionToCommentConnectionEdge = {
 	cursor?: Maybe<Scalars['String']>;
 	/** The item at the end of the edge */
 	node?: Maybe<Comment>;
+};
+
+/** Field Group */
+export type Position_Positiondetails = {
+	__typename?: 'Position_Positiondetails';
+	dateclosing?: Maybe<Scalars['String']>;
+	fieldGroupName?: Maybe<Scalars['String']>;
+	/** Title of open position */
+	jobtitle?: Maybe<Scalars['String']>;
+	/** Full-time, part-time. contract, temporary */
+	positiontype?: Maybe<Scalars['String']>;
+	/** remote, in-person, mixed */
+	remotestatus?: Maybe<Scalars['String']>;
 };
 
 /** Arguments for filtering the PositionToPostFormatConnection connection */

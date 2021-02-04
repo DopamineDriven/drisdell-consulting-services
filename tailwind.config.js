@@ -3,11 +3,6 @@ const plugin = require('tailwindcss/plugin');
 
 module.exports = {
 	important: true,
-	future: {
-		removeDeprecatedGapUtilities: true,
-		purgeLayersByDefault: true,
-		applyComplexClasses: true
-	},
 	purge: {
 		content: [
 			'./components/**/*.{js,ts,jsx,tsx}',
@@ -473,7 +468,6 @@ module.exports = {
 		transitionDuration: ['responsive', 'hover', 'group-hover']
 	},
 	plugins: [
-		require('tailwindcss-gradients'),
 		require('@tailwindcss/typography'),
 		require('@tailwindcss/ui'),
 		require('@tailwindui/react'),
