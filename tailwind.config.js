@@ -278,7 +278,8 @@ module.exports = {
 				28: '7rem',
 				44: '11rem',
 				82: '20.5rem',
-				100: '25rem'
+				100: '25rem',
+				150: '150vh'
 			},
 			boxShadow: {
 				'outline-2': '0 0 0 2px var(--accents-0)',

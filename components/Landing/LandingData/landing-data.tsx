@@ -6,6 +6,7 @@ import ReactMarkdown from 'react-markdown/with-html';
 // import css from './landing-data.module.css';
 import { Media } from '@lib/artsy-fresnel';
 import Particles from 'react-tsparticles';
+import Container from '@components/UI/Container';
 
 interface LandingPageDataProps extends LandingPageDataGenerated {
 	root?: string;
@@ -27,9 +28,9 @@ const LandingPageData: FC<LandingPageDataProps> = ({
 			// Size of the touch area
 			const touchXRadius = event.touches[0].radiusX || 0;
 
-			// We set a threshold (10px) on both sizes of the screen,
+			// set a threshold (10px) on both sizes of the screen,
 			// if the touch area overlaps with the screen edges
-			// it's likely to trigger the navigation. We prevent the
+			// it's likely to trigger navigation. Prevent the
 			// touchstart event in that case.
 			if (
 				touchXPosition - touchXRadius < 10 ||
@@ -94,7 +95,7 @@ const LandingPageData: FC<LandingPageDataProps> = ({
 	const mobile = (
 		<Media lessThan='sm'>
 			<div
-				className='absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400'
+				className='absolute inset-0 bg-gradient-to-r from-transparent to-transparent'
 				style={{ mixBlendMode: 'multiply' }}
 			></div>
 		</Media>
@@ -127,11 +128,11 @@ const LandingPageData: FC<LandingPageDataProps> = ({
 				<div className='absolute inset-x-0 bottom-0 h-full bg-primary-0'>
 					<div className='mx-auto'>
 						<div className='relative  sm:overflow-hidden'>
-							<div className='sm:absolute sm:inset-0' ref={particlesConatinerRef}>
+							<div className='absolute inset-0' ref={particlesConatinerRef}>
 								{/* <Link href={slugDynamic} as={`/`} passHref scroll={false}>
 									<a className='cursor-default h-screen w-full object-cover'> */}
 								<Particles
-									className='cursor-default h-screen w-full object-cover'
+									className='cursor-default h-150 sm:h-screen w-full object-cover'
 									id='tsparticles'
 									options={{
 										background: {
@@ -217,14 +218,14 @@ const LandingPageData: FC<LandingPageDataProps> = ({
 								{mobile}
 								{desktop}
 							</div>
-							<div className='relative px-4 py-16 sm:px-6 sm:pt-16 lg:py-8 lg:px-8'>
-								<h1 className='text-center text-4xl tracking-tight sm:text-5xl lg:text-6xl'>
+							<Container className='relative px-4 py-16 sm:px-6 sm:pt-16 lg:py-8 lg:px-8 lg:max-w-6xl 3xl:max-w-7xl'>
+								<h1 className='text-center text-4xl tracking-tight sm:text-5xl lg:text-6xl w-auto'>
 									<ReactMarkdown
 										className='sr-only'
 										children={titleDynamic}
 										allowDangerousHtml={true}
 									/>
-									<span className='block tracking-wide text-primary-9 font-bold py-2 font-poppins'>
+									<span className='block tracking-wide text-primary-9 font-bold py-2 font-poppins w-auto'>
 										Drisdell Consulting Services
 									</span>
 									{/* <span className='tracking-wider block text-primary-9 font-extrabold py-2'>
@@ -247,7 +248,7 @@ const LandingPageData: FC<LandingPageDataProps> = ({
 										</Link>
 									</div>
 								</div>
-							</div>
+							</Container>
 							<div className='bg-primary-9'>
 								<div className='max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8'>
 									<h4 className='text-center text-base uppercase z-50 text-primary-9 tracking-wide font-bold'>

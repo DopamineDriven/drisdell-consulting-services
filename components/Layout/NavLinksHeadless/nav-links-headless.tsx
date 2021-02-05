@@ -14,7 +14,8 @@ export interface NavLinkProps extends NavRef {
 
 const NavLinksHeadless: FC<NavLinkProps> = props => {
 	const [isOpen, setIsOpen] = useState(false);
-	const getSubSubPathOpeningSlash = (path: string) => path.replace(/^\/|$/g, '');
+	const resolvePathConcatDoubleSlash = (path: string) =>
+		path.replace(/^\/|$/g, '');
 	const { root, path, label, childItems } = props;
 	const { pathname } = useRouter();
 	console.log(getSlug(path));
@@ -157,7 +158,7 @@ const NavLinksHeadless: FC<NavLinkProps> = props => {
 																		<Link
 																			href={
 																				subPage.node!.path +
-																				getSubSubPathOpeningSlash(subSubPage.node.path)
+																				resolvePathConcatDoubleSlash(subSubPage.node.path)
 																			}
 																			passHref
 																			key={subSubPage.node.id}
@@ -178,7 +179,7 @@ const NavLinksHeadless: FC<NavLinkProps> = props => {
 																			id={'#iderror'}
 																			className='-m-3 p-3 block rounded-md hover:primary-8'
 																		>
-																			<p className='text-base font-medium text-primary-1'>
+																			<p className='text-base font-medium text-primary-0'>
 																				{'error in subpage mapping'}
 																			</p>
 																		</a>

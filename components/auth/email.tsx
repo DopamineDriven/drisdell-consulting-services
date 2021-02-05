@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { Logo, LoadingSpinner } from '@components/UI';
+import { Logo, LoadingSpinner, Input } from '@components/UI';
 import { useState } from 'react';
 import { useUI } from '@components/context';
 // import fetch from 'isomorphic-unfetch';
@@ -258,7 +258,7 @@ const Email = () => {
 						<div className='text-red-700 border border-red-800 p-3'>{message}</div>
 					)}
 					{/* <label htmlFor={"email-input"}></label> */}
-					<InputSimplified
+					<Input
 						placeholder='First &amp; Last names'
 						required={true}
 						value={fullName}

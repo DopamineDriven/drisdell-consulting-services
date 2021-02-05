@@ -1,5 +1,5 @@
 .img {
-	@apply h-48 w-full object-cover min-h-full;
+	@apply h-48 w-full object-cover min-h-full transform-gpu transition-all;
 
 	&:hover {
 		@apply opacity-50;

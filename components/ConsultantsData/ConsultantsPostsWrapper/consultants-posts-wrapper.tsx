@@ -28,7 +28,7 @@ const ConsultantsPostsWrapper: FC<ConsultantsPostsWrapperProps> = props => {
 				<div
 					className={cn(
 						css.gridDiv,
-						'mt-12 max-w-lg mx-auto text-center grid gap-5 md:max-w-3xl md:grid-cols-1 lg:grid-cols-2 lg:max-w-none group-hover:opacity-75'
+						'mt-12 max-w-lg mx-auto text-center grid gap-5 md:max-w-3xl md:grid-cols-1 lg:grid-cols-2 lg:max-w-5xl group-hover:opacity-75'
 					)}
 				>
 					{children}

@@ -5,6 +5,7 @@ const FRAGMENT_POSITIONS_FIELDS: TypedDocumentNode = gql`
 		content
 		id
 		title
+		date
 		modified
 		excerpt
 		slug

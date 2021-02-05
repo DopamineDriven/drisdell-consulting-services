@@ -10,7 +10,7 @@ interface PositionsWrapperProps {
 
 const PositionsWrapper: FC<PositionsWrapperProps> = ({ children, root }) => {
 	return (
-		<Container className={cn(root, 'font-poppins py-10 mx-auto')}>
+		<Container className={cn(root, 'font-poppins py-10 mx-auto select-none')}>
 			<div className={cn(css.root)}>
 				<div className='-ml-4 -mt-4 flex justify-between items-center flex-wrap sm:flex-nowrap'>
 					<div className='ml-4 mt-4'>
