@@ -18,6 +18,13 @@ const HEADER_FOOTER: TypedDocumentNode = gql`
 							edges {
 								node {
 									...MenuFragment
+									childItems {
+										edges {
+											node {
+												...MenuFragment
+											}
+										}
+									}
 								}
 							}
 						}

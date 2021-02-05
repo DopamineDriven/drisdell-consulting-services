@@ -30,7 +30,23 @@ export type HeaderFooterQuery = { __typename?: 'RootQuery' } & {
 															Types.Maybe<
 																{ __typename?: 'MenuItemToMenuItemConnectionEdge' } & {
 																	node?: Types.Maybe<
-																		{ __typename?: 'MenuItem' } & MenuFragmentFragment
+																		{ __typename?: 'MenuItem' } & {
+																			childItems?: Types.Maybe<
+																				{ __typename?: 'MenuItemToMenuItemConnection' } & {
+																					edges?: Types.Maybe<
+																						Array<
+																							Types.Maybe<
+																								{ __typename?: 'MenuItemToMenuItemConnectionEdge' } & {
+																									node?: Types.Maybe<
+																										{ __typename?: 'MenuItem' } & MenuFragmentFragment
+																									>;
+																								}
+																							>
+																						>
+																					>;
+																				}
+																			>;
+																		} & MenuFragmentFragment
 																	>;
 																}
 															>
@@ -101,6 +117,13 @@ export const HeaderFooterDocument = gql`
 							edges {
 								node {
 									...MenuFragment
+									childItems {
+										edges {
+											node {
+												...MenuFragment
+											}
+										}
+									}
 								}
 							}
 						}
