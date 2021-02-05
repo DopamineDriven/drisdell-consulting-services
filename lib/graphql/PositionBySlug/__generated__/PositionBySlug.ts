@@ -57,6 +57,10 @@ export interface PositionBySlug_positionBySlug {
 	 */
 	title: string | null;
 	/**
+	 * Post publishing date.
+	 */
+	date: string | null;
+	/**
 	 * The local modified time for a post. If a post was recently updated the modified field will change to match the corresponding time.
 	 */
 	modified: string | null;

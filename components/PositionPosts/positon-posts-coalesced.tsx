@@ -79,6 +79,7 @@ const PositionPostsCoalesced = () => {
 			data.positionBySlug.title !== null ? (
 				<PositionParent
 					key={data.positionBySlug.id}
+					date={data.positionBySlug.date}
 					title={data.positionBySlug.title}
 					excerpt={data.positionBySlug.excerpt}
 					content={data.positionBySlug.content}
