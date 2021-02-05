@@ -4,7 +4,7 @@ import { FC } from 'react';
 import Link from 'next/link';
 // import { PositionFields_positionDetails } from '../../lib/fragments/FragmentPositions/__generated__/PositionFields';
 import css from './positions-data.module.css';
-import { parseISO, format } from 'date-fns';
+// import { parseISO, format } from 'date-fns';
 interface PositionsDataProps
 	extends SkillsAndPositions_positionsPreview_edges_node {
 	root?: string;
@@ -19,7 +19,7 @@ const PositionData: FC<PositionsDataProps> = ({
 		positionDetails !== null && positionDetails.dateclosing !== null
 			? positionDetails.dateclosing
 			: '';
-	const date: Date = parseISO(positionDateTime);
+	// const date: Date = parseISO(positionDateTime);
 	const slugDynamic = slug !== null ? slug : '';
 	console.log(positionDetails);
 	return (
@@ -88,10 +88,7 @@ const PositionData: FC<PositionsDataProps> = ({
 											/>
 										</svg>
 										<p>
-											Closing On
-											<time dateTime={positionDateTime}>
-												{format(date, 'LLLL	d, yyyy')}
-											</time>
+											<time dateTime={positionDateTime}>{positionDateTime}</time>
 										</p>
 									</div>
 								</div>

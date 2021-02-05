@@ -115,7 +115,7 @@ const SkillsAndPositionsPost = () => {
 							allowDangerousHtml={true}
 							className={cn(
 								css['tableMd'],
-								' pt-8 pb-16 prose-xl max-w-2xl sm:max-w-3xl md:max-w-5xl lg:max-w-6xl text-primary-0 text-left sm:text-justify content-center mx-auto flex-row'
+								' pt-8 pb-8 prose-xl max-w-2xl sm:max-w-3xl md:max-w-5xl lg:max-w-6xl text-primary-0 text-left sm:text-justify content-center mx-auto flex-row'
 							)}
 							children={data.consultantSlug.content}
 						/>
