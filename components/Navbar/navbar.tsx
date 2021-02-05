@@ -39,14 +39,18 @@ const Navbar: FC<NavbarProps> = ({ root, navLinksDesktop, navLinksMobile }) => {
 					className={cn(
 						css.stickyNav,
 						{ 'shadow-magical': hasScrolled },
-						'max-w-full mx-auto px-4 sm:px-6 lg:px-8 font-poppins text-primary-1 transform-gpu duration-200 ease-in-out transition-all'
+						'max-w-full mx-auto px-4 sm:px-6 lg:px-8 font-poppins text-primary-1 transform-gpu duration-500 ease-in-out transition-all'
 					)}
 				>
 					<div
-						className={cn('flex justify-between ', css.stickyNav, {
-							'h-48': !hasScrolled,
-							'h-24': hasScrolled
-						})}
+						className={cn(
+							'flex justify-between transform-gpu duration-500 ease-in-out transition-all',
+							css.stickyNav,
+							{
+								'h-48': !hasScrolled,
+								'h-24': hasScrolled
+							}
+						)}
 					>
 						<div className='flex'>
 							<div className='-ml-2 mr-2 flex items-center lg:hidden w-full min-w-full'>
@@ -113,10 +117,14 @@ const Navbar: FC<NavbarProps> = ({ root, navLinksDesktop, navLinksMobile }) => {
 											<Link href='/' passHref scroll={true}>
 												<a className='#logo'>
 													<OgLogo
-														className={cn(css.svg, 'cursor-default focus:outline-none', {
-															'w-40 h-40': !hasScrolled,
-															'w-20 h-20': hasScrolled
-														})}
+														className={cn(
+															css.svg,
+															'cursor-default focus:outline-none transition-all transform-gpu ease-in-out duration-500',
+															{
+																'w-40 h-40': !hasScrolled,
+																'w-20 h-20': hasScrolled
+															}
+														)}
 													/>
 												</a>
 											</Link>

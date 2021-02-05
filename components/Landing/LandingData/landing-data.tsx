@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { FC } from 'react';
+import { FC, useRef, useEffect } from 'react';
 import { LandingCoalesced_landingPage_edges_node as LandingPageDataGenerated } from '@lib/graphql/LandingCoalesced/__generated__/LandingCoalesced';
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown/with-html';
@@ -18,7 +18,42 @@ const LandingPageData: FC<LandingPageDataProps> = ({
 	title,
 	slug
 }) => {
+	const particlesConatinerRef = useRef<HTMLDivElement>(null);
+	// Stop the history navigation gesture on touch devices
+	useEffect(() => {
+		const preventNavigation = (event: TouchEvent) => {
+			// Center point of the touch area
+			const touchXPosition = event.touches[0].pageX;
+			// Size of the touch area
+			const touchXRadius = event.touches[0].radiusX || 0;
+
+			// We set a threshold (10px) on both sizes of the screen,
+			// if the touch area overlaps with the screen edges
+			// it's likely to trigger the navigation. We prevent the
+			// touchstart event in that case.
+			if (
+				touchXPosition - touchXRadius < 10 ||
+				touchXPosition + touchXRadius > window.innerWidth - 10
+			)
+				event.preventDefault();
+		};
+
+		particlesConatinerRef.current!.addEventListener(
+			'touchstart',
+			preventNavigation
+		);
+
+		return () => {
+			if (particlesConatinerRef.current !== null)
+				particlesConatinerRef.current.removeEventListener(
+					'touchstart',
+					preventNavigation
+				);
+		};
+	}, []);
+
 	const slugDynamic = slug !== null ? slug : '#';
+	console.log(slugDynamic);
 	const contentDynamic = content !== null ? content : 'No content to display';
 	const titleDynamic = title !== null ? title : 'Mark W Jacob Dental';
 	const featuredImageDynamic =
@@ -84,10 +119,6 @@ const LandingPageData: FC<LandingPageDataProps> = ({
 			/>
 		</Media>
 	);
-
-	// const myLoader = ({ src, width, quality }: ImageLoaderProps) => {
-	// 	return `https://drisdell-headless.com/$`;
-	// };
 	return (
 		<main
 			className={cn(root, 'z-50 fit select-none h-screen mb-64 md:mb-8 lg:mb-0')}
@@ -96,92 +127,93 @@ const LandingPageData: FC<LandingPageDataProps> = ({
 				<div className='absolute inset-x-0 bottom-0 h-full bg-primary-0'>
 					<div className='mx-auto'>
 						<div className='relative  sm:overflow-hidden'>
-							<div className='sm:absolute sm:inset-0'>
-								<Link href={slugDynamic} as={`/`} passHref scroll={false}>
-									<a className='cursor-default h-screen w-full object-cover'>
-										<Particles
-											id='tsparticles'
-											options={{
-												background: {
-													color: {
-														value: '#102a43'
-													}
+							<div className='sm:absolute sm:inset-0' ref={particlesConatinerRef}>
+								{/* <Link href={slugDynamic} as={`/`} passHref scroll={false}>
+									<a className='cursor-default h-screen w-full object-cover'> */}
+								<Particles
+									className='cursor-default h-screen w-full object-cover'
+									id='tsparticles'
+									options={{
+										background: {
+											color: {
+												value: '#102a43'
+											}
+										},
+										fpsLimit: 60,
+										interactivity: {
+											detectsOn: 'canvas',
+											events: {
+												onClick: {
+													enable: true,
+													mode: 'push'
 												},
-												fpsLimit: 60,
-												interactivity: {
-													detectsOn: 'canvas',
-													events: {
-														onClick: {
-															enable: true,
-															mode: 'push'
-														},
-														onHover: {
-															enable: true,
-															mode: 'repulse'
-														},
-														resize: true
-													},
-													modes: {
-														bubble: {
-															distance: 400,
-															duration: 2,
-															opacity: 0.8,
-															size: 40
-														},
-														push: {
-															quantity: 4
-														},
-														repulse: {
-															distance: 200,
-															duration: 0.4
-														}
-													}
+												onHover: {
+													enable: true,
+													mode: 'repulse'
 												},
-												particles: {
-													color: {
-														value: '#ffffff'
-													},
-													links: {
-														color: '#ffffff',
-														distance: 150,
-														enable: true,
-														opacity: 0.5,
-														width: 1
-													},
-													collisions: {
-														enable: true
-													},
-													move: {
-														direction: 'none',
-														enable: true,
-														outMode: 'bounce',
-														random: false,
-														speed: 6,
-														straight: false
-													},
-													number: {
-														density: {
-															enable: true,
-															value_area: 800
-														},
-														value: 80
-													},
-													opacity: {
-														value: 0.5
-													},
-													shape: {
-														type: 'circle'
-													},
-													size: {
-														random: true,
-														value: 5
-													}
+												resize: true
+											},
+											modes: {
+												bubble: {
+													distance: 400,
+													duration: 2,
+													opacity: 0.8,
+													size: 40
 												},
-												detectRetina: true
-											}}
-										/>
-									</a>
-								</Link>
+												push: {
+													quantity: 4
+												},
+												repulse: {
+													distance: 200,
+													duration: 0.4
+												}
+											}
+										},
+										particles: {
+											color: {
+												value: '#ffffff'
+											},
+											links: {
+												color: '#ffffff',
+												distance: 150,
+												enable: true,
+												opacity: 0.5,
+												width: 1
+											},
+											collisions: {
+												enable: true
+											},
+											move: {
+												direction: 'none',
+												enable: true,
+												outMode: 'bounce',
+												random: false,
+												speed: 6,
+												straight: false
+											},
+											number: {
+												density: {
+													enable: true,
+													value_area: 800
+												},
+												value: 80
+											},
+											opacity: {
+												value: 0.5
+											},
+											shape: {
+												type: 'circle'
+											},
+											size: {
+												random: true,
+												value: 5
+											}
+										},
+										detectRetina: true
+									}}
+								/>
+								{/* </a>
+								</Link> */}
 								{mobile}
 								{desktop}
 							</div>
