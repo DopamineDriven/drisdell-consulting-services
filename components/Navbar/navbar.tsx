@@ -1,26 +1,57 @@
-import { FC, useState } from 'react';
+import { FC, useState, useEffect } from 'react';
 import cn from 'classnames';
-import Logo from '@components/UI/Logo';
 import NavbarUserLinks from './NavbarUserLinks';
 import css from './navbar.module.css';
-import Avatar from '@components/Avatar';
 import { Transition } from '@headlessui/react/dist';
-import { MenuIcon, BellIcon, XIcon } from '../Icons/index';
+import { MenuIcon, XIcon } from '../Icons/index';
+import OgLogo from '../UI/OgLogo/og-logo';
+import Link from 'next/link';
+import throttle from 'lodash.throttle';
 
 interface NavbarProps {
 	root?: string;
 	navLinksDesktop: React.ReactNode;
 	navLinksMobile?: React.ReactNode;
 }
+// https://stackoverflow.com/questions/57088861/react-setstate-hook-from-scroll-event-listener
 
 const Navbar: FC<NavbarProps> = ({ root, navLinksDesktop, navLinksMobile }) => {
 	const [menuOpen, setMenuOpen] = useState(true);
-	const [isOpen, setIsOpen] = useState(false);
+	const [isOpen] = useState(false);
+	const [hasScrolled, setHasScrolled] = useState(false);
+
+	useEffect(() => {
+		const handleScroll = throttle(() => {
+			const offset = 0;
+			const { scrollTop } = document.documentElement;
+			const scrolled = scrollTop > offset;
+			setHasScrolled(scrolled);
+		}, 200);
+		document.addEventListener('scroll', handleScroll);
+		return () => {
+			document.removeEventListener('scroll', handleScroll);
+		};
+	}, [hasScrolled]);
 	return (
 		<>
-			<nav className={cn(root, css.root)}>
-				<div className='max-w-full mx-auto px-4 sm:px-6 lg:px-8 font-poppins text-primary-9'>
-					<div className='flex justify-between h-48 '>
+			<nav className={cn(root, css.root, css.stickyNav)}>
+				<div
+					className={cn(
+						css.stickyNav,
+						{ 'shadow-magical': hasScrolled },
+						'max-w-full mx-auto px-4 sm:px-6 lg:px-8 font-poppins text-primary-1 transform-gpu duration-500 ease-in-out transition-all'
+					)}
+				>
+					<div
+						className={cn(
+							'flex justify-between transform-gpu duration-500 ease-in-out transition-all',
+							css.stickyNav,
+							{
+								'h-48': !hasScrolled,
+								'h-24': hasScrolled
+							}
+						)}
+					>
 						<div className='flex'>
 							<div className='-ml-2 mr-2 flex items-center lg:hidden w-full min-w-full'>
 								<button
@@ -46,11 +77,11 @@ const Navbar: FC<NavbarProps> = ({ root, navLinksDesktop, navLinksMobile }) => {
 									)}
 								</button>
 							</div>
-							<div className='lg:flex-shrink lg:float-none float-right flex col-span-3 items-center align-middle text-right -ml-2 lg:ml-0'>
+							{/* <div className='lg:flex-shrink lg:float-none float-right flex col-span-3 items-center align-middle text-right -ml-2 lg:ml-0'>
 								<p className='relative w-full min-w-full block float-right'>
-									<Logo className={cn(css.svg, ' ')} />
+									<OgLogo className={cn(css.svg, ' ')} />
 								</p>
-							</div>
+							</div> */}
 							<div className='hidden lg:ml-6 lg:flex lg:items-center lg:space-x-4'>
 								{navLinksDesktop}
 							</div>
@@ -70,10 +101,10 @@ const Navbar: FC<NavbarProps> = ({ root, navLinksDesktop, navLinksMobile }) => {
 									<span className='sr-only'>View Notifications</span>
 									<BellIcon className='h-8 w-8' />
 								</button> */}
-								<div className='hidden lg:mx-4 lg:flex-shrink-0 lg:flex lg:items-center'>
+								<div className='lg:mx-4 lg:flex-shrink-0 lg:flex lg:items-center'>
 									<div className='ml-3 '>
 										<div>
-											<button
+											{/* <button
 												className={cn(
 													' bg-primary-0 rounded-full text-primary-9 text-base focus:outline-none focus:ring-2 focus:ring-primary-0 z-50 '
 												)}
@@ -81,10 +112,25 @@ const Navbar: FC<NavbarProps> = ({ root, navLinksDesktop, navLinksMobile }) => {
 											>
 												<span className='sr-only'>Open User Menu</span>
 												<Avatar className='h-18 w-18 ring-0.5 ring-opacity-50 ring-red-900 align-middle' />
-											</button>
+											</button> */}
+											<span className='sr-only'>Logo</span>
+											<Link href='/' passHref scroll={true}>
+												<a className='#logo'>
+													<OgLogo
+														className={cn(
+															css.svg,
+															'cursor-default focus:outline-none transition-all transform-gpu ease-in-out duration-500',
+															{
+																'w-40 h-40': !hasScrolled,
+																'w-20 h-20': hasScrolled
+															}
+														)}
+													/>
+												</a>
+											</Link>
 										</div>
 										<Transition
-											show={isOpen}
+											show={isOpen && !hasScrolled}
 											enter='transition ease-out duration-200'
 											enterFrom='transform opacity-0 scale-95 right-0'
 											enterTo='transform opacity-100 scale-100'
@@ -116,7 +162,7 @@ const Navbar: FC<NavbarProps> = ({ root, navLinksDesktop, navLinksMobile }) => {
 					</div>
 				</div>
 				<div
-					className={cn('lg:hidden primary-8', {
+					className={cn('lg:hidden text-primary-0', {
 						block: !menuOpen,
 						hidden: menuOpen
 					})}
@@ -124,7 +170,7 @@ const Navbar: FC<NavbarProps> = ({ root, navLinksDesktop, navLinksMobile }) => {
 					<div className='px-2 pt-2 pb-3 space-y-1 sm:px-3 align-middle'>
 						{navLinksMobile}
 					</div>
-					<div className='pt-4 pb-3 border-t border-accents-5 primary-8'>
+					{/* <div className='pt-4 pb-3 border-t border-accents-5 primary-8'>
 						<div className='flex items-center px-5 sm:px-6'>
 							<div className='flex-shrink-0'>
 								<Avatar className='h-10 w-10 ring-2 ring-accents-5' />
@@ -144,7 +190,7 @@ const Navbar: FC<NavbarProps> = ({ root, navLinksDesktop, navLinksMobile }) => {
 							rootUserLink={cn('text-white')}
 							rootDiv='mt-3 px-2 sm:px-3'
 						/>
-					</div>
+					</div> */}
 				</div>
 			</nav>
 		</>

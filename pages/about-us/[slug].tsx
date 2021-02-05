@@ -111,8 +111,6 @@ export async function getStaticProps(
 		query: ABOUT_BY_SLUG,
 		variables: AboutBySlugQueryVars
 	});
-	console.log('aboutPostDynamic: ', data.aboutPost);
-	console.log('aboutSlugDynamic: ', data.aboutPost!.slug);
 	return addApolloState(apolloClient, {
 		props: {
 			about: data.aboutPost ?? {},
@@ -123,7 +121,8 @@ export async function getStaticProps(
 }
 
 const DynamicAbout: NextPage &
-	InferGetStaticPropsType<typeof getStaticProps> = () => {
+	InferGetStaticPropsType<typeof getStaticProps> = ctx => {
+	console.log(ctx);
 	const { query } = useRouter();
 	const targetSlug = query.slug as string;
 

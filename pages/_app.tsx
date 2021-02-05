@@ -10,6 +10,7 @@ import { useApollo } from '@lib/apollo';
 import { ManagedUIContext } from '@components/context';
 import Head from '@components/Head';
 import { useRouter } from 'next/router';
+import { MediaContextProvider } from '@lib/artsy-fresnel';
 
 const Noop: FC = ({ children }) => <>{children}</>;
 
@@ -20,7 +21,7 @@ function App({ Component, pageProps }: AppProps) {
 
 	useEffect(() => {
 		document.body.classList?.remove('loading');
-		const handleRouteChange = (url: string) => {
+		const handleRouteChange = (url: URL) => {
 			gtag.pageview(url);
 		};
 		router.events.on('routeChangeComplete', handleRouteChange);
@@ -34,9 +35,11 @@ function App({ Component, pageProps }: AppProps) {
 			<Head />
 			<ApolloProvider client={apolloClient}>
 				<ManagedUIContext>
-					<Layout pageProps={pageProps}>
-						<Component {...pageProps} />
-					</Layout>
+					<MediaContextProvider>
+						<Layout pageProps={pageProps}>
+							<Component {...pageProps} />
+						</Layout>
+					</MediaContextProvider>
 				</ManagedUIContext>
 			</ApolloProvider>
 		</>

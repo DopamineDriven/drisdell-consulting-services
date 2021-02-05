@@ -19,7 +19,10 @@
 }
 .leftControl:hover,
 .rightControl:hover {
-	@apply bg-primary-4 outline-none shadow-outline-blue;
+	@screen md {
+		@apply bg-primary-4 outline-none shadow-outline-blue;
+	}
+	@apply bg-transparent outline-none;
 }
 
 .control {

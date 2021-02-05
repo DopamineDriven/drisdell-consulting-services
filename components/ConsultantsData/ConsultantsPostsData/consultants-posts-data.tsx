@@ -62,7 +62,7 @@ const ConsultantsPostsData: FC<ConsultantsPostsDataProps> = props => {
 						allowDangerousHtml={true}
 						className={cn(
 							css['md'],
-							'text-2xl font-poppins font-semibold text-primary-9 hover:text-primary-8 z-50'
+							'text-2xl font-poppins font-semibold text-primary-9 hover:text-primary-8 z-50  '
 						)}
 					/>
 				</a>

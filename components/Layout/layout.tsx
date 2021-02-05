@@ -147,7 +147,7 @@ const Layout: FC<LayoutProps> = props => {
 										__typename={nodes.node.__typename}
 										childItems={nodes.node.childItems}
 										root={
-											'block px-3 py-2 rounded-md text-base font-semibold text-primary-8 hover:text-primary-9'
+											'block px-3 py-2 rounded-md text-base font-semibold text-primary-1 hover:bg-primary-8'
 										}
 									/>
 								) : (
@@ -223,10 +223,10 @@ const Layout: FC<LayoutProps> = props => {
 					<FeatureBar
 						title='This site uses cookies to improve your experience. By clicking, you agree to our Privacy Policy.'
 						hide={acceptedCookies}
-						className='bg-primary-3 text-accents-6 bg-opacity-70'
+						className='bg-primary-3 prose-lg sm:prose-xl text-primary-0 bg-opacity-70 sm:text-center'
 						action={
 							<Button
-								className='mx-5 rounded-xl border-accents-6 border-1 hover:text-primary-3 hover:bg-accents-6 hover:bg-opacity-70 hover:border-primary-3 duration-500 ease-in-out transform transition-colors'
+								className='mx-auto text-center rounded-xl border-primary-0 border-1 hover:text-primary-9 hover:bg-primary-0 hover:bg-opacity-80 hover:border-primary-8 duration-500 ease-in-out transform transition-colors'
 								onClick={() => onAcceptCookies()}
 							>
 								Accept Cookies

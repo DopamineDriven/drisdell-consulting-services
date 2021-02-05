@@ -1,0 +1,9 @@
+.childContainer {
+	@apply align-middle flex-col my-auto rounded-sm mx-auto h-auto;
+	& > div {
+		@apply h-full align-middle;
+		& > div {
+			@apply h-full align-middle;
+		}
+	}
+}

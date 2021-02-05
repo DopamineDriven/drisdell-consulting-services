@@ -1,11 +1,12 @@
 .root {
-	@apply fixed text-primary-9 bg-primary-9 flex items-center inset-0 z-50 justify-center;
+	@apply fixed text-primary-9 bg-primary-9 flex items-center inset-0 justify-center;
 	background-color: rgba(0, 0, 0, 0.35);
+	z-index: 150;
 }
 
 .modal {
-	@apply bg-primary-0 p-6 ring-4 ring-red-900 ring-inset select-none rounded-md relative z-50;
-
+	@apply bg-primary-0 p-6 ring-4 ring-red-900 ring-inset select-none rounded-md relative;
+	z-index: 150;
 	&:focus {
 		@apply outline-none;
 	}

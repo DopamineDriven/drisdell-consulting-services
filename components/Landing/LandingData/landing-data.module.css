@@ -1,0 +1,14 @@
+.responsive {
+	@apply hidden;
+	@screen lg {
+		@apply align-bottom absolute bottom-25 left-0 right-0 top-0 min-h-full z-50 h-screen;
+		background-blend-mode: overlay;
+	}
+}
+
+.path {
+	@apply hidden;
+	@screen lg {
+		@apply inset-0 align-bottom;
+	}
+}

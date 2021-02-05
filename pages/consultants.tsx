@@ -25,12 +25,7 @@ export const getStaticProps: GetStaticProps = async () => {
 		variables: HeaderFooterMenuQueryVers
 	});
 	return addApolloState(apolloClient, {
-		props: {
-			// headerDynamic: menu.headerDynamic ?? {},
-			// footerDynamic: menu.footerDynamic ?? {},
-			// consultants: consultant.consultants?.edges ?? {},
-			// pages: pages.pages ?? {}
-		},
+		props: {},
 		revalidate: 10
 	});
 };

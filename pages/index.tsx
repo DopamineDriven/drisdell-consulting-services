@@ -1,47 +1,31 @@
-import { LANDING_PAGE, HEADER_FOOTER, ALL_TESTIMONIALS } from '@lib/graphql';
-import LandingPageCoalesced, {
-	LandingPageQueryVars
-} from '@components/LandingPage/landing-page-coalesced';
+import { HEADER_FOOTER, LANDING_COALESCED } from '@lib/graphql';
 import { initializeApollo, addApolloState } from '@lib/apollo';
 import { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
 import Layout, { HeaderFooterMenuQueryVers } from '@components/Layout/layout';
-// import { Button } from '@components/UI';
-import TestimonialsCoalesced, {
-	TestimonialsQueryVars
-} from '@components/Testimonials/testimonials-coalesced';
 import {
 	HeaderFooter,
 	HeaderFooterVariables
 } from '@lib/graphql/HeaderFooter/__generated__/HeaderFooter';
+import LandingPageCoalescence, {
+	LandingCoalescedQueryVars
+} from '@components/Landing/landing-page-coalesced';
 import {
-	LandingPage,
-	LandingPageVariables
-} from '@lib/graphql/LandingPage/__generated__/LandingPage';
-import {
-	AllTestimonials,
-	AllTestimonialsVariables
-} from '@lib/graphql/AllTestimonials/__generated__/AllTestimonials';
+	LandingCoalescedVariables,
+	LandingCoalesced
+} from '../lib/graphql/LandingCoalesced/__generated__/LandingCoalesced';
 
 export const getStaticProps: GetStaticProps = async () => {
 	const apolloClient = initializeApollo();
-	await apolloClient.query<LandingPage, LandingPageVariables>({
-		query: LANDING_PAGE,
-		variables: LandingPageQueryVars
+	await apolloClient.query<LandingCoalesced, LandingCoalescedVariables>({
+		query: LANDING_COALESCED,
+		variables: LandingCoalescedQueryVars
 	});
 	await apolloClient.query<HeaderFooter, HeaderFooterVariables>({
 		query: HEADER_FOOTER,
 		variables: HeaderFooterMenuQueryVers
 	});
-	await apolloClient.query<AllTestimonials, AllTestimonialsVariables>({
-		query: ALL_TESTIMONIALS,
-		variables: TestimonialsQueryVars
-	});
 	return addApolloState(apolloClient, {
-		props: {
-			// menu: menu,
-			// page: page,
-			// testimonials: testimonials
-		},
+		props: {},
 		revalidate: 10
 	});
 };
@@ -50,8 +34,7 @@ const Index: NextPage & InferGetStaticPropsType<typeof getStaticProps> = () => {
 	return (
 		<>
 			<Layout title={'Drisdell Consulting Services Landing Page'}>
-				<LandingPageCoalesced />
-				<TestimonialsCoalesced />
+				<LandingPageCoalescence />
 				{/* <Button onClick={() => MailGun}>EMAIL</Button> */}
 			</Layout>
 		</>

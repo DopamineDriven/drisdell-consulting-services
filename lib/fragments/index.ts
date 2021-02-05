@@ -5,6 +5,8 @@ export { default as FRAGMENT_CUSTOM_PAGE_FIELDS } from './FragmentCustomPages';
 export { default as FRAGMENT_FORM_FIELDS } from './FragmentForms';
 export { default as FRAGMENT_MENU_FIELDS } from './FragmentMenu';
 export { default as FRAGMENT_PAGE_FIELDS } from './FragmentPage';
+export { default as FRAGMENT_POSITIONS_FIELDS } from './FragmentPositions';
+export { default as FRAGMENT_POSITIONS_PREVIEW_FIELD } from './FragmentPositionsPreview';
 export { default as FRAGMENT_PREVIEW_PAGE } from './FragmentPreviewPage';
 export { default as FRAGMENT_PREVIEW_POST } from './FragmentPreviewPost';
 export { default as FRAGMENT_TESTIMONIAL_FIELDS } from './FragmentTestimonials';

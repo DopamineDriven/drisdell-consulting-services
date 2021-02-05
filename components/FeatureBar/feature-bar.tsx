@@ -20,8 +20,8 @@ const FeatureBar: React.FC<FeatureBarProps> = ({
 		css.root,
 		{
 			transform: true,
-			'opacity-100 bg-mwjGray text-mwjWhiteWisp z-50 select-none ': !hide,
-			'translate-y-full opacity-0 bg-mwjWhiteWisp': hide
+			'opacity-90 bg-primary-9 text-primary-0 z-50 select-none ': !hide,
+			'translate-y-full opacity-0 bg-primary-0': hide
 		},
 		className
 	);

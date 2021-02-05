@@ -50,7 +50,6 @@ const ImageLoad = ({ src, width, quality }: ImageLoaderProps) => {
 // const imageMutable = useRef<typeof imageSimple>(null);
 
 const ImageRenderer = (img: ImageLoaderProps & ImageProps) => {
-	console.log(`${img.src} custom image renderer`);
 	return (
 		<Image
 			// src={(img.src = `${process.env.WORDPRESS_SRCSET}/*`)}

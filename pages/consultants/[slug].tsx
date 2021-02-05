@@ -35,6 +35,7 @@ import {
 } from '@lib/graphql-global-types';
 // import hydrate from 'next-mdx-remote/hydrate';
 import ConsultantPosts from '@components/ConsultantPosts/consultant-posts';
+import { customConsultantSlugs } from '@lib/custom-page-slugs';
 
 const { ASC } = OrderEnum;
 const { SLUG } = PostObjectsConnectionOrderbyEnum;
@@ -82,7 +83,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
 		data.consultantSlugs.edges.length > 0
 	)
 		data.consultantSlugs.edges.map(slugs => {
-			if (slugs !== null && slugs.node !== null && slugs.node.slug !== null) {
+			if (
+				slugs !== null &&
+				slugs.node !== null &&
+				slugs.node.slug !== null &&
+				!customConsultantSlugs.includes(slugs.node.slug)
+			) {
 				/**
 				 * @inject empty array of @pathsData of type @DynamicPaths with @dynamicSlugs
 				 */

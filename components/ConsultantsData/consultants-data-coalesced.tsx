@@ -85,8 +85,8 @@ const ConsultantsDataCoalesced = () => {
 			) : (
 				<div>{error} outer - consultants page mapping</div>
 			)}
-			<Container className={''} clean>
-				<ConsultantsPostsWrapper>
+			<Container clean>
+				<ConsultantsPostsWrapper root='transform-gpu transition-all'>
 					{data &&
 					data.consultants !== null &&
 					data.consultants.edges !== null &&

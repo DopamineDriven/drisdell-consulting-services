@@ -46,6 +46,15 @@ export type RootQuery = {
 	consultantBy?: Maybe<Consultant>;
 	/** Connection between the RootQuery type and the consultant type */
 	consultants?: Maybe<RootQueryToConsultantConnection>;
+	/** An object of the contactForm Type.  */
+	contactForm?: Maybe<ContactForm>;
+	/**
+	 * A contactForm object
+	 * @deprecated Deprecated in favor of using the single entry point for this type with ID and IDType fields. For example, instead of postBy( id: &quot;&quot; ), use post(id: &quot;&quot; idType: &quot;&quot;)
+	 */
+	contactFormBy?: Maybe<ContactForm>;
+	/** Connection between the RootQuery type and the contactForm type */
+	contactForms?: Maybe<RootQueryToContactFormConnection>;
 	/** A node used to manage content */
 	contentNode?: Maybe<ContentNode>;
 	/** Connection between the RootQuery type and the ContentNode type */
@@ -238,6 +247,30 @@ export type RootQueryConsultantsArgs = {
 	after?: Maybe<Scalars['String']>;
 	before?: Maybe<Scalars['String']>;
 	where?: Maybe<RootQueryToConsultantConnectionWhereArgs>;
+};
+
+/** The root entry point into the Graph */
+export type RootQueryContactFormArgs = {
+	id: Scalars['ID'];
+	idType?: Maybe<ContactFormIdType>;
+	asPreview?: Maybe<Scalars['Boolean']>;
+};
+
+/** The root entry point into the Graph */
+export type RootQueryContactFormByArgs = {
+	id?: Maybe<Scalars['ID']>;
+	contactFormId?: Maybe<Scalars['Int']>;
+	uri?: Maybe<Scalars['String']>;
+	slug?: Maybe<Scalars['String']>;
+};
+
+/** The root entry point into the Graph */
+export type RootQueryContactFormsArgs = {
+	first?: Maybe<Scalars['Int']>;
+	last?: Maybe<Scalars['Int']>;
+	after?: Maybe<Scalars['String']>;
+	before?: Maybe<Scalars['String']>;
+	where?: Maybe<RootQueryToContactFormConnectionWhereArgs>;
 };
 
 /** The root entry point into the Graph */
@@ -1810,6 +1843,8 @@ export enum ContentTypeEnum {
 	/** The Type of Content object */
 	Consultant = 'CONSULTANT',
 	/** The Type of Content object */
+	ContactForm = 'CONTACT_FORM',
+	/** The Type of Content object */
 	Page = 'PAGE',
 	/** The Type of Content object */
 	Position = 'POSITION',
@@ -3219,6 +3254,8 @@ export type Category = Node &
 		children?: Maybe<CategoryToCategoryConnection>;
 		/** Connection between the category type and the consultant type */
 		consultants?: Maybe<CategoryToConsultantConnection>;
+		/** Connection between the category type and the contactForm type */
+		contactForms?: Maybe<CategoryToContactFormConnection>;
 		/** Connection between the category type and the ContentNode type */
 		contentNodes?: Maybe<CategoryToContentNodeConnection>;
 		/** The number of objects connected to the object */
@@ -3298,6 +3335,15 @@ export type CategoryConsultantsArgs = {
 	after?: Maybe<Scalars['String']>;
 	before?: Maybe<Scalars['String']>;
 	where?: Maybe<CategoryToConsultantConnectionWhereArgs>;
+};
+
+/** The category type */
+export type CategoryContactFormsArgs = {
+	first?: Maybe<Scalars['Int']>;
+	last?: Maybe<Scalars['Int']>;
+	after?: Maybe<Scalars['String']>;
+	before?: Maybe<Scalars['String']>;
+	where?: Maybe<CategoryToContactFormConnectionWhereArgs>;
 };
 
 /** The category type */
@@ -3672,6 +3718,255 @@ export type CategoryToConsultantConnectionEdge = {
 	node?: Maybe<Consultant>;
 };
 
+/** Arguments for filtering the CategoryToContactFormConnection connection */
+export type CategoryToContactFormConnectionWhereArgs = {
+	/** Category ID */
+	categoryId?: Maybe<Scalars['Int']>;
+	/** Array of category IDs, used to display objects from one category OR another */
+	categoryIn?: Maybe<Array<Maybe<Scalars['ID']>>>;
+	/** Use Category Slug */
+	categoryName?: Maybe<Scalars['String']>;
+	/** Array of category IDs, used to display objects from one category OR another */
+	categoryNotIn?: Maybe<Array<Maybe<Scalars['ID']>>>;
+	/** Filter the connection based on dates */
+	dateQuery?: Maybe<DateQueryInput>;
+	/** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
+	hasPassword?: Maybe<Scalars['Boolean']>;
+	/** Specific ID of the object */
+	id?: Maybe<Scalars['Int']>;
+	/** Array of IDs for the objects to retrieve */
+	in?: Maybe<Array<Maybe<Scalars['ID']>>>;
+	/** Get objects with a specific mimeType property */
+	mimeType?: Maybe<MimeTypeEnum>;
+	/** Slug / post_name of the object */
+	name?: Maybe<Scalars['String']>;
+	/** Specify objects to retrieve. Use slugs */
+	nameIn?: Maybe<Array<Maybe<Scalars['String']>>>;
+	/** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
+	notIn?: Maybe<Array<Maybe<Scalars['ID']>>>;
+	/** What paramater to use to order the objects by. */
+	orderby?: Maybe<Array<Maybe<PostObjectsConnectionOrderbyInput>>>;
+	/** Use ID to return only children. Use 0 to return only top-level items */
+	parent?: Maybe<Scalars['ID']>;
+	/** Specify objects whose parent is in an array */
+	parentIn?: Maybe<Array<Maybe<Scalars['ID']>>>;
+	/** Specify posts whose parent is not in an array */
+	parentNotIn?: Maybe<Array<Maybe<Scalars['ID']>>>;
+	/** Show posts with a specific password. */
+	password?: Maybe<Scalars['String']>;
+	/** Show Posts based on a keyword search */
+	search?: Maybe<Scalars['String']>;
+	stati?: Maybe<Array<Maybe<PostStatusEnum>>>;
+	status?: Maybe<PostStatusEnum>;
+	/** Title of the object */
+	title?: Maybe<Scalars['String']>;
+};
+
+/** Connection between the category type and the contactForm type */
+export type CategoryToContactFormConnection = {
+	__typename?: 'CategoryToContactFormConnection';
+	/** Edges for the CategoryToContactFormConnection connection */
+	edges?: Maybe<Array<Maybe<CategoryToContactFormConnectionEdge>>>;
+	/** The nodes of the connection, without the edges */
+	nodes?: Maybe<Array<Maybe<ContactForm>>>;
+	/** Information about pagination in a connection. */
+	pageInfo?: Maybe<WpPageInfo>;
+};
+
+/** An edge in a connection */
+export type CategoryToContactFormConnectionEdge = {
+	__typename?: 'CategoryToContactFormConnectionEdge';
+	/** A cursor for use in pagination */
+	cursor?: Maybe<Scalars['String']>;
+	/** The item at the end of the edge */
+	node?: Maybe<ContactForm>;
+};
+
+/** The contactForm type */
+export type ContactForm = Node &
+	ContentNode &
+	DatabaseIdentifier &
+	NodeWithTemplate &
+	UniformResourceIdentifiable &
+	NodeWithTitle &
+	NodeWithContentEditor &
+	NodeWithFeaturedImage & {
+		__typename?: 'ContactForm';
+		/** Connection between the contactForm type and the category type */
+		categories?: Maybe<ContactFormToCategoryConnection>;
+		/**
+		 * The id field matches the WP_Post-&gt;ID field.
+		 * @deprecated Deprecated in favor of the databaseId field
+		 */
+		contactFormId: Scalars['Int'];
+		/** The content of the post. */
+		content?: Maybe<Scalars['String']>;
+		/** Connection between the ContentNode type and the ContentType type */
+		contentType?: Maybe<ContentNodeToContentTypeConnectionEdge>;
+		/** The ID of the node in the database. */
+		databaseId: Scalars['Int'];
+		/** Post publishing date. */
+		date?: Maybe<Scalars['String']>;
+		/** The publishing date set in GMT. */
+		dateGmt?: Maybe<Scalars['String']>;
+		/** The desired slug of the post */
+		desiredSlug?: Maybe<Scalars['String']>;
+		/** If a user has edited the node within the past 15 seconds, this will return the user that last edited. Null if the edit lock doesn&#039;t exist or is greater than 15 seconds */
+		editingLockedBy?: Maybe<ContentNodeToEditLockConnectionEdge>;
+		/** The RSS enclosure for the object */
+		enclosure?: Maybe<Scalars['String']>;
+		/** Connection between the ContentNode type and the EnqueuedScript type */
+		enqueuedScripts?: Maybe<ContentNodeToEnqueuedScriptConnection>;
+		/** Connection between the ContentNode type and the EnqueuedStylesheet type */
+		enqueuedStylesheets?: Maybe<ContentNodeToEnqueuedStylesheetConnection>;
+		/** Connection between the NodeWithFeaturedImage type and the MediaItem type */
+		featuredImage?: Maybe<NodeWithFeaturedImageToMediaItemConnectionEdge>;
+		/** The database identifier for the featured image node assigned to the content node */
+		featuredImageDatabaseId?: Maybe<Scalars['Int']>;
+		/** Globally unique ID of the featured image assigned to the node */
+		featuredImageId?: Maybe<Scalars['ID']>;
+		/** The global unique identifier for this post. This currently matches the value stored in WP_Post-&gt;guid and the guid column in the &quot;post_objects&quot; database table. */
+		guid?: Maybe<Scalars['String']>;
+		/** The globally unique identifier of the contact-form object. */
+		id: Scalars['ID'];
+		/** Whether the object is a node in the preview state */
+		isPreview?: Maybe<Scalars['Boolean']>;
+		/** Whether the object is restricted from the current viewer */
+		isRestricted?: Maybe<Scalars['Boolean']>;
+		/** The user that most recently edited the node */
+		lastEditedBy?: Maybe<ContentNodeToEditLastConnectionEdge>;
+		/** The permalink of the post */
+		link?: Maybe<Scalars['String']>;
+		/** The local modified time for a post. If a post was recently updated the modified field will change to match the corresponding time. */
+		modified?: Maybe<Scalars['String']>;
+		/** The GMT modified time for a post. If a post was recently updated the modified field will change to match the corresponding time in GMT. */
+		modifiedGmt?: Maybe<Scalars['String']>;
+		/** Connection between the contactForm type and the contactForm type */
+		preview?: Maybe<ContactFormToPreviewConnectionEdge>;
+		/** The database id of the preview node */
+		previewRevisionDatabaseId?: Maybe<Scalars['Int']>;
+		/** Whether the object is a node in the preview state */
+		previewRevisionId?: Maybe<Scalars['ID']>;
+		/** The Yoast SEO data of the contactForm */
+		seo?: Maybe<PostTypeSeo>;
+		/** The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table. */
+		slug?: Maybe<Scalars['String']>;
+		/** The current status of the object */
+		status?: Maybe<Scalars['String']>;
+		/** The template assigned to a node of content */
+		template?: Maybe<ContentTemplate>;
+		/** The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made. */
+		title?: Maybe<Scalars['String']>;
+		/** URI path for the resource */
+		uri: Scalars['String'];
+	};
+
+/** The contactForm type */
+export type ContactFormCategoriesArgs = {
+	first?: Maybe<Scalars['Int']>;
+	last?: Maybe<Scalars['Int']>;
+	after?: Maybe<Scalars['String']>;
+	before?: Maybe<Scalars['String']>;
+	where?: Maybe<ContactFormToCategoryConnectionWhereArgs>;
+};
+
+/** The contactForm type */
+export type ContactFormContentArgs = {
+	format?: Maybe<PostObjectFieldFormatEnum>;
+};
+
+/** The contactForm type */
+export type ContactFormEnqueuedScriptsArgs = {
+	first?: Maybe<Scalars['Int']>;
+	last?: Maybe<Scalars['Int']>;
+	after?: Maybe<Scalars['String']>;
+	before?: Maybe<Scalars['String']>;
+};
+
+/** The contactForm type */
+export type ContactFormEnqueuedStylesheetsArgs = {
+	first?: Maybe<Scalars['Int']>;
+	last?: Maybe<Scalars['Int']>;
+	after?: Maybe<Scalars['String']>;
+	before?: Maybe<Scalars['String']>;
+};
+
+/** The contactForm type */
+export type ContactFormTitleArgs = {
+	format?: Maybe<PostObjectFieldFormatEnum>;
+};
+
+/** Arguments for filtering the ContactFormToCategoryConnection connection */
+export type ContactFormToCategoryConnectionWhereArgs = {
+	/** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
+	cacheDomain?: Maybe<Scalars['String']>;
+	/** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
+	childOf?: Maybe<Scalars['Int']>;
+	/** True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false. */
+	childless?: Maybe<Scalars['Boolean']>;
+	/** Retrieve terms where the description is LIKE the input value. Default empty. */
+	descriptionLike?: Maybe<Scalars['String']>;
+	/** Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array. */
+	exclude?: Maybe<Array<Maybe<Scalars['ID']>>>;
+	/** Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array. */
+	excludeTree?: Maybe<Array<Maybe<Scalars['ID']>>>;
+	/** Whether to hide terms not assigned to any posts. Accepts true or false. Default false */
+	hideEmpty?: Maybe<Scalars['Boolean']>;
+	/** Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true. */
+	hierarchical?: Maybe<Scalars['Boolean']>;
+	/** Array of term ids to include. Default empty array. */
+	include?: Maybe<Array<Maybe<Scalars['ID']>>>;
+	/** Array of names to return term(s) for. Default empty. */
+	name?: Maybe<Array<Maybe<Scalars['String']>>>;
+	/** Retrieve terms where the name is LIKE the input value. Default empty. */
+	nameLike?: Maybe<Scalars['String']>;
+	/** Array of object IDs. Results will be limited to terms associated with these objects. */
+	objectIds?: Maybe<Array<Maybe<Scalars['ID']>>>;
+	/** Field(s) to order terms by. Defaults to 'name'. */
+	orderby?: Maybe<TermObjectsConnectionOrderbyEnum>;
+	/** Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false. */
+	padCounts?: Maybe<Scalars['Boolean']>;
+	/** Parent term ID to retrieve direct-child terms of. Default empty. */
+	parent?: Maybe<Scalars['Int']>;
+	/** Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty. */
+	search?: Maybe<Scalars['String']>;
+	/** Array of slugs to return term(s) for. Default empty. */
+	slug?: Maybe<Array<Maybe<Scalars['String']>>>;
+	/** Array of term taxonomy IDs, to match when querying terms. */
+	termTaxonomId?: Maybe<Array<Maybe<Scalars['ID']>>>;
+	/** Whether to prime meta caches for matched terms. Default true. */
+	updateTermMetaCache?: Maybe<Scalars['Boolean']>;
+};
+
+/** Connection between the contactForm type and the category type */
+export type ContactFormToCategoryConnection = {
+	__typename?: 'ContactFormToCategoryConnection';
+	/** Edges for the ContactFormToCategoryConnection connection */
+	edges?: Maybe<Array<Maybe<ContactFormToCategoryConnectionEdge>>>;
+	/** The nodes of the connection, without the edges */
+	nodes?: Maybe<Array<Maybe<Category>>>;
+	/** Information about pagination in a connection. */
+	pageInfo?: Maybe<WpPageInfo>;
+};
+
+/** An edge in a connection */
+export type ContactFormToCategoryConnectionEdge = {
+	__typename?: 'ContactFormToCategoryConnectionEdge';
+	/** A cursor for use in pagination */
+	cursor?: Maybe<Scalars['String']>;
+	/** The Yoast SEO Primary category */
+	isPrimary?: Maybe<Scalars['Boolean']>;
+	/** The item at the end of the edge */
+	node?: Maybe<Category>;
+};
+
+/** Connection between the contactForm type and the contactForm type */
+export type ContactFormToPreviewConnectionEdge = {
+	__typename?: 'ContactFormToPreviewConnectionEdge';
+	/** The nodes of the connection, without the edges */
+	node?: Maybe<ContactForm>;
+};
+
 /** Arguments for filtering the CategoryToContentNodeConnection connection */
 export type CategoryToContentNodeConnectionWhereArgs = {
 	/** Filter the connection based on dates */
@@ -3890,6 +4185,7 @@ export type Position = Node &
 		pingStatus?: Maybe<Scalars['String']>;
 		/** URLs that have been pinged. */
 		pinged?: Maybe<Array<Maybe<Scalars['String']>>>;
+		positionDetails?: Maybe<Position_Positiondetails>;
 		/**
 		 * The id field matches the WP_Post-&gt;ID field.
 		 * @deprecated Deprecated in favor of the databaseId field
@@ -4135,6 +4431,19 @@ export type PositionToCommentConnectionEdge = {
 	cursor?: Maybe<Scalars['String']>;
 	/** The item at the end of the edge */
 	node?: Maybe<Comment>;
+};
+
+/** Field Group */
+export type Position_Positiondetails = {
+	__typename?: 'Position_Positiondetails';
+	dateclosing?: Maybe<Scalars['String']>;
+	fieldGroupName?: Maybe<Scalars['String']>;
+	/** Title of open position */
+	jobtitle?: Maybe<Scalars['String']>;
+	/** Full-time, part-time. contract, temporary */
+	positiontype?: Maybe<Scalars['String']>;
+	/** remote, in-person, mixed */
+	remotestatus?: Maybe<Scalars['String']>;
 };
 
 /** Arguments for filtering the PositionToPostFormatConnection connection */
@@ -8167,6 +8476,82 @@ export type RootQueryToConsultantConnectionEdge = {
 };
 
 /** The Type of Identifier used to fetch a single resource. Default is ID. */
+export enum ContactFormIdType {
+	/** Identify a resource by the Database ID. */
+	DatabaseId = 'DATABASE_ID',
+	/** Identify a resource by the (hashed) Global ID. */
+	Id = 'ID',
+	/** Identify a resource by the URI. */
+	Uri = 'URI',
+	/** Identify a resource by the slug. Available to non-hierarchcial Types where the slug is a unique identifier. */
+	Slug = 'SLUG'
+}
+
+/** Arguments for filtering the RootQueryToContactFormConnection connection */
+export type RootQueryToContactFormConnectionWhereArgs = {
+	/** Category ID */
+	categoryId?: Maybe<Scalars['Int']>;
+	/** Array of category IDs, used to display objects from one category OR another */
+	categoryIn?: Maybe<Array<Maybe<Scalars['ID']>>>;
+	/** Use Category Slug */
+	categoryName?: Maybe<Scalars['String']>;
+	/** Array of category IDs, used to display objects from one category OR another */
+	categoryNotIn?: Maybe<Array<Maybe<Scalars['ID']>>>;
+	/** Filter the connection based on dates */
+	dateQuery?: Maybe<DateQueryInput>;
+	/** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
+	hasPassword?: Maybe<Scalars['Boolean']>;
+	/** Specific ID of the object */
+	id?: Maybe<Scalars['Int']>;
+	/** Array of IDs for the objects to retrieve */
+	in?: Maybe<Array<Maybe<Scalars['ID']>>>;
+	/** Get objects with a specific mimeType property */
+	mimeType?: Maybe<MimeTypeEnum>;
+	/** Slug / post_name of the object */
+	name?: Maybe<Scalars['String']>;
+	/** Specify objects to retrieve. Use slugs */
+	nameIn?: Maybe<Array<Maybe<Scalars['String']>>>;
+	/** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
+	notIn?: Maybe<Array<Maybe<Scalars['ID']>>>;
+	/** What paramater to use to order the objects by. */
+	orderby?: Maybe<Array<Maybe<PostObjectsConnectionOrderbyInput>>>;
+	/** Use ID to return only children. Use 0 to return only top-level items */
+	parent?: Maybe<Scalars['ID']>;
+	/** Specify objects whose parent is in an array */
+	parentIn?: Maybe<Array<Maybe<Scalars['ID']>>>;
+	/** Specify posts whose parent is not in an array */
+	parentNotIn?: Maybe<Array<Maybe<Scalars['ID']>>>;
+	/** Show posts with a specific password. */
+	password?: Maybe<Scalars['String']>;
+	/** Show Posts based on a keyword search */
+	search?: Maybe<Scalars['String']>;
+	stati?: Maybe<Array<Maybe<PostStatusEnum>>>;
+	status?: Maybe<PostStatusEnum>;
+	/** Title of the object */
+	title?: Maybe<Scalars['String']>;
+};
+
+/** Connection between the RootQuery type and the contactForm type */
+export type RootQueryToContactFormConnection = {
+	__typename?: 'RootQueryToContactFormConnection';
+	/** Edges for the RootQueryToContactFormConnection connection */
+	edges?: Maybe<Array<Maybe<RootQueryToContactFormConnectionEdge>>>;
+	/** The nodes of the connection, without the edges */
+	nodes?: Maybe<Array<Maybe<ContactForm>>>;
+	/** Information about pagination in a connection. */
+	pageInfo?: Maybe<WpPageInfo>;
+};
+
+/** An edge in a connection */
+export type RootQueryToContactFormConnectionEdge = {
+	__typename?: 'RootQueryToContactFormConnectionEdge';
+	/** A cursor for use in pagination */
+	cursor?: Maybe<Scalars['String']>;
+	/** The item at the end of the edge */
+	node?: Maybe<ContactForm>;
+};
+
+/** The Type of Identifier used to fetch a single resource. Default is ID. */
 export enum ContentNodeIdTypeEnum {
 	/** Identify a resource by the Database ID. */
 	DatabaseId = 'DATABASE_ID',
@@ -9364,6 +9749,7 @@ export type SeoContentTypes = {
 	__typename?: 'SEOContentTypes';
 	about?: Maybe<SeoContentType>;
 	consultant?: Maybe<SeoContentType>;
+	contactForm?: Maybe<SeoContentType>;
 	mediaItem?: Maybe<SeoContentType>;
 	page?: Maybe<SeoContentType>;
 	position?: Maybe<SeoContentType>;
@@ -9970,6 +10356,8 @@ export type RootMutation = {
 	createComment?: Maybe<CreateCommentPayload>;
 	/** The payload for the createConsultant mutation */
 	createConsultant?: Maybe<CreateConsultantPayload>;
+	/** The payload for the createContactForm mutation */
+	createContactForm?: Maybe<CreateContactFormPayload>;
 	/** The payload for the createMediaItem mutation */
 	createMediaItem?: Maybe<CreateMediaItemPayload>;
 	/** The payload for the createPage mutation */
@@ -9994,6 +10382,8 @@ export type RootMutation = {
 	deleteComment?: Maybe<DeleteCommentPayload>;
 	/** The payload for the deleteConsultant mutation */
 	deleteConsultant?: Maybe<DeleteConsultantPayload>;
+	/** The payload for the deleteContactForm mutation */
+	deleteContactForm?: Maybe<DeleteContactFormPayload>;
 	/** The payload for the deleteMediaItem mutation */
 	deleteMediaItem?: Maybe<DeleteMediaItemPayload>;
 	/** The payload for the deletePage mutation */
@@ -10031,6 +10421,8 @@ export type RootMutation = {
 	updateComment?: Maybe<UpdateCommentPayload>;
 	/** The payload for the updateConsultant mutation */
 	updateConsultant?: Maybe<UpdateConsultantPayload>;
+	/** The payload for the updateContactForm mutation */
+	updateContactForm?: Maybe<UpdateContactFormPayload>;
 	/** The payload for the updateMediaItem mutation */
 	updateMediaItem?: Maybe<UpdateMediaItemPayload>;
 	/** The payload for the updatePage mutation */
@@ -10080,6 +10472,11 @@ export type RootMutationCreateCommentArgs = {
 /** The root mutation */
 export type RootMutationCreateConsultantArgs = {
 	input: CreateConsultantInput;
+};
+
+/** The root mutation */
+export type RootMutationCreateContactFormArgs = {
+	input: CreateContactFormInput;
 };
 
 /** The root mutation */
@@ -10140,6 +10537,11 @@ export type RootMutationDeleteCommentArgs = {
 /** The root mutation */
 export type RootMutationDeleteConsultantArgs = {
 	input: DeleteConsultantInput;
+};
+
+/** The root mutation */
+export type RootMutationDeleteContactFormArgs = {
+	input: DeleteContactFormInput;
 };
 
 /** The root mutation */
@@ -10235,6 +10637,11 @@ export type RootMutationUpdateCommentArgs = {
 /** The root mutation */
 export type RootMutationUpdateConsultantArgs = {
 	input: UpdateConsultantInput;
+};
+
+/** The root mutation */
+export type RootMutationUpdateContactFormArgs = {
+	input: UpdateContactFormInput;
 };
 
 /** The root mutation */
@@ -10557,6 +10964,53 @@ export type CreateConsultantPayload = {
 	__typename?: 'CreateConsultantPayload';
 	clientMutationId?: Maybe<Scalars['String']>;
 	consultant?: Maybe<Consultant>;
+};
+
+/** Input for the createContactForm mutation */
+export type CreateContactFormInput = {
+	/** Set connections between the contactForm and categories */
+	categories?: Maybe<ContactFormCategoriesInput>;
+	clientMutationId?: Maybe<Scalars['String']>;
+	/** The content of the object */
+	content?: Maybe<Scalars['String']>;
+	/** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
+	date?: Maybe<Scalars['String']>;
+	/** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
+	menuOrder?: Maybe<Scalars['Int']>;
+	/** The password used to protect the content of the object */
+	password?: Maybe<Scalars['String']>;
+	/** The slug of the object */
+	slug?: Maybe<Scalars['String']>;
+	/** The status of the object */
+	status?: Maybe<PostStatusEnum>;
+	/** The title of the object */
+	title?: Maybe<Scalars['String']>;
+};
+
+/** Set relationships between the contactForm to categories */
+export type ContactFormCategoriesInput = {
+	/** If true, this will append the category to existing related categories. If false, this will replace existing relationships. Default true. */
+	append?: Maybe<Scalars['Boolean']>;
+	nodes?: Maybe<Array<Maybe<ContactFormCategoriesNodeInput>>>;
+};
+
+/** List of categories to connect the contactForm to. If an ID is set, it will be used to create the connection. If not, it will look for a slug. If neither are valid existing terms, and the site is configured to allow terms to be created during post mutations, a term will be created using the Name if it exists in the input, then fallback to the slug if it exists. */
+export type ContactFormCategoriesNodeInput = {
+	/** The description of the category. This field is used to set a description of the category if a new one is created during the mutation. */
+	description?: Maybe<Scalars['String']>;
+	/** The ID of the category. If present, this will be used to connect to the contactForm. If no existing category exists with this ID, no connection will be made. */
+	id?: Maybe<Scalars['ID']>;
+	/** The name of the category. This field is used to create a new term, if term creation is enabled in nested mutations, and if one does not already exist with the provided slug or ID or if a slug or ID is not provided. If no name is included and a term is created, the creation will fallback to the slug field. */
+	name?: Maybe<Scalars['String']>;
+	/** The slug of the category. If no ID is present, this field will be used to make a connection. If no existing term exists with this slug, this field will be used as a fallback to the Name field when creating a new term to connect to, if term creation is enabled as a nested mutation. */
+	slug?: Maybe<Scalars['String']>;
+};
+
+/** The payload for the createContactForm mutation */
+export type CreateContactFormPayload = {
+	__typename?: 'CreateContactFormPayload';
+	clientMutationId?: Maybe<Scalars['String']>;
+	contactForm?: Maybe<ContactForm>;
 };
 
 /** Input for the createMediaItem mutation */
@@ -11070,6 +11524,25 @@ export type DeleteConsultantPayload = {
 	deletedId?: Maybe<Scalars['ID']>;
 };
 
+/** Input for the deleteContactForm mutation */
+export type DeleteContactFormInput = {
+	clientMutationId?: Maybe<Scalars['String']>;
+	/** Whether the object should be force deleted instead of being moved to the trash */
+	forceDelete?: Maybe<Scalars['Boolean']>;
+	/** The ID of the contactForm to delete */
+	id: Scalars['ID'];
+};
+
+/** The payload for the deleteContactForm mutation */
+export type DeleteContactFormPayload = {
+	__typename?: 'DeleteContactFormPayload';
+	clientMutationId?: Maybe<Scalars['String']>;
+	/** The object before it was deleted */
+	contactForm?: Maybe<ContactForm>;
+	/** The ID of the deleted object */
+	deletedId?: Maybe<Scalars['ID']>;
+};
+
 /** Input for the deleteMediaItem mutation */
 export type DeleteMediaItemInput = {
 	clientMutationId?: Maybe<Scalars['String']>;
@@ -11513,6 +11986,36 @@ export type UpdateConsultantPayload = {
 	__typename?: 'UpdateConsultantPayload';
 	clientMutationId?: Maybe<Scalars['String']>;
 	consultant?: Maybe<Consultant>;
+};
+
+/** Input for the updateContactForm mutation */
+export type UpdateContactFormInput = {
+	/** Set connections between the contactForm and categories */
+	categories?: Maybe<ContactFormCategoriesInput>;
+	clientMutationId?: Maybe<Scalars['String']>;
+	/** The content of the object */
+	content?: Maybe<Scalars['String']>;
+	/** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
+	date?: Maybe<Scalars['String']>;
+	/** The ID of the contactForm object */
+	id: Scalars['ID'];
+	/** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
+	menuOrder?: Maybe<Scalars['Int']>;
+	/** The password used to protect the content of the object */
+	password?: Maybe<Scalars['String']>;
+	/** The slug of the object */
+	slug?: Maybe<Scalars['String']>;
+	/** The status of the object */
+	status?: Maybe<PostStatusEnum>;
+	/** The title of the object */
+	title?: Maybe<Scalars['String']>;
+};
+
+/** The payload for the updateContactForm mutation */
+export type UpdateContactFormPayload = {
+	__typename?: 'UpdateContactFormPayload';
+	clientMutationId?: Maybe<Scalars['String']>;
+	contactForm?: Maybe<ContactForm>;
 };
 
 /** Input for the updateMediaItem mutation */
@@ -12770,7 +13273,8 @@ export type PostObjectUnion =
 	| Testimonial
 	| About
 	| Consultant
-	| Position;
+	| Position
+	| ContactForm;
 
 export type TermObjectUnion = Category | Tag | PostFormat;
 

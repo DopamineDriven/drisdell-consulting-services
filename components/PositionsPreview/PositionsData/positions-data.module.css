@@ -1,0 +1,6 @@
+.root {
+	@apply bg-primary-9 shadow overflow-hidden;
+	@screen sm {
+		@apply rounded-md;
+	}
+}

@@ -1,0 +1,24 @@
+.root {
+	@apply bg-primary-9 px-4 py-5 border-b border-accents-7;
+	@screen sm {
+		@apply px-6;
+	}
+}
+.parentDiv {
+	@apply pt-8 pb-16 prose-xl max-w-2xl text-primary-0 text-left content-center mx-auto flex-row select-none tracking-tight;
+	&:hover {
+		@apply text-primary-7 transition-colors duration-300 ease-in-out transform;
+	}
+	@screen sm {
+		@apply max-w-3xl text-justify;
+	}
+	@screen md {
+		@apply max-w-5xl;
+	}
+	@screen lg {
+		@apply max-w-6xl;
+	}
+	@screen xl {
+		@apply max-w-7xl;
+	}
+}

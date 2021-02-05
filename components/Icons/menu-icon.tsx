@@ -14,7 +14,7 @@ const MenuIcon = ({ ...props }) => {
 		>
 			<path
 				d='M4 18H20M4 6H20H4ZM4 12H20H4Z'
-				stroke='currentColor'
+				stroke='#243b53'
 				strokeWidth='2'
 				strokeLinecap='round'
 				strokeLinejoin='round'

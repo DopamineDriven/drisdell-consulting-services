@@ -4,3 +4,5 @@ export const customPagesSlugs = [
 	'consultants',
 	'about-us'
 ];
+
+export const customConsultantSlugs = ['skills-and-positions'];
