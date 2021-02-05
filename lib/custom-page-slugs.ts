@@ -5,7 +5,4 @@ export const customPagesSlugs = [
 	'about-us'
 ];
 
-export const customConsultantSlugs = [
-	'skills-and-positions',
-	'submit-a-resume'
-];
+export const customConsultantSlugs = ['skills-and-positions'];

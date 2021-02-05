@@ -1,11 +1,12 @@
 import cn from 'classnames';
-import { Positions_positions_edges_node } from '@lib/graphql/Positions/__generated__/Positions';
+import { SkillsAndPositions_positionsPreview_edges_node } from '@lib/graphql/SkillsAndPositions/__generated__/SkillsAndPositions';
 import { FC } from 'react';
 import Link from 'next/link';
 // import { PositionFields_positionDetails } from '../../lib/fragments/FragmentPositions/__generated__/PositionFields';
 import css from './positions-data.module.css';
 import { parseISO, format } from 'date-fns';
-interface PositionsDataProps extends Positions_positions_edges_node {
+interface PositionsDataProps
+	extends SkillsAndPositions_positionsPreview_edges_node {
 	root?: string;
 }
 

@@ -13,7 +13,7 @@ export { default as GET_PREVIEW_PAGE } from './GetPreviewPage';
 export { default as GET_PREVIEW_POST } from './GetPreviewPost';
 export { default as HEADER_FOOTER } from './HeaderFooter';
 export { default as LANDING_COALESCED } from './LandingCoalesced';
-export { default as LANDING_PAGE } from './LandingPage';
 export { default as POSITION_BY_SLUG } from './PositionBySlug';
 export { default as POSITIONS } from './Positions';
 export { default as POSITION_SLUGS } from './PositionSlugs';
+export { default as SKILLS_AND_POSITIONS } from './SkillsAndPositions';
