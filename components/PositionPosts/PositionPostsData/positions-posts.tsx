@@ -12,8 +12,6 @@ interface AboutSubTemplateProps extends PositionBySlug_positionBySlug {
 
 const PositionPosts: FC<AboutSubTemplateProps> = ({
 	root,
-	title,
-	excerpt,
 	featuredImage,
 	children,
 	slug,
@@ -25,26 +23,27 @@ const PositionPosts: FC<AboutSubTemplateProps> = ({
 		featuredImage.node.sourceUrl !== null
 			? featuredImage.node.sourceUrl
 			: '/doggo.jpg';
-	const positionExcerpt = excerpt !== null ? excerpt : 'excerpt null';
-	// const occupationConditional =
-	// 	positionDetails !== null ? positionDetails : 'positionDetails Null';
-	const titleConditional = title !== null ? title : 'title null';
+	// const positionExcerpt = excerpt !== null ? excerpt : 'excerpt null';
+	// const jobTitleConditional =
+	// 	positionDetails !== null && positionDetails.jobtitle !== null
+	// 		? positionDetails.jobtitle
+	// 		: 'Job Title Removed';
 	const contentConditional = content !== null ? content : 'content null';
 	const slugConditional = slug !== null ? slug : 'slug null';
 	console.log(slugConditional);
 	return (
 		<>
-			<div className={cn(root, 'bg-primary-9 overflow-hidden')}>
+			<div className={cn(root, 'bg-primary-9 overflow-hidden select-none')}>
 				<div className='relative max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8'>
 					<div className='hidden lg:block bg-gray-50 absolute top-0 bottom-0 left-3/4 w-screen'></div>
-					<div className='mx-auto text-base max-w-prose lg:max-w-none'>
-						<h2 className='text-base text-indigo-600 font-semibold tracking-wide uppercase'>
-							<ReactMarkdown allowDangerousHtml={true} children={positionExcerpt} />
+					{/* <div className='mx-auto text-base max-w-prose lg:max-w-none'>
+						<h2 className='text-lg text-primary-0 font-semibold tracking-wide uppercase'>
+							<ReactMarkdown allowDangerousHtml={true} children={jobTitleConditional} />
 						</h2>
-						<h3 className='mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl'>
-							<ReactMarkdown allowDangerousHtml={true} children={titleConditional} />
+						<h3 className='mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl lg:max-w-3xl'>
+							{children}
 						</h3>
-					</div>
+					</div> */}
 					<div className='mt-8 lg:grid lg:grid-cols-2 lg:gap-8'>
 						<div className='relative lg:row-start-1 lg:col-start-2'>
 							<svg
@@ -105,42 +104,25 @@ const PositionPosts: FC<AboutSubTemplateProps> = ({
 												clip-rule='evenodd'
 											/>
 										</svg>
-										<span className='ml-2'>Photograph by Mary Drisdell</span>
+										<span className='ml-2'>Photograph via Unsplash</span>
 									</figcaption>
 								</figure>
 							</div>
 						</div>
 						<div className='mt-8 lg:mt-0'>
-							<div className='text-base max-w-prose mx-auto lg:max-w-none'>
-								<p className='text-lg text-gray-500'>
-									Sagittis scelerisque nulla cursus in enim consectetur quam. Dictum urna
-									sed consectetur neque tristique pellentesque. Blandit amet, sed aenean
-									erat arcu morbi.
-								</p>
-							</div>
+							<div className='text-base max-w-prose mx-auto lg:max-w-none'></div>
 							<div className='mt-5 prose prose-indigo text-gray-600 mx-auto lg:max-w-none lg:row-start-1 lg:col-start-1'>
 								<ReactMarkdown
 									allowDangerousHtml={true}
 									children={contentConditional}
 								/>
 								<h3>Additional Info</h3>
-								<p>
-									Tincidunt integer commodo, cursus etiam aliquam neque, et. Consectetur
-									pretium in volutpat, diam. Montes, magna cursus nulla feugiat dignissim
-									id lobortis amet. Laoreet sem est phasellus eu proin massa, lectus.
-									Diam rutrum posuere donec ultricies non morbi. Mi a platea auctor mi.
-								</p>
-								<p>
-									Sagittis scelerisque nulla cursus in enim consectetur quam. Dictum urna
-									sed consectetur neque tristique pellentesque. Blandit amet, sed aenean
-									erat arcu morbi.
-								</p>
 							</div>
+							{children}
 						</div>
 					</div>
 				</div>
 			</div>
-			{children}
 		</>
 	);
 };

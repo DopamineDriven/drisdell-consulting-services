@@ -28,7 +28,7 @@ const PositionData: FC<PositionsDataProps> = ({
 				<li>
 					<Link
 						passHref
-						href={`/consultants/skills-and-positions/positions/${slugDynamic}`}
+						href={`/consultants/skills-and-positions/position/${slugDynamic}`}
 					>
 						<a className='block hover:bg-gray-50'>
 							<div className='px-4 py-4 sm:px-6'>

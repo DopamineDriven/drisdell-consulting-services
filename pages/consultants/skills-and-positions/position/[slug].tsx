@@ -138,7 +138,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 				positionsData.push({ params: { slug: slugs.node.slug } });
 			}
 		});
-
+	console.log(positionsData);
 	return {
 		paths: positionsData,
 		fallback: true
