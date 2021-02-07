@@ -48,7 +48,10 @@ const ApolloErrorMessage = dynamic(
 	dynamicProps
 );
 
-const EmailView = dynamic(() => import('@components/auth/email'), dynamicProps);
+const EmailView = dynamic(
+	() => import('@components/auth/nodemail'),
+	dynamicProps
+);
 
 const LoginView = dynamic(
 	() => import('@components/auth/user-login'),

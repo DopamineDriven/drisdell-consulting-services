@@ -5,7 +5,7 @@
 }
 
 .modal {
-	@apply bg-primary-0 p-6 ring-4 ring-red-900 ring-inset select-none rounded-md relative;
+	@apply bg-primary-0 p-6 ring-4 ring-white ring-inset select-none rounded-md relative;
 	z-index: 150;
 	&:focus {
 		@apply outline-none;

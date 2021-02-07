@@ -16,7 +16,8 @@ export const useAcceptCookies = () => {
 		setAcceptedCookies(true);
 		Cookies.set(COOKIE_NAME, 'accepted', {
 			expires: 365,
-			secure: process.env.NODE_ENV === 'production' ? true : false
+			secure: process.env.NODE_ENV === 'production' ? true : false,
+			sameSite: 'strict'
 		});
 	};
 

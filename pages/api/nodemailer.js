@@ -17,14 +17,15 @@ const smtpPassword = SMTP_PASSWORD;
 
 export default async (req, res) => {
 	const { text, subject, name, email } = req.body;
-
+	const formattedTimeStamp = parseISO(format(Date.now(), 'LLLL d, yyyy'));
 	try {
-		const subjectSmtp = `Contact Us Form Submission - ${subject}`;
+		const subjectSmtp = `Contact Us Submission Event - ${subject}`;
 		const body_text = `Contact Us Form Submission via AWS SES & Nodemailer
 	---------------------------------------------------------
 	${text}
 	`;
 
+		// email providers that accept embedded html
 		const body_html = `<html>
 	<head></head>
 	<body>
@@ -34,7 +35,6 @@ export default async (req, res) => {
 		<p>This email was sent with <a href="https://aws.amazon.com/ses/" target="_blank">Amazon SES</a>
 		 using <a href="https://nodemailer.com" target="_blank">Nodemailer</a> for Node.js. 🎉 </p>
 		 <p>${text}</p>
-		 <time>${Date.now()}</time>
 	</body>
 	</html>`;
 		let transporter = nodemailer.createTransport({
@@ -62,37 +62,24 @@ export default async (req, res) => {
 		let response = await transporter.sendMail(mailOptions, {
 			body: JSON.stringify(data),
 			headers: {
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json; charset=utf-8'
 			},
 			method: 'POST'
 		});
 
 		// swallow any errors from aws ses and return a better error message
 
-		if (response.status >= 400) {
+		if (response === typeof Error) {
 			return res.status(400).json({
 				error:
+					error +
 					'There was an internal error ⚙... \n Shoot me an email at [Mary.Drisdell@drisdellconsulting.com]'
 			});
 		}
 		return res.status(201).json({ error: '' });
-	} catch (err) {
-		return res.status(500).json({ error: err.message || err.toString() });
+	} catch (error) {
+		return res.status(500).json({ error: error.message || error.toString() });
 	}
 };
 
 // https://github.com/awsdocs/aws-doc-sdk-examples/blob/master/javascript/example_code/ses/ses_sendemailsmtp.js
-
-// let response = await transporter.sendMail(mailOptions);
-
-// console.log('Message sent! Message ID: ', response.messageId);
-// res.json({ messageId });
-
-// // console.log(
-// // 	'Message sent! Message ID: ',
-// // 	response.messageId,
-// // 	to,
-// // 	from,
-// // 	text,
-// // 	subject
-// // );

@@ -1,35 +1,13 @@
-.parentDiv {
-	@apply pt-8 pb-16 prose-xl max-w-lg text-primary-0 text-left content-center mx-auto flex-row select-none tracking-tight;
-	&:hover {
-		@apply text-primary-7 transition-colors duration-300 ease-in-out transform;
-	}
-	@screen xs {
-		@apply max-w-xl;
-	}
-	@screen sm {
-		@apply max-w-3xl text-justify;
-	}
-	@screen md {
-		@apply max-w-5xl;
-	}
-	@screen lg {
-		@apply max-w-6xl;
-	}
-	@screen xl {
-		@apply max-w-7xl;
-	}
-}
-
 .tableMd figure {
 	@apply flex-row w-full min-w-full bg-primary-9 bg-opacity-80 mx-auto;
 }
 
 .tableMd table {
-	@apply flex-col w-full text-xl text-primary-0 text-center align-middle;
+	@apply flex-col w-full text-base text-primary-0 text-center align-middle;
 }
 
 .tableMd tbody {
-	@apply border-primary-0 border-2;
+	@apply border-primary-0 border-2 border-opacity-50;
 }
 
 .tableMd tr {
@@ -56,6 +34,14 @@
 .tableMd div > p {
 	@apply select-none;
 	&:hover {
-		@apply text-primary-7 transition-colors duration-300 ease-in-out transform;
+		@apply bg-primary-7 transition-colors duration-300 ease-in-out transform;
 	}
+}
+
+.tableMd li::marker {
+	@apply list-disc fill-current;
+}
+
+.tableMd h4 {
+	@apply text-xl;
 }

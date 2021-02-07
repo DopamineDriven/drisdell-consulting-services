@@ -2,7 +2,7 @@ import cn from 'classnames';
 // import hydrate from 'next-mdx-remote/hydrate';
 import ReactMarkdown from 'react-markdown/with-html';
 import Image from 'next/image';
-
+import css from './positions-posts.module.css';
 import { PositionBySlug_positionBySlug } from '@lib/graphql/PositionBySlug/__generated__/PositionBySlug';
 import { FC } from 'react';
 
@@ -115,6 +115,7 @@ const PositionPosts: FC<AboutSubTemplateProps> = ({
 								<ReactMarkdown
 									allowDangerousHtml={true}
 									children={contentConditional}
+									className={cn('', css['tableMd'])}
 								/>
 								<h3>Additional Info</h3>
 							</div>

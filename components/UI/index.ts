@@ -12,6 +12,7 @@ export { default as Marquee } from './Marquee';
 export { default as Modal } from './Modal';
 export { default as Modified } from './Modified';
 export { default as OgLogo } from './OgLogo';
+export { default as SiteDivider } from './Divider';
 export { default as Skeleton } from './Skeleton';
 export { default as Text } from './Text';
 export { default as Textarea } from './TextArea';
