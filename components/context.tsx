@@ -58,7 +58,9 @@ type MODAL_VIEWS =
 	| 'SIGNUP_VIEW'
 	| 'LOGIN_VIEW'
 	| 'FORGOT_VIEW'
-	| 'REQUEST_APPT_VIEW';
+	| 'REQUEST_APPT_VIEW'
+	| 'SUCCESS_VIEW'
+	| 'SUBMIT_RESUME_VIEW';
 type ToastText = string;
 
 export const UIContext = React.createContext<State | any>(initialState);

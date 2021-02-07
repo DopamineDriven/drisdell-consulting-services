@@ -18,6 +18,8 @@ const SubmitResume: FC = () => {
 	const [inputE2, setInputE2] = useState('');
 	const [inputE3, setInputE3] = useState('');
 	const [inputE4, setInputE4] = useState('');
+	const [inputE5, setInputE5] = useState('');
+	const [inputE6, setInputE6] = useState('');
 
 	// const [success, onSuccess] = useState(false);
 	const [message, setMessage] = useState('');
@@ -37,7 +39,9 @@ const SubmitResume: FC = () => {
 				text: inputE3,
 				subject: inputE4,
 				name: inputE2,
-				email: inputE1
+				email: inputE1,
+				resume: inputE5,
+				coverLetter: inputE6
 			}),
 			headers: {
 				'Content-Type': 'application/json'
@@ -178,11 +182,32 @@ const SubmitResume: FC = () => {
 					type='text'
 					className='mb-2 bg-primary-9 text-primary-0 font-medium focus:outline-none rounded-md'
 				/>
+				<div className='grid grid-cols-2'>
+					<Input
+						id='resume-upload'
+						name='resume'
+						placeholder='upload resume'
+						onChange={setInputE5}
+						required={true}
+						type='file'
+						className='col-span-1 mb-2 bg-primary-9 text-primary-0 font-medium focus:outline-none rounded-md'
+					/>
+
+					<Input
+						id='cover-letter-upload'
+						name='cover letter'
+						placeholder='upload cover letter'
+						onChange={setInputE6}
+						required={false}
+						type='file'
+						className='col-span-1 mb-2 bg-primary-9 text-primary-0 font-medium focus:outline-none rounded-md'
+					/>
+				</div>
 				<label htmlFor='text'>{'Body'}</label>
 				<Textarea
 					id='text-textarea'
 					name='text'
-					placeholder='Email body...'
+					placeholder='Message...'
 					onChange={setInputE3}
 					required={true}
 					minLength={5}
@@ -208,13 +233,13 @@ const SubmitResume: FC = () => {
 					</Button>
 				</div>
 				<span className='pt-1 text-center text-sm'>
-					<span className='text-primary-9'>Interested in a Career?</span>
+					<span className='text-primary-9'>Questions?</span>
 					&nbsp;
 					<a
 						className='text-primary-9 font-bold hover:underline cursor-pointer'
-						onClick={() => setModalView('LOGIN_VIEW')}
+						onClick={() => setModalView('EMAIL_VIEW')}
 					>
-						Submit a Resume
+						Send an email
 					</a>
 				</span>
 			</div>

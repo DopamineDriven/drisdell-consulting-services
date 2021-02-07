@@ -53,6 +53,16 @@ const EmailView = dynamic(
 	dynamicProps
 );
 
+const SubmitResumeView = dynamic(
+	() => import('@components/auth/submit-a-resume'),
+	dynamicProps
+);
+
+const SuccessView = dynamic(
+	() => import('@components/auth/success'),
+	dynamicProps
+);
+
 const LoginView = dynamic(
 	() => import('@components/auth/user-login'),
 	dynamicProps
@@ -171,8 +181,8 @@ const Layout: FC<LayoutProps> = props => {
 				{modalView === 'EMAIL_VIEW' && <EmailView />}
 				{modalView === 'LOGIN_VIEW' && <LoginView />}
 				{modalView === 'SIGNUP_VIEW' && <SignUpView />}
-				{/* {modalView === 'FORGOT_VIEW' && <ForgotPassword />} */}
-				{/* {modalView === 'REQUEST_APPT_VIEW' && <RequestAppt />} */}
+				{modalView === 'SUBMIT_RESUME_VIEW' && <SubmitResumeView />}
+				{modalView === 'SUCCESS_VIEW' && <SuccessView />}
 			</Modal>
 			<div className={cn(css.bg, classNameRoot)}>
 				<main className={cn(css.main, 'fit')}>{children}</main>

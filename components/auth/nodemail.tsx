@@ -60,6 +60,7 @@ const SendEmail: FC = () => {
 		setMessage(
 			'Success 🎉 email sent! We will get back to you within several business days'
 		);
+		await setModalView('SUCCESS_VIEW');
 	};
 
 	return (
@@ -212,7 +213,7 @@ const SendEmail: FC = () => {
 					&nbsp;
 					<a
 						className='text-primary-9 font-bold hover:underline cursor-pointer'
-						onClick={() => setModalView('LOGIN_VIEW')}
+						onClick={() => setModalView('SUBMIT_RESUME_VIEW')}
 					>
 						Submit a Resume
 					</a>
