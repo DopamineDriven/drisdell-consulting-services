@@ -17,7 +17,6 @@ const smtpPassword = SMTP_PASSWORD;
 
 export default async (req, res) => {
 	const { text, subject, name, email } = req.body;
-	const formattedTimeStamp = parseISO(format(Date.now(), 'LLLL d, yyyy'));
 	try {
 		const subjectSmtp = `Contact Us Submission Event - ${subject}`;
 		const body_text = `Contact Us Form Submission via AWS SES & Nodemailer
