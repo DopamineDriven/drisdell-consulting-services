@@ -1,4 +1,4 @@
-import { Input, Button, Textarea, Logo } from '@components/UI';
+import { Input, Button, Textarea, Logo, ModalBackdrop } from '@components/UI';
 import { useState, SyntheticEvent, FC } from 'react';
 import { useUI } from '@components/context';
 import fetch from 'isomorphic-unfetch';
@@ -40,10 +40,11 @@ const SendEmail: FC = () => {
 				email: inputE1
 			}),
 			headers: {
+				Accept: 'application/json, text/plain, */*',
 				'Content-Type': 'application/json'
 			},
-			method: 'POST',
-			credentials: 'include'
+			method: 'POST'
+			// credentials: 'include'
 		});
 
 		const { error } = await res.json();
@@ -73,72 +74,7 @@ const SendEmail: FC = () => {
 				<Logo className='h-40 w-40 rounded-full' />
 			</div>
 			<div className='relative max-w-xl mx-auto'>
-				<svg
-					className='absolute left-full transform translate-x-1/2'
-					width='404'
-					height='404'
-					fill='none'
-					viewBox='0 0 404 404'
-					aria-hidden='true'
-				>
-					<defs>
-						<pattern
-							id='85737c0e-0916-41d7-917f-596dc7edfa27'
-							x='0'
-							y='0'
-							width='20'
-							height='20'
-							patternUnits='userSpaceOnUse'
-						>
-							<rect
-								x='0'
-								y='0'
-								width='4'
-								height='4'
-								className='text-primary-0'
-								fill='currentColor'
-							/>
-						</pattern>
-					</defs>
-					<rect
-						width='404'
-						height='404'
-						fill='url(#85737c0e-0916-41d7-917f-596dc7edfa27)'
-					/>
-				</svg>
-				<svg
-					className='absolute right-full bottom-0 transform -translate-x-1/2'
-					width='404'
-					height='404'
-					fill='none'
-					viewBox='0 0 404 404'
-					aria-hidden='true'
-				>
-					<defs>
-						<pattern
-							id='85737c0e-0916-41d7-917f-596dc7edfa27'
-							x='0'
-							y='0'
-							width='20'
-							height='20'
-							patternUnits='userSpaceOnUse'
-						>
-							<rect
-								x='0'
-								y='0'
-								width='4'
-								height='4'
-								className='text-primary-0'
-								fill='currentColor'
-							/>
-						</pattern>
-					</defs>
-					<rect
-						width='404'
-						height='404'
-						fill='url(#85737c0e-0916-41d7-917f-596dc7edfa27)'
-					/>
-				</svg>
+				<ModalBackdrop />
 				<div className='text-center'>
 					<h2 className='text-3xl font-extrabold tracking-tight text-primary-9 sm:text-4xl pb-5'>
 						Contact Us Today
@@ -190,11 +126,6 @@ const SendEmail: FC = () => {
 					cols={1}
 					className='mb-2 bg-primary-9 text-primary-0 font-medium focus:outline-none rounded-md'
 				/>
-				{/* <div>
-				{message
-					? message
-					: `Please don't submit more than one email per 24-hour period. If you have additional questions, you may reach us at ""`}
-			</div> */}
 				<div className='w-auto px-8 flex flex-col'>
 					<Button
 						type='submit'

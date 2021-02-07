@@ -19,10 +19,10 @@ const smtpPassword = SMTP_PASSWORD;
 // resumes@drisdellconsulting.com
 // bcc mary.drisdell@drisdellconsulting.com
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-	const { text, subject, name, email } = req.body;
+	const { text, subject, name, email, resume, coverLetter } = req.body;
 	try {
-		const subjectSmtp = `Contact Us Submission Event - ${subject}`;
-		const body_text = `Contact Us Form Submission via AWS SES & Nodemailer
+		const subjectSmtp = `Resume Submission Event - ${subject}`;
+		const body_text = `Resume Submission via AWS SES & Nodemailer
 	---------------------------------------------------------
 	${text}
 	`;
@@ -34,9 +34,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 		<h1>${subject}</h1>
 		<h2>name: ${name}</p>
 		<p>email: ${email}</p>
-		<p>This email was sent with <a href="https://aws.amazon.com/ses/" target="_blank">Amazon SES</a>
-		 using <a href="https://nodemailer.com" target="_blank">Nodemailer</a> for Node.js. 🎉 </p>
 		 <p>${text}</p>
+     <input type="file" name=${resume}>${resume}</input>
+     <input type="file" name=${coverLetter ?? ''}>${coverLetter ?? ''}</input>
 	</body>
 	</html>`;
 		let transporter = nodemailer.createTransport({
@@ -59,7 +59,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 			html: body_html
 		};
 		const data: any = {
-			payload: [text, subject, name, email]
+			payload: [text, subject, name, email, resume, coverLetter]
 		};
 		let response = await transporter.sendMail(mailOptions, {
 			// @ts-ignore

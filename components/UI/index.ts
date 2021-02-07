@@ -10,6 +10,7 @@ export { default as LoadingSpinner } from './LoadingSpinner';
 export { default as Logo } from './Logo';
 export { default as Marquee } from './Marquee';
 export { default as Modal } from './Modal';
+export { default as ModalBackdrop } from './ModalBackdrop';
 export { default as Modified } from './Modified';
 export { default as OgLogo } from './OgLogo';
 export { default as SiteDivider } from './Divider';

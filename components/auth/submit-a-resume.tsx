@@ -1,16 +1,9 @@
-import { Input, Button, Textarea, Logo } from '@components/UI';
+import { Input, Button, Textarea, Logo, ModalBackdrop } from '@components/UI';
 import { useState, SyntheticEvent, FC } from 'react';
 import { useUI } from '@components/context';
 import fetch from 'isomorphic-unfetch';
 import css from './contact-us.module.css';
 import cn from 'classnames';
-// import AWS from 'aws-sdk';
-// import { ConfigurationOptions } from 'aws-sdk/lib/config-base';
-
-// const SES_CONFIG: ConfigurationOptions = {
-// 	accessKeyId: `${process.env.SES_ACCESS_KEY}`,
-// 	secretAccessKey: `${process.env.SES_SECRET_ACCESS_KEY}`
-// };
 
 const SubmitResume: FC = () => {
 	const { setModalView } = useUI();
@@ -20,21 +13,18 @@ const SubmitResume: FC = () => {
 	const [inputE4, setInputE4] = useState('');
 	const [inputE5, setInputE5] = useState('');
 	const [inputE6, setInputE6] = useState('');
-
-	// const [success, onSuccess] = useState(false);
 	const [message, setMessage] = useState('');
 	const [disabled, setDisabled] = useState(false);
 	const [loading, setLoading] = useState(false);
-	// remove console
+
 	console.log(setDisabled);
-	// const AWS_SES = new AWS.SES(SES_CONFIG);
-	// console.log(AWS_SES);
+
 	const userSend = async (e: SyntheticEvent<EventTarget>) => {
 		e.preventDefault();
 
 		setLoading(true);
 		setMessage('');
-		let res = await fetch('/api/nodemailer', {
+		let res = await fetch('/api/submit-resume', {
 			body: JSON.stringify({
 				text: inputE3,
 				subject: inputE4,
@@ -61,87 +51,25 @@ const SubmitResume: FC = () => {
 		setInputE2('');
 		setInputE3('');
 		setInputE4('');
+		setInputE5('');
+		setInputE6('');
 		setMessage(
 			'Success 🎉 email sent! We will get back to you within several business days'
 		);
+		await setModalView('SUCCESS_VIEW');
 	};
 
 	return (
 		<form
 			// @ts-ignore
 			onSubmit={userSend}
-			className={cn('w-100 flex flex-col justify-between')}
+			className={cn('w-200 flex flex-col justify-between')}
 		>
 			<div className='flex justify-center pb-4 '>
 				<Logo className='h-40 w-40 rounded-full' />
 			</div>
 			<div className='relative max-w-xl mx-auto'>
-				<svg
-					className='absolute left-full transform translate-x-1/2'
-					width='404'
-					height='404'
-					fill='none'
-					viewBox='0 0 404 404'
-					aria-hidden='true'
-				>
-					<defs>
-						<pattern
-							id='85737c0e-0916-41d7-917f-596dc7edfa27'
-							x='0'
-							y='0'
-							width='20'
-							height='20'
-							patternUnits='userSpaceOnUse'
-						>
-							<rect
-								x='0'
-								y='0'
-								width='4'
-								height='4'
-								className='text-primary-0'
-								fill='currentColor'
-							/>
-						</pattern>
-					</defs>
-					<rect
-						width='404'
-						height='404'
-						fill='url(#85737c0e-0916-41d7-917f-596dc7edfa27)'
-					/>
-				</svg>
-				<svg
-					className='absolute right-full bottom-0 transform -translate-x-1/2'
-					width='404'
-					height='404'
-					fill='none'
-					viewBox='0 0 404 404'
-					aria-hidden='true'
-				>
-					<defs>
-						<pattern
-							id='85737c0e-0916-41d7-917f-596dc7edfa27'
-							x='0'
-							y='0'
-							width='20'
-							height='20'
-							patternUnits='userSpaceOnUse'
-						>
-							<rect
-								x='0'
-								y='0'
-								width='4'
-								height='4'
-								className='text-primary-0'
-								fill='currentColor'
-							/>
-						</pattern>
-					</defs>
-					<rect
-						width='404'
-						height='404'
-						fill='url(#85737c0e-0916-41d7-917f-596dc7edfa27)'
-					/>
-				</svg>
+				<ModalBackdrop />
 				<div className='text-center'>
 					<h2 className='text-3xl font-extrabold tracking-tight text-primary-9 sm:text-4xl pb-5'>
 						Contact Us Today
