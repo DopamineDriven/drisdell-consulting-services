@@ -1,13 +1,14 @@
-const nodemailer = require('nodemailer');
+import nodemailer from 'nodemailer';
+import { NextApiRequest, NextApiResponse } from 'next';
 // const aws = require('aws-sdk');
 const smtpEndpoint = 'email-smtp.us-east-2.amazonaws.com';
 const port = 465;
-const {
+import {
 	SMTP_SENDER_ADDRESS,
 	SMTP_RECIPIENT_ADDRESS,
 	SMTP_PASSWORD,
 	SMTP_USERNAME
-} = require('../../aws');
+} from '../../aws';
 const senderAddress = SMTP_SENDER_ADDRESS;
 const toAddress = SMTP_RECIPIENT_ADDRESS;
 const ccAddress = SMTP_SENDER_ADDRESS;
@@ -15,7 +16,7 @@ const bccAddress = SMTP_SENDER_ADDRESS;
 const smtpUsername = SMTP_USERNAME;
 const smtpPassword = SMTP_PASSWORD;
 
-export default async (req, res) => {
+export default async (req: NextApiRequest, res: NextApiResponse) => {
 	const { text, subject, name, email } = req.body;
 	try {
 		const subjectSmtp = `Contact Us Submission Event - ${subject}`;
@@ -55,10 +56,11 @@ export default async (req, res) => {
 			text: body_text,
 			html: body_html
 		};
-		const data = {
+		const data: any = {
 			payload: [text, subject, name, email]
 		};
 		let response = await transporter.sendMail(mailOptions, {
+			// @ts-ignore
 			body: JSON.stringify(data),
 			headers: {
 				'Content-Type': 'application/json; charset=utf-8'
@@ -71,7 +73,6 @@ export default async (req, res) => {
 		if (response === typeof Error) {
 			return res.status(400).json({
 				error:
-					error +
 					'There was an internal error ⚙... \n Shoot me an email at [Mary.Drisdell@drisdellconsulting.com]'
 			});
 		}
