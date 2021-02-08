@@ -1,5 +1,5 @@
 .root {
-	@apply min-w-full w-screen bg-fixed -mb-10;
+	@apply min-w-full w-screen bg-fixed -mb-10 h-full;
 }
 
 .success {

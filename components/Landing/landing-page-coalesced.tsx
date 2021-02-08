@@ -9,6 +9,8 @@ import LandingPageData from './LandingData';
 import LandingTestimonials from './LandingTestimonialsData';
 import LandingTestimonialsWrapper from './LandingTestimonialsWrapper';
 import LandingPageWrapper from './LandingWrapper';
+import LandingPageAboutData from './LandingPageAboutData';
+import LandingPageAboutWrapper from './LandingPageAboutWrapper';
 import {
 	OrderEnum,
 	PostObjectsConnectionOrderbyEnum
@@ -90,6 +92,34 @@ const LandingPageCoalesced = () => {
 			) : (
 				<aside>{`${error} landing page hero returned undefined`}</aside>
 			)}
+
+			<LandingPageAboutWrapper>
+				{data &&
+				data.aboutPage !== null &&
+				data.aboutPage.edges !== null &&
+				data.aboutPage.edges.length > 0 ? (
+					data.aboutPage.edges.map(edge => {
+						return edge !== null && edge.node !== null && edge.node.title !== null ? (
+							<LandingPageAboutData
+								key={edge.node.id}
+								id={edge.node.id}
+								__typename={edge.node.__typename}
+								title={edge.node.title}
+								featuredImage={edge.node.featuredImage}
+								content={edge.node.content}
+								slug={edge.node.slug}
+							/>
+						) : (
+							<div>
+								{error} post, post.node, post.node.featuredImage, and/or
+								post.node.featuredImage.node returned null
+							</div>
+						);
+					})
+				) : (
+					<aside>{`${error} landing page about feature returned undefined`}</aside>
+				)}
+			</LandingPageAboutWrapper>
 
 			{data &&
 			data.clientTestimonials !== null &&

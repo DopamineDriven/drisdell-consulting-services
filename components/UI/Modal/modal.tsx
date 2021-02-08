@@ -10,7 +10,7 @@ import {
 import FocusTrap from '@lib/focus-trap';
 interface Props {
 	className?: string;
-	children?: React.ReactNode | any;
+	children?: any;
 	open?: boolean;
 	onClose: () => void;
 	onEnter?: () => void | null;

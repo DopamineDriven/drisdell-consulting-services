@@ -3,7 +3,7 @@ import * as Types from '../../../global/global-types.generated';
 import { gql } from '@apollo/client';
 export type PositionFieldsFragment = { __typename?: 'Position' } & Pick<
 	Types.Position,
-	'content' | 'id' | 'title' | 'modified' | 'excerpt' | 'slug'
+	'content' | 'id' | 'title' | 'date' | 'modified' | 'excerpt' | 'slug'
 > & {
 		positionDetails?: Types.Maybe<
 			{ __typename?: 'Position_Positiondetails' } & Pick<
@@ -25,6 +25,7 @@ export const PositionFieldsFragmentDoc = gql`
 		content
 		id
 		title
+		date
 		modified
 		excerpt
 		slug

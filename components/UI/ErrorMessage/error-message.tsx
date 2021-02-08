@@ -1,5 +1,5 @@
 import { ApolloError } from '@apollo/client';
-import SiteDivider from '@components/Divider';
+import SiteDivider from '@components/UI/Divider';
 import cn from 'classnames';
 import css from './error-message.module.css';
 const ApolloErrorMessage = ({
