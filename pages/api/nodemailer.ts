@@ -2,22 +2,22 @@ import nodemailer from 'nodemailer';
 import { NextApiRequest, NextApiResponse } from 'next';
 // const aws = require('aws-sdk');
 const smtpEndpoint = 'email-smtp.us-east-2.amazonaws.com';
-const port = 465;
+const port = process.env.NODE_ENV === 'development' ? 465 : 587;
 import secrets from '../../aws';
 const {
 	SMTP_SENDER_ADDRESS,
 	SMTP_RECIPIENT_ADDRESS,
 	SMTP_PASSWORD,
-	SMTP_USERNAME
+	SMTP_USERNAME,
+	SMTP_BCC_ADDRESS
 } = secrets;
 const senderAddress = SMTP_SENDER_ADDRESS;
 const toAddress = SMTP_RECIPIENT_ADDRESS;
 const ccAddress = SMTP_SENDER_ADDRESS;
-const bccAddress = SMTP_SENDER_ADDRESS;
+const bccAddress = SMTP_BCC_ADDRESS;
 const smtpUsername = SMTP_USERNAME;
 const smtpPassword = SMTP_PASSWORD;
-// resumes@drisdellconsulting.com
-// bcc mary.drisdell@drisdellconsulting.com
+// https://github.com/vercel/next.js/discussions/11634
 export default async (req: NextApiRequest, res: NextApiResponse) => {
 	const { text, subject, name, email } = req.body;
 	try {
@@ -26,23 +26,22 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 	---------------------------------------------------------
 	${text}
 	`;
-
-		// email providers that accept embedded html
 		const body_html = `<html>
 	<head></head>
 	<body>
 		<h1>${subject}</h1>
-		<h2>name: ${name}</p>
-		<p>email: ${email}</p>
-		<p>This email was sent with <a href="https://aws.amazon.com/ses/" target="_blank">Amazon SES</a>
-		 using <a href="https://nodemailer.com" target="_blank">Nodemailer</a> for Node.js. 🎉 </p>
-		 <p>${text}</p>
+		\n
+		<h2>Name: ${name}</p>
+		\n
+		<h2>email: ${email}</h2>
+		\n
+		<p>${text}</p>
 	</body>
 	</html>`;
 		let transporter = nodemailer.createTransport({
 			host: smtpEndpoint,
 			port: port,
-			secure: true, // true for 465, false for all other ports
+			secure: port === 465 ? true : false, // true for 465, false for all other ports
 			auth: {
 				user: smtpUsername,
 				pass: smtpPassword

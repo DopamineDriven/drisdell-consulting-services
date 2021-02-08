@@ -7,6 +7,7 @@ import { HeaderFooter_headerDynamic_menuItems_edges_node as NavRef } from '@lib/
 import { Transition } from '@headlessui/react';
 import DownArrow from '../../Icons/down-arrow';
 import getSlug from '@lib/get-slug';
+import { resolvePathConcatDoubleSlash } from '@lib/resolve-concat-double-slash';
 
 export interface NavLinkProps extends NavRef {
 	root?: string;
@@ -14,8 +15,7 @@ export interface NavLinkProps extends NavRef {
 
 const NavLinksHeadless: FC<NavLinkProps> = props => {
 	const [isOpen, setIsOpen] = useState(false);
-	const resolvePathConcatDoubleSlash = (path: string) =>
-		path.replace(/^\/|$/g, '');
+
 	const { root, path, label, childItems } = props;
 	const { pathname } = useRouter();
 	console.log(getSlug(path));
@@ -105,47 +105,6 @@ const NavLinksHeadless: FC<NavLinkProps> = props => {
 													{subPage.node.childItems !== null &&
 													subPage.node.childItems.edges !== null &&
 													subPage.node.childItems.edges.length > 0 ? (
-														// <div className='relative z-50 ml-4'>
-														// 	<button
-														// 		onClick={() => setIsChildOpen(!isChildOpen)}
-														// 		id='sub-menu'
-														// 		aria-haspopup={true}
-														// 		aria-expanded={true}
-														// 		type='button'
-														// 		className={cn(
-														// 			'bg-primary-9 rounded-full flex ml-4 lg:ml-0 items-center lg:mx-auto-0 md:py-0 my-auto text-primary-0 transition-transform transform-gpu ease-in-out duration-200 outline-none focus:outline-none translate-x-0',
-														// 			{
-														// 				'lg:-translate-x-4 ring-primary-0 ring-1 rotate-0 ': isChildOpen,
-														// 				'lg:-translate-x-5 ring-primary-9 ring-0 -rotate-90 ': !isChildOpen
-														// 			}
-														// 		)}
-														// 	>
-														// 		<DownArrow className='select-none lg:w-5 lg:h-5 w-8 h-8' />
-														// 	</button>
-														// 	<Transition
-														// 		show={isChildOpen}
-														// 		enter='transition ease-out duration-200 '
-														// 		enterFrom='transform opacity-0 translate-y-1'
-														// 		enterTo='transform opacity-100 translate-y-0'
-														// 		leave='transition ease-in duration-150'
-														// 		leaveFrom='transform opacity-100 translate-y-0'
-														// 		leaveTo='transform opacity-0 translate-y-1'
-														// 	>
-														// 		{ref => (
-														// 			<div className='lg:absolute relative z-10 -ml-4 mt-3 transform px-2 w-screen lg:w-sm max-w-sm sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2 lg:mx-auto'>
-														// 				<div
-														// 					className={cn(
-														// 						'rounded-lg lg:shadow-lg lg:ring-1 lg:ring-black ring-opacity-5 overflow-hidden ',
-														// 						{
-														// 							'flex-grow': isChildOpen,
-														// 							flex: !isChildOpen
-														// 						}
-														// 					)}
-														// 					ref={ref}
-														// 					role='menu'
-														// 					aria-orientation='vertical'
-														// 					aria-labelledby='sub-menu'
-														// 				>
 														<div className='relative grid lg:gap-3 px-5 bg-primary-9 sm:gap-8 text-primary-0 flex-grow'>
 															{subPage.node!.childItems!.edges!.map(subSubPage => {
 																return subSubPage !== null &&
@@ -188,11 +147,6 @@ const NavLinksHeadless: FC<NavLinkProps> = props => {
 															})}
 														</div>
 													) : (
-														/* </div>
-																		</div>
-																	)}
-																</Transition>
-															</div> */
 														<></>
 													)}
 												</>
@@ -223,23 +177,3 @@ const NavLinksHeadless: FC<NavLinkProps> = props => {
 };
 
 export default NavLinksHeadless;
-
-// import ClickOutside from '@lib/click-outside';
-// import {
-// 	disableBodyScroll,
-// 	enableBodyScroll,
-// 	clearAllBodyScrollLocks
-// } from 'body-scroll-lock';
-
-// useEffect(() => {
-// 	if (ref.current) {
-// 		if (isOpen) {
-// 			disableBodyScroll(ref.current);
-// 		} else {
-// 			enableBodyScroll(ref.current);
-// 		}
-// 	}
-// 	return () => {
-// 		clearAllBodyScrollLocks();
-// 	};
-// }, []);
