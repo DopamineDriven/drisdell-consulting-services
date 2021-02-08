@@ -64,23 +64,26 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 			// @ts-ignore
 			body: JSON.stringify(data),
 			headers: {
-				'Content-Type': 'application/json; charset=utf-8'
+				'Content-Type': 'application/json; charset=utf-8',
+				'Cache-Control': 's-maxage=1, stale-while-revalidate',
+				'Accept-Encoding': 'gzip'
 			},
 			method: 'POST'
 		});
 
 		// swallow any errors from aws ses and return a better error message
-
+		res.setHeader('Cache-Control', 's-maxage=86400');
 		if (response === typeof Error) {
 			return res.status(400).json({
 				error:
 					'There was an internal error ⚙... \n Shoot me an email at [Mary.Drisdell@drisdellconsulting.com]'
 			});
 		}
-		return res.status(201).json({ error: '' });
+		return res.status(200).json({ error: '', data: data ?? '' });
 	} catch (error) {
 		return res.status(500).json({ error: error.message || error.toString() });
 	}
 };
 
 // https://github.com/awsdocs/aws-doc-sdk-examples/blob/master/javascript/example_code/ses/ses_sendemailsmtp.js
+// https://github.com/vercel/vercel/discussions/4387
