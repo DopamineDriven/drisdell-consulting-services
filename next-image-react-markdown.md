@@ -23,11 +23,11 @@ import css from './about-posts.module.css';
 import ReactMarkdown from 'react-markdown/with-html';
 import Image, { ImageLoaderProps, ImageProps } from 'next/image';
 
-const LoadingDots = dynamic(() => import('@components/UI/LoadingDots'));
+const LoadingSpinner = dynamic(() => import('@components/UI/LoadingSpinner'));
 
 const Loading = () => (
 	<div className='w-80 h-80 flex items-center text-center justify-center p-3'>
-		<LoadingDots />
+		<LoadingSpinner />
 	</div>
 );
 

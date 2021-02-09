@@ -3,11 +3,11 @@ import {
 	LandingCoalesced,
 	LandingCoalescedVariables
 } from '@lib/graphql/LandingCoalesced/__generated__/LandingCoalesced';
-import cn from 'classnames';
+// import cn from 'classnames';
 import dynamic from 'next/dynamic';
 import LandingPageData from './LandingData';
-import LandingTestimonials from './LandingTestimonialsData';
-import LandingTestimonialsWrapper from './LandingTestimonialsWrapper';
+// import LandingTestimonials from './LandingTestimonialsData';
+// import LandingTestimonialsWrapper from './LandingTestimonialsWrapper';
 import LandingPageWrapper from './LandingWrapper';
 import LandingPageAboutData from './LandingPageAboutData';
 import LandingPageAboutWrapper from './LandingPageAboutWrapper';
@@ -16,7 +16,7 @@ import {
 	PostObjectsConnectionOrderbyEnum
 } from '@lib/graphql-global-types';
 import { useQuery } from '@apollo/client';
-import css from './landing-page-coalesced.module.css';
+// import css from './landing-page-coalesced.module.css';
 
 export const LandingCoalescedQueryVars: LandingCoalescedVariables = {
 	name: 'Drisdell Consulting Services',
@@ -26,7 +26,7 @@ export const LandingCoalescedQueryVars: LandingCoalescedVariables = {
 	aboutName: 'About Us'
 };
 
-const LoadingSpinner = dynamic(() => import('@components/UI/LoadingDots'));
+const LoadingSpinner = dynamic(() => import('@components/UI/LoadingSpinner'));
 
 const Loading = () => (
 	<div className='w-80 h-80 flex items-center text-center justify-center p-3'>
@@ -121,7 +121,7 @@ const LandingPageCoalesced = () => {
 				)}
 			</LandingPageAboutWrapper>
 
-			{data &&
+			{/* {data &&
 			data.clientTestimonials !== null &&
 			data.clientTestimonials.edges !== null &&
 			data.clientTestimonials.edges.length > 0 ? (
@@ -147,7 +147,7 @@ const LandingPageCoalesced = () => {
 				</LandingTestimonialsWrapper>
 			) : (
 				<aside>{`${error} landing page testimonials returned undefined`}</aside>
-			)}
+			)} */}
 		</LandingPageWrapper>
 	);
 };

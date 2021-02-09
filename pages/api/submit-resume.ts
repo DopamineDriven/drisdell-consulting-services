@@ -3,6 +3,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 // import fs from 'fs';
 // const aws = require('aws-sdk');
 const smtpEndpoint = 'email-smtp.us-east-2.amazonaws.com';
+// import { SESClient, SendTemplatedEmailCommand } from '@aws-sdk/client-ses';
 const port = 465;
 import secrets from '../../aws';
 const {

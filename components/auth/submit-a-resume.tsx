@@ -14,10 +14,8 @@ const SubmitResume: FC = () => {
 	const [inputE5, setInputE5] = useState('');
 	const [inputE6, setInputE6] = useState('');
 	const [message, setMessage] = useState('');
-	const [disabled, setDisabled] = useState(false);
+	const [disabled] = useState(false);
 	const [loading, setLoading] = useState(false);
-
-	console.log(setDisabled);
 
 	const userSend = async (e: SyntheticEvent<EventTarget>) => {
 		e.preventDefault();

@@ -15,17 +15,8 @@ export interface NavLinkProps extends NavRef {
 
 const NavLinksHeadless: FC<NavLinkProps> = props => {
 	const [isOpen, setIsOpen] = useState(false);
-
 	const { root, path, label, childItems } = props;
 	const { pathname } = useRouter();
-	console.log(getSlug(path));
-	const childItemsCheck =
-		childItems !== null &&
-		childItems.edges !== null &&
-		childItems.edges.length > 0
-			? childItems.edges
-			: ``;
-	console.log(childItemsCheck);
 	return (
 		<>
 			<Link href={path} passHref>

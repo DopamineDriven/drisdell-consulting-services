@@ -23,29 +23,3 @@ export const event = ({ action, category, label, value }: GTagEvent) => {
 		value: value
 	});
 };
-
-// import ReactGA, { EventArgs } from 'react-ga';
-// import { ParsedUrlQuery } from 'querystring';
-// export const gaInit = () => {
-// 	ReactGA.initialize(GA_TRACKING_ID);
-// };
-
-// export const pageview = (url: string) => {
-// 	ReactGA.ga('config', GA_TRACKING_ID, {
-// 		page_path: url
-// 	});
-// };
-
-// export const logPageView = () => {
-// 	ReactGA.set({ page: window.location.pathname });
-// 	ReactGA.pageview(window.location.pathname + window.location.search);
-// };
-
-// export const event = ({ action, category, label, value }: EventArgs) => {
-// 	ReactGA.event({
-// 		action,
-// 		category,
-// 		label,
-// 		value
-// 	});
-// };

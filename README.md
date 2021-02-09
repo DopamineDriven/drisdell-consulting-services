@@ -1,5 +1,72 @@
 # drisdell-consulting-services
 
+## Nextjs Instantiation Order
+
+- On the Server:
+
+  - 1. app.getInitialProps
+  - 2. page.getInitialProps
+  - 3. document.getInitialProps
+  - 4. app.render
+  - 5. page.render
+  - 6. document.render
+
+- On the Client:
+
+  - 1. app.getInitialProps
+  - 2. page.getInitialProps
+  - 3. app.render
+  - 4. page.render
+
+- On the Server with an Error:
+
+  - 1. document.getInitialProps
+  - 2. app.render
+  - 3. page.render
+  - 4. document.render
+    - Note that both app- and page.getInitialProps were thrown -- this can have substantial performance implications
+    - if the app tree isn't comprehensively shaken at server start, all of the data it otherwise centralizes isn't pre-rendered. This is something we need to be more vigilant about when developing. Monitoring these types of patterns.
+
+#### consider the following
+
+```tsx
+const withWebpackMods = {
+	webpack(
+		config,
+		{
+			isDev = process.env.NODE_ENV === 'development',
+			isServer = typeof window === 'undefined'
+		}
+	) {
+		// trigger sitemap generation before FCP
+		if (isServer) {
+			require('./scripts/generate-sitemap');
+		}
+		// in production, resolve path aliases and replace React with Preact only in the client
+		// reduces "weight" of pages
+		if (!isDev && !isServer) {
+			Object.assign((config.resolve.alias['@'] = path.resolve('./')), {
+				react: 'preact/compat',
+				'react-dom': 'preact/compat'
+			});
+		}
+		return config;
+	}
+};
+
+// ...
+
+module.exports = withPlugins([
+	[
+		// ...
+	],
+	// pass Webpack mods in
+	withWebpackMods,
+	withImages,
+	withRedirects
+]);
+```
+
 ## [ 🤙 NEWEST AWS SDKS](https://github.com/aws/aws-sdk-js-v3/tree/master/clients)
 
 ## [SES V3 TS](https://github.com/awsdocs/aws-doc-sdk-examples/tree/master/javascriptv3/example_code/ses/src)

@@ -5,7 +5,7 @@ import Footer from '../Footer';
 import cn from 'classnames';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
-import { Button, LoadingDots, Modal } from '../UI';
+import { Button, LoadingSpinner, Modal } from '../UI';
 import { useAcceptCookies } from '@lib/use-accept-cookies';
 import HEADER_FOOTER from '@lib/graphql/HeaderFooter';
 import {
@@ -35,7 +35,7 @@ export const HeaderFooterMenuQueryVers: HeaderFooterVariables = {
 
 const Loading = () => (
 	<div className='w-80 h-80 flex items-center text-center justify-center p-3'>
-		<LoadingDots />
+		<LoadingSpinner />
 	</div>
 );
 
@@ -107,7 +107,7 @@ const Layout: FC<LayoutProps> = props => {
 					/>
 				</>
 			) : loading && !error ? (
-				<LoadingDots />
+				<LoadingSpinner />
 			) : (
 				<Navbar
 					navLinksDesktop={
@@ -198,7 +198,7 @@ const Layout: FC<LayoutProps> = props => {
 						/>
 					</>
 				) : loading && !error ? (
-					<LoadingDots />
+					<LoadingSpinner />
 				) : (
 					<Footer
 						footerLinks={

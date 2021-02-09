@@ -113,9 +113,6 @@ export async function getStaticProps(
 		query: GET_PAGE,
 		variables: GetPageQueryVars
 	});
-	// const pageDynamic = data && data.page !== null ? data.page : {};
-	// const pathDynamic =
-	// 	data && data.page !== null && data.page.uri !== null ? data.page.uri : '';
 
 	return addApolloState(apolloClient, {
 		props: {

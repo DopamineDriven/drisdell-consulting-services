@@ -11,19 +11,12 @@ interface LandingPageAboutDataProps extends LandingPageAboutDataGenerated {
 
 const LandingPageAboutData: FC<LandingPageAboutDataProps> = ({
 	root,
-	featuredImage,
 	content,
 	slug
 }) => {
 	const slugDynamic = slug !== null ? slug : '#';
 	const contentDynamic = content !== null ? content : 'No content to display';
-	const featuredImageDynamic =
-		featuredImage !== null &&
-		featuredImage.node !== null &&
-		featuredImage.node.sourceUrl !== null
-			? featuredImage.node.sourceUrl
-			: '/lighthouse.webp';
-	console.log(featuredImageDynamic);
+
 	return (
 		<div
 			className={cn(
@@ -35,7 +28,7 @@ const LandingPageAboutData: FC<LandingPageAboutDataProps> = ({
 			<div className='max-w-8xl mx-auto shadow-magical'>
 				<div className='relative z-40 bg-primary-9 h-full min-h-full sm:pb-16 md:pb-20 lg:pb-32 lg:max-w-md md:max-w-lg xl:pb-40 xl:max-w-2xl 2xl:max-w-3xl 3xl:max-w-4xl lg:w-full '>
 					<svg
-						className='hidden lg:block absolute right-0 inset-y-0 2xl:w-116 w-64  h-full text-primary-9 transition-transform transform lg:translate-x-1/3 2xl:translate-x-1/2'
+						className='hidden lg:block absolute right-0 inset-y-0 2xl:w-110 w-64  h-full text-primary-9 transition-transform transform lg:translate-x-1/3 2xl:translate-x-1/3'
 						fill='currentColor'
 						viewBox='0 0 100 100'
 						preserveAspectRatio='none'
@@ -48,7 +41,7 @@ const LandingPageAboutData: FC<LandingPageAboutDataProps> = ({
 							<h1 className='text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-5xl'>
 								<span className='block xl:inline'>About Us</span>
 								<br />
-								<span className='block text-indigo-600  xl:inline z-50'>
+								<span className='block text-primary-3 xl:inline z-50'>
 									Drisdell Consulting Services
 								</span>
 							</h1>
@@ -57,21 +50,17 @@ const LandingPageAboutData: FC<LandingPageAboutDataProps> = ({
 								allowDangerousHtml={true}
 								className='mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0 z-50'
 							/>
-							{/* <p className='mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0'>
-								Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem
-								cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.
-							</p> */}
 							<div className='mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start'>
 								<div className='rounded-md shadow'>
 									<Link href={'/about-us'} as='/about-us' passHref>
-										<a className='w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10'>
+										<a className='w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-primary-9 bg-primary-2 hover:bg-primary-1 md:py-4 md:text-lg md:px-10'>
 											About Us
 										</a>
 									</Link>
 								</div>
 								<div className='mt-3 sm:mt-0 sm:ml-3'>
 									<Link href={'/contact-us'} as='/contact-us' passHref>
-										<a className='w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10'>
+										<a className='w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md bg-primary-8 hover:bg-primary-7 text-primary-1 md:py-4 md:text-lg md:px-10'>
 											Contact Us
 										</a>
 									</Link>
@@ -81,16 +70,16 @@ const LandingPageAboutData: FC<LandingPageAboutDataProps> = ({
 					</main>
 				</div>
 			</div>
-			<div className='lg:absolute lg:inset-y-28 2xl:inset-y-26 md:right-6 xl:right-6 2xl:right-14 right-5 md:w-1/2 xl:w-2/5 3xl:w-1/2 pt-10'>
+			<div className='lg:absolute lg:inset-y-28 2xl:inset-y-48 md:right-6 xl:right-6 2xl:right-14 right-5 md:w-1/2 xl:w-2/5 3xl:w-1/2 pt-10'>
 				<Link href={slugDynamic} passHref scroll={true}>
 					<a className='h-64 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full align-middle'>
 						<Image
 							src={'/lighthouse.webp'}
-							title='Drisdell Consulting Services'
+							title='📷 by Mary Drisdell'
 							alt='Drisdell Consulting Services'
-							width={2000}
-							height={1250}
-							quality={90}
+							width={2519}
+							height={1450}
+							quality={100}
 							layout='responsive'
 							priority
 							className='h-full align-middle block w-full rounded-xl'

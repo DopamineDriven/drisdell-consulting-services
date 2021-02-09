@@ -14,7 +14,6 @@ const PositionPosts: FC<AboutSubTemplateProps> = ({
 	root,
 	featuredImage,
 	children,
-	slug,
 	content
 }) => {
 	const featuredImageConditional =
@@ -23,27 +22,12 @@ const PositionPosts: FC<AboutSubTemplateProps> = ({
 		featuredImage.node.sourceUrl !== null
 			? featuredImage.node.sourceUrl
 			: '/doggo.jpg';
-	// const positionExcerpt = excerpt !== null ? excerpt : 'excerpt null';
-	// const jobTitleConditional =
-	// 	positionDetails !== null && positionDetails.jobtitle !== null
-	// 		? positionDetails.jobtitle
-	// 		: 'Job Title Removed';
 	const contentConditional = content !== null ? content : 'content null';
-	const slugConditional = slug !== null ? slug : 'slug null';
-	console.log(slugConditional);
 	return (
 		<>
 			<div className={cn(root, 'bg-primary-9 overflow-hidden select-none')}>
 				<div className='relative max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8'>
 					<div className='hidden lg:block bg-gray-50 absolute top-0 bottom-0 left-3/4 w-screen'></div>
-					{/* <div className='mx-auto text-base max-w-prose lg:max-w-none'>
-						<h2 className='text-lg text-primary-0 font-semibold tracking-wide uppercase'>
-							<ReactMarkdown allowDangerousHtml={true} children={jobTitleConditional} />
-						</h2>
-						<h3 className='mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl lg:max-w-3xl'>
-							{children}
-						</h3>
-					</div> */}
 					<div className='mt-8 lg:grid lg:grid-cols-2 lg:gap-8'>
 						<div className='relative lg:row-start-1 lg:col-start-2'>
 							<svg
