@@ -3,7 +3,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 // const aws = require('aws-sdk');
 // import { Serialize } from '@lib/jsonify';
 const smtpEndpoint = 'email-smtp.us-east-2.amazonaws.com';
-const port = process.env.NODE_ENV === 'development' ? 465 : 587;
+const port = 465;
 import secrets from '../../aws';
 const {
 	SMTP_SENDER_ADDRESS,
@@ -54,7 +54,7 @@ export default async (req: NextApiRequest, res: NextApiResponse<IResponse>) => {
 		let transporter = nodemailer.createTransport({
 			host: smtpEndpoint,
 			port: port,
-			secure: port === 465 ? true : false, // true for 465, false for all other ports
+			secure: true,
 			auth: {
 				user: smtpUsername,
 				pass: smtpPassword
