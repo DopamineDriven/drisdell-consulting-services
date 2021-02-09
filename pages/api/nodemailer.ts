@@ -1,6 +1,7 @@
 import nodemailer from 'nodemailer';
 import { NextApiRequest, NextApiResponse } from 'next';
 // const aws = require('aws-sdk');
+// import { Serialize } from '@lib/jsonify';
 const smtpEndpoint = 'email-smtp.us-east-2.amazonaws.com';
 const port = process.env.NODE_ENV === 'development' ? 465 : 587;
 import secrets from '../../aws';
@@ -17,8 +18,20 @@ const ccAddress = SMTP_SENDER_ADDRESS;
 const bccAddress = SMTP_BCC_ADDRESS;
 const smtpUsername = SMTP_USERNAME;
 const smtpPassword = SMTP_PASSWORD;
+
+type IResponse = {
+	error?: string;
+	data?: {
+		payload: {
+			text: string;
+			name: string;
+			subject: string;
+			email: string;
+		}[];
+	};
+};
 // https://github.com/vercel/next.js/discussions/11634
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+export default async (req: NextApiRequest, res: NextApiResponse<IResponse>) => {
 	const { text, subject, name, email } = req.body;
 	try {
 		const subjectSmtp = `Contact Us Submission Event - ${subject}`;
@@ -45,9 +58,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 			auth: {
 				user: smtpUsername,
 				pass: smtpPassword
-			}
+			},
+			logger: true,
+			debug: true
 		});
-
 		let mailOptions = {
 			from: senderAddress,
 			to: toAddress,
@@ -57,9 +71,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 			text: body_text,
 			html: body_html
 		};
-		const data: any = {
-			payload: [text, subject, name, email]
+		const data = {
+			payload: [{ text: text, subject: subject, name: name, email: email }]
 		};
+
 		let response = await transporter.sendMail(mailOptions, {
 			// @ts-ignore
 			body: JSON.stringify(data),

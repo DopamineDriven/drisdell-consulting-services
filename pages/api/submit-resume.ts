@@ -19,6 +19,21 @@ const smtpUsername = SMTP_USERNAME;
 const smtpPassword = SMTP_PASSWORD;
 // resumes@drisdellconsulting.com
 // bcc mary.drisdell@drisdellconsulting.com
+
+// type IResponse = {
+// 	error?: string;
+// 	data?: {
+// 		payload: {
+// 			text: string;
+// 			name: string;
+// 			subject: string;
+// 			email: string;
+// 			resume: string | File;
+// 			coverLetter: string | File;
+// 		}[];
+// 	};
+// };
+
 export default async (req: NextApiRequest, res: NextApiResponse) => {
 	const { text, subject, name, email, resume, coverLetter } = req.body;
 	try {
@@ -45,7 +60,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 			auth: {
 				user: smtpUsername,
 				pass: smtpPassword
-			}
+			},
+			logger: true,
+			debug: true
 		});
 
 		let mailOptions = {

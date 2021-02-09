@@ -1,5 +1,11 @@
 # drisdell-consulting-services
 
+## [ 🤙 NEWEST AWS SDKS](https://github.com/aws/aws-sdk-js-v3/tree/master/clients)
+
+## [SES V3 TS](https://github.com/awsdocs/aws-doc-sdk-examples/tree/master/javascriptv3/example_code/ses/src)
+
+## [aws-doc-sdk-examples/jsv3(ts)/example_code](https://github.com/awsdocs/aws-doc-sdk-examples/tree/master/javascriptv3/example_code)
+
 ## [File Storage and Uploads](https://vercel.com/docs/solutions/file-storage)
 
 ## [Definitely Typed](https://www.typescriptlang.org/dt/search?search=)

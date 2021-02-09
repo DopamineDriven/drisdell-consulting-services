@@ -142,11 +142,6 @@ const SubmitResume: FC = () => {
 					cols={1}
 					className='mb-2 bg-primary-9 text-primary-0 font-medium focus:outline-none rounded-md'
 				/>
-				{/* <div>
-				{message
-					? message
-					: `Please don't submit more than one email per 24-hour period. If you have additional questions, you may reach us at ""`}
-			</div> */}
 				<div className='w-auto px-8 flex flex-col'>
 					<Button
 						type='submit'
