@@ -1,5 +1,23 @@
 # drisdell-consulting-services
 
+## [ 🤙 NEWEST AWS SDKS](https://github.com/aws/aws-sdk-js-v3/tree/master/clients)
+
+## [SES V3 TS](https://github.com/awsdocs/aws-doc-sdk-examples/tree/master/javascriptv3/example_code/ses/src)
+
+## [aws-doc-sdk-examples/jsv3(ts)/example_code](https://github.com/awsdocs/aws-doc-sdk-examples/tree/master/javascriptv3/example_code)
+
+## [File Storage and Uploads](https://vercel.com/docs/solutions/file-storage)
+
+## [Definitely Typed](https://www.typescriptlang.org/dt/search?search=)
+
+## [NodeMailer w3Path](https://w3path.com/node-js-send-email-with-attachment/)
+
+## [Stack Abuse Nodemailer](https://stackabuse.com/read-files-with-node-js/)
+
+## [Vercel Serverless Functions](https://vercel.com/docs/serverless-functions/introduction)
+
+## [Formspree](https://formspree.io/javascript)
+
 ## [Auth0 -- TypeScript -- Nextjs](https://github.com/auth0/nextjs-auth0/tree/master/examples/typescript-example)
 
 ## [Nodemailer + Mailgun -- api for submitting emails with a form ✉](https://www.reddit.com/r/nextjs/comments/gvvkn7/email_with_forms_serverless_function/)
@@ -95,3 +113,6 @@ Nextjs, AWS Cloudfront, Headless WordPress, TypeScript, Apollo Client, GraphQL C
 | X-Amz-Cf-Id                   | OcLSLSFemPJL5Tl6JFmSuhsWS4gq5Evg9Dg-wurJRrw2NiV4VR7CsA==                       |
 
 ### [Resume Refactoring](https://leerob.io/blog/resume)
+
+$$
+$$

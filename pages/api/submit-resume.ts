@@ -1,5 +1,6 @@
 import nodemailer from 'nodemailer';
 import { NextApiRequest, NextApiResponse } from 'next';
+// import fs from 'fs';
 // const aws = require('aws-sdk');
 const smtpEndpoint = 'email-smtp.us-east-2.amazonaws.com';
 const port = 465;
@@ -18,6 +19,21 @@ const smtpUsername = SMTP_USERNAME;
 const smtpPassword = SMTP_PASSWORD;
 // resumes@drisdellconsulting.com
 // bcc mary.drisdell@drisdellconsulting.com
+
+// type IResponse = {
+// 	error?: string;
+// 	data?: {
+// 		payload: {
+// 			text: string;
+// 			name: string;
+// 			subject: string;
+// 			email: string;
+// 			resume: string | File;
+// 			coverLetter: string | File;
+// 		}[];
+// 	};
+// };
+
 export default async (req: NextApiRequest, res: NextApiResponse) => {
 	const { text, subject, name, email, resume, coverLetter } = req.body;
 	try {
@@ -32,11 +48,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 	<head></head>
 	<body>
 		<h1>${subject}</h1>
-		<h2>name: ${name}</p>
-		<p>email: ${email}</p>
+		<h2>name: ${name}</h2>
+		<h2>email: ${email}</h2>
 		 <p>${text}</p>
-     <input type="file" name=${resume}>${resume}</input>
-     <input type="file" name=${coverLetter ?? ''}>${coverLetter ?? ''}</input>
 	</body>
 	</html>`;
 		let transporter = nodemailer.createTransport({
@@ -46,7 +60,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 			auth: {
 				user: smtpUsername,
 				pass: smtpPassword
-			}
+			},
+			logger: true,
+			debug: true
 		});
 
 		let mailOptions = {
@@ -56,7 +72,18 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 			cc: ccAddress,
 			bcc: bccAddress,
 			text: body_text,
-			html: body_html
+			html: body_html,
+			attachments: [
+				{
+					filename: `${__dirname + resume}`,
+					path: __dirname + `${resume}`,
+					content: `${resume}`
+				},
+				{
+					filename: `${coverLetter}`,
+					content: `${coverLetter}`
+				}
+			]
 		};
 		const data: any = {
 			payload: [text, subject, name, email, resume, coverLetter]
@@ -65,7 +92,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 			// @ts-ignore
 			body: JSON.stringify(data),
 			headers: {
-				'Content-Type': 'application/json; charset=utf-8'
+				'Content-Type': 'application/json; application/msword; charset=utf-8'
 			},
 			method: 'POST'
 		});
