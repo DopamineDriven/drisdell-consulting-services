@@ -68,7 +68,9 @@ const ConsultantsDataCoalesced = () => {
 			data.pages.edges !== null &&
 			data.pages.edges.length > 0 ? (
 				data.pages.edges.map(edge => {
-					return edge !== null && edge.node !== null ? (
+					return edge !== null &&
+						edge.node !== null &&
+						edge.node.content !== null ? (
 						<ConsultantsPageData
 							featuredImage={edge.node.featuredImage}
 							content={edge.node.content}

@@ -1,23 +1,24 @@
+import css from './contact-us-page-data.module.css';
 import cn from 'classnames';
-import { AboutCardsData_pages_edges_node as AboutPageDataGenerated } from '@lib/graphql/AboutCardsData/__generated__/AboutCardsData';
+import { ContactUsPage_pages_edges_node as ContactUsPageDataDynamic } from '@lib/graphql/ContactUsPage/__generated__/ContactUsPage';
 import { FC, useRef, useEffect } from 'react';
-import Link from 'next/link';
 import ReactMarkdown from 'react-markdown/with-html';
-import css from './about-page-layout.module.css';
 import { Media } from '@lib/artsy-fresnel';
 import Particles from 'react-tsparticles';
-import Container from '@components/UI/Container';
+import { Container, Button } from '@components/UI';
+import { useUI } from '@components/context';
+import Link from 'next/link';
 
-interface LandingPageDataProps extends AboutPageDataGenerated {
+interface ContactUsPageProps extends ContactUsPageDataDynamic {
 	root?: string;
 }
 
-const AboutPageData: FC<LandingPageDataProps> = ({
+const ContactUsPageData: FC<ContactUsPageProps> = ({
 	root,
-	content,
 	featuredImage,
 	title
 }) => {
+	const { openModal, setModalView } = useUI();
 	const particlesConatinerRef = useRef<HTMLDivElement>(null);
 	// Stop the history navigation gesture on touch devices
 	useEffect(() => {
@@ -52,7 +53,7 @@ const AboutPageData: FC<LandingPageDataProps> = ({
 		};
 	}, []);
 
-	const contentDynamic = content !== null ? content : 'No content to display';
+	// const contentDynamic = content !== null ? content : 'No content to display';
 	const titleDynamic = title !== null ? title : 'Mark W Jacob Dental';
 	const featuredImageDynamic =
 		featuredImage !== null &&
@@ -98,39 +99,37 @@ const AboutPageData: FC<LandingPageDataProps> = ({
 		</Media>
 	);
 
-	const desktopContent = (
-		<Media greaterThanOrEqual='sm'>
-			<ReactMarkdown
-				children={contentDynamic}
-				allowDangerousHtml={true}
-				className={cn(
-					css['tableMd'],
-					'mx-auto text-center text-lg md:text-lg text-indigo-100 sm:max-w-2xl font-somaRoman z-50 animate-slowPing transition-transform'
-				)}
-			/>
-			{/* <OgLogo className='mt-10 w-42 h-42 mx-auto text-center text-lg md:text-lg text-indigo-100 sm:max-w-2xl font-somaRoman z-50 animate-slowPing transition-transform ' /> */}
-		</Media>
-	);
-	// mt-10 max-w-lg mx-auto prose-lg text-indigo-100 sm:max-w-3xl font-somaRoman
-	const mobileContent = (
-		<Media lessThan='sm'>
-			{/* <OgLogo className='mt-6 w-40 h-40 mx-auto text-center text-lg md:text-lg text-indigo-100 sm:max-w-2xl font-somaRoman z-50 animate-slowPing transition-transform' /> */}
-			<ReactMarkdown
-				children={contentDynamic}
-				allowDangerousHtml={true}
-				className='mt-6 max-w-lg mx-auto prose-lg text-indigo-100 sm:max-w-3xl font-somaRoman'
-			/>
-		</Media>
-	);
+	// const desktopContent = (
+	// 	<Media greaterThanOrEqual='sm'>
+	// 		<ReactMarkdown
+	// 			children={contentDynamic}
+	// 			allowDangerousHtml={true}
+	// 			className={cn(
+	// 				css['tableMd'],
+	// 				'mx-auto text-center text-lg md:text-xl lg:text-2xl text-primary-2 sm:max-w-2xl font-somaRoman z-50 pt-8'
+	// 			)}
+	// 		/>
+	// 		{/* <OgLogo className='mt-10 w-42 h-42 mx-auto text-center text-lg md:text-lg text-indigo-100 sm:max-w-2xl font-somaRoman z-50 animate-slowPing transition-transform ' /> */}
+	// 	</Media>
+	// );
+	// // mt-10 max-w-lg mx-auto prose-lg text-indigo-100 sm:max-w-3xl font-somaRoman
+	// const mobileContent = (
+	// 	<Media lessThan='sm'>
+	// 		{/* <OgLogo className='mt-6 w-40 h-40 mx-auto text-center text-lg md:text-lg text-indigo-100 sm:max-w-2xl font-somaRoman z-50 animate-slowPing transition-transform' /> */}
+	// 		<ReactMarkdown
+	// 			children={contentDynamic}
+	// 			allowDangerousHtml={true}
+	// 			className='mt-6 max-w-lg mx-auto prose-lg text-indigo-100 sm:max-w-3xl font-somaRoman'
+	// 		/>
+	// 	</Media>
+	// );
 	return (
-		<main className={cn(root, 'z-50 fit select-none mb-64 md:mb-8 lg:mb-0')}>
+		<main className={cn(root, css.root, '')}>
 			<div className='relative'>
 				<div className='absolute inset-x-0 bottom-0 h-full bg-primary-0'>
 					<div className='mx-auto'>
-						<div className='relative  sm:overflow-hidden'>
+						<div className='relative sm:overflow-hidden'>
 							<div className='absolute inset-0' ref={particlesConatinerRef}>
-								{/* <Link href={slugDynamic} as={`/`} passHref scroll={false}>
-									<a className='cursor-default h-screen w-full object-cover'> */}
 								<Particles
 									className='cursor-default h-150 sm:h-screen w-full object-cover'
 									id='tsparticles'
@@ -213,8 +212,6 @@ const AboutPageData: FC<LandingPageDataProps> = ({
 										detectRetina: true
 									}}
 								/>
-								{/* </a>
-								</Link> */}
 								{mobile}
 								{desktop}
 							</div>
@@ -225,27 +222,66 @@ const AboutPageData: FC<LandingPageDataProps> = ({
 										children={titleDynamic}
 										allowDangerousHtml={true}
 									/>
-									<span className='block tracking-wide text-primary-0 font-bold py-2 font-poppins w-auto text-8xl'>
-										About Us
+									<span className='block tracking-wide text-primary-0 font-bold py-2 font-poppins w-auto text-2xl sm:text-4xl md:text-8xl'>
+										Contact Us
 									</span>
 									{/* <span className='tracking-wider block text-primary-9 font-extrabold py-2'>
 										<em>Radiant</em>?
 									</span> */}
 								</h1>
-								{mobileContent}
-								{desktopContent}
 								<div className='mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center z-50'>
-									<div className='space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5'>
+									<div className='space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid sm:grid-cols-3 sm:gap-5'>
 										<Link href={'/consultants'} as='/consultants' passHref>
 											<a className='flex items-center justify-center px-4 py-3 border border-transparent text-lg font-semibold rounded-full shadow-sm text-primary-1 bg-opacity-25 bg-white ring-2 ring-primary-1 ring-inset hover:bg-primary-8 hover:text-primary-0 sm:px-8 z-50 transition-colors duration-150'>
 												Consultants
 											</a>
 										</Link>
-										<Link href={'/contact-us'} as='/contact-us' passHref>
+
+										<a
+											href='tel:770-330-6676'
+											target='__blank'
+											className='flex items-center justify-center px-4 py-3 border border-transparent text-lg font-semibold rounded-full shadow-sm text-primary-1 bg-opacity-25 bg-white ring-2 ring-primary-1 ring-inset hover:bg-primary-8 hover:text-primary-0 sm:px-8 z-50 transition-colors duration-150'
+										>
+											(770)-330-6676
+										</a>
+
+										<Link
+											href={'/consultants/skills-and-positions'}
+											as='/consultants/skills-and-positions'
+											passHref
+										>
 											<a className='flex items-center justify-center px-4 py-3 border border-transparent text-lg font-semibold rounded-full shadow-sm text-primary-1 bg-opacity-25 bg-white ring-2 ring-primary-1 ring-inset hover:bg-primary-8 hover:text-primary-0 sm:px-8 z-50 transition-colors duration-150'>
-												Contact Us
+												Skills &amp; Positions
 											</a>
 										</Link>
+									</div>
+								</div>
+								<div className='mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center z-50'>
+									<div className='space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5'>
+										<Button
+											type='submit'
+											className={cn(
+												'flex normal-case items-center justify-center px-4 py-3 border border-transparent text-lg font-semibold rounded-full shadow-sm text-primary-1 bg-opacity-25 bg-white ring-2 ring-primary-1 ring-inset hover:bg-primary-8 hover:text-primary-0 sm:px-8 z-50 transition-colors duration-150'
+											)}
+											onClick={() => {
+												openModal('OPEN_MODAL');
+												setModalView('EMAIL_VIEW');
+											}}
+										>
+											Send an Email
+										</Button>
+										<Button
+											type='submit'
+											className={cn(
+												'flex items-center normal-case justify-center px-4 py-3 border border-transparent text-lg font-semibold rounded-full shadow-sm text-primary-1 bg-opacity-25 bg-white ring-2 ring-primary-1 ring-inset hover:bg-primary-8 hover:text-primary-0 sm:px-8 z-50 transition-colors duration-150'
+											)}
+											onClick={() => {
+												openModal('OPEN_MODAL');
+												setModalView('SUBMIT_RESUME_VIEW');
+											}}
+										>
+											Submit a Resume
+										</Button>
 									</div>
 								</div>
 							</Container>
@@ -321,4 +357,4 @@ const AboutPageData: FC<LandingPageDataProps> = ({
 	);
 };
 
-export default AboutPageData;
+export default ContactUsPageData;

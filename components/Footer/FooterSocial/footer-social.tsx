@@ -1,10 +1,10 @@
 import { FC } from 'react';
 import cn from 'classnames';
 import {
-	TwitterIcon,
-	LinkedInIcon,
-	FacebookIcon,
-	InstagramIcon
+	// TwitterIcon,
+	LinkedInBanner
+	// FacebookIcon,
+	// InstagramIcon
 } from '@components/Icons';
 import css from './footer-social.module.css';
 
@@ -17,29 +17,29 @@ interface FooterSocialIcons {
 
 const socialIcons: FooterSocialIcons[] = [
 	{
-		href: '#',
+		href: 'https://www.linkedin.com/company/drisdell-consulting-services-inc-',
 		label: 'LinkedIn',
 		className: ``,
-		icon: <LinkedInIcon />
-	},
-	{
-		href: '#',
-		label: 'Facebook',
-		className: ``,
-		icon: <FacebookIcon />
-	},
-	{
-		href: '#',
-		label: 'Twitter',
-		className: ``,
-		icon: <TwitterIcon />
-	},
-	{
-		href: '#',
-		label: 'Instagram',
-		className: ``,
-		icon: <InstagramIcon />
+		icon: <LinkedInBanner />
 	}
+	// {
+	// 	href: '#',
+	// 	label: 'Facebook',
+	// 	className: ``,
+	// 	icon: <FacebookIcon />
+	// },
+	// {
+	// 	href: '#',
+	// 	label: 'Twitter',
+	// 	className: ``,
+	// 	icon: <TwitterIcon />
+	// },
+	// {
+	// 	href: '#',
+	// 	label: 'Instagram',
+	// 	className: ``,
+	// 	icon: <InstagramIcon />
+	// }
 ];
 
 interface FooterSocialProps {

@@ -5,7 +5,7 @@ const LinkedInIcon = ({ ...props }) => {
 		<>
 			<span className='sr-only'>LinkedIn</span>
 			<svg
-				className={cn('w-5 h-5')}
+				className={cn('w-6 h-6')}
 				fill='currentColor'
 				viewBox='0 0 20 20'
 				aria-hidden={true}
