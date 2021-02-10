@@ -98,8 +98,11 @@ const AboutCardsCoalesced = () => {
 							return edge !== null &&
 								edge.node !== null &&
 								edge.node.content !== null &&
-								edge.node.modified !== null ? (
+								edge.node.modified !== null &&
+								edge.node.polly !== null &&
+								edge.node.polly.audio !== null ? (
 								<AboutData
+									polly={edge.node.polly}
 									featuredImage={edge.node.featuredImage}
 									title={edge.node.title}
 									slug={edge.node.slug}

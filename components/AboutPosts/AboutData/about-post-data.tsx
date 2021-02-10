@@ -2,17 +2,20 @@ import cn from 'classnames';
 // import hydrate from 'next-mdx-remote/hydrate';
 import ReactMarkdown from 'react-markdown/with-html';
 import Image from 'next/image';
-import css from './positions-posts.module.css';
-import { PositionBySlug_positionBySlug } from '@lib/graphql/PositionBySlug/__generated__/PositionBySlug';
+import css from './about-post-data.module.css';
+import { AboutBySlug_aboutPost } from '@lib/graphql/AboutBySlug/__generated__/AboutBySlug';
 import { FC } from 'react';
+import ReactAudioPlayer from 'react-audio-player';
 
-interface PositionPostProps extends PositionBySlug_positionBySlug {
+interface AboutSubTemplateProps extends AboutBySlug_aboutPost {
 	root?: string;
 }
 
-const PositionPosts: FC<PositionPostProps> = ({
+const AboutPostData: FC<AboutSubTemplateProps> = ({
 	root,
 	featuredImage,
+	polly,
+	title,
 	children,
 	content
 }) => {
@@ -23,6 +26,9 @@ const PositionPosts: FC<PositionPostProps> = ({
 			? featuredImage.node.sourceUrl
 			: '/doggo.jpg';
 	const contentConditional = content !== null ? content : 'content null';
+	const pollyConditional =
+		polly !== null && polly.audio !== null ? polly.audio : '';
+	const titleConditional = title !== null ? title : 'title null';
 	return (
 		<>
 			<div className={cn(root, 'bg-primary-9 overflow-hidden select-none')}>
@@ -95,7 +101,13 @@ const PositionPosts: FC<PositionPostProps> = ({
 						</div>
 						<div className='mt-8 lg:mt-0'>
 							<div className='text-base max-w-prose mx-auto lg:max-w-none'></div>
+							<ReactMarkdown
+								allowDangerousHtml={true}
+								children={titleConditional}
+								className={cn('', css['tableMd'])}
+							/>
 							<div className='mt-5 prose prose-indigo text-gray-600 mx-auto lg:max-w-none lg:row-start-1 lg:col-start-1'>
+								<ReactAudioPlayer src={pollyConditional} />
 								<ReactMarkdown
 									allowDangerousHtml={true}
 									children={contentConditional}
@@ -112,4 +124,4 @@ const PositionPosts: FC<PositionPostProps> = ({
 	);
 };
 
-export default PositionPosts;
+export default AboutPostData;

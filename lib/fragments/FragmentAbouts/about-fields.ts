@@ -7,6 +7,9 @@ const FRAGMENT_ABOUT_FIELDS: TypedDocumentNode = gql`
 		title
 		modified
 		slug
+		polly {
+			audio
+		}
 		featuredImage {
 			node {
 				sourceUrl

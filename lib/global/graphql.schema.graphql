@@ -895,6 +895,9 @@ type About implements Node & ContentNode & DatabaseIdentifier & NodeWithTemplate
 	# URLs that have been pinged.
 	pinged: [String]
 
+	# AWS Polly URL
+	polly: About_Polly
+
 	# Connection between the about type and the postFormat type
 	postFormats(
 		# The number of items to return after the referenced "after" cursor
@@ -2903,6 +2906,9 @@ type Consultant implements Node & ContentNode & DatabaseIdentifier & NodeWithTem
 
 	# URLs that have been pinged.
 	pinged: [String]
+
+	# AWS Polly URL
+	polly: Consultant_Polly
 
 	# Connection between the consultant type and the postFormat type
 	postFormats(
@@ -5315,6 +5321,9 @@ type Position implements Node & ContentNode & DatabaseIdentifier & NodeWithTempl
 	# URLs that have been pinged.
 	pinged: [String]
 
+	# AWS Polly URL
+	polly: Position_Polly
+
 	#
 	positionDetails: Position_Positiondetails
 
@@ -5587,6 +5596,15 @@ type PositionToCommentConnectionEdge {
 
 	# The item at the end of the edge
 	node: Comment
+}
+
+# Field Group
+type Position_Polly {
+	# AWS Polly URL
+	audio: String
+
+	#
+	fieldGroupName: String
 }
 
 # Field Group
@@ -7797,6 +7815,9 @@ type Testimonial implements Node & ContentNode & DatabaseIdentifier & NodeWithTe
 	# URLs that have been pinged.
 	pinged: [String]
 
+	# AWS Polly URL
+	polly: Testimonial_Polly
+
 	# Connection between the testimonial type and the postFormat type
 	postFormats(
 		# The number of items to return after the referenced "after" cursor
@@ -8066,6 +8087,15 @@ type TestimonialToCommentConnectionEdge {
 
 	# The item at the end of the edge
 	node: Comment
+}
+
+# Field Group
+type Testimonial_Polly {
+	# AWS Polly URL
+	audio: String
+
+	#
+	fieldGroupName: String
 }
 
 # Arguments for filtering the TestimonialToPostFormatConnection connection
@@ -8716,6 +8746,15 @@ type ConsultantToCommentConnectionEdge {
 
 	# The item at the end of the edge
 	node: Comment
+}
+
+# Field Group
+type Consultant_Polly {
+	# AWS Polly URL
+	audio: String
+
+	#
+	fieldGroupName: String
 }
 
 # Arguments for filtering the ConsultantToPostFormatConnection connection
@@ -10225,6 +10264,15 @@ type AboutToCommentConnectionEdge {
 
 	# The item at the end of the edge
 	node: Comment
+}
+
+# Field Group
+type About_Polly {
+	# AWS Polly URL
+	audio: String
+
+	#
+	fieldGroupName: String
 }
 
 # Arguments for filtering the AboutToPostFormatConnection connection

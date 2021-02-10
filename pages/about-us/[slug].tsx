@@ -29,7 +29,8 @@ import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { useQuery } from '@apollo/client';
 import { Params } from 'next/dist/next-server/server/router';
-import AboutPosts from '@components/AboutPosts';
+// import AboutPosts from '@components/AboutPosts';
+import AboutPostsEnhanced from '@components/AboutPosts/about-posts-enhanced';
 
 const LoadingSpinner = dynamic(() => import('@components/UI/LoadingSpinner'));
 
@@ -140,7 +141,7 @@ const DynamicAbout: NextPage &
 				<Loading />
 			) : (
 				<>
-					<AboutPosts />
+					<AboutPostsEnhanced />
 				</>
 			)}
 		</Layout>

@@ -1,0 +1,47 @@
+.tableMd figure {
+	@apply flex-row w-full min-w-full bg-primary-9 bg-opacity-80 mx-auto;
+}
+
+.tableMd table {
+	@apply flex-col w-full text-base text-primary-0 text-center align-middle;
+}
+
+.tableMd tbody {
+	@apply border-primary-0 border-2 border-opacity-50;
+}
+
+.tableMd tr {
+	@apply border-primary-1 border text-primary-0 bg-primary-9;
+	&:hover {
+		@apply text-primary-3 transition-colors duration-300 ease-in-out transform;
+	}
+}
+
+.tableMd td {
+	@apply border-primary-1 border-l border-r border-dashed even:text-primary-7 even:bg-primary-4 bg-opacity-80;
+	&:hover {
+		@apply even:text-primary-9 transition-colors duration-300 ease-in-out transform;
+	}
+}
+
+.tableMd a:link {
+	@apply font-semibold text-primary-0 underline;
+	&:hover {
+		@apply text-primary-5 transition-colors duration-300 ease-in-out transform;
+	}
+}
+
+.tableMd div > p {
+	@apply select-none;
+	&:hover {
+		@apply bg-primary-7 transition-colors duration-300 ease-in-out transform;
+	}
+}
+
+.tableMd li::marker {
+	@apply list-disc fill-current;
+}
+
+.tableMd h4 {
+	@apply text-xl;
+}

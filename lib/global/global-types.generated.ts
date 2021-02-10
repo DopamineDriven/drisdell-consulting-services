@@ -722,6 +722,8 @@ export type About = Node &
 		pingStatus?: Maybe<Scalars['String']>;
 		/** URLs that have been pinged. */
 		pinged?: Maybe<Array<Maybe<Scalars['String']>>>;
+		/** AWS Polly URL */
+		polly?: Maybe<About_Polly>;
 		/** Connection between the about type and the postFormat type */
 		postFormats?: Maybe<AboutToPostFormatConnection>;
 		/** Connection between the about type and the about type */
@@ -2291,6 +2293,8 @@ export type Consultant = Node &
 		pingStatus?: Maybe<Scalars['String']>;
 		/** URLs that have been pinged. */
 		pinged?: Maybe<Array<Maybe<Scalars['String']>>>;
+		/** AWS Polly URL */
+		polly?: Maybe<Consultant_Polly>;
 		/** Connection between the consultant type and the postFormat type */
 		postFormats?: Maybe<ConsultantToPostFormatConnection>;
 		/** Connection between the consultant type and the consultant type */
@@ -4185,6 +4189,8 @@ export type Position = Node &
 		pingStatus?: Maybe<Scalars['String']>;
 		/** URLs that have been pinged. */
 		pinged?: Maybe<Array<Maybe<Scalars['String']>>>;
+		/** AWS Polly URL */
+		polly?: Maybe<Position_Polly>;
 		positionDetails?: Maybe<Position_Positiondetails>;
 		/**
 		 * The id field matches the WP_Post-&gt;ID field.
@@ -4431,6 +4437,14 @@ export type PositionToCommentConnectionEdge = {
 	cursor?: Maybe<Scalars['String']>;
 	/** The item at the end of the edge */
 	node?: Maybe<Comment>;
+};
+
+/** Field Group */
+export type Position_Polly = {
+	__typename?: 'Position_Polly';
+	/** AWS Polly URL */
+	audio?: Maybe<Scalars['String']>;
+	fieldGroupName?: Maybe<Scalars['String']>;
 };
 
 /** Field Group */
@@ -6066,6 +6080,8 @@ export type Testimonial = Node &
 		pingStatus?: Maybe<Scalars['String']>;
 		/** URLs that have been pinged. */
 		pinged?: Maybe<Array<Maybe<Scalars['String']>>>;
+		/** AWS Polly URL */
+		polly?: Maybe<Testimonial_Polly>;
 		/** Connection between the testimonial type and the postFormat type */
 		postFormats?: Maybe<TestimonialToPostFormatConnection>;
 		/** Connection between the testimonial type and the testimonial type */
@@ -6311,6 +6327,14 @@ export type TestimonialToCommentConnectionEdge = {
 	cursor?: Maybe<Scalars['String']>;
 	/** The item at the end of the edge */
 	node?: Maybe<Comment>;
+};
+
+/** Field Group */
+export type Testimonial_Polly = {
+	__typename?: 'Testimonial_Polly';
+	/** AWS Polly URL */
+	audio?: Maybe<Scalars['String']>;
+	fieldGroupName?: Maybe<Scalars['String']>;
 };
 
 /** Arguments for filtering the TestimonialToPostFormatConnection connection */
@@ -6808,6 +6832,14 @@ export type ConsultantToCommentConnectionEdge = {
 	cursor?: Maybe<Scalars['String']>;
 	/** The item at the end of the edge */
 	node?: Maybe<Comment>;
+};
+
+/** Field Group */
+export type Consultant_Polly = {
+	__typename?: 'Consultant_Polly';
+	/** AWS Polly URL */
+	audio?: Maybe<Scalars['String']>;
+	fieldGroupName?: Maybe<Scalars['String']>;
 };
 
 /** Arguments for filtering the ConsultantToPostFormatConnection connection */
@@ -7967,6 +7999,14 @@ export type AboutToCommentConnectionEdge = {
 	cursor?: Maybe<Scalars['String']>;
 	/** The item at the end of the edge */
 	node?: Maybe<Comment>;
+};
+
+/** Field Group */
+export type About_Polly = {
+	__typename?: 'About_Polly';
+	/** AWS Polly URL */
+	audio?: Maybe<Scalars['String']>;
+	fieldGroupName?: Maybe<Scalars['String']>;
 };
 
 /** Arguments for filtering the AboutToPostFormatConnection connection */

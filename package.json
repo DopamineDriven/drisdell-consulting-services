@@ -93,6 +93,7 @@
 		"postcss-nesting": "^7.0.1",
 		"preact": "^10.5.12",
 		"react": "^17.0.1",
+		"react-audio-player": "^0.14.0",
 		"react-dom": "^17.0.1",
 		"react-intersection-observer": "^8.30.3",
 		"react-markdown": "^5.0.2",

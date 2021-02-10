@@ -70,7 +70,7 @@ const LandingPageAboutData: FC<LandingPageAboutDataProps> = ({
 					</main>
 				</div>
 			</div>
-			<div className='lg:absolute lg:inset-y-28 2xl:inset-y-48 md:right-6 xl:right-6 2xl:right-14 right-5 md:w-1/2 xl:w-2/5 3xl:w-1/2 pt-10'>
+			<div className='lg:absolute lg:inset-y-24 2xl:inset-y-28 md:right-6 xl:right-6 2xl:right-14 right-5 md:w-1/2 xl:w-2/5 3xl:w-1/2 pt-10'>
 				<Link href={slugDynamic} passHref scroll={true}>
 					<a className='h-64 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full align-middle'>
 						<Image
