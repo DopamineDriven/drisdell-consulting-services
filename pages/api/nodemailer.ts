@@ -92,7 +92,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 				'Cache-Control': 's-maxage=1, stale-while-revalidate',
 				'Accept-Encoding': 'gzip'
 			},
-			method: 'POST'
+			method: ['POST', 'GET', 'OPTIONS']
 		});
 
 		// swallow any errors from aws ses and return a better error message

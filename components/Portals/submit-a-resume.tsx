@@ -10,9 +10,7 @@ const SubmitResume: FC = () => {
 	const [inputE1, setInputE1] = useState('');
 	const [inputE2, setInputE2] = useState('');
 	const [inputE3, setInputE3] = useState('');
-	const [inputE4, setInputE4] = useState('');
 	const [inputE5, setInputE5] = useState('');
-	const [inputE6, setInputE6] = useState('');
 	const [message, setMessage] = useState('');
 	const [disabled] = useState(false);
 	const [loading, setLoading] = useState(false);
@@ -25,11 +23,9 @@ const SubmitResume: FC = () => {
 		let res = await fetch('/api/submit-resume', {
 			body: JSON.stringify({
 				text: inputE3,
-				subject: inputE4,
 				name: inputE2,
 				email: inputE1,
-				resume: inputE5,
-				coverLetter: inputE6
+				resume: inputE5
 			}),
 			headers: {
 				'Content-Type': 'application/json'
@@ -48,9 +44,7 @@ const SubmitResume: FC = () => {
 		setInputE1('');
 		setInputE2('');
 		setInputE3('');
-		setInputE4('');
 		setInputE5('');
-		setInputE6('');
 		setMessage(
 			'Success 🎉 email sent! We will get back to you within several business days'
 		);
@@ -61,18 +55,18 @@ const SubmitResume: FC = () => {
 		<form
 			// @ts-ignore
 			onSubmit={userSend}
-			className={cn('w-200 flex flex-col justify-between')}
+			className={cn('w-100 flex flex-col justify-between')}
 		>
 			<div className='flex justify-center pb-4 '>
 				<Logo className='h-40 w-40 rounded-full' />
 			</div>
 			<div className='relative max-w-xl mx-auto'>
 				<ModalBackdrop />
-				<div className='text-center'>
+				{/* <div className='text-center'>
 					<h2 className='text-3xl font-extrabold tracking-tight text-primary-9 sm:text-4xl pb-5'>
 						Contact Us Today
 					</h2>
-				</div>
+				</div> */}
 				{message && (
 					<div className='text-white border border-white p-2 mb-2 rounded-2xl'>
 						{message}
@@ -98,7 +92,7 @@ const SubmitResume: FC = () => {
 					type='text'
 					className='mb-2 bg-primary-9 text-primary-0 font-medium focus:outline-none rounded-md'
 				/>
-				<label htmlFor='subject'>{'Subject'}</label>
+				{/* <label htmlFor='subject'>{'Subject'}</label>
 				<Input
 					id='subject-input'
 					name='subject'
@@ -107,28 +101,18 @@ const SubmitResume: FC = () => {
 					required={true}
 					type='text'
 					className='mb-2 bg-primary-9 text-primary-0 font-medium focus:outline-none rounded-md'
+				/> */}
+				<label htmlFor='resume'>{'Resume'}</label>
+				<Input
+					id='resume-upload'
+					name='resume'
+					placeholder='upload resume'
+					onChange={setInputE5}
+					required={true}
+					type='file'
+					className='col-span-1 mb-2 bg-primary-9 text-primary-0 font-medium focus:outline-none rounded-md'
 				/>
-				<div className='grid grid-cols-2'>
-					<Input
-						id='resume-upload'
-						name='resume'
-						placeholder='upload resume'
-						onChange={setInputE5}
-						required={true}
-						type='file'
-						className='col-span-1 mb-2 bg-primary-9 text-primary-0 font-medium focus:outline-none rounded-md'
-					/>
 
-					<Input
-						id='cover-letter-upload'
-						name='cover letter'
-						placeholder='upload cover letter'
-						onChange={setInputE6}
-						required={false}
-						type='file'
-						className='col-span-1 mb-2 bg-primary-9 text-primary-0 font-medium focus:outline-none rounded-md'
-					/>
-				</div>
 				<label htmlFor='text'>{'Body'}</label>
 				<Textarea
 					id='text-textarea'

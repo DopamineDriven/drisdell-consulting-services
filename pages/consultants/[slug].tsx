@@ -34,7 +34,8 @@ import {
 	ConsultantIdType
 } from '@lib/graphql-global-types';
 // import hydrate from 'next-mdx-remote/hydrate';
-import ConsultantPosts from '@components/ConsultantPosts/consultant-posts';
+// import ConsultantPosts from '@components/ConsultantPosts/consultant-posts';
+import ConsultantPostsEnhanced from '@components/ConsultantPosts/consultant-posts-enhanced';
 import { customConsultantSlugs } from '@lib/custom-page-slugs';
 
 const { ASC } = OrderEnum;
@@ -159,7 +160,7 @@ export async function getStaticProps(
 	return addApolloState(apolloClient, {
 		props: {
 			consultant: data.consultantPost ?? {},
-			path: data.consultantPost!.slug ?? ' '
+			path: data.consultantPost!.slug ?? consultantParams.slug
 		},
 		revalidate: 10
 	});
@@ -218,7 +219,7 @@ function DynamicConsultant({
 				<Loading />
 			) : (
 				<>
-					<ConsultantPosts />
+					<ConsultantPostsEnhanced />
 				</>
 			)}
 		</Layout>
@@ -228,7 +229,7 @@ function DynamicConsultant({
 				<Loading />
 			) : (
 				<>
-					<ConsultantPosts />
+					<ConsultantPostsEnhanced />
 				</>
 			)}
 		</Layout>

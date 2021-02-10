@@ -68,15 +68,15 @@ const SendEmail: FC = () => {
 			className={cn('w-100 flex flex-col justify-between')}
 		>
 			<div className='flex justify-center pb-4 '>
-				<Logo className='h-40 w-40 rounded-full' />
+				<Logo className='h-20 w-20 md:h-40 md:w-40 rounded-full' />
 			</div>
 			<div className='relative max-w-xl mx-auto'>
 				<ModalBackdrop />
-				<div className='text-center'>
+				{/* <div className='text-center'>
 					<h2 className='text-3xl font-extrabold tracking-tight text-primary-9 sm:text-4xl pb-5'>
 						Contact Us Today
 					</h2>
-				</div>
+				</div> */}
 				{message && (
 					<div className='text-white border border-white p-2 mb-2 rounded-2xl'>
 						{message}
