@@ -21,7 +21,6 @@ const PositionData: FC<PositionsDataProps> = ({
 			: '';
 	// const date: Date = parseISO(positionDateTime);
 	const slugDynamic = slug !== null ? slug : '';
-	console.log(positionDetails);
 	return (
 		<div className={cn(css.root, root)}>
 			<ul className='divide-y divide-gray-200'>

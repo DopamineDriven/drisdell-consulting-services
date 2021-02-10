@@ -3,8 +3,8 @@ import cn from 'classnames';
 const OgLogo = ({ ...props }) => {
 	return (
 		<svg
-			width='548'
-			height='514'
+			width='300'
+			height='281.4'
 			viewBox='0 0 548 514'
 			fill='none'
 			xmlns='http://www.w3.org/2000/svg'

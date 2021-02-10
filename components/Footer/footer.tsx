@@ -4,7 +4,7 @@ import Container from '../UI/Container';
 import FooterLogo from './FooterLogo';
 import FooterSocial from './FooterSocial';
 import WcdIcon from '../Icons/wcd';
-
+// phone number Phone : (770)-330-6676
 interface FooterProps {
 	classNameRoot?: string;
 	footerLinks?: React.ReactNode;
@@ -17,7 +17,7 @@ const Footer: FC<FooterProps> = props => {
 		<footer
 			className={` ${cn(
 				classNameRoot,
-				'bg-primary-0 text-accents-7 select-none'
+				'bg-primary-0 text-primary-9 select-none'
 			)}`}
 			aria-labelledby='footerHeading'
 		>
@@ -33,7 +33,7 @@ const Footer: FC<FooterProps> = props => {
 						<FooterLogo />
 					</div>
 					<div className='col-span-1 lg:col-span-3'>{footerLinks}</div>
-					<div className='col-span-1 lg:col-span-7 flex items-start lg:justify-end text-primary'>
+					<div className='col-span-3 lg:col-span-7 flex items-start lg:justify-end text-primary'>
 						<FooterSocial />
 					</div>
 				</div>

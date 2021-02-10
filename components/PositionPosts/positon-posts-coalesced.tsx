@@ -1,26 +1,20 @@
 import dynamic from 'next/dynamic';
-// import cn from 'classnames';
-// // import hydrate from 'next-mdx-remote/hydrate';
-// import css from './about-sub-page.module.css';
-// import ReactMarkdown from 'react-markdown/with-html';
-// import Image from 'next/image';
-// import Link from 'next/link';
 import POSITION_BY_SLUG from '@lib/graphql/PositionBySlug';
 import { PositionIdType } from '@lib/graphql-global-types';
 import { useRouter } from 'next/router';
 import { useQuery } from '@apollo/client';
 import PositionParent from './PositionPostsData';
-import PositionData from '../PositionsPreview/PositionsData/positions-data';
+import PositionData from '../PositionsPreview/PositionsData';
 import {
 	PositionBySlugVariables,
 	PositionBySlug
-} from '../../lib/graphql/PositionBySlug/__generated__/PositionBySlug';
+} from '@lib/graphql/PositionBySlug/__generated__/PositionBySlug';
 
-const LoadingDots = dynamic(() => import('@components/UI/LoadingDots'));
+const LoadingSpinner = dynamic(() => import('@components/UI/LoadingSpinner'));
 
 const Loading = () => (
 	<div className='w-80 h-80 flex items-center text-center justify-center p-3'>
-		<LoadingDots />
+		<LoadingSpinner />
 	</div>
 );
 

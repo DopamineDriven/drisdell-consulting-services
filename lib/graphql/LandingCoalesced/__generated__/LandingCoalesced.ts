@@ -188,6 +188,14 @@ export interface LandingCoalesced_aboutPage {
 	edges: (LandingCoalesced_aboutPage_edges | null)[] | null;
 }
 
+export interface LandingCoalesced_aboutOur_edges_node_polly {
+	__typename: 'About_Polly';
+	/**
+	 * AWS Polly URL
+	 */
+	audio: string | null;
+}
+
 export interface LandingCoalesced_aboutOur_edges_node_featuredImage_node {
 	__typename: 'MediaItem';
 	/**
@@ -226,6 +234,10 @@ export interface LandingCoalesced_aboutOur_edges_node {
 	 * The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table.
 	 */
 	slug: string | null;
+	/**
+	 * AWS Polly URL
+	 */
+	polly: LandingCoalesced_aboutOur_edges_node_polly | null;
 	/**
 	 * Connection between the NodeWithFeaturedImage type and the MediaItem type
 	 */

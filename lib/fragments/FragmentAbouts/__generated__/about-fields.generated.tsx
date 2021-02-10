@@ -5,6 +5,9 @@ export type AboutFieldsFragment = { __typename?: 'About' } & Pick<
 	Types.About,
 	'content' | 'id' | 'title' | 'modified' | 'slug'
 > & {
+		polly?: Types.Maybe<
+			{ __typename?: 'About_Polly' } & Pick<Types.About_Polly, 'audio'>
+		>;
 		featuredImage?: Types.Maybe<
 			{ __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge' } & {
 				node?: Types.Maybe<
@@ -21,6 +24,9 @@ export const AboutFieldsFragmentDoc = gql`
 		title
 		modified
 		slug
+		polly {
+			audio
+		}
 		featuredImage {
 			node {
 				sourceUrl

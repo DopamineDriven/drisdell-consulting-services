@@ -29,13 +29,14 @@ import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { useQuery } from '@apollo/client';
 import { Params } from 'next/dist/next-server/server/router';
-import AboutPosts from '@components/AboutPosts';
+// import AboutPosts from '@components/AboutPosts';
+import AboutPostsEnhanced from '@components/AboutPosts/about-posts-enhanced';
 
-const LoadingDots = dynamic(() => import('@components/UI/LoadingDots'));
+const LoadingSpinner = dynamic(() => import('@components/UI/LoadingSpinner'));
 
 const Loading = () => (
 	<div className='w-80 h-80 flex items-center text-center justify-center p-3'>
-		<LoadingDots />
+		<LoadingSpinner />
 	</div>
 );
 
@@ -121,8 +122,7 @@ export async function getStaticProps(
 }
 
 const DynamicAbout: NextPage &
-	InferGetStaticPropsType<typeof getStaticProps> = ctx => {
-	console.log(ctx);
+	InferGetStaticPropsType<typeof getStaticProps> = () => {
 	const { query } = useRouter();
 	const targetSlug = query.slug as string;
 
@@ -141,7 +141,7 @@ const DynamicAbout: NextPage &
 				<Loading />
 			) : (
 				<>
-					<AboutPosts />
+					<AboutPostsEnhanced />
 				</>
 			)}
 		</Layout>

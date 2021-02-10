@@ -5,7 +5,6 @@ export { default as ErrorMessage } from './ErrorMessage';
 export { default as Grid } from './Grid';
 export { default as Hero } from './Hero';
 export { default as Input } from './Input';
-export { default as LoadingDots } from './LoadingDots';
 export { default as LoadingSpinner } from './LoadingSpinner';
 export { default as Logo } from './Logo';
 export { default as Marquee } from './Marquee';

@@ -23,11 +23,11 @@ export const AboutCardsCoalescedQueryVars: AboutCardsDataVariables = {
 	field: PostObjectsConnectionOrderbyEnum.TITLE
 };
 
-const LoadingDots = dynamic(() => import('@components/UI/LoadingDots'));
+const LoadingSpinner = dynamic(() => import('@components/UI/LoadingSpinner'));
 
 const Loading = () => (
 	<div className='w-80 h-80 flex items-center text-center justify-center p-3'>
-		<LoadingDots />
+		<LoadingSpinner />
 	</div>
 );
 
@@ -98,8 +98,11 @@ const AboutCardsCoalesced = () => {
 							return edge !== null &&
 								edge.node !== null &&
 								edge.node.content !== null &&
-								edge.node.modified !== null ? (
+								edge.node.modified !== null &&
+								edge.node.polly !== null &&
+								edge.node.polly.audio !== null ? (
 								<AboutData
+									polly={edge.node.polly}
 									featuredImage={edge.node.featuredImage}
 									title={edge.node.title}
 									slug={edge.node.slug}

@@ -42,7 +42,7 @@ function PositionsSubPage({
 	position
 }: NextPage & InferGetStaticPropsType<typeof getStaticProps>) {
 	const { query } = useRouter();
-	console.log('inferred getStaticPropsType', position);
+	console.log('Inferred getStaticPropsType:', typeof position);
 	// type assertion -- query.slug returns a string[], string, or undefined without assertion
 	const positionPostTarget = query.slug as string;
 	const router = useRouter();
@@ -85,14 +85,6 @@ export async function getStaticProps(
 		query: POSITION_BY_SLUG,
 		variables: PositionBySlugQueryVars
 	});
-
-	// const teamData = data !== null && data.team !== null ? data.team : {};
-	// const teamSlug =
-	// 	data !== null && data.team !== null && data.team.slug !== null
-	// 		? data.team.slug
-	// 		: '';
-	// console.log('teamSlug:', teamSlug);
-	// if (data && data.team !== null && data.team.slug !== null)
 	return addApolloState(apolloClient, {
 		props: {
 			position: data.positionBySlug ?? {},
@@ -134,11 +126,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 	)
 		data.positionSlugs.edges.map(slugs => {
 			if (slugs !== null && slugs.node !== null && slugs.node.slug !== null) {
-				console.log('team slug:', slugs.node.slug);
 				positionsData.push({ params: { slug: slugs.node.slug } });
 			}
 		});
-	console.log(positionsData);
 	return {
 		paths: positionsData,
 		fallback: true

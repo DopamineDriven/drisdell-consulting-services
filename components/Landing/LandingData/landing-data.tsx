@@ -16,8 +16,7 @@ const LandingPageData: FC<LandingPageDataProps> = ({
 	root,
 	featuredImage,
 	content,
-	title,
-	slug
+	title
 }) => {
 	const particlesConatinerRef = useRef<HTMLDivElement>(null);
 	// Stop the history navigation gesture on touch devices
@@ -53,8 +52,6 @@ const LandingPageData: FC<LandingPageDataProps> = ({
 		};
 	}, []);
 
-	const slugDynamic = slug !== null ? slug : '#';
-	console.log(slugDynamic);
 	const contentDynamic = content !== null ? content : 'No content to display';
 	const titleDynamic = title !== null ? title : 'Mark W Jacob Dental';
 	const featuredImageDynamic =

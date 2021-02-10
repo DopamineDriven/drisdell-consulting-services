@@ -5,7 +5,6 @@ import Document, {
 	NextScript,
 	DocumentContext
 } from 'next/document';
-import { GA_TRACKING_ID } from '@lib/google-analytics';
 import { mediaStyles } from '@lib/artsy-fresnel';
 class MyDocument extends Document {
 	static async getInitialProps(ctx: DocumentContext) {
@@ -18,7 +17,7 @@ class MyDocument extends Document {
 	 * @returns
 	 */
 	render() {
-		// const isDev = process.env.NODE_ENV === 'development';
+		const GA_TRACKING_ID = 'UA-177780141-4';
 		return (
 			<Html>
 				<Head>
@@ -43,7 +42,6 @@ class MyDocument extends Document {
 				</Head>
 				<body className='loading'>
 					<Main />
-					{/* {isDev && <NextScript />} */}
 					<NextScript />
 				</body>
 			</Html>

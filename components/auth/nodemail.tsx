@@ -21,12 +21,8 @@ const SendEmail: FC = () => {
 
 	// const [success, onSuccess] = useState(false);
 	const [message, setMessage] = useState('');
-	const [disabled, setDisabled] = useState(false);
+	const [disabled] = useState(false);
 	const [loading, setLoading] = useState(false);
-	// remove console
-	console.log(setDisabled);
-	// const AWS_SES = new AWS.SES(SES_CONFIG);
-	// console.log(AWS_SES);
 	const userSend = async (e: SyntheticEvent<EventTarget>) => {
 		e.preventDefault();
 

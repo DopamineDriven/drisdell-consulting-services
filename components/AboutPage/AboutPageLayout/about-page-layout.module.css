@@ -55,3 +55,73 @@
 .rootTitle {
 	@apply leading-loose my-3 w-auto;
 }
+
+.parentDiv {
+	@apply pt-8 pb-16 prose-xl max-w-2xl text-primary-0 text-left content-center mx-auto flex-row select-none tracking-tight;
+	&:hover {
+		@apply text-primary-7 transition-colors duration-300 ease-in-out transform;
+	}
+	@screen sm {
+		@apply max-w-2xl text-justify;
+	}
+	@screen md {
+		@apply max-w-3xl;
+	}
+	@screen lg {
+		@apply max-w-2xl;
+	}
+	@screen xl {
+		@apply max-w-3xl;
+	}
+}
+
+.tableMd img {
+	@apply max-w-4xl;
+}
+
+.tableMd audio {
+	@apply w-full max-w-2xl bg-primary-9;
+}
+
+.tableMd figure {
+	@apply flex-row w-full min-w-full bg-primary-9 bg-opacity-80 mx-auto;
+	&.wp-block-audio {
+		@apply bg-primary-9;
+	}
+}
+
+.tableMd table {
+	@apply flex-col w-full text-xl text-primary-0 text-center align-middle;
+}
+
+.tableMd tbody {
+	@apply border-primary-0 border-2;
+}
+
+.tableMd tr {
+	@apply border-primary-1 border text-primary-0 bg-primary-9;
+	&:hover {
+		@apply text-primary-3 transition-colors duration-300 ease-in-out transform;
+	}
+}
+
+.tableMd td {
+	@apply border-primary-1 border-l border-r border-dashed bg-opacity-80;
+	&:hover {
+		@apply transition-colors duration-300 ease-in-out transform;
+	}
+}
+
+.tableMd a:link {
+	@apply font-semibold text-primary-0 underline;
+	&:hover {
+		@apply text-primary-5 transition-colors duration-300 ease-in-out transform;
+	}
+}
+
+.tableMd div > p {
+	@apply select-none;
+	&:hover {
+		@apply text-primary-7 transition-colors duration-300 ease-in-out transform;
+	}
+}

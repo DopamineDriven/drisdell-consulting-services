@@ -22,11 +22,11 @@ export const TestimonialsQueryVars: AllTestimonialsVariables = {
 	field: PostObjectsConnectionOrderbyEnum.TITLE
 };
 
-const LoadingDots = dynamic(() => import('@components/UI/LoadingDots'));
+const LoadingSpinner = dynamic(() => import('@components/UI/LoadingSpinner'));
 
 const Loading = () => (
 	<div className={css.loading}>
-		<LoadingDots />
+		<LoadingSpinner />
 	</div>
 );
 

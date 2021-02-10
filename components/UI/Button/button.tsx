@@ -7,7 +7,7 @@ import React, {
 } from 'react';
 import mergeRefs from 'react-merge-refs';
 import css from './button.module.css';
-import { LoadingDots } from '@components/UI';
+import { LoadingSpinner } from '@components/UI';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	href?: string;
@@ -62,7 +62,7 @@ const Button: React.FC<ButtonProps> = forwardRef((props, buttonRef) => {
 			{children}
 			{loading && (
 				<i className='pl-2 m-0 flex'>
-					<LoadingDots />
+					<LoadingSpinner />
 				</i>
 			)}
 		</Component>

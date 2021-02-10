@@ -1,0 +1,9 @@
+.root {
+	@apply z-50 select-none h-screen mb-32;
+	@screen md {
+		@apply mb-8;
+	}
+	@screen lg {
+		@apply mb-0;
+	}
+}

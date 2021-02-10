@@ -13,7 +13,6 @@ const ImageLoad = ({ src, width, quality }: ImageLoaderProps) => {
  ** const imageMutable = useRef<typeof imageSimple>(null);
  **/
 export const ImageRenderer = (img: ImageLoaderProps & ImageProps) => {
-	console.log(`${img.src} custom image renderer`);
 	return (
 		<Image
 			loader={ImageLoad}

@@ -19,19 +19,21 @@ const bccAddress = SMTP_BCC_ADDRESS;
 const smtpUsername = SMTP_USERNAME;
 const smtpPassword = SMTP_PASSWORD;
 
-type IResponse = {
-	error?: string;
-	data?: {
-		payload: {
-			text: string;
-			name: string;
-			subject: string;
-			email: string;
-		}[];
-	};
-};
+// type IBody = {
+// 	error?: string;
+// 	data?: {
+// 		text: string;
+// 		name: string;
+// 		subject: string;
+// 		email: string;
+// 	}[];
+// };
+
+// type IResult = {
+
+// }
 // https://github.com/vercel/next.js/discussions/11634
-export default async (req: NextApiRequest, res: NextApiResponse<IResponse>) => {
+export default async (req: NextApiRequest, res: NextApiResponse) => {
 	const { text, subject, name, email } = req.body;
 	try {
 		const subjectSmtp = `Contact Us Submission Event - ${subject}`;
@@ -71,9 +73,7 @@ export default async (req: NextApiRequest, res: NextApiResponse<IResponse>) => {
 			text: body_text,
 			html: body_html
 		};
-		const data = {
-			payload: [{ text: text, subject: subject, name: name, email: email }]
-		};
+		const data = [text, subject, name, email];
 
 		let response = await transporter.sendMail(mailOptions, {
 			// @ts-ignore
