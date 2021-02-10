@@ -1,5 +1,5 @@
 .footerLinksLi {
-	@apply py-3;
+	@apply py-3 list-none;
 	@screen md {
 		@apply py-0 pb-4;
 	}

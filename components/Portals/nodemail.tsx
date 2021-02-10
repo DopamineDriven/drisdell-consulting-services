@@ -1,7 +1,6 @@
 import { Input, Button, Textarea, Logo, ModalBackdrop } from '@components/UI';
 import { useState, SyntheticEvent, FC } from 'react';
 import { useUI } from '@components/context';
-import fetch from 'isomorphic-unfetch';
 import css from './contact-us.module.css';
 import cn from 'classnames';
 // import AWS from 'aws-sdk';
@@ -48,16 +47,18 @@ const SendEmail: FC = () => {
 		if (error) {
 			setMessage(error);
 			return;
+		} else {
+			setLoading(false);
+			setInputE1('');
+			setInputE2('');
+			setInputE3('');
+			setInputE4('');
+			setMessage(
+				'Success 🎉 email sent! We will get back to you within several business days'
+			);
+			await setModalView('SUCCESS_VIEW');
 		}
-		setLoading(false);
-		setInputE1('');
-		setInputE2('');
-		setInputE3('');
-		setInputE4('');
-		setMessage(
-			'Success 🎉 email sent! We will get back to you within several business days'
-		);
-		await setModalView('SUCCESS_VIEW');
+		return;
 	};
 
 	return (
@@ -67,15 +68,15 @@ const SendEmail: FC = () => {
 			className={cn('w-100 flex flex-col justify-between')}
 		>
 			<div className='flex justify-center pb-4 '>
-				<Logo className='h-40 w-40 rounded-full' />
+				<Logo className='h-20 w-20 md:h-40 md:w-40 rounded-full' />
 			</div>
 			<div className='relative max-w-xl mx-auto'>
 				<ModalBackdrop />
-				<div className='text-center'>
+				{/* <div className='text-center'>
 					<h2 className='text-3xl font-extrabold tracking-tight text-primary-9 sm:text-4xl pb-5'>
 						Contact Us Today
 					</h2>
-				</div>
+				</div> */}
 				{message && (
 					<div className='text-white border border-white p-2 mb-2 rounded-2xl'>
 						{message}

@@ -131,7 +131,7 @@ const ContactUsPageData: FC<ContactUsPageProps> = ({
 						<div className='relative sm:overflow-hidden'>
 							<div className='absolute inset-0' ref={particlesConatinerRef}>
 								<Particles
-									className='cursor-default h-150 sm:h-screen w-full object-cover'
+									className='cursor-default h-screen sm:h-screen w-full object-cover'
 									id='tsparticles'
 									options={{
 										background: {
@@ -222,7 +222,7 @@ const ContactUsPageData: FC<ContactUsPageProps> = ({
 										children={titleDynamic}
 										allowDangerousHtml={true}
 									/>
-									<span className='block tracking-wide text-primary-0 font-bold py-2 font-poppins w-auto text-2xl sm:text-4xl md:text-8xl'>
+									<span className='block tracking-wide text-primary-0 font-bold py-2 font-poppins w-auto text-3xl sm:text-4xl md:text-8xl'>
 										Contact Us
 									</span>
 									{/* <span className='tracking-wider block text-primary-9 font-extrabold py-2'>
@@ -256,12 +256,12 @@ const ContactUsPageData: FC<ContactUsPageProps> = ({
 										</Link>
 									</div>
 								</div>
-								<div className='mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center z-50'>
+								<div className='mt-4 sm:mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center z-50'>
 									<div className='space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5'>
 										<Button
 											type='submit'
 											className={cn(
-												'flex normal-case items-center justify-center px-4 py-3 border border-transparent text-lg font-semibold rounded-full shadow-sm text-primary-1 bg-opacity-25 bg-white ring-2 ring-primary-1 ring-inset hover:bg-primary-8 hover:text-primary-0 sm:px-8 z-50 transition-colors duration-150'
+												'flex normal-case w-full mx-auto sm:w-auto items-center justify-center px-4 py-3 border border-transparent text-lg font-semibold rounded-full shadow-sm text-primary-1 bg-opacity-25 bg-white ring-2 ring-primary-1 ring-inset hover:bg-primary-8 hover:text-primary-0 sm:px-8 z-50 transition-colors duration-150'
 											)}
 											onClick={() => {
 												openModal('OPEN_MODAL');
@@ -273,7 +273,7 @@ const ContactUsPageData: FC<ContactUsPageProps> = ({
 										<Button
 											type='submit'
 											className={cn(
-												'flex items-center normal-case justify-center px-4 py-3 border border-transparent text-lg font-semibold rounded-full shadow-sm text-primary-1 bg-opacity-25 bg-white ring-2 ring-primary-1 ring-inset hover:bg-primary-8 hover:text-primary-0 sm:px-8 z-50 transition-colors duration-150'
+												'flex items-center mx-auto w-full sm:w-auto normal-case justify-center px-4 py-3 border border-transparent text-lg font-semibold rounded-full shadow-sm text-primary-1 bg-opacity-25 bg-white ring-2 ring-primary-1 ring-inset hover:bg-primary-8 hover:text-primary-0 sm:px-8 z-50 transition-colors duration-150'
 											)}
 											onClick={() => {
 												openModal('OPEN_MODAL');

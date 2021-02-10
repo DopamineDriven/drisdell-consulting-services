@@ -10,12 +10,13 @@ const {
 	SMTP_SENDER_ADDRESS,
 	SMTP_RECIPIENT_ADDRESS,
 	SMTP_PASSWORD,
-	SMTP_USERNAME
+	SMTP_USERNAME,
+	SMTP_BCC_ADDRESS
 } = secrets;
 const senderAddress = SMTP_SENDER_ADDRESS;
 const toAddress = SMTP_RECIPIENT_ADDRESS;
 const ccAddress = SMTP_SENDER_ADDRESS;
-const bccAddress = SMTP_SENDER_ADDRESS;
+const bccAddress = SMTP_BCC_ADDRESS;
 const smtpUsername = SMTP_USERNAME;
 const smtpPassword = SMTP_PASSWORD;
 // resumes@drisdellconsulting.com
@@ -36,9 +37,11 @@ const smtpPassword = SMTP_PASSWORD;
 // };
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-	const { text, subject, name, email, resume, coverLetter } = req.body;
+	const { text, name, email, resume } = req.body;
+	console.log(req.body);
+	console.log(resume);
 	try {
-		const subjectSmtp = `Resume Submission Event - ${subject}`;
+		const subjectSmtp = `Resume Submission Event`;
 		const body_text = `Resume Submission via AWS SES & Nodemailer
 	---------------------------------------------------------
 	${text}
@@ -48,7 +51,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 		const body_html = `<html>
 	<head></head>
 	<body>
-		<h1>${subject}</h1>
+		<h1>Resume Submission from ${name}</h1>
 		<h2>name: ${name}</h2>
 		<h2>email: ${email}</h2>
 		 <p>${text}</p>
@@ -74,28 +77,26 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 			bcc: bccAddress,
 			text: body_text,
 			html: body_html,
-			attachments: [
-				{
-					filename: `${__dirname + resume}`,
-					path: __dirname + `${resume}`,
-					content: `${resume}`
-				},
-				{
-					filename: `${coverLetter}`,
-					content: `${coverLetter}`
-				}
-			]
+			attachments: resume
+			// attachments: [
+			// 	{
+			// 		filename: `${__dirname + resume}`,
+			// 		path: __dirname + `${resume}`,
+			// 		content: `${resume}`
+			// 	}
+			// ]
 		};
-		const data: any = {
-			payload: [text, subject, name, email, resume, coverLetter]
-		};
+		const data = [text, name, email, resume];
+
 		let response = await transporter.sendMail(mailOptions, {
 			// @ts-ignore
 			body: JSON.stringify(data),
 			headers: {
-				'Content-Type': 'application/json; application/msword; charset=utf-8'
+				'Content-Type': 'application/json; application/msword; charset=utf-8',
+				'Cache-Control': 's-maxage=1, stale-while-revalidate',
+				'Accept-Encoding': 'gzip'
 			},
-			method: 'POST'
+			method: ['POST', 'GET', 'OPTIONS']
 		});
 
 		// swallow any errors from aws ses and return a better error message
@@ -106,7 +107,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 					'There was an internal error ⚙... \n Shoot me an email at [Mary.Drisdell@drisdellconsulting.com]'
 			});
 		}
-		return res.status(201).json({ error: '' });
+		return res.status(201).send({ error: '' });
 	} catch (error) {
 		return res.status(500).json({ error: error.message || error.toString() });
 	}

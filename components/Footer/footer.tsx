@@ -33,7 +33,7 @@ const Footer: FC<FooterProps> = props => {
 						<FooterLogo />
 					</div>
 					<div className='col-span-1 lg:col-span-3'>{footerLinks}</div>
-					<div className='col-span-3 lg:col-span-7 flex items-start lg:justify-end text-primary'>
+					<div className='col-span-1 lg:col-span-7 flex items-start lg:justify-end text-primary'>
 						<FooterSocial />
 					</div>
 				</div>

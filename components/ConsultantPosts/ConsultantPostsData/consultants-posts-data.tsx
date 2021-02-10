@@ -2,19 +2,17 @@ import cn from 'classnames';
 // import hydrate from 'next-mdx-remote/hydrate';
 import ReactMarkdown from 'react-markdown/with-html';
 import Image from 'next/image';
-import css from './about-post-data.module.css';
-import { AboutBySlug_aboutPost } from '@lib/graphql/AboutBySlug/__generated__/AboutBySlug';
+import css from './consultants-posts-data.module.css';
+import { ConsultantBySlug_consultantPost } from '@lib/graphql/ConsultantBySlug/__generated__/ConsultantBySlug';
 import { FC } from 'react';
-import ReactAudioPlayer from 'react-audio-player';
 
-interface AboutSubTemplateProps extends AboutBySlug_aboutPost {
+interface AboutSubTemplateProps extends ConsultantBySlug_consultantPost {
 	root?: string;
 }
 
 const AboutPostData: FC<AboutSubTemplateProps> = ({
 	root,
 	featuredImage,
-	polly,
 	title,
 	children,
 	content
@@ -26,8 +24,6 @@ const AboutPostData: FC<AboutSubTemplateProps> = ({
 			? featuredImage.node.sourceUrl
 			: '/doggo.jpg';
 	const contentConditional = content !== null ? content : 'content null';
-	const pollyConditional =
-		polly !== null && polly.audio !== null ? polly.audio : '';
 	const titleConditional = title !== null ? title : 'title null';
 	return (
 		<>
@@ -75,7 +71,7 @@ const AboutPostData: FC<AboutSubTemplateProps> = ({
 										<Image
 											className='rounded-lg shadow-lg object-cover object-center'
 											src={featuredImageConditional}
-											alt='Whitney leaning against a railing on a downtown street'
+											alt={`${titleConditional} image`}
 											width={1184}
 											height={1376}
 										/>
@@ -107,7 +103,6 @@ const AboutPostData: FC<AboutSubTemplateProps> = ({
 								className={cn('text-2xl', css['tableMd'])}
 							/>
 							<div className='mt-5 prose prose-indigo text-gray-600 mx-auto lg:max-w-none lg:row-start-1 lg:col-start-1'>
-								<ReactAudioPlayer src={pollyConditional} />
 								<ReactMarkdown
 									allowDangerousHtml={true}
 									children={contentConditional}

@@ -43,6 +43,6 @@
 	@apply text-accents-4 border-accents-2 bg-accents-1 cursor-not-allowed;
 	filter: grayscale(1);
 	-webkit-transform: translateZ(0);
-	-webkit-perspective: 1000;
+	perspective: scale(1.01);
 	-webkit-backface-visibility: hidden;
 }

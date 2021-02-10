@@ -23,7 +23,7 @@ const Textarea: FC<TextareaProps> = ({
 	return (
 		<label>
 			<textarea
-				rows={5}
+				rows={3}
 				className={cn(className, css.root)}
 				onChange={handleOnChange}
 				autoCorrect='off'
