@@ -49,27 +49,27 @@ const ApolloErrorMessage = dynamic(
 );
 
 const EmailView = dynamic(
-	() => import('@components/auth/nodemail'),
+	() => import('@components/Portals/nodemail'),
 	dynamicProps
 );
 
 const SubmitResumeView = dynamic(
-	() => import('@components/auth/submit-a-resume'),
+	() => import('@components/Portals/submit-a-resume'),
 	dynamicProps
 );
 
 const SuccessView = dynamic(
-	() => import('@components/auth/success'),
+	() => import('@components/Portals/success'),
 	dynamicProps
 );
 
 const LoginView = dynamic(
-	() => import('@components/auth/user-login'),
+	() => import('@components/Portals/user-login'),
 	dynamicProps
 );
 
 const SignUpView = dynamic(
-	() => import('@components/auth/sign-up'),
+	() => import('@components/Portals/sign-up'),
 	dynamicProps
 );
 

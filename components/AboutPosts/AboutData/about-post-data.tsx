@@ -104,7 +104,7 @@ const AboutPostData: FC<AboutSubTemplateProps> = ({
 							<ReactMarkdown
 								allowDangerousHtml={true}
 								children={titleConditional}
-								className={cn('', css['tableMd'])}
+								className={cn('text-2xl', css['tableMd'])}
 							/>
 							<div className='mt-5 prose prose-indigo text-gray-600 mx-auto lg:max-w-none lg:row-start-1 lg:col-start-1'>
 								<ReactAudioPlayer src={pollyConditional} />
