@@ -32,9 +32,18 @@ const smtpPassword = SMTP_PASSWORD;
 // type IResult = {
 
 // }
+
+// type IResponse = {
+// 	error?: Error;
+// 	envelope?: string;
+// 	messageId?: string;
+// }
+
 // https://github.com/vercel/next.js/discussions/11634
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 	const { text, subject, name, email } = req.body;
+	console.log(req.body);
+	console.log(text);
 	try {
 		const subjectSmtp = `Contact Us Submission Event - ${subject}`;
 		const body_text = `Contact Us Form Submission via AWS SES & Nodemailer
@@ -94,7 +103,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 					'There was an internal error ⚙... \n Shoot me an email at [Mary.Drisdell@drisdellconsulting.com]'
 			});
 		}
-		return res.status(200).json({ error: '', data: data ?? '' });
+
+		return res.status(200).send({ error: '', data: data ?? '' });
 	} catch (error) {
 		return res.status(500).json({ error: error.message || error.toString() });
 	}
@@ -102,3 +112,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
 // https://github.com/awsdocs/aws-doc-sdk-examples/blob/master/javascript/example_code/ses/ses_sendemailsmtp.js
 // https://github.com/vercel/vercel/discussions/4387
+
+export default handler;

@@ -1,7 +1,6 @@
 import { Input, Button, Textarea, Logo, ModalBackdrop } from '@components/UI';
 import { useState, SyntheticEvent, FC } from 'react';
 import { useUI } from '@components/context';
-import fetch from 'isomorphic-unfetch';
 import css from './contact-us.module.css';
 import cn from 'classnames';
 // import AWS from 'aws-sdk';
@@ -48,16 +47,18 @@ const SendEmail: FC = () => {
 		if (error) {
 			setMessage(error);
 			return;
+		} else {
+			setLoading(false);
+			setInputE1('');
+			setInputE2('');
+			setInputE3('');
+			setInputE4('');
+			setMessage(
+				'Success 🎉 email sent! We will get back to you within several business days'
+			);
+			await setModalView('SUCCESS_VIEW');
 		}
-		setLoading(false);
-		setInputE1('');
-		setInputE2('');
-		setInputE3('');
-		setInputE4('');
-		setMessage(
-			'Success 🎉 email sent! We will get back to you within several business days'
-		);
-		await setModalView('SUCCESS_VIEW');
+		return;
 	};
 
 	return (
