@@ -1,3 +1,9 @@
-.grid-div {
-	@apply select-none;
+.gridDiv {
+	@apply select-none mt-12 max-w-lg mx-auto text-center grid gap-5;
+	@screen md {
+		@apply grid-cols-2 max-w-3xl;
+	}
+	@screen lg {
+		@apply grid-cols-3 max-w-none;
+	}
 }

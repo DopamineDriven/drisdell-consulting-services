@@ -47,23 +47,20 @@ const SendEmail: FC = () => {
 		if (error) {
 			setMessage(error);
 			return;
-		} else {
-			setLoading(false);
-			setInputE1('');
-			setInputE2('');
-			setInputE3('');
-			setInputE4('');
-			setMessage(
-				'Success 🎉 email sent! We will get back to you within several business days'
-			);
-			await setModalView('SUCCESS_VIEW');
 		}
-		return;
+		setLoading(false);
+		setInputE1('');
+		setInputE2('');
+		setInputE3('');
+		setInputE4('');
+		setMessage(
+			'Success 🎉 email sent! We will get back to you within several business days'
+		);
+		await setModalView('SUCCESS_VIEW');
 	};
 
 	return (
 		<form
-			// @ts-ignore
 			onSubmit={userSend}
 			className={cn('w-100 flex flex-col justify-between')}
 		>
