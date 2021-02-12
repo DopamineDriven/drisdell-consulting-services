@@ -50,7 +50,6 @@ const NavLinksHeadless: FC<NavLinkProps> = props => {
 					>
 						<DownArrow className='select-none lg:w-5 lg:h-5 w-8 h-8' />
 					</button>
-
 					<Transition
 						show={isOpen}
 						enter='transition ease-out duration-200 '
@@ -92,7 +91,6 @@ const NavLinksHeadless: FC<NavLinkProps> = props => {
 															<p className='text-base font-medium'>{subPage.node.label}</p>
 														</a>
 													</Link>
-
 													{subPage.node.childItems !== null &&
 													subPage.node.childItems.edges !== null &&
 													subPage.node.childItems.edges.length > 0 ? (

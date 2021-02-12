@@ -1,7 +1,8 @@
-import nodemailer from 'nodemailer';
+import nodemailer, { SentMessageInfo } from 'nodemailer';
 import { NextApiRequest, NextApiResponse } from 'next';
 // const aws = require('aws-sdk');
 // import { Serialize } from '@lib/jsonify';
+
 const smtpEndpoint = 'email-smtp.us-east-2.amazonaws.com';
 const port = 465;
 import secrets from '../../aws';
@@ -75,19 +76,33 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 		};
 		const data = [text, subject, name, email];
 
-		let response = await transporter.sendMail(mailOptions, {
-			// @ts-ignore
-			body: JSON.stringify(data),
-			headers: {
-				'Content-Type': 'application/json; charset=utf-8',
-				'Cache-Control': 's-maxage=1, stale-while-revalidate',
-				'Accept-Encoding': 'gzip'
-			},
-			method: 'POST'
-		});
-
+		let response: SentMessageInfo = await transporter.sendMail(
+			mailOptions,
+			(info, err) => {
+				if (!err)
+					console.log(
+						'\n info.message: ',
+						info?.message,
+						'\n info.stack: ',
+						info?.stack,
+						'\n info.name: ',
+						info?.name
+					);
+				console.log(err);
+				// @ts-ignore
+				// body: JSON.stringify(data),
+				// headers: {
+				// 	'Content-Type': 'application/json; charset=utf-8',
+				// 	'Cache-Control': 's-maxage=1, stale-while-revalidate',
+				// 	'Accept-Encoding': 'gzip'
+				// },
+				// method: 'POST'
+			}
+		);
+		// console.log('Message sent: %s', response.messageId);
+		// console.log('Message Envelope: %s', response.envelope);
 		// swallow any errors from aws ses and return a better error message
-		res.setHeader('Cache-Control', 's-maxage=86400');
+		// res.setHeader('Cache-Control', 's-maxage=86400');
 		if (response === typeof Error) {
 			return res.status(400).json({
 				error:

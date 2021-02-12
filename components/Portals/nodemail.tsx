@@ -17,6 +17,7 @@ const SendEmail: FC = () => {
 	const [inputE2, setInputE2] = useState('');
 	const [inputE3, setInputE3] = useState('');
 	const [inputE4, setInputE4] = useState('');
+	// const inputText = useRef<HTMLTextAreaElement>(null);
 
 	// const [success, onSuccess] = useState(false);
 	const [message, setMessage] = useState('');
