@@ -103,7 +103,7 @@ const ContactUsPageData: FC<ContactUsPageProps> = ({
 			<div className='relative'>
 				<div className='absolute inset-x-0 bottom-0 h-full bg-primary-0'>
 					<div className='mx-auto'>
-						<div className='relative '>
+						<div className='relative sm:overflow-hidden sm:pb-24'>
 							<div className='absolute inset-0' ref={particlesConatinerRef}>
 								<Particles
 									className='cursor-default h-screen sm:h-screen w-full object-cover'
