@@ -1,6 +1,6 @@
 # drisdell-consulting-services
 
-## [ 🤙 NEWEST AWS SDKS](https://github.com/aws/aws-sdk-js-v3/tree/master/clients)
+## use id instead of slug for object key in abstracted getStaticPaths type
 
 ## [SES V3 TS](https://github.com/awsdocs/aws-doc-sdk-examples/tree/master/javascriptv3/example_code/ses/src)
 

@@ -20,20 +20,20 @@ const SendEmail: FC = () => {
 	const [inputE4, setInputE4] = useState('');
 	// const inputText = useRef<HTMLTextAreaElement>(null);
 	const [dirty, setDirty] = useState(false);
-	// const [success, onSuccess] = useState(false);
 	const [message, setMessage] = useState('');
 	const [disabled, setDisabled] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const userSend = async (e: SyntheticEvent<EventTarget>) => {
 		e.preventDefault();
-
+		const prod = `drisdell.org/api/nodemailer`;
+		const dev = '/api/nodemailer';
 		if (!dirty && !disabled) {
 			setDirty(true);
 			handleValidation();
 		}
 		setLoading(true);
 		setMessage('');
-		let res = await fetch('/api/nodemailer', {
+		let res = await fetch(process.env.NODE_ENV === 'production' ? prod : dev, {
 			body: JSON.stringify({
 				text: inputE3,
 				subject: inputE4,
@@ -48,7 +48,7 @@ const SendEmail: FC = () => {
 			// credentials: 'include'
 		});
 
-		const { error } = await res.json();
+		const { error, data } = await res.json();
 
 		if (error) {
 			setMessage(error);
@@ -60,7 +60,8 @@ const SendEmail: FC = () => {
 		setInputE3('');
 		setInputE4('');
 		setMessage(
-			'Success 🎉 email sent! We will get back to you within several business days'
+			'Success 🎉 email sent! We will get back to you within several business days' +
+				`${data}`
 		);
 		await setModalView('SUCCESS_VIEW');
 	};
@@ -85,11 +86,6 @@ const SendEmail: FC = () => {
 			</div>
 			<div className='relative max-w-xl mx-auto'>
 				<ModalBackdrop />
-				{/* <div className='text-center'>
-					<h2 className='text-3xl font-extrabold tracking-tight text-primary-9 sm:text-4xl pb-5'>
-						Contact Us Today
-					</h2>
-				</div> */}
 				{message && (
 					<div className='text-white border border-white p-2 mb-2 rounded-2xl'>
 						{message}
@@ -139,6 +135,7 @@ const SendEmail: FC = () => {
 				<div className='w-auto px-8 flex flex-col'>
 					<Button
 						type='submit'
+						variant='slim'
 						loading={loading}
 						disabled={disabled}
 						className={cn(

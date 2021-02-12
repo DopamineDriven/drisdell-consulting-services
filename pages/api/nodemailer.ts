@@ -1,9 +1,8 @@
 import nodemailer, { SentMessageInfo } from 'nodemailer';
 import { NextApiRequest, NextApiResponse } from 'next';
+// import parseConnectionUrl from 'nodemailer';
 // const aws = require('aws-sdk');
 // import { Serialize } from '@lib/jsonify';
-
-const smtpEndpoint = 'email-smtp.us-east-2.amazonaws.com';
 const port = 465;
 import secrets from '../../aws';
 const {
@@ -55,7 +54,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 	</body>
 	</html>`;
 		let transporter = nodemailer.createTransport({
-			host: smtpEndpoint,
+			host: 'email-smtp.us-east-2.amazonaws.com',
 			port: port,
 			secure: true,
 			auth: {
@@ -74,7 +73,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 			text: body_text,
 			html: body_html
 		};
-		const data = [text, subject, name, email];
+		// const data = [text, subject, name, email];
 
 		let response: SentMessageInfo = await transporter.sendMail(
 			mailOptions,
@@ -109,7 +108,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 					'There was an internal error ⚙... \n Shoot me an email at [Mary.Drisdell@drisdellconsulting.com]'
 			});
 		}
-		return res.status(200).json({ error: '', data: data ?? '' });
+		return res.status(200).json({ error: '', data: (await response) ?? '' });
 	} catch (error) {
 		return res.status(500).json({ error: error.message || error.toString() });
 	}

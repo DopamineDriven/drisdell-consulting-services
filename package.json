@@ -13,7 +13,6 @@
 	"scripts": {
 		"dev": "cross-env NODE_OPTIONS='--inspect' next dev -p 4242",
 		"build": "next build",
-		"start": "next start -p 4343",
 		"analyze": "cross-env ANALYZE=true yarn build",
 		"tsconfig:effective": "tsc --showConfig",
 		"tsc:noemit": "npx tsc --noEmit",
@@ -86,6 +85,7 @@
 		"lodash.throttle": "^4.1.1",
 		"mailgun-js": "^0.22.0",
 		"next": "^10.0.6",
+		"next-connect": "^0.9.1",
 		"next-mdx-remote": "^2.1.1",
 		"next-seo": "^4.17.0",
 		"next-themes": "^0.0.10",
@@ -107,7 +107,8 @@
 		"tailwindcss": "^2.0.2",
 		"tailwindcss-gradients": "^3.0.0",
 		"tailwindcss-line-clamp": "^1.0.5",
-		"tinymce": "^5.6.2"
+		"tinymce": "^5.6.2",
+		"vercel": "^21.2.3"
 	},
 	"devDependencies": {
 		"@graphql-codegen/cli": "^1.19.4",
