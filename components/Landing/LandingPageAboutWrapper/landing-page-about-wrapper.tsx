@@ -10,11 +10,7 @@ const LandingPageAboutWrapper: FC<LandingPageAboutWrapperProps> = ({
 	children,
 	root
 }) => {
-	return (
-		<Container className={cn('mt-32 sm:mt-24 select-none', root)}>
-			{children}
-		</Container>
-	);
+	return <Container className={cn('select-none', root)}>{children}</Container>;
 };
 
 export default LandingPageAboutWrapper;

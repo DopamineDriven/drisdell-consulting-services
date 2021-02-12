@@ -98,37 +98,12 @@ const ContactUsPageData: FC<ContactUsPageProps> = ({
 			></div>
 		</Media>
 	);
-
-	// const desktopContent = (
-	// 	<Media greaterThanOrEqual='sm'>
-	// 		<ReactMarkdown
-	// 			children={contentDynamic}
-	// 			allowDangerousHtml={true}
-	// 			className={cn(
-	// 				css['tableMd'],
-	// 				'mx-auto text-center text-lg md:text-xl lg:text-2xl text-primary-2 sm:max-w-2xl font-somaRoman z-50 pt-8'
-	// 			)}
-	// 		/>
-	// 		{/* <OgLogo className='mt-10 w-42 h-42 mx-auto text-center text-lg md:text-lg text-indigo-100 sm:max-w-2xl font-somaRoman z-50 animate-slowPing transition-transform ' /> */}
-	// 	</Media>
-	// );
-	// // mt-10 max-w-lg mx-auto prose-lg text-indigo-100 sm:max-w-3xl font-somaRoman
-	// const mobileContent = (
-	// 	<Media lessThan='sm'>
-	// 		{/* <OgLogo className='mt-6 w-40 h-40 mx-auto text-center text-lg md:text-lg text-indigo-100 sm:max-w-2xl font-somaRoman z-50 animate-slowPing transition-transform' /> */}
-	// 		<ReactMarkdown
-	// 			children={contentDynamic}
-	// 			allowDangerousHtml={true}
-	// 			className='mt-6 max-w-lg mx-auto prose-lg text-indigo-100 sm:max-w-3xl font-somaRoman'
-	// 		/>
-	// 	</Media>
-	// );
 	return (
 		<main className={cn(root, css.root, '')}>
 			<div className='relative'>
 				<div className='absolute inset-x-0 bottom-0 h-full bg-primary-0'>
 					<div className='mx-auto'>
-						<div className='relative sm:overflow-hidden'>
+						<div className='relative sm:overflow-hidden sm:pb-24'>
 							<div className='absolute inset-0' ref={particlesConatinerRef}>
 								<Particles
 									className='cursor-default h-screen sm:h-screen w-full object-cover'
@@ -285,70 +260,6 @@ const ContactUsPageData: FC<ContactUsPageProps> = ({
 									</div>
 								</div>
 							</Container>
-							<div className='bg-primary-9'>
-								<div className='max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8'>
-									<h4 className='text-center text-base uppercase z-50 text-primary-9 tracking-wide font-bold'>
-										Custom Kronos Solutions, since 1995
-									</h4>
-									{/* <div className='mt-6 grid grid-cols-2 gap-8 md:grid-cols-6 lg:grid-cols-5 lg:pb-20'>
-										<div className='col-span-1 flex justify-center md:col-span-2 lg:col-span-1'>
-											<Image
-												src='/ada-logo.png'
-												width={100}
-												height={100}
-												className='h-12'
-												alt='ada'
-												quality={100}
-												priority
-											/>
-										</div>
-										<div className='col-span-1 flex justify-center md:col-span-2 lg:col-span-1'>
-											<Image
-												src='/invisalign-square.png'
-												width={100}
-												height={100}
-												className='h-12'
-												alt='invisalign'
-												quality={100}
-												priority
-											/>
-										</div>
-										<div className='col-span-1 flex justify-center md:col-span-2 lg:col-span-1'>
-											<Image
-												src='/dental-vector-1.png'
-												width={200}
-												height={100}
-												className='h-12'
-												alt='deerfield dentist'
-												quality={100}
-												priority
-											/>
-										</div>
-										<div className='col-span-1 flex justify-center md:col-span-2 md:col-start-2 lg:col-span-1'>
-											<Image
-												src='/cdg-logo.png'
-												width={100}
-												height={100}
-												className='h-12'
-												alt='chicago dental group'
-												quality={100}
-												priority
-											/>
-										</div>
-										<div className='col-span-1 flex justify-center md:col-span-2 md:col-start-4 lg:col-span-1'>
-											<Image
-												src='/isds-logo.png'
-												width={100}
-												height={100}
-												className='h-12'
-												alt='ada'
-												quality={100}
-												priority
-											/>
-										</div>
-									</div> */}
-								</div>
-							</div>
 						</div>
 					</div>
 				</div>

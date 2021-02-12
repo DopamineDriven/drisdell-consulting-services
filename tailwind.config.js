@@ -351,6 +351,7 @@ module.exports = {
 					'odd',
 					'group-hover'
 				],
+
 				gridTemplateColumns: [
 					'responsive',
 					'last',
@@ -468,7 +469,8 @@ module.exports = {
 		],
 		display: ['responsive', 'hover', 'group-hover'],
 		visibility: ['responsive', 'hover', 'group-hover'],
-		transitionDuration: ['responsive', 'hover', 'group-hover']
+		transitionDuration: ['responsive', 'hover', 'group-hover'],
+		gridColumn: ['responsive', 'hover', 'first', 'odd', 'even']
 	},
 	plugins: [
 		require('@tailwindcss/typography'),

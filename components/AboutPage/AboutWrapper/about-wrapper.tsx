@@ -25,14 +25,7 @@ const AboutWrapper: FC<AboutWrapperProps> = props => {
 						Drisdell Consulting Services
 					</h2>
 				</div>
-				<div
-					className={cn(
-						css.gridDiv,
-						'mt-12 max-w-lg mx-auto text-center grid gap-5 md:max-w-3xl md:grid-cols-2 lg:grid-cols-3 lg:max-w-none group-hover:opacity-75'
-					)}
-				>
-					{children}
-				</div>
+				<div className={cn(css.gridDiv, ' group-hover:opacity-75')}>{children}</div>
 			</div>
 		</div>
 	);

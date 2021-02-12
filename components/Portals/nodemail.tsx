@@ -1,10 +1,11 @@
 import { Input, Button, Textarea, Logo, ModalBackdrop } from '@components/UI';
-import { useState, SyntheticEvent, FC } from 'react';
+import { useState, SyntheticEvent, FC, useEffect, useCallback } from 'react';
 import { useUI } from '@components/context';
 import css from './contact-us.module.css';
 import cn from 'classnames';
 // import AWS from 'aws-sdk';
 // import { ConfigurationOptions } from 'aws-sdk/lib/config-base';
+import { validEmail } from '@lib/validate-email';
 
 // const SES_CONFIG: ConfigurationOptions = {
 // 	accessKeyId: `${process.env.SES_ACCESS_KEY}`,
@@ -17,14 +18,19 @@ const SendEmail: FC = () => {
 	const [inputE2, setInputE2] = useState('');
 	const [inputE3, setInputE3] = useState('');
 	const [inputE4, setInputE4] = useState('');
-
+	// const inputText = useRef<HTMLTextAreaElement>(null);
+	const [dirty, setDirty] = useState(false);
 	// const [success, onSuccess] = useState(false);
 	const [message, setMessage] = useState('');
-	const [disabled] = useState(false);
+	const [disabled, setDisabled] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const userSend = async (e: SyntheticEvent<EventTarget>) => {
 		e.preventDefault();
 
+		if (!dirty && !disabled) {
+			setDirty(true);
+			handleValidation();
+		}
 		setLoading(true);
 		setMessage('');
 		let res = await fetch('/api/nodemailer', {
@@ -47,23 +53,30 @@ const SendEmail: FC = () => {
 		if (error) {
 			setMessage(error);
 			return;
-		} else {
-			setLoading(false);
-			setInputE1('');
-			setInputE2('');
-			setInputE3('');
-			setInputE4('');
-			setMessage(
-				'Success 🎉 email sent! We will get back to you within several business days'
-			);
-			await setModalView('SUCCESS_VIEW');
 		}
-		return;
+		setLoading(false);
+		setInputE1('');
+		setInputE2('');
+		setInputE3('');
+		setInputE4('');
+		setMessage(
+			'Success 🎉 email sent! We will get back to you within several business days'
+		);
+		await setModalView('SUCCESS_VIEW');
 	};
+
+	const handleValidation = useCallback(() => {
+		if (dirty) {
+			setDisabled(!validEmail(inputE1) || !inputE2 || !inputE3 || !inputE4);
+		}
+	}, [inputE1, inputE2, inputE3, inputE4, dirty]);
+
+	useEffect(() => {
+		handleValidation();
+	}, [handleValidation]);
 
 	return (
 		<form
-			// @ts-ignore
 			onSubmit={userSend}
 			className={cn('w-100 flex flex-col justify-between')}
 		>

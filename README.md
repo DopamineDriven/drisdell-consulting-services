@@ -114,5 +114,6 @@ Nextjs, AWS Cloudfront, Headless WordPress, TypeScript, Apollo Client, GraphQL C
 
 ### [Resume Refactoring](https://leerob.io/blog/resume)
 
-$$
-$$
+### [DynamoDB](https://egghead.io/lessons/aws-use-aws-iam-to-create-a-user-with-permission-for-dynamodb)
+
+### [Nodemailer+SES](https://nodemailer.com/transports/ses/)

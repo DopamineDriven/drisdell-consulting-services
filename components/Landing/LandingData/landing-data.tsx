@@ -118,9 +118,7 @@ const LandingPageData: FC<LandingPageDataProps> = ({
 		</Media>
 	);
 	return (
-		<main
-			className={cn(root, 'z-50 fit select-none h-screen mb-64 md:mb-8 lg:mb-0')}
-		>
+		<main className={cn(root, 'z-50 select-none h-screen md:mb-8 lg:mb-0')}>
 			<div className='relative'>
 				<div className='absolute inset-x-0 bottom-0 h-full bg-primary-0'>
 					<div className='mx-auto'>
@@ -248,7 +246,7 @@ const LandingPageData: FC<LandingPageDataProps> = ({
 							</Container>
 							<div className='bg-primary-9'>
 								<div className='max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8'>
-									<h4 className='text-center text-base uppercase z-50 text-primary-9 tracking-wide font-bold'>
+									<h4 className='text-center text-base uppercase z-50 text-primary-0 tracking-wide font-bold'>
 										Custom Kronos Solutions, since 1995
 									</h4>
 									{/* <div className='mt-6 grid grid-cols-2 gap-8 md:grid-cols-6 lg:grid-cols-5 lg:pb-20'>
