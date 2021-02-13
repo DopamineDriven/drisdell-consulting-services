@@ -18,7 +18,7 @@ const SendEmail: FC = () => {
 	const [loading, setLoading] = useState(false);
 	const userSend = async (e: SyntheticEvent<EventTarget>) => {
 		e.preventDefault();
-		// const prod = `drisdell.org/api/nodemailer`;
+		// const prod = `drisdell.com/api/nodemailer`;
 		// const dev = '/api/nodemailer';
 		if (!dirty && !disabled) {
 			setDirty(true);

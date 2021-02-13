@@ -2,6 +2,7 @@ import nodemailer, { SentMessageInfo } from 'nodemailer';
 import { NextApiRequest, NextApiResponse } from 'next';
 import secrets from 'aws';
 import Mail from 'nodemailer/lib/mailer';
+const port = 465;
 const {
 	SMTP_SENDER_ADDRESS,
 	SMTP_RECIPIENT_ADDRESS,
@@ -38,7 +39,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 	</html>`;
 		let transporter = nodemailer.createTransport({
 			host: 'email-smtp.us-east-2.amazonaws.com',
-			port: 465,
+			port: port,
 			secure: true,
 			auth: {
 				user: smtpUsername,
