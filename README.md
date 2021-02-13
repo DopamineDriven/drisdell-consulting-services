@@ -1,5 +1,76 @@
 # drisdell-consulting-services
 
+### approach from AWS-TS SDK V3...no dice
+
+```ts
+import {
+	SESClient,
+	SendEmailCommand,
+	SendEmailCommandInput
+} from '@aws-sdk/client-ses';
+
+const REGION = 'us-east-2';
+const ses = new SESClient({ region: REGION });
+export async function handler({
+	text,
+	email,
+	name,
+	subject,
+	ccAddress,
+	bccAddress,
+	toAddress
+}: any) {
+	const subjectSmtp = `Contact Us Submission Event - ${subject}`;
+	const body_text = `Contact Us Form Submission via AWS SES & Nodemailer
+	---------------------------------------------------------
+	${text}
+	`;
+	const body_html = `<html>
+	<head></head>
+	<body>
+		<h1>${subject}</h1>
+		\n
+		<h2>Name: ${name}</p>
+		\n
+		<h2>email: ${email}</h2>
+		\n
+		<p>${text}</p>
+	</body>
+	</html>`;
+	const params: SendEmailCommandInput = {
+		Destination: {
+			CcAddresses: [`${ccAddress}`],
+			BccAddresses: [`${bccAddress}`],
+			ToAddresses: [`${toAddress}`]
+		},
+		Message: {
+			Body: {
+				Html: {
+					Charset: 'UTF-8',
+					Data: body_html
+				},
+				Text: {
+					Charset: 'UTF-8',
+					Data: body_text
+				}
+			},
+			Subject: {
+				Charset: 'UTF-8',
+				Data: subjectSmtp
+			}
+		},
+		Source: `${process.env.SMTP_SENDER_ADDRESS}`,
+		ReplyToAddresses: [`${process.env.SMTP_SENDER_ADDRESS}`]
+	};
+	try {
+		const data = await ses.send(new SendEmailCommand(params));
+		console.log('data', data);
+	} catch (err) {
+		console.log('error', err);
+	}
+}
+```
+
 ## use id instead of slug for object key in abstracted getStaticPaths type
 
 ## [SES V3 TS](https://github.com/awsdocs/aws-doc-sdk-examples/tree/master/javascriptv3/example_code/ses/src)

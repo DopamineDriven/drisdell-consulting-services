@@ -26,6 +26,7 @@ export const getStaticProps: GetStaticProps = async () => {
 		query: CONTACT_US_PAGE,
 		variables: ContactUsPageQueryVars
 	});
+
 	return addApolloState(apolloClient, {
 		props: {},
 		revalidate: 10
