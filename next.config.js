@@ -10,6 +10,7 @@ const withImages = {
 			'drisdell-headless.com',
 			'www.drisdell-headless.com',
 			'drisdell.com',
+			'drisdell.org',
 			'secure.gravatar.com'
 		]
 	}

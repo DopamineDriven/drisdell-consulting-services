@@ -1,3 +1,3 @@
 User-agent: *
 Disallow: /api
-Sitemap: https://drisdell-consulting-services-pi.vercel.app/sitemap.xml
+Sitemap: https://drisdell.org/sitemap.xml
