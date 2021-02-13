@@ -3,14 +3,7 @@ import { useState, SyntheticEvent, FC, useEffect, useCallback } from 'react';
 import { useUI } from '@components/context';
 import css from './contact-us.module.css';
 import cn from 'classnames';
-// import AWS from 'aws-sdk';
-// import { ConfigurationOptions } from 'aws-sdk/lib/config-base';
 import { validEmail } from '@lib/validate-email';
-
-// const SES_CONFIG: ConfigurationOptions = {
-// 	accessKeyId: `${process.env.SES_ACCESS_KEY}`,
-// 	secretAccessKey: `${process.env.SES_SECRET_ACCESS_KEY}`
-// };
 
 const SendEmail: FC = () => {
 	const { setModalView } = useUI();
@@ -25,15 +18,15 @@ const SendEmail: FC = () => {
 	const [loading, setLoading] = useState(false);
 	const userSend = async (e: SyntheticEvent<EventTarget>) => {
 		e.preventDefault();
-		const prod = `drisdell.org/api/nodemailer`;
-		const dev = '/api/nodemailer';
+		// const prod = `drisdell.org/api/nodemailer`;
+		// const dev = '/api/nodemailer';
 		if (!dirty && !disabled) {
 			setDirty(true);
 			handleValidation();
 		}
 		setLoading(true);
 		setMessage('');
-		let res = await fetch(process.env.NODE_ENV === 'production' ? prod : dev, {
+		let res = await fetch('/api/nodemailer', {
 			body: JSON.stringify({
 				text: inputE3,
 				subject: inputE4,
@@ -45,7 +38,6 @@ const SendEmail: FC = () => {
 				'Content-Type': 'application/json'
 			},
 			method: 'POST'
-			// credentials: 'include'
 		});
 
 		const { error, data } = await res.json();

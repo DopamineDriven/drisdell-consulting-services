@@ -31,7 +31,7 @@ const prettier = require('prettier');
 
 														return `
                         <url>
-                            <loc>${`https://drisdell-consulting-services-pi.vercel.app${route}`}</loc>
+                            <loc>${`https://drisdell.org${route}`}</loc>
                         </url>
                     `;
 													})

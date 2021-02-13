@@ -1,7 +1,7 @@
 {
 	"name": "Drisdell Consulting Services",
 	"short_name": "Drisdell",
-	"start_url": "https://drisdell-consulting-services.vercel.app",
+	"start_url": "https://drisdell.org",
 	"icons": [
 		{
 			"src": "/meta/android-chrome-192x192.png",

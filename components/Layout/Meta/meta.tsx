@@ -28,10 +28,7 @@ const MetaData = () => {
 				<link rel='manifest' href='/meta/manifest.json' />
 				<link rel='mask-icon' href='/meta/safari-pinned-tab.svg' color='#000000' />
 				<link rel='shortcut icon' href='/meta/favicon.ico' />
-				<link
-					rel='canonical'
-					href={'https://drisdell-consulting-services.vercel.app'}
-				/>
+				<link rel='canonical' href={'https://drisdell.org'} />
 				<meta name='robots' content='all' />
 				<meta
 					name='viewport'
@@ -72,7 +69,7 @@ const MetaData = () => {
 				/>
 				<meta name='twitter:creator' content='@Dopamine_Driven' />
 				<meta property='og:type' content='website' />
-				<meta property='og:url' content='https://drisdell-consulting.vercel.app' />
+				<meta property='og:url' content='https://drisdell.org' />
 				<meta property='og:title' content='Drisdell Consulting Services' />
 				<meta
 					property='og:description'
