@@ -54,23 +54,14 @@ type DynamicPaths = {
 	};
 }[];
 
-interface PathPropsResult extends GetStaticPaths {
-	pathsData: DynamicPaths;
-}
-
-export const getStaticPaths = async (
-	ctx: PathPropsResult
-): Promise<{
-	paths: DynamicPaths;
-	fallback: true | false | 'blocking';
-}> => {
+export const getStaticPaths: GetStaticPaths = async () => {
 	const apolloClient = initializeApollo();
 	const { data } = await apolloClient.query<AboutSlugs, AboutSlugsVariables>({
 		query: ABOUT_SLUGS,
 		variables: AboutSlugsQueryVars
 	});
 
-	const { pathsData = [] } = ctx;
+	const pathsData: DynamicPaths = [];
 
 	if (
 		data &&
@@ -80,8 +71,7 @@ export const getStaticPaths = async (
 	)
 		data.aboutslugs.edges.map(post => {
 			if (post !== null && post.node !== null && post.node.slug !== null) {
-				const returnedAboutPaths = { params: { slug: post.node.slug } };
-				pathsData.push(returnedAboutPaths);
+				pathsData.push({ params: { slug: post.node.slug } });
 			}
 		});
 
@@ -149,3 +139,50 @@ const DynamicAbout: NextPage &
 };
 
 export default DynamicAbout;
+
+/*
+
+type DynamicPaths = {
+	params: {
+		slug: string;
+	};
+}[];
+
+interface PathPropsResult extends GetStaticPaths {
+	pathsData: DynamicPaths;
+}
+
+export const getStaticPaths = async (
+	ctx: PathPropsResult
+): Promise<{
+	paths: DynamicPaths;
+	fallback: true | false | 'blocking';
+}> => {
+	const apolloClient = initializeApollo();
+	const { data } = await apolloClient.query<AboutSlugs, AboutSlugsVariables>({
+		query: ABOUT_SLUGS,
+		variables: AboutSlugsQueryVars
+	});
+
+	const { pathsData = [] } = ctx;
+
+	if (
+		data &&
+		data.aboutslugs !== null &&
+		data.aboutslugs.edges !== null &&
+		data.aboutslugs.edges.length > 0
+	)
+		data.aboutslugs.edges.map(post => {
+			if (post !== null && post.node !== null && post.node.slug !== null) {
+				const returnedAboutPaths = { params: { slug: post.node.slug } };
+				pathsData.push(returnedAboutPaths);
+			}
+		});
+
+	return {
+		paths: pathsData,
+		fallback: true
+	};
+};
+
+*/
