@@ -21,7 +21,7 @@ const LandingPageAboutData: FC<LandingPageAboutDataProps> = ({
 		<div
 			className={cn(
 				root,
-				'relative sm:bg-gradient-to-r sm:from-primary-0 sm:to-primary-9 overflow-hidden rounded-lg px-12 mb-24 2xl:mb-32'
+				'relative sm:bg-gradient-to-r sm:from-primary-0 sm:to-primary-9 overflow-hidden rounded-lg mt-104 sm:mt-0 px-12 mb-24 2xl:mb-32'
 			)}
 			style={{ backgroundBlendMode: 'soft-light' }}
 		>
