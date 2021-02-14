@@ -36,7 +36,7 @@ const SendEmail: FC = () => {
 			headers: {
 				Accept: 'application/json, text/plain, */*',
 				'Content-Type': 'application/json',
-				Authorization: `${process.env.WORDPRESS_AUTH_REFRESH_TOKEN}`
+				Authorization: `Bearer ${process.env.WORDPRESS_AUTH_REFRESH_TOKEN}`
 			},
 			method: 'POST'
 		});

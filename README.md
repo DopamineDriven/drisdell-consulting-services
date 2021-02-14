@@ -188,3 +188,9 @@ Nextjs, AWS Cloudfront, Headless WordPress, TypeScript, Apollo Client, GraphQL C
 ### [DynamoDB](https://egghead.io/lessons/aws-use-aws-iam-to-create-a-user-with-permission-for-dynamodb)
 
 ### [Nodemailer+SES](https://nodemailer.com/transports/ses/)
+
+### [Script to run to send mail from cli](https://docs.aws.amazon.com/cli/latest/reference/ses/send-email.html)
+
+```d
+$ aws ses send-email --from andrew@windycitydevs.io --destination file://destination.json --message file://message.json
+```
