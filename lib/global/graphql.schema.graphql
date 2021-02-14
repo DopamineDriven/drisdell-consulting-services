@@ -13530,6 +13530,12 @@ type RootMutation {
 		input: RestoreCommentInput!
 	): RestoreCommentPayload
 
+	# The payload for the sendEmail mutation
+	sendEmail(
+		# Input for the sendEmail mutation
+		input: SendEmailInput!
+	): SendEmailPayload
+
 	# The payload for the sendPasswordResetEmail mutation
 	sendPasswordResetEmail(
 		# Input for the sendPasswordResetEmail mutation
@@ -15035,6 +15041,46 @@ type RestoreCommentPayload {
 
 	# The ID of the restored comment
 	restoredId: ID
+}
+
+# Input for the sendEmail mutation
+input SendEmailInput {
+	# Body of email
+	body: String
+	clientMutationId: String
+
+	# Who to send the email from
+	from: String
+
+	# Reply to address
+	replyTo: String
+
+	# Subject of email
+	subject: String
+
+	# Who to send the email to
+	to: String
+}
+
+# The payload for the sendEmail mutation
+type SendEmailPayload {
+	#
+	clientMutationId: String
+
+	# Message
+	message: String
+
+	# Origin that sent the request
+	origin: String
+
+	# reply To address used
+	replyTo: String
+
+	# Was the email sent
+	sent: Boolean
+
+	# Who the email got sent to
+	to: String
 }
 
 # Input for the sendPasswordResetEmail mutation
