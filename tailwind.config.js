@@ -281,6 +281,7 @@ module.exports = {
 				75: '75vh',
 				82: '20.5rem',
 				100: '25rem',
+				104: '26rem',
 				150: '150vh'
 			},
 			boxShadow: {

@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
-		<loc>https://drisdell-consulting-services-pi.vercel.app/about-us</loc>
+		<loc>https://drisdell.com/about-us</loc>
 	</url>
 
 	<url>
-		<loc>https://drisdell-consulting-services-pi.vercel.app/consultants</loc>
+		<loc>https://drisdell.com/consultants</loc>
 	</url>
 
 	<url>
-		<loc>https://drisdell-consulting-services-pi.vercel.app/contact-us</loc>
+		<loc>https://drisdell.com/contact-us</loc>
 	</url>
 
 	<url>
-		<loc>https://drisdell-consulting-services-pi.vercel.app</loc>
+		<loc>https://drisdell.com</loc>
 	</url>
 
 	<url>
-		<loc>https://drisdell-consulting-services-pi.vercel.app/[...slug]</loc>
+		<loc>https://drisdell.com/[...slug]</loc>
 	</url>
 </urlset>
