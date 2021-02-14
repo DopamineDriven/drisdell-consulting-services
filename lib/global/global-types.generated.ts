@@ -10451,6 +10451,8 @@ export type RootMutation = {
 	resetUserPassword?: Maybe<ResetUserPasswordPayload>;
 	/** The payload for the restoreComment mutation */
 	restoreComment?: Maybe<RestoreCommentPayload>;
+	/** The payload for the sendEmail mutation */
+	sendEmail?: Maybe<SendEmailPayload>;
 	/** The payload for the sendPasswordResetEmail mutation */
 	sendPasswordResetEmail?: Maybe<SendPasswordResetEmailPayload>;
 	/** The payload for the submitForm mutation */
@@ -10652,6 +10654,11 @@ export type RootMutationResetUserPasswordArgs = {
 /** The root mutation */
 export type RootMutationRestoreCommentArgs = {
 	input: RestoreCommentInput;
+};
+
+/** The root mutation */
+export type RootMutationSendEmailArgs = {
+	input: SendEmailInput;
 };
 
 /** The root mutation */
@@ -11848,6 +11855,37 @@ export type RestoreCommentPayload = {
 	comment?: Maybe<Comment>;
 	/** The ID of the restored comment */
 	restoredId?: Maybe<Scalars['ID']>;
+};
+
+/** Input for the sendEmail mutation */
+export type SendEmailInput = {
+	/** Body of email */
+	body?: Maybe<Scalars['String']>;
+	clientMutationId?: Maybe<Scalars['String']>;
+	/** Who to send the email from */
+	from?: Maybe<Scalars['String']>;
+	/** Reply to address */
+	replyTo?: Maybe<Scalars['String']>;
+	/** Subject of email */
+	subject?: Maybe<Scalars['String']>;
+	/** Who to send the email to */
+	to?: Maybe<Scalars['String']>;
+};
+
+/** The payload for the sendEmail mutation */
+export type SendEmailPayload = {
+	__typename?: 'SendEmailPayload';
+	clientMutationId?: Maybe<Scalars['String']>;
+	/** Message */
+	message?: Maybe<Scalars['String']>;
+	/** Origin that sent the request */
+	origin?: Maybe<Scalars['String']>;
+	/** reply To address used */
+	replyTo?: Maybe<Scalars['String']>;
+	/** Was the email sent */
+	sent?: Maybe<Scalars['Boolean']>;
+	/** Who the email got sent to */
+	to?: Maybe<Scalars['String']>;
 };
 
 /** Input for the sendPasswordResetEmail mutation */
