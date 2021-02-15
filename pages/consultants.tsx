@@ -24,8 +24,11 @@ export const getStaticProps: GetStaticProps = async () => {
 		query: HEADER_FOOTER,
 		variables: HeaderFooterMenuQueryVers
 	});
+	const data = await fetch('/api/nodemailer');
 	return addApolloState(apolloClient, {
-		props: {},
+		props: {
+			res: data
+		},
 		revalidate: 10
 	});
 };

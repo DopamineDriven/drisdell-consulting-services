@@ -1,10 +1,9 @@
 import { NextPage, GetStaticProps, InferGetStaticPropsType } from 'next';
-import { HEADER_FOOTER } from '@lib/graphql';
+import { HEADER_FOOTER, CONTACT_US_PAGE } from '@lib/graphql';
 import {
 	HeaderFooter,
 	HeaderFooterVariables
 } from '@lib/graphql/HeaderFooter/__generated__/HeaderFooter';
-import CONTACT_US_PAGE from '@lib/graphql/ContactUsPage';
 import {
 	ContactUsPage,
 	ContactUsPageVariables
