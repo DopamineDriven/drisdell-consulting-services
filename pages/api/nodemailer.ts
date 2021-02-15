@@ -17,7 +17,7 @@ const bccAddress = SMTP_BCC_ADDRESS;
 const smtpUsername = SMTP_USERNAME;
 const smtpPassword = SMTP_PASSWORD;
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 	const { text, subject, name, email } = req.body;
 	try {
 		const body_subject = `Contact Us Submission Event - ${subject}`;
@@ -84,6 +84,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 		return res.status(500).json({ error: error.message || error.toString() });
 	}
 };
+export default handler;
 
 // declare namespace Mail {
 //     type Headers = { [key: string]: string | string[] | { prepared: boolean, value: string } } | Array<{ key: string, value: string }>;
