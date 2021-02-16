@@ -1,75 +1,22 @@
 # drisdell-consulting-services
 
-### approach from AWS-TS SDK V3...no dice
+### [AWS SES Raw Email Attachments](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html)
 
-```ts
-import {
-	SESClient,
-	SendEmailCommand,
-	SendEmailCommandInput
-} from '@aws-sdk/client-ses';
+- Content-Type: The file type of the attachment. The following are examples of common MIME Content-Type declarations:
 
-const REGION = 'us-east-2';
-const ses = new SESClient({ region: REGION });
-export async function handler({
-	text,
-	email,
-	name,
-	subject,
-	ccAddress,
-	bccAddress,
-	toAddress
-}: any) {
-	const subjectSmtp = `Contact Us Submission Event - ${subject}`;
-	const body_text = `Contact Us Form Submission via AWS SES & Nodemailer
-	---------------------------------------------------------
-	${text}
-	`;
-	const body_html = `<html>
-	<head></head>
-	<body>
-		<h1>${subject}</h1>
-		\n
-		<h2>Name: ${name}</p>
-		\n
-		<h2>email: ${email}</h2>
-		\n
-		<p>${text}</p>
-	</body>
-	</html>`;
-	const params: SendEmailCommandInput = {
-		Destination: {
-			CcAddresses: [`${ccAddress}`],
-			BccAddresses: [`${bccAddress}`],
-			ToAddresses: [`${toAddress}`]
-		},
-		Message: {
-			Body: {
-				Html: {
-					Charset: 'UTF-8',
-					Data: body_html
-				},
-				Text: {
-					Charset: 'UTF-8',
-					Data: body_text
-				}
-			},
-			Subject: {
-				Charset: 'UTF-8',
-				Data: subjectSmtp
-			}
-		},
-		Source: `${process.env.SMTP_SENDER_ADDRESS}`,
-		ReplyToAddresses: [`${process.env.SMTP_SENDER_ADDRESS}`]
-	};
-	try {
-		const data = await ses.send(new SendEmailCommand(params));
-		console.log('data', data);
-	} catch (err) {
-		console.log('error', err);
-	}
-}
-```
+  - Plain text file: Content-Type: text/plain; name="sample.txt"
+
+  - Microsoft Word Document: Content-Type: application/msword; name="document.docx"
+
+  - JPG image: Content-Type: image/jpeg; name="photo.jpeg"
+
+- Content-Disposition: Specifies how the recipient's email client should handle the content. For attachments, this value is
+
+  - Content-Disposition: attachment
+
+- Content-Transfer-Encoding: The scheme that was used to encode the attachment. For file attachments, this value is almost always base64
+
+  - Content-Transfer-Encoding: base64
 
 ## use id instead of slug for object key in abstracted getStaticPaths type
 

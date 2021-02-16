@@ -1,40 +1,47 @@
 import { Input, Button, Textarea, Logo, ModalBackdrop } from '@components/UI';
-import { useState, SyntheticEvent, FC } from 'react';
+import { useState, SyntheticEvent, FC, useEffect, useCallback } from 'react';
 import { useUI } from '@components/context';
-import fetch from 'isomorphic-unfetch';
 import css from './contact-us.module.css';
 import cn from 'classnames';
+import { validEmail } from '@lib/validate-email';
+import { Media } from '@lib/artsy-fresnel';
 
 const SubmitResume: FC = () => {
 	const { setModalView } = useUI();
+	// const formData = new FormData();
 	const [inputE1, setInputE1] = useState('');
 	const [inputE2, setInputE2] = useState('');
 	const [inputE3, setInputE3] = useState('');
-	const [inputE5, setInputE5] = useState('');
+	const [inputE4, setInputE4] = useState('');
+	// const inputText = useRef<HTMLTextAreaElement>(null);
+	const [dirty, setDirty] = useState(false);
 	const [message, setMessage] = useState('');
-	const [disabled] = useState(false);
+	const [disabled, setDisabled] = useState(false);
 	const [loading, setLoading] = useState(false);
-
 	const userSend = async (e: SyntheticEvent<EventTarget>) => {
 		e.preventDefault();
-
+		if (!dirty && !disabled) {
+			setDirty(true);
+			handleValidation();
+		}
 		setLoading(true);
 		setMessage('');
-		let res = await fetch('/api/submit-resume', {
+		let res = await fetch('/api/submit-a-resume', {
 			body: JSON.stringify({
-				text: inputE3,
-				name: inputE2,
-				email: inputE1,
-				resume: inputE5
+				text: inputE4,
+				resume: inputE3,
+				subject: inputE2,
+				email: inputE1
 			}),
 			headers: {
-				'Content-Type': 'application/json'
+				Accept: 'application/json, text/plain, application/msword, */*',
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${process.env.WORDPRESS_AUTH_REFRESH_TOKEN}`
 			},
-			method: 'POST',
-			credentials: 'include'
+			method: 'POST'
 		});
 
-		const { error } = await res.json();
+		const { error, data } = await res.json();
 
 		if (error) {
 			setMessage(error);
@@ -44,29 +51,35 @@ const SubmitResume: FC = () => {
 		setInputE1('');
 		setInputE2('');
 		setInputE3('');
-		setInputE5('');
+		setInputE4('');
 		setMessage(
-			'Success 🎉 email sent! We will get back to you within several business days'
+			'Success 🎉 email sent! We will get back to you within several business days' +
+				`${data}`
 		);
 		await setModalView('SUCCESS_VIEW');
 	};
 
+	const handleValidation = useCallback(() => {
+		if (dirty) {
+			setDisabled(!validEmail(inputE1) || !inputE2 || !inputE3 || !inputE4);
+		}
+	}, [inputE1, inputE2, inputE3, inputE4, dirty]);
+
+	useEffect(() => {
+		handleValidation();
+	}, [handleValidation]);
 	return (
 		<form
-			// @ts-ignore
 			onSubmit={userSend}
-			className={cn('w-100 flex flex-col justify-between')}
+			className={cn('w-screen sm:w-100 flex flex-col justify-between')}
 		>
 			<div className='flex justify-center pb-4 '>
-				<Logo className='h-40 w-40 rounded-full' />
+				<Logo className='h-20 w-20 md:h-40 md:w-40 rounded-full' />
 			</div>
 			<div className='relative max-w-xl mx-auto'>
-				<ModalBackdrop />
-				{/* <div className='text-center'>
-					<h2 className='text-3xl font-extrabold tracking-tight text-primary-9 sm:text-4xl pb-5'>
-						Contact Us Today
-					</h2>
-				</div> */}
+				<Media greaterThanOrEqual='sm'>
+					<ModalBackdrop />
+				</Media>
 				{message && (
 					<div className='text-white border border-white p-2 mb-2 rounded-2xl'>
 						{message}
@@ -82,43 +95,32 @@ const SubmitResume: FC = () => {
 					type='email'
 					className='mb-2 bg-primary-9 text-primary-0 font-medium focus:outline-none rounded-md'
 				/>
-				<label htmlFor='name'>{'Full Name'}</label>
+				<label htmlFor='subject'>{'Subject'}</label>
 				<Input
-					id='name-input'
-					name='name'
-					placeholder='first &amp; last names'
+					id='subject-input'
+					name='subject'
+					placeholder='subject'
 					onChange={setInputE2}
 					required={true}
 					type='text'
 					className='mb-2 bg-primary-9 text-primary-0 font-medium focus:outline-none rounded-md'
 				/>
-				{/* <label htmlFor='subject'>{'Subject'}</label>
-				<Input
-					id='subject-input'
-					name='subject'
-					placeholder='Email subject...'
-					onChange={setInputE4}
-					required={true}
-					type='text'
-					className='mb-2 bg-primary-9 text-primary-0 font-medium focus:outline-none rounded-md'
-				/> */}
 				<label htmlFor='resume'>{'Resume'}</label>
 				<Input
 					id='resume-upload'
 					name='resume'
 					placeholder='upload resume'
-					onChange={setInputE5}
+					onChange={setInputE3}
 					required={true}
 					type='file'
 					className='col-span-1 mb-2 bg-primary-9 text-primary-0 font-medium focus:outline-none rounded-md'
 				/>
-
 				<label htmlFor='text'>{'Body'}</label>
 				<Textarea
 					id='text-textarea'
 					name='text'
-					placeholder='Message...'
-					onChange={setInputE3}
+					placeholder='body'
+					onChange={setInputE4}
 					required={true}
 					minLength={5}
 					cols={1}
@@ -134,7 +136,7 @@ const SubmitResume: FC = () => {
 							'my-4 w-auto max-w-sm bg-primary-7 text-primary-0 hover:bg-primary-9 rounded-md duration-150 transition-colors'
 						)}
 					>
-						{'SUBMIT EMAIL'}
+						{'SUBMIT RESUME'}
 					</Button>
 				</div>
 				<span className='pt-1 text-center text-sm'>
@@ -153,3 +155,16 @@ const SubmitResume: FC = () => {
 };
 
 export default SubmitResume;
+
+/*
+				<label htmlFor='resume'>{'Resume'}</label>
+				<Input
+					id='resume-upload'
+					name='resume'
+					placeholder='upload resume'
+					onChange={setInputE4}
+					required={true}
+					type='file'
+					className='col-span-1 mb-2 bg-primary-9 text-primary-0 font-medium focus:outline-none rounded-md'
+				/>
+*/
