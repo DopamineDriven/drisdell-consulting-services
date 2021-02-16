@@ -6,7 +6,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 const withImages = {
 	images: {
 		domains: [
-			'email-smtp.us-east-2.amazonaws.com',
+			'email-smtp.us-east-1.amazonaws.com',
 			'd2f904nk7e5fig.cloudfront.net',
 			'drisdell-headless.com',
 			'www.drisdell-headless.com',

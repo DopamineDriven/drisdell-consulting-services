@@ -1,75 +1,50 @@
 # drisdell-consulting-services
 
-### approach from AWS-TS SDK V3...no dice
+## Can only initialize cdk as a typescript project if the project repo is empty
 
 ```ts
-import {
-	SESClient,
-	SendEmailCommand,
-	SendEmailCommandInput
-} from '@aws-sdk/client-ses';
+import core, { App, Stack, StackProps } from '@aws-cdk/core';
+import * as s3 from '@aws-cdk/aws-s3';
+import { HttpMethods, BucketAccessControl } from '@aws-cdk/aws-s3/lib';
 
-const REGION = 'us-east-2';
-const ses = new SESClient({ region: REGION });
-export async function handler({
-	text,
-	email,
-	name,
-	subject,
-	ccAddress,
-	bccAddress,
-	toAddress
-}: any) {
-	const subjectSmtp = `Contact Us Submission Event - ${subject}`;
-	const body_text = `Contact Us Form Submission via AWS SES & Nodemailer
-	---------------------------------------------------------
-	${text}
-	`;
-	const body_html = `<html>
-	<head></head>
-	<body>
-		<h1>${subject}</h1>
-		\n
-		<h2>Name: ${name}</p>
-		\n
-		<h2>email: ${email}</h2>
-		\n
-		<p>${text}</p>
-	</body>
-	</html>`;
-	const params: SendEmailCommandInput = {
-		Destination: {
-			CcAddresses: [`${ccAddress}`],
-			BccAddresses: [`${bccAddress}`],
-			ToAddresses: [`${toAddress}`]
-		},
-		Message: {
-			Body: {
-				Html: {
-					Charset: 'UTF-8',
-					Data: body_html
-				},
-				Text: {
-					Charset: 'UTF-8',
-					Data: body_text
+export class CdkStack extends Stack {
+	constructor(scope: App, id: string, props?: StackProps) {
+		super(scope, id, props);
+
+		new s3.Bucket(this, 'ResumeBucket', {
+			versioned: true,
+			removalPolicy: core.RemovalPolicy.DESTROY,
+			accessControl: BucketAccessControl.PRIVATE,
+			publicReadAccess: false,
+			cors: [
+				{
+					allowedHeaders: ['*'],
+					allowedMethods: [HttpMethods.POST],
+					allowedOrigins: ['*']
 				}
-			},
-			Subject: {
-				Charset: 'UTF-8',
-				Data: subjectSmtp
-			}
-		},
-		Source: `${process.env.SMTP_SENDER_ADDRESS}`,
-		ReplyToAddresses: [`${process.env.SMTP_SENDER_ADDRESS}`]
-	};
-	try {
-		const data = await ses.send(new SendEmailCommand(params));
-		console.log('data', data);
-	} catch (err) {
-		console.log('error', err);
+			]
+		});
 	}
 }
 ```
+
+### [AWS SES Raw Email Attachments](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html)
+
+- Content-Type: The file type of the attachment. The following are examples of common MIME Content-Type declarations:
+
+  - Plain text file: Content-Type: text/plain; name="sample.txt"
+
+  - Microsoft Word Document: Content-Type: application/msword; name="document.docx"
+
+  - JPG image: Content-Type: image/jpeg; name="photo.jpeg"
+
+- Content-Disposition: Specifies how the recipient's email client should handle the content. For attachments, this value is
+
+  - Content-Disposition: attachment
+
+- Content-Transfer-Encoding: The scheme that was used to encode the attachment. For file attachments, this value is almost always base64
+
+  - Content-Transfer-Encoding: base64
 
 ## use id instead of slug for object key in abstracted getStaticPaths type
 

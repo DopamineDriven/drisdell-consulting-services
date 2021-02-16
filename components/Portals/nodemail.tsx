@@ -4,6 +4,7 @@ import { useUI } from '@components/context';
 import css from './contact-us.module.css';
 import cn from 'classnames';
 import { validEmail } from '@lib/validate-email';
+import { Media } from '@lib/artsy-fresnel';
 
 const SendEmail: FC = () => {
 	const { setModalView } = useUI();
@@ -16,16 +17,17 @@ const SendEmail: FC = () => {
 	const [message, setMessage] = useState('');
 	const [disabled, setDisabled] = useState(false);
 	const [loading, setLoading] = useState(false);
+
 	const userSend = async (e: SyntheticEvent<EventTarget>) => {
 		e.preventDefault();
-		// const prod = `drisdell.com/api/nodemailer`;
-		// const dev = '/api/nodemailer';
+
 		if (!dirty && !disabled) {
 			setDirty(true);
 			handleValidation();
 		}
 		setLoading(true);
 		setMessage('');
+
 		let res = await fetch('/api/nodemailer', {
 			body: JSON.stringify({
 				text: inputE3,
@@ -72,13 +74,15 @@ const SendEmail: FC = () => {
 	return (
 		<form
 			onSubmit={userSend}
-			className={cn('w-100 flex flex-col justify-between')}
+			className={cn('sm:w-100 w-screen flex flex-col justify-between')}
 		>
 			<div className='flex justify-center pb-4 '>
 				<Logo className='h-20 w-20 md:h-40 md:w-40 rounded-full' />
 			</div>
 			<div className='relative max-w-xl mx-auto'>
-				<ModalBackdrop />
+				<Media greaterThanOrEqual='sm'>
+					<ModalBackdrop />
+				</Media>
 				{message && (
 					<div className='text-white border border-white p-2 mb-2 rounded-2xl'>
 						{message}
@@ -155,3 +159,10 @@ const SendEmail: FC = () => {
 };
 
 export default SendEmail;
+
+/*
+				text: inputE3,
+				name: inputE2,
+				email: inputE1,
+				resume: inputE5
+*/
