@@ -87,7 +87,7 @@ const SubmitResume: FC = () => {
 		if (upload.ok) {
 			console.log('upload succeeded');
 		} else {
-			console.log('upload failed.');
+			setMessage('upload a PDF or MSWord doc less than 1MB in size');
 		}
 	};
 
@@ -136,6 +136,7 @@ const SubmitResume: FC = () => {
 					onChange={uploadFile}
 					required={true}
 					type='file'
+					accept='application/msword, application/pdf'
 					className='col-span-1 mb-2 bg-primary-9 text-primary-0 font-medium focus:outline-none rounded-md'
 				/>
 				<label htmlFor='text'>{'Body'}</label>
