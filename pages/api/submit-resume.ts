@@ -35,8 +35,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 	<body>
 		<h1>${subject}</h1>
 		\n
-		<h2>Name: ${resume}</p>
-		\n
 		<h2>email: ${email}</h2>
 		\n
 		<p>${text}</p>
@@ -61,7 +59,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 			bcc: bccAddress,
 			subject: body_subject,
 			text: body_text,
-			html: body_html
+			html: body_html,
+			attachments: [
+				{
+					filename: resume,
+					path: resume
+				}
+			]
 		});
 		if ((await response) === typeof Error) {
 			return res.status(400).json({

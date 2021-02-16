@@ -121,6 +121,7 @@ approach-two.md
 
 .vscode
 
+cdk.out
 docket.md
 apollonotes.md
 mailgun.md
@@ -130,3 +131,4 @@ landing.md
 .vercel
 config.json
 .env.dkim
+

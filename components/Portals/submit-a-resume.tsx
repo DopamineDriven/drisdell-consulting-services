@@ -68,6 +68,29 @@ const SubmitResume: FC = () => {
 	useEffect(() => {
 		handleValidation();
 	}, [handleValidation]);
+
+	const uploadFile = async (e: any) => {
+		const file = e.target.files[0];
+		const filename = encodeURIComponent(file.name);
+		const res = await fetch(`/api/upload-url?file=${filename}`);
+		const { url, fields } = await res.json();
+		const formData = new FormData();
+		Object.entries({ ...fields, file }).forEach(([key, value]) => {
+			formData.append(key, String(value));
+		});
+
+		const upload = await fetch(url, {
+			method: 'POST',
+			body: formData
+		});
+
+		if (upload.ok) {
+			console.log('upload succeeded');
+		} else {
+			console.log('upload failed.');
+		}
+	};
+
 	return (
 		<form
 			onSubmit={userSend}
@@ -110,7 +133,7 @@ const SubmitResume: FC = () => {
 					id='resume-upload'
 					name='resume'
 					placeholder='upload resume'
-					onChange={setInputE3}
+					onChange={uploadFile}
 					required={true}
 					type='file'
 					className='col-span-1 mb-2 bg-primary-9 text-primary-0 font-medium focus:outline-none rounded-md'

@@ -1,5 +1,33 @@
 # drisdell-consulting-services
 
+## Can only initialize cdk as a typescript project if the project repo is empty
+
+```ts
+import core, { App, Stack, StackProps } from '@aws-cdk/core';
+import * as s3 from '@aws-cdk/aws-s3';
+import { HttpMethods, BucketAccessControl } from '@aws-cdk/aws-s3/lib';
+
+export class CdkStack extends Stack {
+	constructor(scope: App, id: string, props?: StackProps) {
+		super(scope, id, props);
+
+		new s3.Bucket(this, 'ResumeBucket', {
+			versioned: true,
+			removalPolicy: core.RemovalPolicy.DESTROY,
+			accessControl: BucketAccessControl.PRIVATE,
+			publicReadAccess: false,
+			cors: [
+				{
+					allowedHeaders: ['*'],
+					allowedMethods: [HttpMethods.POST],
+					allowedOrigins: ['*']
+				}
+			]
+		});
+	}
+}
+```
+
 ### [AWS SES Raw Email Attachments](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html)
 
 - Content-Type: The file type of the attachment. The following are examples of common MIME Content-Type declarations:

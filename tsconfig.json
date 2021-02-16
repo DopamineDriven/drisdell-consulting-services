@@ -23,6 +23,7 @@
 		"baseUrl": ".",
 		"strictNullChecks": true,
 		"paths": {
+			"@bin/*": ["bin/*"],
 			"@components/*": ["components/*"],
 			"@config/*": ["config/*"],
 			"@lib/*": ["lib/*"],

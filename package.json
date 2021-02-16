@@ -10,7 +10,11 @@
 	},
 	"license": "MIT",
 	"private": true,
+	"bin": {
+		"cdk": "bin/cdk.js"
+	},
 	"scripts": {
+		"cdk": "cdk",
 		"dev": "cross-env NODE_OPTIONS='--inspect' next dev -p 4242",
 		"build": "next build",
 		"analyze": "cross-env ANALYZE=true yarn build",
