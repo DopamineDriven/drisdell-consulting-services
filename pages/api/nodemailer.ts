@@ -1,7 +1,8 @@
-import nodemailer, { SentMessageInfo } from 'nodemailer';
+import nodemailer from 'nodemailer';
+// import JSONTransport from 'nodemailer/lib/json-transport';
 import { NextApiRequest, NextApiResponse } from 'next';
 import secrets from 'aws';
-import Mail from 'nodemailer/lib/mailer';
+// import Mail from 'nodemailer/lib/mailer';
 const port = 465;
 const {
 	SMTP_SENDER_ADDRESS,
@@ -38,7 +39,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 	</body>
 	</html>`;
 		let transporter = nodemailer.createTransport({
-			host: 'email-smtp.us-east-2.amazonaws.com',
+			host: 'email-smtp.us-east-1.amazonaws.com',
 			port: port,
 			secure: true,
 			auth: {
@@ -46,7 +47,18 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 				pass: smtpPassword
 			}
 		});
-		let mailOptions: Mail.Options = {
+		// let mailOptions: Mail.Options = {
+		// 	sender: senderAddress,
+		// 	from: `${senderAddress}`,
+		// 	to: toAddress,
+		// 	cc: ccAddress,
+		// 	bcc: bccAddress,
+		// 	subject: body_subject,
+		// 	text: body_text,
+		// 	html: body_html
+		// };
+
+		let response = transporter.sendMail({
 			sender: senderAddress,
 			from: `${senderAddress}`,
 			to: toAddress,
@@ -55,25 +67,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 			subject: body_subject,
 			text: body_text,
 			html: body_html
-		};
-
-		let response: SentMessageInfo = transporter.sendMail(
-			mailOptions,
-			(info, err) => {
-				if (!err)
-					console.log(
-						'\n info.message: ',
-						info?.message,
-						'\n info.stack: ',
-						info?.stack,
-						'\n info.name: ',
-						info?.name
-					);
-				console.log(err);
-				return info;
-			}
-		);
-		if (response === typeof Error) {
+		});
+		if ((await response) === typeof Error) {
 			return res.status(400).json({
 				error:
 					'There was an internal error ⚙... \n Shoot me an email at [Mary.Drisdell@drisdellconsulting.com]'
