@@ -28,6 +28,8 @@ export class CdkStack extends Stack {
 }
 ```
 
+### [Useful MIME Types](https://stackoverflow.com/questions/4212861/what-is-a-correct-mime-type-for-docx-pptx-etc)
+
 ### [AWS SES Raw Email Attachments](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html)
 
 - Content-Type: The file type of the attachment. The following are examples of common MIME Content-Type declarations:

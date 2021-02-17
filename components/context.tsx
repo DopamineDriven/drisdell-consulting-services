@@ -57,6 +57,7 @@ type MODAL_VIEWS =
 	| 'EMAIL_VIEW'
 	| 'SIGNUP_VIEW'
 	| 'LOGIN_VIEW'
+	| 'RESUME_SUBMISSION_VIEW'
 	| 'SUCCESS_VIEW'
 	| 'SUBMIT_RESUME_VIEW';
 type ToastText = string;

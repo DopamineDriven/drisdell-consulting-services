@@ -5,6 +5,7 @@ import css from './contact-us.module.css';
 import cn from 'classnames';
 import { validEmail } from '@lib/validate-email';
 import { Media } from '@lib/artsy-fresnel';
+import { InputSimplified } from '../UI/Input/input';
 
 const SubmitResume: FC = () => {
 	const { setModalView } = useUI();
@@ -24,9 +25,33 @@ const SubmitResume: FC = () => {
 			setDirty(true);
 			handleValidation();
 		}
+
 		setLoading(true);
 		setMessage('');
-		let res = await fetch('/api/submit-a-resume', {
+		// const uploadFile = async (e: any) => {
+		// 	const file = e.target.value[0];
+		// 	const filename = encodeURIComponent(file.name);
+		// 	const res = await fetch(`/api/upload-url?file=${filename}`);
+		// 	const { url, fields } = await res.json();
+		// 	const formData = new FormData();
+		// 	Object.entries({ ...fields, file }).forEach(([key, value]) => {
+		// 		formData.append(key, String(value));
+		// 	});
+
+		// 	const upload = await fetch(url, {
+		// 		method: 'POST',
+		// 		body: formData
+		// 	});
+
+		// 	if (upload.ok) {
+		// 		console.log('upload succeeded');
+		// 	} else {
+		// 		setMessage('upload a PDF or MSWord doc less than 1MB in size');
+		// 	}
+		// };
+		// const file = inputE3;
+		// const filename = encodeURIComponent(file);
+		let res = await fetch('/api/submit-resume', {
 			body: JSON.stringify({
 				text: inputE4,
 				resume: inputE3,
@@ -34,7 +59,8 @@ const SubmitResume: FC = () => {
 				email: inputE1
 			}),
 			headers: {
-				Accept: 'application/json, text/plain, application/msword, */*',
+				Accept:
+					'application/json, text/plain, application/vnd.openxmlformats-officedocument.wordprocessingml.document, */*',
 				'Content-Type': 'application/json',
 				Authorization: `Bearer ${process.env.WORDPRESS_AUTH_REFRESH_TOKEN}`
 			},
@@ -68,28 +94,6 @@ const SubmitResume: FC = () => {
 	useEffect(() => {
 		handleValidation();
 	}, [handleValidation]);
-
-	const uploadFile = async (e: any) => {
-		const file = e.target.files[0];
-		const filename = encodeURIComponent(file.name);
-		const res = await fetch(`/api/upload-url?file=${filename}`);
-		const { url, fields } = await res.json();
-		const formData = new FormData();
-		Object.entries({ ...fields, file }).forEach(([key, value]) => {
-			formData.append(key, String(value));
-		});
-
-		const upload = await fetch(url, {
-			method: 'POST',
-			body: formData
-		});
-
-		if (upload.ok) {
-			console.log('upload succeeded');
-		} else {
-			setMessage('upload a PDF or MSWord doc less than 1MB in size');
-		}
-	};
 
 	return (
 		<form
@@ -129,14 +133,14 @@ const SubmitResume: FC = () => {
 					className='mb-2 bg-primary-9 text-primary-0 font-medium focus:outline-none rounded-md'
 				/>
 				<label htmlFor='resume'>{'Resume'}</label>
-				<Input
+				<InputSimplified
 					id='resume-upload'
 					name='resume'
 					placeholder='upload resume'
-					onChange={uploadFile}
+					onChange={setInputE3}
 					required={true}
 					type='file'
-					accept='application/msword, application/pdf'
+					accept='application/vnd.openxmlformats-officedocument.wordprocessingml.document'
 					className='col-span-1 mb-2 bg-primary-9 text-primary-0 font-medium focus:outline-none rounded-md'
 				/>
 				<label htmlFor='text'>{'Body'}</label>
@@ -168,7 +172,7 @@ const SubmitResume: FC = () => {
 					&nbsp;
 					<a
 						className='text-primary-9 font-bold hover:underline cursor-pointer'
-						onClick={() => setModalView('EMAIL_VIEW')}
+						onClick={() => setModalView('RESUME_SUBMISSION_VIEW')}
 					>
 						Send an email
 					</a>

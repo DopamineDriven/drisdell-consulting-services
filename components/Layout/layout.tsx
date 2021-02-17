@@ -72,6 +72,10 @@ const SignUpView = dynamic(
 	() => import('@components/Portals/sign-up'),
 	dynamicProps
 );
+const ResumeSubmissionView = dynamic(
+	() => import('@components/Portals/resume-submission'),
+	dynamicProps
+);
 
 const FeatureBar = dynamic(
 	() => import('@components/FeatureBar'),
@@ -180,6 +184,7 @@ const Layout: FC<LayoutProps> = props => {
 			<Modal open={displayModal} onClose={closeModal}>
 				{modalView === 'EMAIL_VIEW' && <EmailView />}
 				{modalView === 'LOGIN_VIEW' && <LoginView />}
+				{modalView === 'RESUME_SUBMISSION_VIEW' && <ResumeSubmissionView />}
 				{modalView === 'SIGNUP_VIEW' && <SignUpView />}
 				{modalView === 'SUBMIT_RESUME_VIEW' && <SubmitResumeView />}
 				{modalView === 'SUCCESS_VIEW' && <SuccessView />}

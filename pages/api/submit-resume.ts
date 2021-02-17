@@ -62,8 +62,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 			html: body_html,
 			attachments: [
 				{
-					filename: resume,
-					path: resume
+					filename: `${resume}`,
+					path: `${resume}`,
+					contentDisposition: 'attachment'
 				}
 			]
 		});
