@@ -21,12 +21,9 @@ const smtpPassword = SMTP_PASSWORD;
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 	const { text, resume, subject, email } = req.body;
-	let options: Mail.Attachment = {
-		filename: `${resume}`
-	};
 	try {
-		const body_subject = `Contact Us Submission Event - ${subject}`;
-		const body_text = `Contact Us Form Submission via AWS SES & Nodemailer
+		const body_subject = `Resume Form Submission Event - ${subject}`;
+		const body_text = `Resume Form Submission via AWS SES
 	---------------------------------------------------------
 	${text}
 	`;
@@ -38,7 +35,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 		<h2>email: ${email}</h2>
 		\n
 		<p>${text}</p>
-		${options.filename}
+		<a href="${resume}" target="_blank">${resume}<a>
 	</body>
 	</html>`;
 
@@ -59,14 +56,14 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 			bcc: bccAddress,
 			subject: body_subject,
 			text: body_text,
-			html: body_html,
-			attachments: [
-				{
-					filename: `${resume}`,
-					path: `${resume}`,
-					contentDisposition: 'attachment'
-				}
-			]
+			html: body_html
+			// attachments: [
+			// 	{
+			// 		filename: `${resume}`,
+			// 		path: `${resume}`,
+			// 		contentDisposition: 'attachment'
+			// 	}
+			// ]
 		});
 		if ((await response) === typeof Error) {
 			return res.status(400).json({

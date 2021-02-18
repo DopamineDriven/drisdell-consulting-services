@@ -5,7 +5,6 @@ import css from './contact-us.module.css';
 import cn from 'classnames';
 import { validEmail } from '@lib/validate-email';
 import { Media } from '@lib/artsy-fresnel';
-import { InputSimplified } from '../UI/Input/input';
 
 const SubmitResume: FC = () => {
 	const { setModalView } = useUI();
@@ -25,33 +24,9 @@ const SubmitResume: FC = () => {
 			setDirty(true);
 			handleValidation();
 		}
-
 		setLoading(true);
 		setMessage('');
-		// const uploadFile = async (e: any) => {
-		// 	const file = e.target.value[0];
-		// 	const filename = encodeURIComponent(file.name);
-		// 	const res = await fetch(`/api/upload-url?file=${filename}`);
-		// 	const { url, fields } = await res.json();
-		// 	const formData = new FormData();
-		// 	Object.entries({ ...fields, file }).forEach(([key, value]) => {
-		// 		formData.append(key, String(value));
-		// 	});
-
-		// 	const upload = await fetch(url, {
-		// 		method: 'POST',
-		// 		body: formData
-		// 	});
-
-		// 	if (upload.ok) {
-		// 		console.log('upload succeeded');
-		// 	} else {
-		// 		setMessage('upload a PDF or MSWord doc less than 1MB in size');
-		// 	}
-		// };
-		// const file = inputE3;
-		// const filename = encodeURIComponent(file);
-		let res = await fetch('/api/submit-resume', {
+		let res = await fetch('/api/submit-a-resume', {
 			body: JSON.stringify({
 				text: inputE4,
 				resume: inputE3,
@@ -95,6 +70,28 @@ const SubmitResume: FC = () => {
 		handleValidation();
 	}, [handleValidation]);
 
+	// const uploadFile = async (e: any) => {
+	// 	const file = e.target.files[0] as File
+	// 	const filename = encodeURIComponent(file.name);
+	// 	const res = await fetch(`/api/upload-url?file=${filename}`);
+	// 	const { url, fields } = await res.json();
+	// 	const formData = new FormData();
+	// 	Object.entries({ ...fields, file }).forEach(([key, value]) => {
+	// 		formData.append(key, String(value));
+	// 	});
+
+	// 	const upload = await fetch(url, {
+	// 		method: 'POST',
+	// 		body: formData
+	// 	});
+
+	// 	if (upload.ok) {
+	// 		console.log('upload succeeded');
+	// 	} else {
+	// 		setMessage('upload a PDF or MSWord doc less than 1MB in size');
+	// 	}
+	// };
+
 	return (
 		<form
 			onSubmit={userSend}
@@ -132,15 +129,14 @@ const SubmitResume: FC = () => {
 					type='text'
 					className='mb-2 bg-primary-9 text-primary-0 font-medium focus:outline-none rounded-md'
 				/>
-				<label htmlFor='resume'>{'Resume'}</label>
-				<InputSimplified
-					id='resume-upload'
+				<label htmlFor='resume'>{'LinkedIn or Resume URL'}</label>
+				<Input
+					id='resume'
 					name='resume'
 					placeholder='upload resume'
 					onChange={setInputE3}
 					required={true}
-					type='file'
-					accept='application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+					type='url'
 					className='col-span-1 mb-2 bg-primary-9 text-primary-0 font-medium focus:outline-none rounded-md'
 				/>
 				<label htmlFor='text'>{'Body'}</label>
@@ -172,7 +168,7 @@ const SubmitResume: FC = () => {
 					&nbsp;
 					<a
 						className='text-primary-9 font-bold hover:underline cursor-pointer'
-						onClick={() => setModalView('RESUME_SUBMISSION_VIEW')}
+						onClick={() => setModalView('EMAIL_VIEW')}
 					>
 						Send an email
 					</a>
@@ -196,3 +192,68 @@ export default SubmitResume;
 					className='col-span-1 mb-2 bg-primary-9 text-primary-0 font-medium focus:outline-none rounded-md'
 				/>
 */
+
+// /** Provides information about files and allows JavaScript in a web page to access their content. */
+// interface File extends Blob {
+// 	readonly lastModified: number;
+// 	readonly name: string;
+// }
+
+// declare var File: {
+// 	prototype: File;
+// 	new(fileBits: BlobPart[], fileName: string, options?: FilePropertyBag): File;
+// };
+
+// /** An object of this type is returned by the files property of the HTML <input> element; this lets you access the list of files selected with the <input type="file"> element. It's also used for a list of files dropped into web content when using the drag and drop API; see the DataTransfer object for details on this usage. */
+// interface FileList {
+// 	readonly length: number;
+// 	item(index: number): File | null;
+// 	[index: number]: File;
+// }
+
+// declare var FileList: {
+// 	prototype: FileList;
+// 	new(): FileList;
+// };
+
+// interface FileReaderEventMap {
+// 	"abort": ProgressEvent<FileReader>;
+// 	"error": ProgressEvent<FileReader>;
+// 	"load": ProgressEvent<FileReader>;
+// 	"loadend": ProgressEvent<FileReader>;
+// 	"loadstart": ProgressEvent<FileReader>;
+// 	"progress": ProgressEvent<FileReader>;
+// }
+
+// /** Lets web applications asynchronously read the contents of files (or raw data buffers) stored on the user's computer, using File or Blob objects to specify the file or data to read. */
+// interface FileReader extends EventTarget {
+// 	readonly error: DOMException | null;
+// 	onabort: ((this: FileReader, ev: ProgressEvent<FileReader>) => any) | null;
+// 	onerror: ((this: FileReader, ev: ProgressEvent<FileReader>) => any) | null;
+// 	onload: ((this: FileReader, ev: ProgressEvent<FileReader>) => any) | null;
+// 	onloadend: ((this: FileReader, ev: ProgressEvent<FileReader>) => any) | null;
+// 	onloadstart: ((this: FileReader, ev: ProgressEvent<FileReader>) => any) | null;
+// 	onprogress: ((this: FileReader, ev: ProgressEvent<FileReader>) => any) | null;
+// 	readonly readyState: number;
+// 	readonly result: string | ArrayBuffer | null;
+// 	abort(): void;
+// 	readAsArrayBuffer(blob: Blob): void;
+// 	readAsBinaryString(blob: Blob): void;
+// 	readAsDataURL(blob: Blob): void;
+// 	readAsText(blob: Blob, encoding?: string): void;
+// 	readonly DONE: number;
+// 	readonly EMPTY: number;
+// 	readonly LOADING: number;
+// 	addEventListener<K extends keyof FileReaderEventMap>(type: K, listener: (this: FileReader, ev: FileReaderEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+// 	addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+// 	removeEventListener<K extends keyof FileReaderEventMap>(type: K, listener: (this: FileReader, ev: FileReaderEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+// 	removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+// }
+
+// declare var FileReader: {
+// 	prototype: FileReader;
+// 	new(): FileReader;
+// 	readonly DONE: number;
+// 	readonly EMPTY: number;
+// 	readonly LOADING: number;
+// };
