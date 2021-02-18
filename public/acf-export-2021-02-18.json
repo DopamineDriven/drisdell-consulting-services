@@ -1,0 +1,428 @@
+[
+	{
+		"key": "group_5fe668baad05b",
+		"title": "FOOTER_DYNAMIC",
+		"fields": [],
+		"location": [
+			[
+				{
+					"param": "nav_menu",
+					"operator": "==",
+					"value": "10"
+				}
+			]
+		],
+		"menu_order": 0,
+		"position": "normal",
+		"style": "default",
+		"label_placement": "top",
+		"instruction_placement": "label",
+		"hide_on_screen": "",
+		"active": true,
+		"description": "",
+		"show_in_graphql": 1,
+		"graphql_field_name": "FOOTER_DYNAMIC"
+	},
+	{
+		"key": "group_5fe66896dc646",
+		"title": "HEADER_DYNAMIC",
+		"fields": [],
+		"location": [
+			[
+				{
+					"param": "nav_menu",
+					"operator": "==",
+					"value": "9"
+				}
+			]
+		],
+		"menu_order": 0,
+		"position": "normal",
+		"style": "default",
+		"label_placement": "top",
+		"instruction_placement": "label",
+		"hide_on_screen": "",
+		"active": true,
+		"description": "",
+		"show_in_graphql": 1,
+		"graphql_field_name": "HEADER_DYNAMIC"
+	},
+	{
+		"key": "group_60239913018f3",
+		"title": "polly",
+		"fields": [
+			{
+				"key": "field_602399585770f",
+				"label": "audio",
+				"name": "audio",
+				"type": "oembed",
+				"instructions": "AWS Polly URL",
+				"required": 0,
+				"conditional_logic": 0,
+				"wrapper": {
+					"width": "",
+					"class": "",
+					"id": ""
+				},
+				"show_in_graphql": 1,
+				"width": "",
+				"height": ""
+			}
+		],
+		"location": [
+			[
+				{
+					"param": "post_type",
+					"operator": "==",
+					"value": "position"
+				}
+			],
+			[
+				{
+					"param": "post_type",
+					"operator": "==",
+					"value": "about"
+				}
+			],
+			[
+				{
+					"param": "post_type",
+					"operator": "==",
+					"value": "testimonial"
+				}
+			],
+			[
+				{
+					"param": "post_type",
+					"operator": "==",
+					"value": "consultant"
+				}
+			]
+		],
+		"menu_order": 0,
+		"position": "normal",
+		"style": "default",
+		"label_placement": "top",
+		"instruction_placement": "label",
+		"hide_on_screen": "",
+		"active": true,
+		"description": "AWS Polly URL",
+		"show_in_graphql": 1,
+		"graphql_field_name": "polly"
+	},
+	{
+		"key": "group_60239a0185c17",
+		"title": "pollyPage",
+		"fields": [
+			{
+				"key": "field_60239a264575f",
+				"label": "polly",
+				"name": "polly",
+				"type": "oembed",
+				"instructions": "AWS Polly",
+				"required": 0,
+				"conditional_logic": 0,
+				"wrapper": {
+					"width": "",
+					"class": "",
+					"id": ""
+				},
+				"show_in_graphql": 1,
+				"width": "",
+				"height": ""
+			}
+		],
+		"location": [
+			[
+				{
+					"param": "page_type",
+					"operator": "==",
+					"value": "top_level"
+				}
+			],
+			[
+				{
+					"param": "page_type",
+					"operator": "==",
+					"value": "front_page"
+				}
+			],
+			[
+				{
+					"param": "page_type",
+					"operator": "==",
+					"value": "parent"
+				}
+			],
+			[
+				{
+					"param": "page_type",
+					"operator": "==",
+					"value": "posts_page"
+				}
+			]
+		],
+		"menu_order": 0,
+		"position": "normal",
+		"style": "default",
+		"label_placement": "top",
+		"instruction_placement": "label",
+		"hide_on_screen": "",
+		"active": true,
+		"description": "",
+		"show_in_graphql": 1,
+		"graphql_field_name": "polly"
+	},
+	{
+		"key": "group_601adf6d70d44",
+		"title": "position-details",
+		"fields": [
+			{
+				"key": "field_601adfa39b94c",
+				"label": "positionType",
+				"name": "positionType",
+				"type": "text",
+				"instructions": "Full-time, part-time. contract, temporary",
+				"required": 0,
+				"conditional_logic": 0,
+				"wrapper": {
+					"width": "",
+					"class": "",
+					"id": ""
+				},
+				"show_in_graphql": 1,
+				"default_value": "",
+				"placeholder": "",
+				"prepend": "",
+				"append": "",
+				"maxlength": ""
+			},
+			{
+				"key": "field_601ae213c147a",
+				"label": "remoteStatus",
+				"name": "remoteStatus",
+				"type": "text",
+				"instructions": "remote, in-person, mixed",
+				"required": 0,
+				"conditional_logic": 0,
+				"wrapper": {
+					"width": "",
+					"class": "",
+					"id": ""
+				},
+				"show_in_graphql": 1,
+				"default_value": "",
+				"placeholder": "",
+				"prepend": "",
+				"append": "",
+				"maxlength": ""
+			},
+			{
+				"key": "field_601b0ccbda8b6",
+				"label": "jobTitle",
+				"name": "jobTitle",
+				"type": "text",
+				"instructions": "Title of open position",
+				"required": 0,
+				"conditional_logic": 0,
+				"wrapper": {
+					"width": "",
+					"class": "",
+					"id": ""
+				},
+				"show_in_graphql": 1,
+				"default_value": "",
+				"placeholder": "",
+				"prepend": "",
+				"append": "",
+				"maxlength": ""
+			},
+			{
+				"key": "field_601b0d49da8b7",
+				"label": "dateClosing",
+				"name": "dateclosing",
+				"type": "text",
+				"instructions": "",
+				"required": 0,
+				"conditional_logic": 0,
+				"wrapper": {
+					"width": "",
+					"class": "",
+					"id": ""
+				},
+				"show_in_graphql": 1,
+				"default_value": "",
+				"placeholder": "",
+				"prepend": "",
+				"append": "",
+				"maxlength": ""
+			}
+		],
+		"location": [
+			[
+				{
+					"param": "post_type",
+					"operator": "==",
+					"value": "position"
+				}
+			]
+		],
+		"menu_order": 0,
+		"position": "normal",
+		"style": "default",
+		"label_placement": "top",
+		"instruction_placement": "label",
+		"hide_on_screen": "",
+		"active": true,
+		"description": "",
+		"show_in_graphql": 1,
+		"graphql_field_name": "positionDetails"
+	},
+	{
+		"key": "group_5fce785a5aa57",
+		"title": "Social",
+		"fields": [
+			{
+				"key": "field_5fce786153a9f",
+				"label": "Facebook",
+				"name": "facebook",
+				"type": "url",
+				"instructions": "Facebook Url (optional)",
+				"required": 0,
+				"conditional_logic": 0,
+				"wrapper": {
+					"width": "",
+					"class": "",
+					"id": ""
+				},
+				"show_in_graphql": 1,
+				"default_value": "",
+				"placeholder": ""
+			},
+			{
+				"key": "field_5fce78a153aa0",
+				"label": "Twitter",
+				"name": "twitter",
+				"type": "url",
+				"instructions": "Twitter Url (optional)",
+				"required": 0,
+				"conditional_logic": 0,
+				"wrapper": {
+					"width": "",
+					"class": "",
+					"id": ""
+				},
+				"show_in_graphql": 1,
+				"default_value": "",
+				"placeholder": ""
+			},
+			{
+				"key": "field_5fce78bb53aa1",
+				"label": "LinkedIn",
+				"name": "linkedin",
+				"type": "url",
+				"instructions": "LinkedIn Url (optional)",
+				"required": 0,
+				"conditional_logic": 0,
+				"wrapper": {
+					"width": "",
+					"class": "",
+					"id": ""
+				},
+				"show_in_graphql": 1,
+				"default_value": "",
+				"placeholder": ""
+			},
+			{
+				"key": "field_5fce78ce53aa2",
+				"label": "Instagram",
+				"name": "instagram",
+				"type": "url",
+				"instructions": "Instagram Url (optional)",
+				"required": 0,
+				"conditional_logic": 0,
+				"wrapper": {
+					"width": "",
+					"class": "",
+					"id": ""
+				},
+				"show_in_graphql": 1,
+				"default_value": "",
+				"placeholder": ""
+			},
+			{
+				"key": "field_5fce78dd53aa3",
+				"label": "Email",
+				"name": "email",
+				"type": "email",
+				"instructions": "Email (optional)",
+				"required": 0,
+				"conditional_logic": 0,
+				"wrapper": {
+					"width": "",
+					"class": "",
+					"id": ""
+				},
+				"show_in_graphql": 1,
+				"default_value": "",
+				"placeholder": "",
+				"prepend": "",
+				"append": ""
+			}
+		],
+		"location": [
+			[
+				{
+					"param": "post_type",
+					"operator": "==",
+					"value": "post"
+				}
+			],
+			[
+				{
+					"param": "page_type",
+					"operator": "==",
+					"value": "top_level"
+				}
+			],
+			[
+				{
+					"param": "post_type",
+					"operator": "==",
+					"value": "testimonial"
+				}
+			],
+			[
+				{
+					"param": "post_type",
+					"operator": "==",
+					"value": "about"
+				}
+			],
+			[
+				{
+					"param": "post_type",
+					"operator": "==",
+					"value": "consultant"
+				}
+			],
+			[
+				{
+					"param": "post_type",
+					"operator": "==",
+					"value": "position"
+				}
+			]
+		],
+		"menu_order": 0,
+		"position": "normal",
+		"style": "default",
+		"label_placement": "top",
+		"instruction_placement": "label",
+		"hide_on_screen": "",
+		"active": true,
+		"description": "",
+		"show_in_graphql": 1,
+		"graphql_field_name": "social"
+	}
+]

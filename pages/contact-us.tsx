@@ -1,4 +1,4 @@
-import { NextPage, GetStaticProps, InferGetStaticPropsType } from 'next';
+import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { HEADER_FOOTER, CONTACT_US_PAGE } from '@lib/graphql';
 import {
 	HeaderFooter,
@@ -32,8 +32,7 @@ export const getStaticProps: GetStaticProps = async () => {
 	});
 };
 
-const Contact: NextPage &
-	InferGetStaticPropsType<typeof getStaticProps> = () => {
+const Contact: InferGetStaticPropsType<typeof getStaticProps> = () => {
 	return (
 		<>
 			<Layout title={'Contact Drisdell Consulting Services'}>

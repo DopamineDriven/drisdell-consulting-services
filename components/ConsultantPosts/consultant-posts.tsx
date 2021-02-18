@@ -8,7 +8,6 @@ import { useQuery } from '@apollo/client';
 import { ConsultantIdType } from '@lib/graphql-global-types';
 import { useRouter } from 'next/router';
 import cn from 'classnames';
-// import hydrate from 'next-mdx-remote/hydrate';
 import css from './consultant-posts.module.css';
 import ReactMarkdown from 'react-markdown/with-html';
 import Image from 'next/image';
@@ -25,8 +24,6 @@ const Loading = () => (
 const dynamicProps = {
 	loading: () => <Loading />
 };
-
-// const DynamicImage = dynamic(() => import('next/image'), dynamicProps);
 
 const DynamicModified = dynamic(
 	() => import('@components/UI/Modified'),
@@ -52,30 +49,6 @@ const ConsultantPosts = () => {
 		variables: ConsultantBySlugQueryVars,
 		notifyOnNetworkStatusChange: true
 	});
-	// const title =
-	// 	data && data.consultantPost !== null && data.consultantPost.title !== null
-	// 		? data.consultantPost.title
-	// 		: 'Title null';
-
-	// const content =
-	// 	data && data.consultantPost !== null && data.consultantPost.content !== null
-	// 		? data.consultantPost.content
-	// 		: 'Content null';
-
-	// const modified =
-	// 	data && data.consultantPost !== null && data.consultantPost.id !== null
-	// 		? data.consultantPost.modified
-	// 		: '';
-
-	// const featuredImage =
-	// 	data &&
-	// 	data.consultantPost !== null &&
-	// 	data.consultantPost.featuredImage !== null &&
-	// 	data.consultantPost.featuredImage.node !== null &&
-	// 	data.consultantPost.featuredImage.node.sourceUrl !== null
-	// 		? data.consultantPost.featuredImage.node.sourceUrl
-	// 		: '/error-bot.png';
-
 	return error ? (
 		<>
 			<ApolloErrorMessage

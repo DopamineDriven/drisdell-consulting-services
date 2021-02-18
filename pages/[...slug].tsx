@@ -5,7 +5,6 @@ import { GET_PAGE, GET_PAGES, HEADER_FOOTER } from '@lib/graphql';
 // import { CodeBlock } from '@components/About/about-card-content';
 import {
 	GetStaticPaths,
-	NextPage,
 	GetStaticPropsContext,
 	InferGetStaticPropsType,
 	GetStaticPropsResult
@@ -41,50 +40,6 @@ const getPagesQueryVars: GetPagesVariables = {
 	parentIn: [null],
 	field: PostObjectsConnectionOrderbyEnum.PARENT
 };
-type PathsProps = {
-	params: {
-		slug: string[];
-	};
-}[];
-
-interface PathsPropsResult extends GetStaticPaths {
-	pathsData: PathsProps;
-}
-
-export const getStaticPaths = async (
-	props: PathsPropsResult
-): Promise<{
-	paths: PathsProps;
-	fallback: boolean | 'blocking';
-}> => {
-	const { pathsData = [] } = props;
-	const { data } = await apolloClient.query<GetPages, GetPagesVariables>({
-		query: GET_PAGES,
-		variables: getPagesQueryVars
-	});
-
-	if (
-		data &&
-		data.pages !== null &&
-		data.pages.nodes !== null &&
-		data.pages.nodes.length > 0
-	)
-		data.pages.nodes.map(page => {
-			if (
-				page !== null &&
-				page.slug !== null &&
-				!customPagesSlugs.includes(page.slug)
-			) {
-				const returnedData = { params: { slug: [page.slug] } };
-				pathsData.push(returnedData);
-			}
-		});
-
-	return {
-		paths: pathsData,
-		fallback: false
-	};
-};
 
 export async function getStaticProps(
 	ctx: GetStaticPropsContext
@@ -99,7 +54,7 @@ export async function getStaticProps(
 		idTypeFoot: NAME,
 		idFoot: 'Footer',
 		idTypePage: URI,
-		idPage: params.slug
+		idPage: params.slug[0]
 	};
 	await apolloClient.query<HeaderFooter, HeaderFooterVariables>({
 		query: HEADER_FOOTER,
@@ -113,18 +68,59 @@ export async function getStaticProps(
 		query: GET_PAGE,
 		variables: GetPageQueryVars
 	});
+	const page = data.page!;
 
 	return addApolloState(apolloClient, {
 		props: {
-			page: data.page! ?? {},
+			page,
 			path: data.page!.uri ?? params.slug
 		},
 		revalidate: 10
 	});
 }
 
-const Dynamic: NextPage &
-	InferGetStaticPropsType<typeof getStaticProps> = () => {
+type StaticPathsShape = {
+	params: {
+		slug: string[];
+	};
+}[];
+
+export const getStaticPaths: GetStaticPaths = async () => {
+	const apolloClient = initializeApollo();
+	const { data } = await apolloClient.query<GetPages, GetPagesVariables>({
+		query: GET_PAGES,
+		variables: getPagesQueryVars
+	});
+
+	const paths: StaticPathsShape = [];
+
+	if (
+		data &&
+		data.pages !== null &&
+		data.pages.nodes !== null &&
+		data.pages.nodes.length > 0
+	)
+		data.pages.nodes.map(page => {
+			if (
+				page !== null &&
+				page.slug !== null &&
+				!customPagesSlugs.includes(page.slug)
+			) {
+				paths.push({ params: { slug: [page.slug] } });
+			}
+		});
+
+	return {
+		paths,
+		fallback: false
+	};
+};
+
+export default function Dynamic({
+	page
+}: InferGetStaticPropsType<typeof getStaticProps>) {
+	console.log('inferred page', page, typeof page);
+	console.log('inferred page.body ', page.body);
 	const { query } = useRouter();
 	const targetSlug = query.slug as string[];
 	const { NAME } = MenuNodeIdTypeEnum;
@@ -153,13 +149,16 @@ const Dynamic: NextPage &
 		<Layout title={`${titles}`}>
 			<div>
 				<h1
-					className='text-primary-0 py-8 px-20 text-4xl mx-auto text-left'
+					className='text-primary-0 py-8 text-4xl max-w-6xl mx-auto text-left'
 					dangerouslySetInnerHTML={{ __html: titles }}
 				/>
-				<section dangerouslySetInnerHTML={{ __html: contents }} />
+				<section
+					className='mx-auto max-w-6xl flex-col'
+					dangerouslySetInnerHTML={{ __html: contents }}
+				/>
 			</div>
 		</Layout>
 	);
-};
+}
 
-export default Dynamic;
+// Dynamic.Layout = Layout;

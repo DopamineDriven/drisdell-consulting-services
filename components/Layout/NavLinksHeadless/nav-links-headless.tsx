@@ -112,10 +112,17 @@ const NavLinksHeadless: FC<NavLinkProps> = props => {
 																			key={subSubPage.node.id}
 																		>
 																			<a
+																				key={subSubPage.node.id}
 																				id={`#${subSubPage.node.parentId}`}
 																				className='lg:-m-3 -m-1 p-3 flex items-start rounded-md hover:bg-primary-8'
 																			>
-																				<p className='text-base font-medium'>
+																				<p
+																					key={subPage.node!.id + subSubPage.node.id}
+																					className={cn(
+																						css['subSubPath'],
+																						'text-base pl-2 font-medium'
+																					)}
+																				>
 																					{subSubPage.node.label}
 																				</p>
 																			</a>
@@ -124,7 +131,7 @@ const NavLinksHeadless: FC<NavLinkProps> = props => {
 																) : (
 																	<Link href={path} passHref>
 																		<a
-																			id={'#iderror'}
+																			id={'iderror'}
 																			className='-m-3 p-3 block rounded-md hover:primary-8'
 																		>
 																			<p className='text-base font-medium text-primary-0'>
