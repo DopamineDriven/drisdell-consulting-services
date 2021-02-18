@@ -131,19 +131,20 @@ const AboutPostData: FC<AboutSubTemplateProps> = ({
 									className={cn('text-4xl font-medium', css['tableMd'])}
 								/>
 							</Media>
-							<div className='mt-5 prose prose-indigo text-gray-600 mx-auto lg:max-w-none lg:row-start-1 lg:col-start-1'>
-								<audio>
-									<source src={pollyConditional}>
-										<a
-											href={pollyConditional}
-											className='mx-auto bg-primary-1 hover:bg-primary-9 duration-150 transition-colors'
-										>
-											<Button onClick={toggle} className='text-primary-1'>
-												{playing ? '⏩' : 'Play'}
-											</Button>
-										</a>
-									</source>
-								</audio>
+							<div className='mt-5 prose  prose-indigo text-gray-600 mx-auto lg:max-w-none lg:row-start-1 lg:col-start-1'>
+								<a
+									href={pollyConditional}
+									target='__blank'
+									className='mx-auto bg-primary-1 hover:bg-primary-3 duration-150 transition-colors rounded-2xl'
+								>
+									<Button
+										onClick={toggle}
+										className='text-primary-9 bg-primary-1 hover:bg-primary-3 rounded-2xl'
+									>
+										{playing ? 'Pause' : 'Play'}
+									</Button>
+								</a>
+
 								<ReactMarkdown
 									allowDangerousHtml={true}
 									children={contentConditional}
