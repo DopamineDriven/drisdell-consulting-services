@@ -1,5 +1,5 @@
 import { initializeApollo, addApolloState } from '@lib/apollo';
-import { NextPage, GetStaticProps, InferGetStaticPropsType } from 'next';
+import { GetStaticProps } from 'next';
 import { ABOUT_CARDS_DATA, HEADER_FOOTER } from '@lib/graphql';
 import {
 	HeaderFooter,
@@ -30,7 +30,7 @@ export const getStaticProps: GetStaticProps = async () => {
 	});
 };
 
-const About: NextPage & InferGetStaticPropsType<typeof getStaticProps> = () => {
+const About = () => {
 	return (
 		<>
 			<Layout title={'ABOUT DRISDELL CONSULTING SERVICES'}>

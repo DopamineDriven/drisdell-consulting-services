@@ -21,10 +21,7 @@ const Footer: FC<FooterProps> = props => {
 			)}`}
 			aria-labelledby='footerHeading'
 		>
-			<Container
-				className='xs:px-2 sm:px-4 md:px-6 lg:px-8 2xl:px-12 3xl:px-14'
-				clean
-			>
+			<Container className='px-8 2xl:px-12 3xl:px-14' clean>
 				<div
 					id='footerHeading'
 					className='grid grid-cols-1 lg:grid-cols-12 gap-8 border-b border-accents-4 py-12 text-primary bg-primary transition-colors duration-150'

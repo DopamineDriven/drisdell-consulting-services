@@ -1,6 +1,6 @@
 import { HEADER_FOOTER, LANDING_COALESCED } from '@lib/graphql';
 import { initializeApollo, addApolloState } from '@lib/apollo';
-import { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
+import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import Layout, { HeaderFooterMenuQueryVers } from '@components/Layout/layout';
 import {
 	HeaderFooter,
@@ -30,7 +30,7 @@ export const getStaticProps: GetStaticProps = async () => {
 	});
 };
 
-const Index: NextPage & InferGetStaticPropsType<typeof getStaticProps> = () => {
+const Index: InferGetStaticPropsType<typeof getStaticProps> = () => {
 	return (
 		<>
 			<Layout title={'Drisdell Consulting Services Landing Page'}>

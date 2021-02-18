@@ -11,3 +11,7 @@
 .link.active {
 	@apply font-bold;
 }
+
+.subSubPath p {
+	@apply ml-10 !important;
+}

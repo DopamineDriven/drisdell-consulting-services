@@ -28,6 +28,39 @@ export class CdkStack extends Stack {
 }
 ```
 
+### [oEmbed](https://webdevstudios.com/2019/08/15/fixing-oembed/)
+
+```php
+<?php
+namespace EPH\DAEmbed;
+
+function register_providers() {
+	$callback = __NAMESPACE__ . '\handle_deviantart';
+
+	wp_embed_register_handler( 'deviantart-main', '#https://www.deviantart.com/*+#', $callback, 10 );
+	// Include other handlers as needed
+}
+
+function handle_deviantart( $matches, $attr, $url, $rawattr ) {
+	$http_options = [
+		'headers' => [
+			'User-Agent'      => 'WordPress OEmbed Consumer',
+		],
+	];
+
+	$da_response = \wp_remote_get( 'https://backend.deviantart.com/oembed?url=' . rawurlencode( $url ), $http_options );
+	if ( empty( $da_response ) || 200 !== $da_response['response']['code'] ) {
+		return "<p><!-- Could not embed --><a href=\"{$url}\">View Deviation</a></p>";
+	}
+
+	// Generate client-side HTML here
+
+	return $html;
+}
+
+add_action( 'init', __NAMESPACE__ . '\register_providers' );
+```
+
 ### [Useful MIME Types](https://stackoverflow.com/questions/4212861/what-is-a-correct-mime-type-for-docx-pptx-etc)
 
 ### [AWS SES Raw Email Attachments](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html)

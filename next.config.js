@@ -44,28 +44,6 @@ const withWebpackMods = {
 	}
 };
 
-const withRedirects = {
-	async redirects() {
-		return [
-			{
-				source: '/drisdell-consulting-services',
-				destination: '/',
-				permanent: true
-			},
-			{
-				source: '/about/:slug*',
-				destination: '/about-us/:slug*',
-				permanent: true
-			},
-			{
-				source: '/consultant/:slug*',
-				destination: '/consultants/:slug*',
-				permanent: true
-			}
-		];
-	}
-};
-
 module.exports = withPlugins([
 	[
 		withBundleAnalyzer({
@@ -73,8 +51,7 @@ module.exports = withPlugins([
 		})
 	],
 	withWebpackMods,
-	withImages,
-	withRedirects
+	withImages
 ]);
 
 // https://nextjs.org/docs/api-reference/next.config.js/headers
