@@ -1,5 +1,11 @@
 # drisdell-consulting-services
 
+# TO-DO
+
+- repurpose skillsandpositions gql data for _any_ custom consultant page (submit resume portal injection)
+- do the same with about-us for careers and project-delivery
+- double check getStaticPaths/getStaticProps config of dynamic sub-directories for optimization
+
 ## Can only initialize cdk as a typescript project if the project repo is empty
 
 ```ts
