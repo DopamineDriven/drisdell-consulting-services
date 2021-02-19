@@ -4,9 +4,8 @@ import ReactMarkdown from 'react-markdown/with-html';
 import Image from 'next/image';
 import css from './about-post-data.module.css';
 import { AboutBySlug_aboutPost } from '@lib/graphql/AboutBySlug/__generated__/AboutBySlug';
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import { Media } from '@lib/artsy-fresnel';
-import { Button } from '@components/UI';
 
 interface AboutSubTemplateProps extends AboutBySlug_aboutPost {
 	root?: string;
@@ -29,10 +28,11 @@ const AboutPostData: FC<AboutSubTemplateProps> = ({
 	const contentConditional = content !== null ? content : 'content null';
 	const pollyConditional =
 		polly !== null && polly.audio !== null ? polly.audio : '';
+	console.log(pollyConditional);
 	const titleConditional = title !== null ? title : 'title null';
 
-	const [playing, setPlaying] = useState(false);
-	const toggle = () => setPlaying(!playing);
+	// const [playing, setPlaying] = useState(false);
+	// const toggle = () => setPlaying(!playing);
 	// useEffect(() => {
 	// 	playing ? audio.play() : audio.pause();
 	// 	return () => {
@@ -132,7 +132,7 @@ const AboutPostData: FC<AboutSubTemplateProps> = ({
 								/>
 							</Media>
 							<div className='mt-5 prose  prose-indigo text-gray-600 mx-auto lg:max-w-none lg:row-start-1 lg:col-start-1'>
-								<a
+								{/* <a
 									href={pollyConditional}
 									target='__blank'
 									className='mx-auto bg-primary-1 hover:bg-primary-3 duration-150 transition-colors rounded-2xl'
@@ -143,7 +143,7 @@ const AboutPostData: FC<AboutSubTemplateProps> = ({
 									>
 										{playing ? 'Pause' : 'Play'}
 									</Button>
-								</a>
+								</a> */}
 
 								<ReactMarkdown
 									allowDangerousHtml={true}
