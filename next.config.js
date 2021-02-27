@@ -44,6 +44,10 @@ const withWebpackMods = {
 	}
 };
 
+const withSourceMaps = {
+	productionBrowserSourceMaps: true
+};
+
 module.exports = withPlugins([
 	[
 		withBundleAnalyzer({
@@ -51,7 +55,8 @@ module.exports = withPlugins([
 		})
 	],
 	withWebpackMods,
-	withImages
+	withImages,
+	withSourceMaps
 ]);
 
 // https://nextjs.org/docs/api-reference/next.config.js/headers

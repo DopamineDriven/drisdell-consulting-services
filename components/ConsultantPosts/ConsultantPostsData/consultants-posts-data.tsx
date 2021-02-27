@@ -10,7 +10,7 @@ interface AboutSubTemplateProps extends ConsultantBySlug_consultantPost {
 	root?: string;
 }
 
-const AboutPostData: FC<AboutSubTemplateProps> = ({
+const ConsultantsPostData: FC<AboutSubTemplateProps> = ({
 	root,
 	featuredImage,
 	title,
@@ -119,4 +119,4 @@ const AboutPostData: FC<AboutSubTemplateProps> = ({
 	);
 };
 
-export default AboutPostData;
+export default ConsultantsPostData;

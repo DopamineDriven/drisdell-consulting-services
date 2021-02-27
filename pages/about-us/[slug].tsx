@@ -1,5 +1,4 @@
 import {
-	NextPage,
 	GetStaticPaths,
 	GetStaticPropsContext,
 	InferGetStaticPropsType,
@@ -31,6 +30,7 @@ import { useQuery } from '@apollo/client';
 import { Params } from 'next/dist/next-server/server/router';
 // import AboutPosts from '@components/AboutPosts';
 import AboutPostsEnhanced from '@components/AboutPosts/about-posts-enhanced';
+import { AboutBySlug_aboutPost } from '../../lib/graphql/AboutBySlug/__generated__/AboutBySlug';
 
 const LoadingSpinner = dynamic(() => import('@components/UI/LoadingSpinner'));
 
@@ -83,7 +83,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export async function getStaticProps(
 	ctx: GetStaticPropsContext
-): Promise<GetStaticPropsResult<Params>> {
+): Promise<
+	GetStaticPropsResult<{ about: AboutBySlug_aboutPost | {}; path: string }>
+> {
 	const params = ctx.params as Params;
 	const AboutBySlugQueryVars: AboutBySlugVariables = {
 		idType: SLUG,
@@ -111,14 +113,16 @@ export async function getStaticProps(
 	});
 }
 
-const DynamicAbout: NextPage &
-	InferGetStaticPropsType<typeof getStaticProps> = () => {
+function DynamicAbout({
+	about,
+	path
+}: InferGetStaticPropsType<typeof getStaticProps>) {
 	const { query } = useRouter();
 	const targetSlug = query.slug as string;
-
+	console.log(`${about}`);
 	const AboutBySlugQueryVars: AboutBySlugVariables = {
 		idType: SLUG,
-		id: targetSlug
+		id: path || targetSlug
 	};
 	const { data } = useQuery<AboutBySlug, AboutBySlugVariables>(ABOUT_BY_SLUG, {
 		variables: AboutBySlugQueryVars,
@@ -136,7 +140,7 @@ const DynamicAbout: NextPage &
 			)}
 		</Layout>
 	);
-};
+}
 
 export default DynamicAbout;
 
