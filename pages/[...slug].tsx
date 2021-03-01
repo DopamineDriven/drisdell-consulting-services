@@ -27,6 +27,7 @@ import { customPagesSlugs } from '@lib/custom-page-slugs';
 import { useQuery } from '@apollo/client';
 import { useRouter } from 'next/router';
 import { Params } from 'next/dist/next-server/server/router';
+import { GetPage_page } from '../lib/graphql/GetPage/__generated__/GetPage';
 import {
 	HeaderFooter,
 	HeaderFooterVariables
@@ -43,7 +44,7 @@ const getPagesQueryVars: GetPagesVariables = {
 
 export async function getStaticProps(
 	ctx: GetStaticPropsContext
-): Promise<GetStaticPropsResult<Params>> {
+): Promise<GetStaticPropsResult<{ page: GetPage_page; path: string }>> {
 	// type assertion
 	const params = ctx.params as Params;
 	const { NAME } = MenuNodeIdTypeEnum;
@@ -120,7 +121,7 @@ export default function Dynamic({
 	page
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	console.log('inferred page', page, typeof page);
-	console.log('inferred page.body ', page.body);
+	console.log('inferred page.body ', page.uri);
 	const { query } = useRouter();
 	const targetSlug = query.slug as string[];
 	const { NAME } = MenuNodeIdTypeEnum;
@@ -131,7 +132,7 @@ export default function Dynamic({
 		idTypeFoot: NAME,
 		idFoot: 'Footer',
 		idTypePage: URI,
-		idPage: targetSlug[0]
+		idPage: page.uri || targetSlug[0]
 	};
 	const { data } = useQuery<GetPage, GetPageVariables>(GET_PAGE, {
 		variables: GetPageQueryVars,

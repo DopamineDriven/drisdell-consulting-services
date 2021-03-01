@@ -10,9 +10,9 @@ interface ContactUsWrapperProps {
 const ContactUsPageWrapper: FC<ContactUsWrapperProps> = props => {
 	const { root, children } = props;
 	return (
-		<section className={cn(css.root, root)}>
-			<div className={css.divOuter}>
-				<div className={css.divInner}>{children}</div>
+		<section className={cn(css.alpha, root)}>
+			<div className={css.beta}>
+				<div className={css.gamma}>{children}</div>
 			</div>
 		</section>
 	);

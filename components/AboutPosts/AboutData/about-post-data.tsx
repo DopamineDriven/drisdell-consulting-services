@@ -6,11 +6,14 @@ import css from './about-post-data.module.css';
 import { AboutBySlug_aboutPost } from '@lib/graphql/AboutBySlug/__generated__/AboutBySlug';
 import { FC } from 'react';
 import { Media } from '@lib/artsy-fresnel';
-
+import { useAudio } from 'react-use';
+/**
+ * @USE_AUDIO_HOOK
+ */
+// https://github.com/streamich/react-use/blob/38ea7779dcc3c862eb79439561e4c11ef98dc9d9/docs/useAudio.md
 interface AboutSubTemplateProps extends AboutBySlug_aboutPost {
 	root?: string;
 }
-// var a: new (src: string) => HTMLAudioElement;
 const AboutPostData: FC<AboutSubTemplateProps> = ({
 	root,
 	featuredImage,
@@ -28,21 +31,35 @@ const AboutPostData: FC<AboutSubTemplateProps> = ({
 	const contentConditional = content !== null ? content : 'content null';
 	const pollyConditional =
 		polly !== null && polly.audio !== null ? polly.audio : '';
+	const Polly = () => {
+		const [audio, state, controls, ref] = useAudio({
+			src: `${pollyConditional}`,
+			autoPlay: true
+		});
+		return (
+			<div>
+				{audio && ref?.current}
+				<pre>{JSON.stringify(state, null, 2)}</pre>
+				<button onClick={controls.pause}>Pause</button>
+				<button onClick={controls.play}>Play</button>
+				<br />
+				<button onClick={controls.mute}>Mute</button>
+				<button onClick={controls.unmute}>Unmute</button>
+				<br />
+				<button onClick={() => controls.volume(0.1)}>Volume 10%</button>
+				<button onClick={() => controls.volume(0.25)}>Volume 25%</button>
+				<button onClick={() => controls.volume(0.5)}>Volume 50%</button>
+				<button onClick={() => controls.volume(0.75)}>Volume 75%</button>
+				<button onClick={() => controls.volume(1)}>Volume 100%</button>
+				<br />
+				<button></button>
+				<button onClick={() => controls.seek(state.time - 5)}>-5 sec</button>
+				<button onClick={() => controls.seek(state.time + 5)}>+5 sec</button>
+			</div>
+		);
+	};
 	console.log(pollyConditional);
 	const titleConditional = title !== null ? title : 'title null';
-
-	// const [playing, setPlaying] = useState(false);
-	// const toggle = () => setPlaying(!playing);
-	// useEffect(() => {
-	// 	playing ? audio.play() : audio.pause();
-	// 	return () => {
-	// 		audio.addEventListener('ended', () => setPlaying(false))
-	// 		return () => {
-	// 			audio.removeEventListener('ended', () => setPlaying)
-	// 		}
-	// 	}
-	// }, [playing, toggle])
-
 	return (
 		<>
 			<div className={cn(root, 'bg-primary-9 overflow-hidden select-none')}>
@@ -132,18 +149,9 @@ const AboutPostData: FC<AboutSubTemplateProps> = ({
 								/>
 							</Media>
 							<div className='mt-5 prose  prose-indigo text-gray-600 mx-auto lg:max-w-none lg:row-start-1 lg:col-start-1'>
-								{/* <a
-									href={pollyConditional}
-									target='__blank'
-									className='mx-auto bg-primary-1 hover:bg-primary-3 duration-150 transition-colors rounded-2xl'
-								>
-									<Button
-										onClick={toggle}
-										className='text-primary-9 bg-primary-1 hover:bg-primary-3 rounded-2xl'
-									>
-										{playing ? 'Pause' : 'Play'}
-									</Button>
-								</a> */}
+								<audio>
+									<Polly />
+								</audio>
 
 								<ReactMarkdown
 									allowDangerousHtml={true}

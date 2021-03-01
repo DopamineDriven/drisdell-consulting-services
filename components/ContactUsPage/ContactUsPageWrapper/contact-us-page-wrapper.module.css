@@ -1,11 +1,11 @@
-.root {
+.alpha {
 	@apply items-center content-center justify-center block min-w-full w-screen mx-auto;
 }
 
-.divOuter {
+.beta {
 	@apply content-center justify-center block mx-auto;
 }
 
-.divInner {
+.gamma {
 	@apply content-center justify-center mx-auto gap-x-12 w-full;
 }

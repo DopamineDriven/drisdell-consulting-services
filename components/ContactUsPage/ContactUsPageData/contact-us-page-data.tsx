@@ -64,29 +64,7 @@ const ContactUsPageData: FC<ContactUsPageProps> = ({
 	console.log(featuredImageDynamic);
 	const desktop = (
 		<Media greaterThanOrEqual='sm'>
-			{/* <svg
-				width='1928'
-				height='446'
-				viewBox='0 0 1928 446'
-				fill='none'
-				className={cn(
-					'lg:align-bottom lg:absolute lg:bottom-25 xl:bottom-15 lg:left-0 lg:right-0 lg:top-0  lg:z-50 lg:h-screen mx-auto'
-				)}
-				xmlns='http://www.w3.org/2000/svg'
-				style={{ backgroundBlendMode: 'overlay' }}
-			>
-				<path
-					fillRule='evenodd'
-					clipRule='evenodd'
-					d='M0 357.735V387.635L542.885 286.819L0 357.735ZM193 275.5L185.885 276.822L196 275.5H193ZM0 301.1V311.337L185.885 276.819L0 301.1ZM550 285.5L542.885 286.821L553 285.5H550ZM1656.19 138.444L0 446H1928V198.485L984 289.5L1656.19 138.444ZM1390.97 98.3L1928 28.145V0L1390.97 98.3ZM1928 74.6V51.49L1619.96 108.69L1928 74.6Z'
-					fill='white'
-					className='lg:inset-0 lg:align-bottom'
-				/>
-			</svg> */}
-			{/* <div
-				className='absolute inset-0 bg-gradient-to-r from-white to-purple-300'
-				style={{ mixBlendMode: 'multiply' }}
-			></div> */}
+			<></>
 		</Media>
 	);
 
