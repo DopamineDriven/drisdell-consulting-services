@@ -23,6 +23,11 @@ module.exports = {
 			10: 10
 		},
 		extend: {
+			zIndex: {
+				'-10': '-10',
+				100: '100',
+				150: '150'
+			},
 			maxWidth: {
 				'9xl': '2220px'
 			},

@@ -3,7 +3,7 @@
 }
 
 .root {
-	@apply bg-primary-9 select-none;
+	@apply bg-primary-9 select-none z-100;
 }
 
 .svg {
@@ -18,7 +18,10 @@
 	z-index: 100;
 	top: 0;
 	backdrop-filter: saturate(180%) blur(20px);
-	transition: background-color 0.1 ease-in-out;
+	transition: 0.1 ease-in-out;
+	&.root {
+		transition: 0.1 ease-in-out;
+	}
 }
 
 .navLinks div > a {
