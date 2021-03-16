@@ -47,8 +47,8 @@ const Navbar: FC<NavbarProps> = ({ root, navLinksDesktop, navLinksMobile }) => {
 							'flex justify-between transform-gpu duration-500 ease-in-out transition-all',
 							css.stickyNav,
 							{
-								'h-48': !hasScrolled,
-								'h-24': hasScrolled
+								'h-28': !hasScrolled,
+								'h-20': hasScrolled
 							}
 						)}
 					>
@@ -94,8 +94,8 @@ const Navbar: FC<NavbarProps> = ({ root, navLinksDesktop, navLinksMobile }) => {
 															css.svg,
 															'cursor-default focus:outline-none transition-all transform-gpu ease-in-out duration-500',
 															{
-																'w-40 h-40': !hasScrolled,
-																'w-20 h-20': hasScrolled
+																'w-24 h-24': !hasScrolled,
+																'w-16 h-16': hasScrolled
 															}
 														)}
 													/>
