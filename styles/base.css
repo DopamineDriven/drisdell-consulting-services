@@ -1,7 +1,7 @@
-.hide-scrollbar {
-	overflow: auto;
-	-ms-overflow-style: none; /* IE 11 */
-	scrollbar-width: thin; /* Firefox 64 */
+#__next {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
 }
 
 :root {
@@ -31,7 +31,7 @@
 	--accents-6: #f4f3ee;
 	--accents-7: #f4f3ee;
 	--focus-0: #cb8411;
-	--background-primary: #f1fcf7;
+	--background-primary: #f4f3ee;
 	--background-auxiliary: #f1f3f5;
 	--background-tertiary: #fff9e9;
 	--text-base: #000000;
@@ -42,6 +42,7 @@
 	--hover-0: rgba(0, 0, 0, 0.075);
 	--hover-1: rgba(0, 0, 0, 0.15);
 	--hover-2: rgba(0, 0, 0, 0.25);
+	@apply overflow-x-hidden;
 }
 
 *,
@@ -72,7 +73,6 @@ body {
 	::--moz-osx-font-smoothing: grayscale;
 	background-color: var(--primary-8);
 	color: var(--text-primary);
-	@apply overflow-x-hidden;
 }
 
 body {

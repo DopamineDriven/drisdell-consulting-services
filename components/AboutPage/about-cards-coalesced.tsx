@@ -49,21 +49,8 @@ const AboutCardsCoalesced = () => {
 		notifyOnNetworkStatusChange: true
 	});
 
-	return error ? (
+	const AboutPageLayoutProp = (
 		<>
-			<ApolloErrorMessage
-				message={`${error.message}`}
-				graphQLErrors={error.graphQLErrors}
-				networkError={error.networkError}
-				extraInfo={error.extraInfo}
-				stack={error.stack}
-				name={error.name}
-			/>
-		</>
-	) : loading && !error ? (
-		<Loading />
-	) : (
-		<AboutPageWrapper>
 			{data &&
 			data.pages !== null &&
 			data.pages.edges !== null &&
@@ -88,8 +75,27 @@ const AboutCardsCoalesced = () => {
 			) : (
 				<div>{error} about-us page data is null or a server error occurred</div>
 			)}
+		</>
+	);
+
+	return error ? (
+		<>
+			<ApolloErrorMessage
+				message={`${error.message}`}
+				graphQLErrors={error.graphQLErrors}
+				networkError={error.networkError}
+				extraInfo={error.extraInfo}
+				stack={error.stack}
+				name={error.name}
+			/>
+		</>
+	) : loading && !error ? (
+		<Loading />
+	) : (
+		<AboutPageWrapper>
+			{AboutPageLayoutProp}
 			<Container className='' clean>
-				<AboutWrapper>
+				<AboutWrapper root='transform-gpu transition-all'>
 					{data &&
 					data.abouts !== null &&
 					data.abouts.edges !== null &&

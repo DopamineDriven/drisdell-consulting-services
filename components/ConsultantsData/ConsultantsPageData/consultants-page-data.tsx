@@ -26,11 +26,6 @@ const ConsultantsPageData: FC<ConsultantsPageDataProps> = ({
 			const touchXPosition = event.touches[0].pageX;
 			// Size of the touch area
 			const touchXRadius = event.touches[0].radiusX || 0;
-
-			// set a threshold (10px) on both sizes of the screen,
-			// if the touch area overlaps with the screen edges
-			// it's likely to trigger navigation. Prevent the
-			// touchstart event in that case.
 			if (
 				touchXPosition - touchXRadius < 10 ||
 				touchXPosition + touchXRadius > window.innerWidth - 10
@@ -110,8 +105,6 @@ const ConsultantsPageData: FC<ConsultantsPageDataProps> = ({
 					<div className='mx-auto'>
 						<div className='relative sm:overflow-hidden'>
 							<div className='absolute inset-0' ref={particlesConatinerRef}>
-								{/* <Link href={slugDynamic} as={`/`} passHref scroll={false}>
-									<a className='cursor-default h-screen w-full object-cover'> */}
 								<Particles
 									className='cursor-default h-150 sm:h-full w-full object-cover'
 									id='tsparticles'
@@ -194,8 +187,6 @@ const ConsultantsPageData: FC<ConsultantsPageDataProps> = ({
 										detectRetina: true
 									}}
 								/>
-								{/* </a>
-								</Link> */}
 								{mobile}
 								{desktop}
 							</div>
@@ -209,9 +200,6 @@ const ConsultantsPageData: FC<ConsultantsPageDataProps> = ({
 									<span className='block tracking-wide text-primary-9 font-bold pt-2 pb-4 font-poppins w-auto text-2xl sm:text-4xl md:text-8xl'>
 										Consultants
 									</span>
-									{/* <span className='tracking-wider block text-primary-9 font-extrabold py-2'>
-										<em>Radiant</em>?
-									</span> */}
 								</h1>
 								{mobileContent}
 								{desktopContent}
