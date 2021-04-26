@@ -123,7 +123,7 @@
 		"@graphql-codegen/near-operation-file-preset": "^1.17.13",
 		"@graphql-codegen/schema-ast": "^1.18.1",
 		"@graphql-codegen/typed-document-node": "^1.17.10",
-		"@graphql-codegen/typescript": "^1.17.11",
+		"@graphql-codegen/typescript": "^1.22.0",
 		"@graphql-codegen/typescript-apollo-client-helpers": "^1.1.2",
 		"@graphql-codegen/typescript-operations": "^1.17.10",
 		"@graphql-codegen/typescript-react-apollo": "^2.1.1",
