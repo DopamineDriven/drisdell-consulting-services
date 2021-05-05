@@ -190,14 +190,18 @@ const ContactUsPageData: FC<ContactUsPageProps> = ({
 											</a>
 										</Link>
 
-										<a
-											href='tel:770-330-6676'
-											target='__blank'
-											className='flex items-center justify-center px-4 py-3 border border-transparent text-lg font-semibold rounded-full shadow-sm text-primary-1 bg-opacity-25 bg-white ring-2 ring-primary-1 ring-inset hover:bg-primary-8 hover:text-primary-0 sm:px-8 z-50 transition-colors duration-150'
+										<Button
+											type='submit'
+											className={cn(
+												'flex normal-case w-full mx-auto sm:w-auto items-center justify-center px-4 py-3 border border-transparent text-lg font-semibold rounded-full shadow-sm text-primary-1 bg-opacity-25 bg-white ring-2 ring-primary-1 ring-inset hover:bg-primary-8 hover:text-primary-0 sm:px-8 z-50 transition-colors duration-150'
+											)}
+											onClick={() => {
+												openModal('OPEN_MODAL');
+												setModalView('EMAIL_VIEW');
+											}}
 										>
-											(770)-330-6676
-										</a>
-
+											Send an Email
+										</Button>
 										<Link
 											href={'/consultants/skills-and-positions'}
 											as='/consultants/skills-and-positions'
@@ -209,7 +213,7 @@ const ContactUsPageData: FC<ContactUsPageProps> = ({
 										</Link>
 									</div>
 								</div>
-								<div className='mt-4 sm:mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center z-50'>
+								{/* <div className='mt-4 sm:mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center z-50'>
 									<div className='space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5'>
 										<Button
 											type='submit'
@@ -236,7 +240,7 @@ const ContactUsPageData: FC<ContactUsPageProps> = ({
 											Submit a Resume
 										</Button>
 									</div>
-								</div>
+								</div> */}
 							</Container>
 						</div>
 					</div>

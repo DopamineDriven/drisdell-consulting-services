@@ -123,7 +123,7 @@ const SuccessEmail: FC = () => {
 					<div className='mt-5'>
 						<button
 							className={cn(
-								'inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm'
+								'inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-primary-0 text-base font-medium text-white hover:bg-primary-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-9 sm:text-sm'
 							)}
 							onClick={() => closeModal('CLOSE_MODAL')}
 						>

@@ -34,7 +34,7 @@ const Navbar: FC<NavbarProps> = ({ root, navLinksDesktop, navLinksMobile }) => {
 	}, [hasScrolled]);
 	return (
 		<>
-			<nav className={cn(root, css.root, css.stickyNav)}>
+			<nav className={cn(root, css.root, css.stickyNav, 'bg-primary-9')}>
 				<div
 					className={cn(
 						css.stickyNav,

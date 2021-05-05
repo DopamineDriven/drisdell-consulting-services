@@ -13,7 +13,7 @@ const ConsultantsPostsWrapper: FC<ConsultantsPostsWrapperProps> = props => {
 		<div
 			className={cn(
 				root,
-				'relative bg-primary-9 pt-8 sm:pt-4 lg:pt-0 pb-16 px-4 sm:px-6 lg:pb-24 lg:px-8 select-none -translate-y-8 sm:-translate-y-16 md:-translate-y-20 lg:-translate-y-32 transition-transform'
+				'relative bg-primary-9 pt-8 sm:pt-4 lg:pt-0 pb-16 px-4 sm:px-6 lg:pb-24 lg:px-8 select-none -translate-y-8 sm:-translate-y-16 md:-translate-y-20 lg:-translate-y-28 transition-transform'
 			)}
 		>
 			<div className='absolute inset-0'>

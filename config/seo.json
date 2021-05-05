@@ -6,7 +6,15 @@
 		"type": "website",
 		"locale": "en_US",
 		"url": "https://drisdell.com/",
-		"site_name": "Drisdell Consulting Services"
+		"site_name": "Drisdell Consulting Services",
+		"images": [
+			{
+				"url": "https://og-image.now.sh/**Drisdell%20Consulting%20Services**.png?theme=light&md=1&fontSize=100px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg&images=https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fi%2Fss8q9p3mq3mu4d3kvjpw.png&widths=350&widths=350&heights=350&heights=350",
+				"width": 2048,
+				"height": 1170,
+				"alt": "Drisdell Consulting Services - Exceptional Human Capital and Workforce Management IT System Support"
+			}
+		]
 	},
 	"twitter": {
 		"handle": "@Dopamine_Driven",

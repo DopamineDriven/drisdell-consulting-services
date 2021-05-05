@@ -7,5 +7,5 @@
 }
 
 .divInner {
-	@apply content-center justify-center mx-auto gap-x-12 gap-y-12 w-full;
+	@apply content-center justify-center mx-auto gap-x-12 w-full;
 }

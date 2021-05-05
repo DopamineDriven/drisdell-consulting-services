@@ -244,7 +244,7 @@ const Layout: FC<LayoutProps> = props => {
 						className='bg-primary-3 prose-lg sm:prose-xl text-primary-0 bg-opacity-70 sm:text-center'
 						action={
 							<Button
-								className='mx-auto text-center rounded-xl border-primary-0 border-1 hover:text-primary-9 hover:bg-primary-0 hover:bg-opacity-80 hover:border-primary-8 duration-500 ease-in-out transform transition-colors'
+								className='mx-auto text-center rounded-xl border-primary-0 border-1 hover:text-primary-9 hover:bg-primary-0 hover:bg-opacity-80 hover:border-primary-8 duration-300 ease-in-out transform-gpu transition-colors'
 								onClick={() => onAcceptCookies()}
 							>
 								Accept Cookies

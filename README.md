@@ -1,5 +1,7 @@
 # drisdell-consulting-services
 
+update gql schema and codegen
+
 # TO-DO
 
 - repurpose skillsandpositions gql data for _any_ custom consultant page (submit resume portal injection)

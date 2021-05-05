@@ -48,21 +48,8 @@ const ConsultantsDataCoalesced = () => {
 		notifyOnNetworkStatusChange: true
 	});
 
-	return error ? (
+	const ConsultantsPageDataProp = (
 		<>
-			<ApolloErrorMessage
-				message={error.message}
-				graphQLErrors={error.graphQLErrors}
-				networkError={error.networkError}
-				extraInfo={error.extraInfo}
-				stack={error.stack}
-				name={error.name}
-			/>
-		</>
-	) : loading && !error ? (
-		<Loading />
-	) : (
-		<ConsultantsPageWrapper>
 			{data &&
 			data.pages !== null &&
 			data.pages.edges !== null &&
@@ -87,6 +74,26 @@ const ConsultantsDataCoalesced = () => {
 			) : (
 				<div>{error} outer - consultants page mapping</div>
 			)}
+			S
+		</>
+	);
+
+	return error ? (
+		<>
+			<ApolloErrorMessage
+				message={error.message}
+				graphQLErrors={error.graphQLErrors}
+				networkError={error.networkError}
+				extraInfo={error.extraInfo}
+				stack={error.stack}
+				name={error.name}
+			/>
+		</>
+	) : loading && !error ? (
+		<Loading />
+	) : (
+		<ConsultantsPageWrapper>
+			{ConsultantsPageDataProp}
 			<Container clean>
 				<ConsultantsPostsWrapper root='transform-gpu transition-all'>
 					{data &&

@@ -7,7 +7,7 @@
 }
 
 .svg {
-	@apply block;
+	@apply block z-100;
 	@screen sm {
 		@apply content-center mx-auto;
 	}
