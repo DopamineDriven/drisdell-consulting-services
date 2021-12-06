@@ -104,7 +104,7 @@
 		"react-intersection-observer": "^8.30.3",
 		"react-markdown": "^5.0.2",
 		"react-merge-refs": "^1.1.0",
-		"react-query": "^3.5.16",
+		"react-query": "^3.34.0",
 		"react-syntax-highlighter": "^15.3.0",
 		"react-ticker": "^1.2.2",
 		"react-tsparticles": "^1.18.11",
