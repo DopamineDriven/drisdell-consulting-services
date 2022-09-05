@@ -138,7 +138,7 @@
 		"@types/body-scroll-lock": "^2.6.1",
 		"@types/classnames": "^2.2.11",
 		"@types/formidable": "^1.0.32",
-		"@types/gtag.js": "^0.0.3",
+		"@types/gtag.js": "^0.0.11",
 		"@types/js-cookie": "^2.2.6",
 		"@types/lodash.random": "^3.2.6",
 		"@types/lodash.throttle": "^4.1.6",
