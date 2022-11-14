@@ -155,7 +155,7 @@
 		"dotenv-cli": "^4.0.0",
 		"globby": "^11.0.2",
 		"graphql": "15.4.0",
-		"husky": "^4.3.0",
+		"husky": "^8.0.2",
 		"next-compose-plugins": "^2.2.1",
 		"next-unused": "^0.0.3",
 		"patch-package": "^6.2.2",
